@@ -31,6 +31,7 @@
 		if (strlen($text_eu) > 0 && $text_eu != $r['text_eu']){
 			mysqli_query($con, "UPDATE post SET text_eu = '$text_eu' WHERE id = $id;");
 		}
+		version();
 	}
 	
 	header("Location: /blog/translate/index.php");	

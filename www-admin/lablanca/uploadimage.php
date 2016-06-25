@@ -65,25 +65,10 @@
 					$thumb->clear();
 					$thumb->destroy(); 
 					
-					//Create preview
-					//$thumb = new Imagick();
-					//$thumb->readImage("../../www/img/fiestas/tmp.$r[id].png");    
-					//$thumb->resizeImage($p_w, $p_h, Imagick::FILTER_LANCZOS, 1);
-					//$thumb->writeImage("../../www/img/fiestas/preview/$r[year].png");
-					//$thumb->clear();
-					//$thumb->destroy(); 
-					
-					//Create miniature
-					//$thumb = new Imagick();
-					//$thumb->readImage("../../www/img/fiestas/tmp.$r[id].png");    
-					//$thumb->resizeImage($m_w, $m_h, Imagick::FILTER_LANCZOS, 1);
-					//$thumb->writeImage("../../www/img/fiestas/miniature/$r[year].png");
-					//$thumb->clear();
-					//$thumb->destroy();
-					
 					//Update database
 					if (strlen($r['img']) == 0){
 						mysqli_query($con, "UPDATE festival SET img = '$r[year].png' WHERE id = $id;");
+						version();
 					}
 				}
 				break;

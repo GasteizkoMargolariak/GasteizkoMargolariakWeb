@@ -11,4 +11,5 @@
 		mysqli_query($con, "DELETE FROM post_comment WHERE post = $id;");
 		mysqli_query($con, "DELETE FROM post_image WHERE post = $id;");
 		mysqli_query($con, "DELETE FROM post WHERE id = $id;");
+		version();
 	}

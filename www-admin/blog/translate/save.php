@@ -25,16 +25,13 @@
 		else{
 			if ($title_en != "" && $title_en != $r['title_en'])
 				mysqli_query($con, "UPDATE post SET title_en = '$title_en' WHERE id = $id;");
-				//echo "UPDATE post SET title_en = '$title_en' WHERE id = $id;\n";
 			if ($title_eu != "" && $title_eu != $r['title_eu'])
 				mysqli_query($con, "UPDATE post SET title_eu = '$title_eu' WHERE id = $id;");
-				//echo "UPDATE post SET title_eu = '$title_eu' WHERE id = $id;\n";
 			if ($text_en != "" && $text_en != $r['text_en'])
 				mysqli_query($con, "UPDATE post SET text_en = '$text_en' WHERE id = $id;");
-				//echo "UPDATE post SET text_en = '$text_en' WHERE id = $id;\n";
 			if ($text_eu != "" && $text_eu != $r['text_eu'])
 				mysqli_query($con, "UPDATE post SET text_eu = '$text_eu' WHERE id = $id;");
-				//echo "UPDATE post SET text_eu = '$text_eu' WHERE id = $id;\n";
+			version();
 		}
 		
 	}

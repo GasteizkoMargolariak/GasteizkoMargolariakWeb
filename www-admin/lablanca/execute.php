@@ -26,16 +26,17 @@
 		switch ($action){
 			case "delete":
 				mysqli_query($con, "DELETE FROM $table WHERE id = $id;");
+				version();
 				break;
 			case "update":
 				switch($type){
 					case "text":
 						mysqli_query($con, "UPDATE $table SET $field = '$value' WHERE id = $id;");
-						error_log("UPDATE $table SET $field = '$value' WHERE id = $id;");
+						version();
 						break;
 					case "number":
 						mysqli_query($con, "UPDATE $table SET $field = $value WHERE id = $id;");
-						error_log("UPDATE $table SET $field = $value WHERE id = $id;");
+						version();
 						break;
 					//TODO: add a case for dates
 				}

@@ -126,5 +126,7 @@
 			}
 			$file_idx ++;
 		}
+		
+		version();
 	}
 ?>

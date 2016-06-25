@@ -82,8 +82,8 @@
 		$h = getimagesize("../img/galeria/$fname.jpg")[1];
 		//Entry in database
 		mysqli_query($con, "INSERT INTO photo (id, file, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, width, height, size, approved, username) VALUES ($id, '$fname.jpg', '$fname', '$titles[$i]', '$titles[$i]', '$titles[$i]', '$descriptions[$i]', '$descriptions[$i]', '$descriptions[$i]', $w, $h, $s, 0, '$username')");
-		error_log("INSERT INTO photo (id, file, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, width, height, size, approved, username) VALUES ($id, '$fname.jpg', '$fname', '$titles[$i]', '$titles[$i]', '$titles[$i]', '$descriptions[$i]', '$descriptions[$i]', '$descriptions[$i]', $w, $h, $s, 0, '$username')");
 		mysqli_query($con, "INSERT INTO photo_album VALUES ($id, $album);");
+		version();
 		$id ++;
 	}
 	

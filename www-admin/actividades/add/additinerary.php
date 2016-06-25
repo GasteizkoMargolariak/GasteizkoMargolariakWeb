@@ -98,6 +98,7 @@
 		if ($insert == true){
 			$query = $fields . $values;
 			mysqli_query($con, $query); //TODO further test
+			version();
 		}
 		
 		//Redirect

@@ -35,6 +35,7 @@
 		
 	//Insert row
 	mysqli_query($con, "INSERT INTO photo_comment (photo, text, username, lang) VALUES ($photo, '$text', '$user', '$lang');");
+	version();
 	
 	//Prepare the page to update the comment section
 	//WARNING: If changes are done here, do the same in album.php

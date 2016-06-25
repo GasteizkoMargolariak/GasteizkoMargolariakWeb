@@ -241,6 +241,17 @@
 			return true;
 		else
 			return false;
-}
+	}
+	
+	/****************************************************
+	* Increases version value in table settings by one. *
+	* Helpfull for the app to know when to perform a    * 
+	* full sync. Must be called after every INSERT or   *
+	* UPDATE query to the database.                     *
+ 	****************************************************/
+	function version(){
+		$con = startdb('rw');
+		mysqli_query($con, 'UPDATE settings SET value = value + 1 WHERE name = "version";');
+	}
 ?>
 	

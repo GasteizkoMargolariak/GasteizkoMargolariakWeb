@@ -55,5 +55,7 @@
 		
 		//Insert into database
 		mysqli_query($con, "INSERT INTO festival_offer (year, name_es, name_en, name_eu, description_es, description_en, description_eu, days, price) VALUES ($year, '$name_es', '$name_en', '$name_eu', '$text_es', '$text_en', '$text_eu', $days, $price);");
+		
+		version();
 	}
 ?>

@@ -154,6 +154,8 @@
 			$file_idx ++;
 		}
 		
+		version();
+		
 		//Edit schedule if requires, return if not
 		if ($schedule == 'on')
 			header("Location: /actividades/add/itinerary.php?id=$id");

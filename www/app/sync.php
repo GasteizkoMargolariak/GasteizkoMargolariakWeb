@@ -1,5 +1,5 @@
 <?php
-	include('../php_functions.php');
+	include('../functions.php');
 	$con = startdb();
 	
 	//Get client version

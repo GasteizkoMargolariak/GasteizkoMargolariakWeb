@@ -36,6 +36,7 @@
 		
 	//Insert row
 	mysqli_query($con, "INSERT INTO post_comment (post, text, username, lang) VALUES ($post, '$text', '$user', '$lang');");
+	version();
 	
 	//Prepare the page to update the comment section
 	//WARNING: If changes are done here, do the same in post.php

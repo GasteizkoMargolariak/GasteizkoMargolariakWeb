@@ -32,8 +32,9 @@
 		//Connect to to database
 		if ($mode == 'ro')
 			$con = mysqli_connect($host, $username_ro, $pass_ro, $db_name);
-		else if ($mode == 'rw')
+		else if ($mode == 'rw'){
 			$con = mysqli_connect($host, $username_rw, $pass_rw, $db_name);
+		}
 			
 		// Check connection
 		if (mysqli_connect_errno()){
@@ -272,6 +273,17 @@
 			$cut = $cut . "... <a href='$link'>$linktext</a>";
 		}
 		return $cut;
+	}
+	
+	/****************************************************
+	* Increases version value in table settings by one. *
+	* Helpfull for the app to know when to perform a    * 
+	* full sync. Must be called after every INSERT,     *
+	* UPDATE or DELETE query to the database.           *
+ 	****************************************************/
+	function version(){
+		$con = startdb('rw');
+		mysqli_query($con, 'UPDATE settings SET value = value + 1 WHERE name = "version";');
 	}
 ?>
 	

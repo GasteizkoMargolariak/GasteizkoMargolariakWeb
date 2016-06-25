@@ -124,6 +124,8 @@
 			$file_idx ++;
 		}
 		
+		version();
+		
 		header("Location: /blog/");
 	}
 ?>

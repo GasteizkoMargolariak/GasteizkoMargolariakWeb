@@ -45,6 +45,7 @@
 		if (strlen($desc_eu) > 0 && $desc_eu != $r['description_eu']){
 			mysqli_query($con, "UPDATE album SET description_eu = '$desc_eu' WHERE id = $id;");
 		}
+		version();
 	}
 	
 	//Update photo entries
