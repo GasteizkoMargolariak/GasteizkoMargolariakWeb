@@ -1,0 +1,146 @@
+/* /blog/add/index.php */
+
+div.blog_add_language{
+	width:			31%;
+	display:		inline-block;
+	vertical-align:	top;
+}
+
+div#images{
+	display:		inline-block;
+	vertical-align:	top;
+	width:			60%;
+}
+
+div#settings{
+	display:		inline-block;
+	vertical-align:	top;
+	width:			35%;
+}
+
+input[type=text]{
+	width:	100%;
+}
+
+textarea{
+	width:	100%;
+	height:	20em;
+}
+
+div.image_upload_container{
+	border-radius:		1em;
+	vertical-align:		top;
+	display:			inline-block;
+	background-color:	#888888;
+	padding:			1em;
+	margin:				1em 1em 1em 1em;
+}
+
+img.image_upload_preview{
+	display:	none;
+	height:		5em;
+}
+
+/* /blog/inex.php */
+
+table#blog_post_list{
+	border-collapse: collapse;
+}
+
+table#blog_post_list td, th{
+	border: 	1px solid black;
+	padding:	0.5em;
+}
+
+table#blog_post_list th{
+	background-color:	#999999;
+}
+
+table#blog_post_list td.blog_column_title{
+	width:	10%;
+}
+
+table#blog_post_list td.blog_column_text{
+	width:	25%;
+}
+
+table#blog_post_list td.blog_column_text img{
+	max-width:	6em;
+	max-height:	4em;
+	border:		0.1em solid black;
+	margin:		0.1em;
+}
+
+table#blog_post_list td.blog_column_details{
+	width:		10%;
+	text-align:	center;
+}
+
+table#blog_post_list td.blog_column_translations{
+	width:		10%;
+	text-align:	center;
+}
+
+table#blog_post_list td.blog_column_action{
+	width:		10%;
+	text-align:	center;
+}
+
+table#blog_post_list form{
+	margin:	0;
+}
+
+table#blog_post_list input[type="button"], input[type="submit"]{
+	width:			90%;
+	margin-top:		0.2em;
+	margin-bottom:	0.2em;
+}
+
+/* /blog/edit/index.php */
+
+img.image_upload_preview_visible{
+	display:	block;
+	height:		5em;
+}
+
+
+/* Translate page */
+
+div#translation_instructions{
+	text-align:	center;
+}
+
+div#translation_instructions ul{
+	display:	inline-block;
+	text-align:	left;
+}
+
+div#translation_instructions ul li{
+	margin-top: 0.5em;
+}
+
+table#table_translate_languages td.translate_language{
+	min-width:			30%;
+	border-collapse:	collapse;
+	border:				none;
+	vertical-align:		top;
+}
+
+div.translate_row_title{
+	height:	3em;
+}
+
+div.translate_row_description{
+	height:		12em;
+	overflow: 	auto;
+}
+
+div.translate_row_description p{
+	font-size:	80%;
+}
+
+div.translate_row_description textarea{
+	width:	100%;
+	height:	80%;
+    resize:	none;
+}

@@ -1,0 +1,14 @@
+div#content{
+	display:	block;
+}
+
+div#content div.content_row{
+	display:	inline;
+}
+
+div#content div.content_row div.content_cell{
+	padding:		0;
+	width:			100%;
+	display:		block;
+	margin-bottom:	2em;
+}

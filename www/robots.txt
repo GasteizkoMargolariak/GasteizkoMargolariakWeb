@@ -1,0 +1,18 @@
+User-Agent: *
+Disallow: 
+Disallow: /blog/buscar/
+Disallow: /blog/comment.php
+Disallow: /actividades/buscar/
+Disallow: /galeria/comment.php
+Disallow: /galeria/load_photo.php
+Disallow: /galeria/save.php
+Disallow: /error/
+Disallow: /app/
+Disallow: /css/
+Disallow: /script/
+Disallow: /lang/
+Disallow: /functions.php
+Disallow: /langtranslate.php
+
+
+Sitemap: http://margolariak.es/sitemap.xml

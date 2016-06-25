@@ -1,0 +1,11 @@
+div#middle_column{
+	width:	100%;
+}
+
+div#activity_image{
+	margin:	1em;
+}
+
+div#activity_image img{
+	max-width:	100%;
+}

@@ -1,0 +1,95 @@
+ErrorDocument 403     /error/403.php
+ErrorDocument 404     /error/404.php
+ErrorDocument 500     /error/500.php
+
+#AddHandler application/x-httpd-php .xml
+#AddType application/x-httpd-php .xml
+AddType application/x-httpd-php .xml
+AddHandler php5-cgi .xml
+# <FilesMatch "\.php$">
+# Order allow, deny
+# Deny from all
+# </FilesMatch>
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^sitemap.xml$ /sitemap.php [NC]
+RewriteRule ^rss.xml$ /rss.php [NC]
+
+RewriteRule ^blog/buscar/([A-Za-z0-9]+)/([A-Za-z0-9]+)$ /blog/buscar.php?where=$1&query=$2 [NC]
+RewriteRule ^blog/buscar/([A-Za-z0-9]+)/([A-Za-z0-9]+)/$ /blog/buscar.php?where=$1&query=$2 [NC]
+RewriteRule ^blog/([A-Z\-a-z0-9]{3,}+)$ /blog/post.php?perm=$1 [NC]
+RewriteRule ^blog/([A-Z\-a-z0-9]{3,}+)/$ /blog/post.php?perm=$1 [NC]
+RewriteRule ^blog/([0-9]+)$ /blog/index.php?o=$1 [NC]
+RewriteRule ^blog/([0-9]+)/$ /blog/index.php?o=$1 [NC]
+
+RewriteRule ^lablanca/([0-9]+)$ /lablanca/index.php?year=$1 [NC]
+
+
+RewriteRule ^actividades/search/([A-Za-z0-9]+)/([A-Za-z0-9]+)$ /actividades/buscar.php?where=$1&query=$2 [NC]
+RewriteRule ^actividades/search/([A-Za-z0-9]+)/([A-Za-z0-9]+)/$ /actividades/buscar.php?where=$1&query=$2 [NC]
+RewriteRule ^actividades/([A-Z\-a-z0-9{3,}]+)$ /actividades/actividad.php?perm=$1 [NC]
+RewriteRule ^actividades/([A-Z\-a-z0-9{3,}]+)/$ /actividades/actividad.php?perm=$1 [NC]
+RewriteRule ^actividades/([0-9]+)$ /actividades/index.php?o=$1 [NC]
+RewriteRule ^actividades/([0-9]+)/$ /actividades/index.php?o=$1 [NC]
+
+RewriteRule ^ayuda$ /ayuda/index.php [NC]
+RewriteRule ^ayuda/$ /ayuda/index.php [NC]
+
+RewriteRule ^galeria/upload$ /galeria/upload.php [NC]
+RewriteRule ^galeria/upload/$ /galeria/upload.php [NC]
+RewriteRule ^galeria/([A-Z\-a-z0-9{3,}]+)$ /galeria/album.php?perm=$1 [NC]
+RewriteRule ^galeria/([A-Z\-a-z0-9{3,}]+)/$ /galeria/album.php?perm=$1 [NC]
+RewriteRule ^galeria/([A-Z\-a-z0-9{3,}]+)/([A-Z\-a-z0-9{3,}]+)$ /galeria/photo.php?album=$2&perm=$1 [NC]
+RewriteRule ^galeria/([A-Z\-a-z0-9{3,}]+)/([A-Z\-a-z0-9{3,}]+)/$ /galeria/photo.php?album=$2&perm=$1 [NC]
+
+
+# BEGIN Cache-Control Headers
+<IfModule mod_expires.c>
+	ExpiresActive on
+# ExpiresDefault "access plus 1 month"
+	ExpiresByType application/javascript "access plus 6 days"
+	ExpiresByType image/x-ico "access plus 12 days"
+	ExpiresByType image/jpg "access plus 12 days"
+	ExpiresByType image/jpeg "access plus 12 days"
+	ExpiresByType image/gif "access plus 12 days"
+	ExpiresByType image/png "access plus 12 days"
+	ExpiresByType video/mkv "access plus 12 days"
+	ExpiresByType text/css "access plus 6 days"
+	ExpiresByType text/plain "access plus 6 days"
+</IfModule>
+
+# BEGIN Cache-Control Headers
+<ifModule mod_headers.c>
+  <filesMatch "\.(ico|jpe?g|png|gif|swf)$">
+    Header set Cache-Control "max-age=864000, public, must-revalidate"
+  </filesMatch>
+  <filesMatch "\.(css)$">
+    Header set Cache-Control "max-age=864000, public, must-revalidate"
+  </filesMatch>
+  <filesMatch "\.(js)$">
+    Header set Cache-Control "max-age=864000, private, must-revalidate"
+  </filesMatch>
+  <filesMatch "\.(x?html?|php)$">
+    Header set Cache-Control "max-age=86400, private, must-revalidate"
+  </filesMatch>
+</ifModule>
+# END Cache-Control Headers
+
+<ifModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/xml text/css text/plain
+	AddOutputFilterByType DEFLATE image/x-icon
+	AddOutputFilterByType DEFLATE image/svg+xml application/xhtml+xml application/xml
+	AddOutputFilterByType DEFLATE application/rdf+xml application/rss+xml application/atom+xml
+	AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript application/json
+	AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-otf
+	AddOutputFilterByType DEFLATE font/truetype font/opentype
+</ifModule>
+
+# Enable memory caching
+#CacheEnable mem /
+
+# Limit the size of the cache to 1 Megabyte
+#MCacheSize 1024
+
+#CacheFile footer.php toolbar.php img/*/* project/*/render/* project/*/render/*/preview/* project/*/render/*/miniature/*

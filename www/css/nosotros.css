@@ -1,0 +1,33 @@
+div#content{
+	display:	table;
+}
+
+div#content div.content_row{
+	display:	table-row;
+}
+
+div#content div.content_row div.content_cell{
+	padding:	2em;
+	width:		50%;
+	display:	table-cell;
+}
+
+div#content div.content_row div.content_cell div.section{
+	width:	100%;
+}
+
+div.section div.entry{
+	min-height:	16em;
+}
+
+div.section div.entry img{
+	max-height:		14em;
+	max-width:		8em;
+	margin:			1em;
+	float:			left;
+	-webkit-filter:	drop-shadow(0 0 0.4em #9af);
+	/*filter:		url(#drop-shadow); */
+	filter:			drop-shadow(0 0 0.4em #9af);
+    -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#9af')";
+    filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#9af')";
+}

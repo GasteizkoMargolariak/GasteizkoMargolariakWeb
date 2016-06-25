@@ -1,0 +1,463 @@
+/******************************************
+* Color scheme.                           *
+*                                         *
+* background: #ddddff                     *
+* link:       #4c9ed9                     *
+* link-h:     #bbf                        *
+* section:    #4c9ed7                     *
+* shadows:    #dde                        *
+* shadows-h:  #111                        *
+* header:     #9bc1da                     *
+* entry:      #ffffff                     *
+* border:     #003                        *
+* extra1:     #eeeeff                     *
+* extra2:     #4c9ed8                        *
+* extra3:     #                           *
+*                                         *
+******************************************/
+
+/******************************************
+* Hide elements intended for mobile.      *
+******************************************/
+.mobile{
+	display:	none;
+}
+
+/******************************************
+* Fonts used across the page              *
+******************************************/
+
+/* Glogal font */
+@font-face{
+	font-family:	font;
+	src:			url('/font/FreeSans.ttf')
+}
+
+
+/******************************************
+* Styles for html tags, without id or     *
+* class.                                  *
+******************************************/
+
+/* Links */
+a{
+	color:				#4c9ed9;
+/* 	text-shadow:		0 0 0.0em #7799ff; */
+	text-decoration:	none;
+	transition:			all .2s ease-in-out;
+}
+
+a:hover{
+	color:				#347;
+	text-shadow:		0 0 0.4em #265885;
+	text-decoration:	underline;
+}
+
+/* Body */
+body{
+	font-family:		font;
+	margin:				0;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b5d3e5+0,e5f4ff+10,e5f4ff+90,b5d3e5+100 */
+	background: #b5d3e5; /* Old browsers */
+	background: -moz-linear-gradient(left, #b5d3e5 0%, #e5f4ff 10%, #e5f4ff 90%, #b5d3e5 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #b5d3e5 0%,#e5f4ff 10%,#e5f4ff 90%,#b5d3e5 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #b5d3e5 0%,#e5f4ff 10%,#e5f4ff 90%,#b5d3e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5d3e5', endColorstr='#b5d3e5',GradientType=1 ); /* IE6-9 */
+
+}
+
+/* WARNING: If styles change dhere, make changes on commment scripts */
+input[type="text"], input[type="number"], input[type="date"]{
+	border-radius:		0.5em;
+	height:				1.5em;
+	border:				0.4em solid #9cd3d9;
+	color:				#cccccc;
+	background-color:	#223344;
+}
+
+input[type="button"], input[type="submit"], select{
+	border-radius:		0.5em;
+	height:				2.5em;
+	border:				0.4em solid #9cd3d9;
+	font-weight:		bold;
+	color:				#ffffff;
+	background-color:	#335577;
+	cursor:				pointer;
+}
+
+textarea{
+	border-radius:		0.5em;
+	min-height:			2em;
+	max-height:			15em;
+	border:				0.4em solid #9cd3d9;
+	color:				#bbbbbb;
+	background-color:	#223344;
+	resize:				vertical;
+}
+
+/******************************************
+* Common elements present across the      *
+* whle site.                              *
+******************************************/
+
+/* Icon for slider sections */
+img.slid{
+	height:			1.2em;
+	width:			1.2em;
+	cursor:			pointer;
+	vertical-align:	middle;
+	transition:		opacity 0.5s ease-in-out;
+}
+
+/* Elements that should have the cursor as pointer */
+.pointer{
+	cursor:	pointer;
+}
+
+/* Elemnts not to be displayed */
+.hidden{
+	display:	none;
+}
+
+/* Elements with an italic font */
+.italic{
+	font-style:	italic;
+}
+
+
+/******************************************
+* Styles for the site header that is      *
+* always visible.                         *
+******************************************/
+
+/* Header top container */
+div#header{
+	margin:				-0.5em auto 2.5em auto;
+	padding:			0.5em	0 0 0;
+	width:				100%;
+	background-color:	#9bc1da;
+/* 	border-radius:		0 0 0.3em 0.3em; */
+	border-bottom:		0.2em solid #9cd3d9;
+	box-shadow:			0 0 2em #dde;
+	text-align:			center;
+}
+
+div#header div#header_content{
+	margin:		0 auto 0 auto;
+	width:		95%;
+	max-width:	80em;
+}
+
+/* Main image of the header, contains the logo */
+div#header img{
+	display:		inline-block;
+	width:			10%;
+	max-width:		5em;
+	margin:			0;
+	margin-left:	-1em;
+	margin-bottom:	-0.8em;
+/* 	padding:		1%; */
+	vertical-align:	middle;
+	-webkit-filter:	drop-shadow(0 0 0.4em #dde);
+/*     filter:			url(#drop-shadow); */
+	filter:			drop-shadow(0 0 0.4em #dde);
+    -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#dde')";
+    filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#dde')";
+}
+
+/* Section of the header containing links to sections */
+div#header_menu{
+	display:			inline-block;
+	vertical-align:		middle;
+	width:				90%;
+	margin-top:			-1em;
+	margin-left:		-4%;
+	background-color:	#eeeeff;
+/* 	border-radius:		0. 5em; */
+	border:				0.2em solid #9bc1da;
+}
+
+/* Table with the links to the sections */
+div#header_menu table{
+	display:			table;
+	margin:				auto 0 auto 0;
+ 	width:				100%;
+	border-collapse:	collapse;
+    border-spacing:		0;
+}
+
+div#header_menu table tbody{
+	width:	100%;
+}
+div#header_menu table tbody tr{
+	width:	100%;
+}
+
+/* Containers of the section links */
+div#header_menu table td{
+	width:			12%;
+	text-align:		center;
+	transition:		all .3s ease-in-out;
+	white-space:	nowrap;
+}
+
+div#header_menu table td:hover{
+	background-color:	#4c9ed8;
+}
+
+div#header_menu table td:hover a{
+	color:			#ffffff;
+	text-shadow:	0 0 0em #ffffff;
+}
+
+/* Actual links in the header */
+div#header_menu table a{
+	display:		inline-block;
+	font-weight:	bold;
+	font-size:		115%;
+	width:			100%;
+	padding-top:	0.8em;
+	padding-bottom:	0.8em;
+}
+
+
+/******************************************
+* Styles for the site footer that is      *
+* always visible.                         *
+******************************************/
+
+/* Footer top container */
+div#footer{
+	width:		100%;
+	display:	inline-block;
+	
+	margin-top:			1em;
+/* 	margin:				-0.5em auto 2.5em auto; */
+	padding:			0.5em 0 0.5em 0;
+	width:				100%;
+	background-color:	#9bc1da;
+/* 	border-radius:		0 0 0.3em 0.3em; */
+	border-top:		0.2em solid #9cd3d9;
+	box-shadow:			0 0 2em #dde;
+	text-align:			center;
+}
+
+/* Table containing the footer elemnts */
+div#footer div#footer_table{
+	width:		100%;
+	display:	table;
+}
+
+div#footer div#footer_table div.tr{
+	width:		100%;
+	display:	table-row;
+}
+
+/* Each main section of the footer */
+div#footer div#footer_table div.td{
+	display:		table-cell;
+	width:			33%;
+	text-align:		center;
+	vertical-align:	top;
+}
+
+div#footer div#footer_table div#footer_center{
+	padding-top:	1em;
+}
+
+div#footer div#footer_table div#footer_right a{
+	font-weight:	bold;
+	color:			#ffffff;
+}
+
+/* Images for language selection */
+img.lang{
+	height:			1em;
+	margin:			0.5em;
+	border-radius:	0.2em;
+	border:			0.15em solid #003;
+	cursor:			pointer;
+	box-shadow:		0 0 0.7em #dde;
+	transition:		all .3s ease-in-out;
+}
+
+img.lang:hover{
+	box-shadow:		0 0 1em #111;
+}
+
+/* Mobile app link image in the footer */
+img.app{
+	height:			2em;
+/* 	margin:			0.5em; */
+	border-radius:	0.4em;
+	border:			0.15em solid #003;
+	cursor:			pointer;
+	box-shadow:		0 0 0.5em #dde;
+	transition:		all .3s ease-in-out;
+}
+
+img.app:hover{
+	box-shadow:	0 0 0.8em #dde;
+}
+
+/* Each of the social links in the footer */
+img.footer_social_icon{
+	height:			2.2em;
+	margin:			0.12em;
+	transition:		all .3s ease-in-out;
+	-webkit-filter:	drop-shadow(0 0 0.2em #dde);
+    filter:			drop-shadow(0 0 0.2em #dde);
+    -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#dde')";
+    filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#dde')";
+}
+
+img.footer_social_icon:hover{
+	-webkit-filter:	drop-shadow(0 0 0.6em #111);
+	filter:			drop-shadow(0 0 0.6em #111);
+}
+
+/******************************************
+* Styles for the annoying cookie popup.   *
+******************************************/
+div#cookie_popup{
+	font-size:					80%;
+/* 	display:					inline-block; */
+	color:						#dddddd;
+	text-align:					center;
+	position:					fixed;
+	background-color:			#4c9ed8;
+	border:						0.5em solid #265774;
+	padding:					1em 10em 1em 10em;
+	left:						-9em;
+	bottom:						9em;
+	-ms-transform:				rotate(30deg); /* IE 9 */
+	-ms-transform-origin:		20% 40%; /* IE 9 */
+	-webkit-transform:			rotate(30deg); /* Chrome, Safari, Opera */
+	-webkit-transform-origin:	20% 40%; /* Chrome, Safari, Opera */
+	-moz-transform:				rotate(30deg); 
+	-moz-transform-origin:		20% 40%; /* Chrome, Safari, Opera */
+	transform:					rotate(30deg);
+	transform-origin:			20% 40%;
+	box-shadow:					0 0 3em #265774;
+	transition:					bottom .5s ease-in-out;
+}
+
+div#cookie_popup span.button{
+	font-weight:	bold;
+	font-size:		100%;
+	border:			0.2em solid #133442;
+	border-radius:	0.2em;
+	padding:		0.1em;
+}
+
+div#cookie_popup span#button_ok{
+	background-color:	#338833;
+}
+
+div#cookie_popup span#button_more{
+	background-color:	#883333;
+}
+
+
+/******************************************
+* Styles for the main block that compose  *
+* the site. Most of the pages share the   *
+* same structure.                         *
+******************************************/
+
+/* Content */
+div#content{
+	margin:		auto;
+	width:		90%;
+	max-width:	80em;
+	min-width:	60em;
+}
+
+/* Sections */
+div.section{
+/* 	background-color:	#7cbed9; */
+	background-color:	#9bc1da;
+/* 	border-radius:		0 0 0.6em 0.6em; */
+	padding:			0.1em 0.3em 0.1em 0.1em;
+	border:				0.2em solid #9cd3d9;
+/* 	border-top:			0.3em solid #003; */
+/* 	box-shadow:			0 0 0.3em #dde; */
+}
+
+/* Title for each section */
+div.section .section_title{
+	font-size:	130%;
+	font-style:	bold;
+	margin-top:	0.5em;
+	
+}
+
+div.section a.go_to_section{
+	color:			#ddddff;
+	font-weight:	bold;
+	text-shadow:	0 0 0.0em #ffffff;
+}
+
+/* Entries */
+div.entry{
+	background-color:	#ffffff;
+	padding:			0.2em;
+	margin:				0.4em;
+	border:				0.2em solid #9cd3d9;
+	box-shadow:			inset 0 0 0.2em #dde;
+	transition:			all .3s ease-in-out;
+}
+
+td.entry{
+	background-color:	#ffffff;
+	padding:			0.2em;
+	margin:				0.4em;
+	border:				0.2em solid #9cd3d9;
+	box-shadow:			inset 0 0 0.2em #dde;
+	transition:			all .3s ease-in-out;
+}
+
+/* Comments */
+div.comment{
+	margin:	0.5em 1em 0.5em 1em;
+}
+
+div.comment span.comment_user{
+	font-weight:	bold;
+}
+
+div.comment span.comment_date{
+	font-style:	italic;
+	font-size:	80%;
+}
+
+div.comment span.comment_date::before {
+	content:	" - ";
+	font-size:	80%;
+}
+
+div.comment span.comment_date::before {
+	content:	" - ";
+	font-size:	80%;
+}
+
+div.comment p.comment_text{
+	margin:	0.5em 1em 0.5em 0.5em;
+}
+
+/* Comment form */
+div#comment_new{
+	padding:	0.5em 1.5em 0.5em 1.5em;
+}
+
+div#comment_new textarea{
+	width:	95%;
+}
+
+div#comment_new input[type='text']{
+	width:	70%;
+}
+
+div#comment_new input[type='submit']{
+	width:	25%;
+}

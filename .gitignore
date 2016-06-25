@@ -1,0 +1,54 @@
+#Kate files
+.kateproject.d/
+.kateproject
+
+#OS files
+.directory
+.DS_Store
+.DS_Store?
+._*
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+#Utility folders
+3rdparty/
+pending/
+utils/
+copy
+remotecopy
+
+#SQL data
+sql/dbuses.sql
+sql/rows-test.sql
+sql/rows.sql
+
+#Passwords file
+www/.htpasswd
+www-admin/.htpasswd
+
+#Photos and unnecessary images
+www/img/actividades/script
+www/img/actividades/*.jpg
+www/img/actividades/miniature/*.jpg
+www/img/actividades/preview/*.jpg
+www/img/actividades/thumb/*.jpg
+www/img/actividades/view/*.jpg
+www/img/blog/script
+www/img/blog/*.jpg
+www/img/blog/miniature/*.jpg
+www/img/blog/preview/*.jpg
+www/img/blog/thumb/*.jpg
+www/img/blog/view/*.jpg
+www/img/fiestas/script
+www/img/fiestas/*.jpg
+www/img/fiestas/miniature/*.jpg
+www/img/fiestas/preview/*.jpg
+www/img/fiestas/thumb/*.jpg
+www/img/fiestas/view/*.jpg
+www/img/galeria/script
+www/img/galeria/*.jpg
+www/img/galeria/miniature/*.jpg
+www/img/galeria/preview/*.jpg
+www/img/galeria/thumb/*.jpg
+www/img/galeria/view/*.jpg

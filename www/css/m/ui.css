@@ -1,0 +1,194 @@
+/******************************************
+* Hide elements intended for desktop and  *
+* show elements for mobile.               *
+******************************************/
+.mobile{
+	display:	initial;
+}
+
+.desktop{
+	display:	none !important;
+}
+
+
+/******************************************
+* Styles for the site header that is      *
+* always visible.                         *
+******************************************/
+
+/* Header top container */
+div#header_m{
+	width:		100%;
+	margin:		0;
+	padding:	0;
+/* 	max-height:	0; */
+	transition:	max-height 0.9s ease-in-out;
+}
+
+/* Main image of the header, contains the logo */
+div#header_m img#mobile_logo{
+	float:			left;
+	width:			4em;
+	margin-right:	-4em;
+	-webkit-filter:	drop-shadow(0 0 0.1em #000000);
+	filter:			url(#drop-shadow);
+	filter:			drop-shadow(0 0 0.1em #000000);
+	-ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#444')";
+	filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#444')";
+}
+
+div#header_menu_m div{
+/* 	margin-top:			0; */
+	padding-top:		0.6em;
+/* 	height:				2.4em; */
+	font-weight:		bold;
+	text-align:			center;
+	background-color:	#aaaaaa;
+	border:				1px solid #000000;
+}
+
+div#header_menu_m div#header_m_slider{
+	display:	none;
+	background-color:	#4c9ed8;
+}
+
+div#header_menu_m div#header_m_slider img{
+	height: 1em;
+	width:	1em;
+	margin: auto;
+}
+
+div#header_menu_m div#header_m_title{
+	vertical-align:		middle;
+/* 	height: 			2.5em; */
+	max-height:			3.5em;
+	padding-top:		0.75em;
+	transition:			max-height 0.3s ease-in-out;
+	overflow:			hidden;
+	padding:			0;
+	background-color:	#4c9ed8
+}
+
+div#header_menu_m div#header_m_title span {
+	display:	block;
+	margin:		0.4em;
+}
+
+div#header_menu_m div#header_m_title span img{
+	vertical-align:	middle;
+}
+
+div#header_menu_m div#header_m_title img{
+	height: 1.9em;
+	width:	1.9em;
+	float:	center;
+}
+
+div#header_menu_m div.header_m_link{
+/* 	display:			none; */
+	max-height:			0;
+	padding:			0;
+	border:				0;
+	overflow:			hidden;
+	transition:			max-height 0.3s ease-in-out;
+	background-color:	#4c9ed8;
+}
+
+div#header_menu_m div.header_m_link a{
+	color:			#ffffff;
+	text-shadow:	0 0 0.5em #444444;
+	display:		block;
+	width:			100%;
+	height:			2.8em;
+}
+
+/******************************************
+* Styles for the site footer that is      *
+* always visible.                         *
+******************************************/
+
+/* Table containing the footer elemnts */
+div#footer div#footer_table{
+	display:	block;
+}
+
+div#footer div#footer_table div.tr{
+	display:	block;
+}
+
+/* Each main section of the footer */
+div#footer div#footer_table div.td{
+	width:			100%;
+	display:		block;
+	text-align:		center;
+	margin-bottom:	1em;
+	margin:			0;
+	padding:		0;
+}
+
+/* Images for language selection */
+img.lang{
+	height:			1.5em;
+	margin:			0.5em 1em 0.5em 1em;
+	border-radius:	0.2em;
+	border:			0.1em solid #222222;
+	box-shadow:		0 0 0.3em #333333;
+}
+
+img.lang:hover{
+ 	box-shadow:		0 0 0.3em #333333; /*NONE*/
+}
+
+/* Mobile app link image in the footer */
+img.app{
+	height:			1.5em;
+	margin:			0.5em 1em 0.5em 1em;
+	border-radius:	0.2em;
+	border:			0.1em solid #222222;
+	box-shadow:		0 0 0.3em #333333;
+}
+
+img.app:hover{
+	box-shadow:	0 0 0.5em #666666; /*NONE*/
+}
+
+/* Each of the social links in the footer */
+img.footer_social_icon{
+	height:			3em;
+	margin:			0.25em;
+}
+
+img.footer_social_icon:hover{
+	-webkit-filter:	drop-shadow(0 0 0.2em #444444);/*NONE*/
+	filter:			drop-shadow(0 0 0.2em #444444);/*NONE*/
+}
+
+
+/******************************************
+* Styles for the main block that compose  *
+* the site. Most of the pages share the   *
+* same structure.
+******************************************/
+
+/* Content */
+div#content{
+	margin:		auto;
+	width:		95%;
+	max-width:	initial;
+	min-width:	initial;
+}
+
+/* Sections */
+div.section{
+	padding:			0.1em;
+	border:				0.05em solid #333333;
+	box-shadow:			0 0 0.4em #000000;
+}
+
+/* Entries */
+div.entry{
+	padding:			0.2em;
+	margin:				0.3em;
+	border:				0.05em solid #333333;
+	box-shadow:			0 0 0.2em #301078;
+}

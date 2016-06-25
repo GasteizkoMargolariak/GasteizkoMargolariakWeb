@@ -1,0 +1,79 @@
+/* Upcoming activity section */
+div#upcoming_activity{
+	display:	block;
+}
+
+div.table div.tr{
+	display:	block;
+}
+
+div.table div.tr div.td{
+	display:	block;
+}
+
+/* Contains the image of the upcoming activity */
+div#upcoming_image{
+	text-align:	center;
+	display:	block;
+}
+
+div#upcoming_image img{
+	max-height:		initial;
+	max-width:		85%;
+	max-height:		16em;
+	border:			0.1em solid #333333;
+	border-radius:	0.1em;
+	box-shadow:		0 0 0.2em #111111;
+}
+
+/* Contains the text of the upcoming activity */
+div#upcoming_text{
+	display:	block;
+}
+
+/* Contains the details of the upcoming activity */
+div#upcoming_details{
+	display:	block;
+	float:		initial;
+} 
+
+div#upcoming_details table{
+	margin:	auto;
+}
+
+/* Section of the latest posts */
+/*div#latest_posts{
+	display:	block;
+	width:		initial;
+}*/
+
+
+/* Section containing the latest photos */
+/*div#latest_photos{
+	float:		initial;
+	display:	block;
+	width:		initial;
+}*/
+
+div#content_table{
+	display:	block;
+}
+
+div#content_table div.content_row{
+	display:	inline;
+}
+
+div#content_table div.content_row div.content_cell{
+	padding:		0;
+	width:			100%;
+	display:		block;
+	margin-bottom:	2em;
+}
+
+div#content_table div.content_row div#cell_posts div.section{
+	margin-right:	0;
+}
+
+div#content_table div.content_row div#cell_photos div.section{
+	margin-left:	0;
+}

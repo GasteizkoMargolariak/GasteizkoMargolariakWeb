@@ -1,0 +1,185 @@
+/* Table to present posts and photos on the same row */
+div#content_table{
+	display:	table;
+}
+
+div#content_table div.content_tr{
+	display:	table-row;
+}
+
+div#content_table div#content_tr_intro{
+	width:	100%;
+}
+
+div#content_table div#content_tr_intro div.content_td{
+	width:	100%;
+}
+
+div#content_table div.content_tr div.content_td{
+	width:		50%;
+	display:	table-cell;
+}
+
+div#content_table div.content_tr div#content_td_schedule{
+	width:		60%;
+}
+
+div#content_table div.content_tr div#content_td_prices{
+	width:		40%;
+}
+
+div#content_table div.content_tr div#content_td_prices div#prices{
+	width:		100%;
+}
+
+div.horiz{
+	display:	inline-block;
+}
+
+div.horiz img{
+	display:		inline;
+	vertical-align:	top;
+}
+
+div.horiz p{
+	display:		inline;
+	vertical-align:	top;
+}
+
+/* fiestas.php */
+div#schedule{
+	display:		inline-block;
+	vertical-align:	top;
+	margin-top:		2em;
+	margin-right:	1em;
+}
+
+div.day_title h4{
+	font-size:	120%;
+	margin:		0;
+	padding:	0.5em;
+}
+
+div.day_schedule{
+	overflow:	hidden;
+	max-height:	0em;
+    transition:	max-height 0.9s ease-in-out;
+}
+
+table.schedule{
+	border-collapse:	collapse;
+}
+
+table.schedule td{
+	vertical-align:	top;
+	padding-left:	0.5em;
+	padding-right:	0.5em;
+	padding-bottom:	0.6em;
+}
+
+table.schedule td span.time{
+	font-weight:	bold;
+}
+
+table.schedule td span.title{
+	font-weight:	bold;
+}
+
+table.schedule td span.description{
+	font-size:		90%;
+	font-style:		italic;
+	margin-left:	1.2em;
+}
+
+table.schedule td.timeline{
+	width:				0.06em;
+	padding:			0;
+	background-color:	#000000;
+	padding-left:		0;
+	padding-right:		0;
+	
+}
+
+
+
+table.schedule td.timeline img.timeline_dot{
+	width:			1em;
+	height:			1em;
+	margin-left:	-0.44em;
+	margin-right:	-0.44em;
+	margin-top:		0.3em;
+}
+
+table.schedule table.location{
+	font-size:			80%;
+	border-collapse:	collapse;
+	margin-left:		2em;
+}
+
+table.schedule table.location td{
+	padding:	0.2em;
+}
+
+table.schedule table.location img{
+	max-height:		1.3em;
+	vertical-align:	middle;
+}
+
+table.schedule table.location span.address{
+	font-style:	italic;
+}
+
+div#prices{
+	display:		inline-block;
+	vertical-align:	top;
+	margin-top:		2em;
+	margin-right:	0;
+	text-align:		center;
+}
+
+div#prices h3, h4{
+	text-align:	left;
+}
+
+div#prices div.entry{
+	display:		block;
+	vertical-align:	top;
+	text-align:		left;
+}
+
+div#prices div.entry h4{
+	margin-top: 	0.5em;
+	margin-left:	0.5em;
+}
+
+div#prices table#table_days{
+ 	width:				90%;
+	border-collapse:	collapse;
+	margin:				auto;
+}
+
+div#prices table#table_days td{
+	border-top:	0.2em solid #aaaaaa;
+	padding:	0.5em 2em 0.5em 2em; 
+}
+
+div#prices td.price{
+	min-width:	4em;
+	text-align:	right;
+}
+
+div#prices table#table_offers{
+	width:				90%;
+	border-collapse:	collapse;
+	margin:				auto;
+}
+
+div#prices table#table_offers td{
+	border-top:	0.2em solid #aaaaaa;
+}
+
+div#prices table#table_offers p.description{
+	margin:		0.2em 0.2em 0.5em 2em;
+	font-size:	90%;
+	font-style:	italic;
+}

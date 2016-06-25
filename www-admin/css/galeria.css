@@ -1,0 +1,96 @@
+div.album_list{
+	display:inline-block;
+	vertical-align:	bottom;
+}
+
+/* Translate page */
+
+div#translation_instructions{
+	text-align:	center;
+}
+
+div#translation_instructions ul{
+	display:	inline-block;
+	text-align:	left;
+}
+
+div#translation_instructions ul li{
+	margin-top: 0.5em;
+}
+
+table#table_translate_languages td.translate_language{
+	min-width:			30%;
+	border-collapse:	collapse;
+	border:				none;
+	vertical-align:		top;
+}
+
+table#table_translate_photos{
+	border-collapse:	collapse;
+}
+
+table#table_translate_photos td.details{
+	width:	24%;
+	border:	1px solid #000000;
+	vertical-align:	top;
+}
+
+table#table_translate_photos td.image{
+	max-width:		8.5em;
+	border:			1px solid #000000;
+	vertical-align:	top;
+}
+
+table#table_translate_photos textarea{
+	width:		100%;
+	height:		100%;
+	min-height:	6em;
+	resize:		none;
+}
+
+table#table_translate_photos img{
+	min-width:	8em;
+	min-height:	6em;
+	float:		right;
+	border:		1px solid black;
+	resize:		none;
+}
+
+div.translate_row_title{
+	height:	3em;
+}
+
+div.translate_row_description{
+	height:		12em;
+	overflow: 	auto;
+}
+
+div.translate_row_description p{
+	font-size:	80%;
+}
+
+div.translate_row_description textarea{
+	width:	100%;
+	height:	80%;
+    resize:	none;
+}
+
+
+div.translate_row_itinerary table td textarea{
+	width:	100%;
+	height:	100%;
+	resize:	none;
+}
+
+
+div#translate_controls{
+	margin-top:		20px;
+	margin-bottom:	20px;
+	text-align:		center;
+}
+
+div#translate_controls input{
+	margin:	20px;
+}
+
+xmp{ white-space:pre-wrap; word-wrap:break-word; }
