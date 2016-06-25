@@ -14,6 +14,7 @@ Options +FollowSymlinks
 RewriteEngine on
 
 RewriteRule ^sitemap.xml$ /sitemap.php [NC]
+RewriteRule ^imgmap.xml$ /sitemap-image.php [NC]
 RewriteRule ^rss.xml$ /rss.php [NC]
 
 RewriteRule ^blog/buscar/([A-Za-z0-9]+)/([A-Za-z0-9]+)$ /blog/buscar.php?where=$1&query=$2 [NC]
