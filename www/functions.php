@@ -246,7 +246,7 @@
 			}
 		}
 		return $html;
-	} 
+	}
 	
 	/****************************************************
 	* Text shortener. Given a string, it trims in the   *
@@ -284,6 +284,58 @@
 	function version(){
 		$con = startdb('rw');
 		mysqli_query($con, 'UPDATE settings SET value = value + 1 WHERE name = "version";');
+	}
+	
+	function ad($con, $lang, $lng){
+		//If the user hasn't still see an add on this session
+		if (isset($_SESSION['ad']) == false){
+			//25% chance of seeing an add
+			if (rand (0, 3) == 0){
+				//Create an array with weighted values
+				$q = mysqli_query($con, "SELECT id, round(ammount/10) AS value FROM sponsor;");
+				if (mysqli_num_rows($q) == 0){
+					return;
+				}
+				$total = 0;
+				$sponsors = array();
+				while ($r = mysqli_fetch_array($q)){
+					$times = $r['value'];
+					$id = $r['id'];
+					for ($i = 0; $i < $times; $i ++) {
+						array_push($sponsors, $id);
+						$total ++;
+					}
+				}
+				
+				//Get a random id from the array
+				$id = $sponsors[rand (0, $total - 1)];
+				
+				//Get sponsor data
+				$q = mysqli_query($con, "SELECT name_$lang AS name, text_$lang AS text, image, address_$lang AS address, link, lat, lon FROM sponsor WHERE id = $id;");
+				$r = mysqli_fetch_array($q);
+				echo("<div id='ad' class='section'>\n");
+				echo("<div id='ad_details'>\n");
+				echo($lng['ad_title']);
+				echo("<img class='pointer' src='/img/misc/slid-close.png' onClick='closeAd();' />\n");
+				echo("</div>\n");
+				echo("<h3><a target='_blank' href='$r[link]'>$r[name]</a></h3>\n");
+				echo("<div class='entry'>\n");
+				if (strlen($r['image']) > 0){
+					echo("<div id='ad_image_container'>\n");
+					echo("<img src='/img/sponsor/miniature/$r[image]'/>\n");
+					echo("</div>\n");
+				}
+				echo($r['text']);
+				echo("<br/><br/><a target='_blank' href='https://www.google.es/maps/@$r[lat],$r[lon],14z'><img id='ad_pinpoint' src='/img/misc/pinpoint.png'\>$r[address]</a>\n");
+				echo("</div>\n");
+				echo("</div>\n");
+				echo("<script type='text/javascript'>showAd();</script>\n");
+				
+				//Set ad as seen
+				$_SESSION['ad'] = 1;
+			}
+			
+		}
 	}
 ?>
 	

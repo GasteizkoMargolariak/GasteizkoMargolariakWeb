@@ -62,3 +62,13 @@ function dismissCookiePopUp(host, open = false){
 		win.focus();
 	}
 }
+
+function showAd(){
+	console.log("SHOW");
+	setTimeout(function(){document.getElementById('ad').style.bottom = '0';}, 3000);
+}
+
+function closeAd(){
+	console.log("CLOSE");
+	document.getElementById('ad').style.bottom = '-25em';
+}

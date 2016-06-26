@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("../functions.php");
 	$con = startdb();
@@ -104,7 +105,7 @@
 		</div>
 		<div id="photo_viewer" class="section">
 		</div>
-		<?php include("../footer.php"); ?>
+		<?php include("../footer.php"); ad($con, $lang, $lng); ?>
 	</body>
 </html>
 

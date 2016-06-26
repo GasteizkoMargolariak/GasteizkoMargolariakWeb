@@ -39,5 +39,4 @@
 </div>
 <?php
 }
-//else{echo "<div id='cookie_popup'></div>";}
 ?>

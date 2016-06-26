@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("functions.php");
 	$con = startdb();
@@ -399,6 +400,6 @@
 				}
 			?>
 		</div>
-		<?php include("footer.php"); ?>
+		<?php include("footer.php"); ad($con, $lang, $lng); ?>
 	</body>
 </html>

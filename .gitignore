@@ -52,3 +52,10 @@ www/img/galeria/miniature/*.jpg
 www/img/galeria/preview/*.jpg
 www/img/galeria/thumb/*.jpg
 www/img/galeria/view/*.jpg
+www/img/sponsor/script
+www/img/sponsor/*.jpg
+www/img/sponsor/miniature/*.jpg
+www/img/sponsor/preview/*.jpg
+www/img/sponsor/thumb/*.jpg
+www/img/sponsor/view/*.jpg
+

@@ -12,8 +12,7 @@
 		<?php
 			$res_date = mysqli_query($con, "(SELECT DATE_FORMAT(dtime, '%Y-%m-%d') AS cdate FROM post) UNION (SELECT DATE_FORMAT(dtime, '%Y-%m-%d') AS cdate FROM activity) UNION (SELECT DATE_FORMAT(uploaded, '%Y-%m-%d') AS cdate FROM photo) ORDER BY cdate DESC LIMIT 1;");
 			$row_date = mysqli_fetch_array($res_date);
-		?>
-		<lastmod><?php echo $row_date['cdate']; ?></lastmod>
+		?><lastmod><?php echo $row_date['cdate']; ?></lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.8</priority>
 	</url>
@@ -32,8 +31,7 @@
 		<?php
 			$res_date = mysqli_query($con, "SELECT DATE_FORMAT(dtime, '%Y-%m-%d') AS cdate FROM post ORDER BY cdate DESC LIMIT 1;");
 			$row_date = mysqli_fetch_array($res_date);
-		?>
-		<lastmod><?php echo $row_date['cdate']; ?></lastmod>
+		?><lastmod><?php echo $row_date['cdate']; ?></lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.8</priority>
 	</url>
@@ -57,8 +55,7 @@
 		<?php
 			$res_date = mysqli_query($con, "SELECT DATE_FORMAT(dtime, '%Y-%m-%d') AS cdate FROM activity ORDER BY cdate DESC LIMIT 1;");
 			$row_date = mysqli_fetch_array($res_date);
-		?>
-		<lastmod><?php echo $row_date['cdate']; ?></lastmod>
+		?><lastmod><?php echo $row_date['cdate']; ?></lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>1</priority>
 	</url>
@@ -82,8 +79,7 @@
 		<?php
 			$res_date = mysqli_query($con, "SELECT DATE_FORMAT(uploaded, '%Y-%m-%d') AS cdate FROM photo ORDER BY cdate DESC LIMIT 1;");
 			$row_date = mysqli_fetch_array($res_date);
-		?>
-		<lastmod><?php echo $row_date['cdate']; ?></lastmod>
+		?><lastmod><?php echo $row_date['cdate']; ?></lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.8</priority>
 	</url>
@@ -109,16 +105,16 @@
 			if (mysqli_num_rows($res_lb) > 0){
 				$r_lb = mysqli_fetch_array($res_lb);
 				if ($r_lb['value'] == 1){
-					echo "\t\t<changefreq>monthly</changefreq>\n";
+					echo "<changefreq>monthly</changefreq>\n";
 					echo "\t\t<priority>0.5</priority>\n";
 				}
 				else{
-					echo "\t\t<changefreq>monthly</changefreq>\n";
+					echo "<changefreq>monthly</changefreq>\n";
 					echo "\t\t<priority>0.5</priority>\n";
 				}
 			}
 			else{
-				echo "\t\t<changefreq>monthly</changefreq>\n";
+				echo "<changefreq>monthly</changefreq>\n";
 				echo "\t\t<priority>0.5</priority>\n";
 			}
 		?>

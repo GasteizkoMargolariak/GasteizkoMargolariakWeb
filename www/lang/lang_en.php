@@ -210,6 +210,9 @@
 	$lng['help_cookie_title'] = 'Pol&iacute;tca de cookies';
 	$lng['help_cookie'] = '¡Cookies! Est&aacute;n por todas partes. Sabemos que nadie suele leerse estos avisos sobre ellas, as&iacute; que ya que estas leyendo este, vamos a intentar hacerlo f&aacute;cil.<br/><br/>Una cookie es un peque&ntilde;o archivo de texto que puede quedar guardado en tu ordenador cuando visitas una web. Estos archivos son benignos, en el sentido de que no afectan al funcionamiento de tu ordenador, pero pueden ser utiles para los desarrolladores de p&aacute;ginas web para diversas cosas, como recordar tus preferencias entre visitas (como en nuestro caso) o identificarte y trazar tus movimientos por Internet (no es nuestro caso).<br/><br/>Aprovechando que aqu&iacute; utilizamos verdaderamente pocas, te contamos para que.<br/><ul><li><span style="font-weight:bold;">Idioma</span>: Utilizamos una cookie para recordar el idioma en el que quieres ver la p&aacute;gina. Si la estas viendo en castellano, el &uacute;nico texto que contendr&aacute; sera &quot;es&quot;. Bastante inofensivo, ¿verdad?</li><li><span style="font-weight:bold;">Aviso de cookies</span>: Ir&oacute;nicamente, tenemos que usar una cookie para evitar que el aviso sobre cookies que estamos obligados a mostrarte cuando nos visitas por primera vez te moleste solo esa primera vez. Esta es mas simple aun que la anterior, y es una cookie vacia, sin ningun tipo de texto.</li><li><span style="font-weight:bold;">Cookies de Google</span>: Esto tiene m&aacute;s miga. Durante las fiestas de Vitoria, esta p&aacute;gina muestra mapas de Google. Es posible (y casi seguro) que estos mapas inserten cookies propias sobre las que no tenemos ning&uacute;n control. Sorry.</li></ul>';
 	
+	//Ads
+	$lng['ad_title'] = 'Advertisment';
+	
 	// /error/
 	$lng['error_title'] = 'Error';
 	$lng['error_error'] = 'ERROR';

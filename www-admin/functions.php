@@ -246,8 +246,8 @@
 	/****************************************************
 	* Increases version value in table settings by one. *
 	* Helpfull for the app to know when to perform a    * 
-	* full sync. Must be called after every INSERT or   *
-	* UPDATE query to the database.                     *
+	* full sync. Must be called after every INSERT,     *
+	* UPDATE or DELETE query to the database.           *
  	****************************************************/
 	function version(){
 		$con = startdb('rw');

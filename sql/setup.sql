@@ -100,12 +100,17 @@ CREATE TABLE sponsor (
 	name_es			VARCHAR(100)    NOT NULL,
 	name_en			VARCHAR(100),
 	name_eu			VARCHAR(100),
-	description_es	VARCHAR(1000),
-	description_en	VARCHAR(1000),
-	description_eu	VARCHAR(1000),
+	text_es			VARCHAR(1000),
+	text_en			VARCHAR(1000),
+	text_eu			VARCHAR(1000),
 	image			VARCHAR(100),
-	address			INT				REFERENCES place.id,
-	link			VARCHAR(300)
+	address_es		VARCHAR(200),
+	address_en		VARCHAR(200),
+	address_eu		VARCHAR(200),
+	link			VARCHAR(300),
+	lat				DOUBLE,
+	lon				DOUBLE,
+	ammount			INT
 );
 
 DROP TABLE IF EXISTS photo;

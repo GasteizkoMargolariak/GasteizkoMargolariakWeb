@@ -461,3 +461,64 @@ div#comment_new input[type='text']{
 div#comment_new input[type='submit']{
 	width:	25%;
 }
+
+/******************************************
+* Styles for the ad window.               *
+******************************************/
+div#ad{
+	width:						25%;
+	max-width:					25em;
+	min-width:					12em;
+	max-height:					20em;
+	position:					fixed;
+	bottom:						-25em;
+	left:						3em;
+	margin-bottom:				0;
+	box-shadow:					0 0 2em #111122;
+	border-top-left-radius:		1em;
+	border-top-right-radius:	1em;
+	transition:					bottom .5s ease-in-out;
+}
+
+
+div#ad h3{
+	margin-top:	0.3em;
+}
+
+div#ad div#ad_details{
+	text-align:		right;
+	color:			#555555;
+	font-size:		80%;
+	font-weight:	bold;
+	margin:			0;
+}
+
+div#ad div#ad_details img{
+	height:			0.8em;
+	width:			0.8em;
+	vertical-align: middle;
+	margin: 		0 0.5em 0 0.5em;
+}
+
+div#ad div.entry div#ad_image_container{
+	max-height:	9.5em;
+	margin:		0.3em 0.5em 0.3em 0.5em;
+	text-align:	center;
+}
+
+div#ad div.entry div#ad_image_container img{
+	max-height:	9em;
+	border:	0.1em solid #111111;
+}
+
+div#ad div.entry a{
+	font-style:		italic;
+	font-size:		90%;
+	margin-left:	0.6em;
+	margin-right:	0.6em;
+}
+
+div#ad div.entry a img#ad_pinpoint{
+	vertical-align:	middle;
+	max-height:		0.8em;
+}
