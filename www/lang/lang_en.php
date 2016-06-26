@@ -60,6 +60,7 @@
 	$lng['header_join'] = 'Join';
 	
 	//footer.php
+	$lng['footer_sponsors'] = 'Contributors';
 	$lng['footer_follow'] = 'Follow us';
 	$lng['footer_info'] = 'Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak<br/>N&deg; de registro: AS/A/17445/2013';
 	$lng['footer_help'] = 'Help';

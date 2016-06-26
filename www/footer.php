@@ -13,27 +13,28 @@
 				<br/><span class='desktop'><?php echo($lng['footer_info']); ?></span>
 			</div>
 			<div class="td" id="footer_center">
+				<br class="mobile"/><br class="mobile"/>
 				<?php
 					$q = mysqli_query($con, "SELECT name_$lang AS name, image, link FROM sponsor WHERE image != '' ORDER BY ammount DESC;");
 					if (mysqli_num_rows($q) > 0){
-						echo("SPONSORS\n");
+						echo("<span class='desktop'>$lng[footer_sponsors]</span></br class='desktop'>\n");
 						$idx = 0;
-						echo("<table>\n");
-						while ($idx < 2 && $r = mysqli_fetch_array($q)){
-							echo("<tr class='spo_main'><td class='spo_image'>\n");
-							echo("<img src='/img/spo/miniature/$r[image]'/></td><td class='spo_name'><span>$r[name]</span></td></tr>\n");
-							$idx ++;
-						}
-						echo("</table>\n");
 						while ($r = mysqli_fetch_array($q)){
-							echo("<div class='spo spo_secondary'>\n");
-							echo("<img src='/img/spo/miniature/$r[image]'/>");
-							echo("</div>");
+							if ($idx == 0){
+								echo("<a target='_blank' href='$r[link]'><span class='desktop'>$r[name]</span><img src='/img/spo/miniature/$r[image]'/></a>");
+							}
+							elseif ($idx == 1){
+								echo("&nbsp;&nbsp;&nbsp;<a target='_blank' href='$r[link]'><img src='/img/spo/miniature/$r[image]'/><span class='desktop'>$r[name]</span></a></br class='desktop'>");
+							}
+							else{
+								echo("<a target='_blank' href='$r[link]'><img src='/img/spo/miniature/$r[image]'/></a>");
+							}
 							$idx ++;
 						}
 						
 					}
-				?>				
+				?>
+				<br class="mobile"/><br class="mobile"/><br class="mobile"/>
 			</div>
 			<div  class="td" id="footer_right" class="desktop">
 				<a href="<?php echo "http://$_SERVER[HTTP_HOST]/ayuda/";?>"><?php echo $lng['footer_help']; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo "http://$_SERVER[HTTP_HOST]/ayuda/#privacidad";?>"><?php echo $lng['footer_privacy'];?></a>

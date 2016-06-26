@@ -60,6 +60,7 @@
 	$lng['header_join'] = 'Bildu';
 	
 	//footer.php
+	$lng['footer_sponsors'] = 'Kolaboratzaileak';
 	$lng['footer_follow'] = 'Jarraitu';
 	$lng['footer_info'] = 'Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak<br/>Errolda zk.: AS/A/17445/2013';
 	$lng['footer_help'] = 'Laguntza';
