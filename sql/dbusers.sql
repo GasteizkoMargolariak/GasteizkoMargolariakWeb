@@ -1,2 +1,0 @@
-GRANT SELECT ON gm.* TO 'gm'@'localhost' IDENTIFIED BY 'RRgm16x';
-GRANT SELECT, INSERT, DELETE, UPDATE ON gm.* TO 'gm-w'@'localhost' IDENTIFIED BY 'Q634n86sLa';

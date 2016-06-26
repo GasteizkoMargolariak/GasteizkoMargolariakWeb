@@ -19,7 +19,7 @@ copy
 remotecopy
 
 #SQL data
-sql/dbuses.sql
+sql/dbusers.sql
 sql/rows-test.sql
 sql/rows.sql
 
