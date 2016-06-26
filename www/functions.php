@@ -322,7 +322,7 @@
 				echo("<div class='entry'>\n");
 				if (strlen($r['image']) > 0){
 					echo("<div id='ad_image_container'>\n");
-					echo("<img src='/img/sponsor/miniature/$r[image]'/>\n");
+					echo("<img src='/img/spo/miniature/$r[image]'/>\n");
 					echo("</div>\n");
 				}
 				echo($r['text']);
