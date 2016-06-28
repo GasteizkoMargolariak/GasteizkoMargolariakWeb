@@ -5,6 +5,7 @@
 	$con = startdb('rw');
 	
 	//Get post values
+	$from =mysqli_real_escape_string($con, $_POST["from"]);
 	$post = mysqli_real_escape_string($con, $_POST["post"]);
 	$user = mysqli_real_escape_string($con, $_POST["user"]);
 	$text = mysqli_real_escape_string($con, $_POST["text"]);
@@ -31,21 +32,28 @@
 		exit(-1);
 	}
 	
-	//Format newlines in text
-	$text = str_replace(["\r\n", "\r", "\n"], "<br/>", $text);
-	
-	//Get visit
-	$ip = getUserIP();
-	$visit = '';
-	$q = mysqli_query($con, "SELECT id FROM stat_visit WHERE ip = '$ip';");
-	if (mysqli_num_rows($q) > 0){
-		$r = mysqli_fetch_array($q);
-		$visit = $r['id'];
+	if ($from == 'web'){
+		//Format newlines in text
+		$text = str_replace(["\r\n", "\r", "\n"], "<br/>", $text);
+		
+		//Get visit
+		$ip = getUserIP();
+		$visit = '';
+		$q = mysqli_query($con, "SELECT id FROM stat_visit WHERE ip = '$ip';");
+		if (mysqli_num_rows($q) > 0){
+			$r = mysqli_fetch_array($q);
+			$visit = $r['id'];
+		}
+		
+		//Insert row
+		mysqli_query($con, "INSERT INTO post_comment (post, text, username, lang, visit) VALUES ($post, '$text', '$user', '$lang', '$visit');");
+		version();
 	}
-	
-	//Insert row
-	mysqli_query($con, "INSERT INTO post_comment (post, text, username, lang, visit) VALUES ($post, '$text', '$user', '$lang', '$visit');");
-	version();
+	elseif ($from == 'app'){
+		$code = mysqli_real_escape_string($con, $_POST["code"]);
+		mysqli_query($con, "INSERT INTO post_comment (post, text, username, lang, app) VALUES ($post, '$text', '$user', '$lang', '$code');");
+		version();
+	}
 	
 	//Prepare the page to update the comment section
 	//WARNING: If changes are done here, do the same in post.php

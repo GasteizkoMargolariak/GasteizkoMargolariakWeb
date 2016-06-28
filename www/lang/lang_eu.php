@@ -17,7 +17,7 @@
 	$lng['section_activities'] = 'Ekitaldiak';
 	$lng['section_lablanca'] = 'La Blanca';
 	$lng['section_us'] = 'Gu';
-	$lng['section_gallery'] = 'Argaskiak';
+	$lng['section_gallery'] = 'Argazkiak';
 	$lng['section_press'] = 'Prentxa';
 	$lng['section_join'] = 'Bildu';
 	
@@ -66,9 +66,9 @@
 	$lng['footer_help'] = 'Laguntza';
 	$lng['footer_privacy'] = 'Pribatutasuna';
 	$lng['footer_app_google'] = 'App Google Play-an';
-	$lng['cookie_message'] = '¡Cookiek erabili ditugu!';
+	$lng['cookie_message'] = 'Cookiek erabili ditugu!';
 	$lng['cookie_ok'] = 'Oso ondo';
-	$lng['cookie_more'] = 'Gehiago esan dit';
+	$lng['cookie_more'] = 'Esan dit gehiago!';
 	$lng['cookie_'] = '';
 	
 	// /lablanca/index.php
@@ -93,7 +93,7 @@
 	$lng['activities_upcoming'] = 'Hurrengo ekitaldeak';
 	$lng['activities_no_upcoming'] = 'Oraindik ez dago hurrengo ekitaterik.';
 	$lng['activities_past'] = 'Aurreko ekitaldeak';
-	$lng['activities_album'] = 'Argaski albuma';
+	$lng['activities_album'] = 'Argazki albuma';
 	$lng['activities_archive'] = 'Artxiboa';
 	$lng['activities_date'] = 'Data';
 	$lng['activities_price'] = 'Prezioa';
@@ -114,7 +114,7 @@
 	$lng['blog_title'] = 'Blog - Gasteizko Margolariak';
 	$lng['blog_descrption'] = 'Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak - Blog';
 	$lng['blog_search'] = 'Bilatu';
-	$lng['blog_tag_cloud'] = 'Tagko hodeia';
+	$lng['blog_tag_cloud'] = 'Tag hodeia';
 	$lng['blog_archive'] = 'Artxiboa';
 	$lng['blog_read_more'] = 'Jarraitu irakurtzen';
 	$lng['blog_'] = '';
@@ -152,11 +152,11 @@
 	
 	// /galeria/index.php
 	$lng['gallery_title'] = 'Galera';
-	$lng['gallery_description'] = 'Gasteizko Margolarien argaskiak';
+	$lng['gallery_description'] = 'Gasteizko Margolarien argazkiak';
 	$lng['gallery_header'] = 'Argazki bat mil hitza baino gehiago balio du. <br/><br/>Laguntza eman diguzu? <a href="http://' . $http_host . '/galeria/upload/">Zure argazkiak kargatu</a> ahal duzu!';
 	$lng['gallery_albums'] = 'Albums';
-	$lng['gallery_photos_singular'] = 'argaskia';
-	$lng['gallery_photos_plural'] = 'argaskiak';
+	$lng['gallery_photos_singular'] = 'argazkia';
+	$lng['gallery_photos_plural'] = 'argazkiak';
 	$lng['gallery_read_more'] = 'Gehiago irakurri';
 	$lng['gallery_'] = '';
 	
@@ -208,7 +208,7 @@
 	$lng['help_license'] = 'Los contenidos publicados en esta pagina son propiedad de Asociaci&oacute;n Cultural Recreativa Gasteizko Mrgolariak (Gasteizko Margolariak).<br/><br/>Salvo que se especifique lo contrario, a excepci&on de las fotograf&iacute;as, los contenidos pueden reproducirse de acuerdo a los terminos de la licencia <a href="http://creativecommons.org/licenses/by-sa/3.0/legalcode.txt">CC-BY-SA 3.0</a>. Para las fotograf&iacute;as, Gasteizko Margolariak se reserva todos los derechos de distribuci&oacute;n.<br/><br>Los comentarios en las entradas y las fotograf&iacute; publicados por usuarios no relacionados directamente con Gasteizko Margolariak son responsabilidad de los mismos.';
 	$lng['help_privacy_title'] = 'Pribatutasun politika';
 	$lng['help_privacy'] = 'Navegar por internet hoy en d&iacute; se ha vuelto algo complicado, en lo que aprivacidad se refiere: practicamente cada p&aacute;gina que visitamos intenta obtener todos los datos posibles sobre nosotros para utilizarlos en marketing, data mining...<br/> <br/>En Gasteizko Margolariak queremos construir un sitio limpio y seguro, en el que nuestros visitantes puedan estar a gusto.<br/><br/> Por eso, queremos explicarte toda la informaci&oacute;n que recogemos sobre t&iacute; y lo que hacemos con ello.<br/><ul><li><span style="font-weight:bold;">Direcci&oacute; IP</span>: Cuando nos visitas, almacenamos tu direcci&oacute;n IP, junto con la hora de conexi&oacute;. Esto no nos permite identificarte como persona, pero nos es muy &uacute;til para saber cuantas personas distintas nos visitan.</li><li><span style="font-weight:bold;">Fotograf&iacute;as y comentarios</span>: Cuanquier visitante puede subir fotograf&iacute;as a esta web o comentar en la mayor&iacute;a de entradas. Para hacerlo, solo requerimos un nombre, y no tenemos ningun problema en que uses pseud&oacute;nimos o nombres falsos. Cuando comentes o subas im&aacute;genes tambi&eacute;n registramos tu direcci&oacute;n IP.</li><li><span style="font-weight:bold;">Datos de los socios</span>: Independientemente de los datos recogidos por este sitio web, en Gasteizko Margolariak mantenemos una base de datos sobre las personas que alguna vez han participado en alguna actividad con nosotros. Si es tu caso, y quieres que los eliminemos, no tiene m&aacute;s que escribirnos a <a target="_blank" href="mailto:gasteizkomargolariak@gmail.com">gasteizkomargolariak@gmail.com</a>. Sin rencores.';
-	$lng['help_cookie_title'] = 'Cookiek politika';
+	$lng['help_cookie_title'] = 'Cookie politika';
 	$lng['help_cookie'] = '¡Cookies! Est&aacute;n por todas partes. Sabemos que nadie suele leerse estos avisos sobre ellas, as&iacute; que ya que estas leyendo este, vamos a intentar hacerlo f&aacute;cil.<br/><br/>Una cookie es un peque&ntilde;o archivo de texto que puede quedar guardado en tu ordenador cuando visitas una web. Estos archivos son benignos, en el sentido de que no afectan al funcionamiento de tu ordenador, pero pueden ser utiles para los desarrolladores de p&aacute;ginas web para diversas cosas, como recordar tus preferencias entre visitas (como en nuestro caso) o identificarte y trazar tus movimientos por Internet (no es nuestro caso).<br/><br/>Aprovechando que aqu&iacute; utilizamos verdaderamente pocas, te contamos para que.<br/><ul><li><span style="font-weight:bold;">Idioma</span>: Utilizamos una cookie para recordar el idioma en el que quieres ver la p&aacute;gina. Si la estas viendo en castellano, el &uacute;nico texto que contendr&aacute; sera &quot;es&quot;. Bastante inofensivo, ¿verdad?</li><li><span style="font-weight:bold;">Aviso de cookies</span>: Ir&oacute;nicamente, tenemos que usar una cookie para evitar que el aviso sobre cookies que estamos obligados a mostrarte cuando nos visitas por primera vez te moleste solo esa primera vez. Esta es mas simple aun que la anterior, y es una cookie vacia, sin ningun tipo de texto.</li><li><span style="font-weight:bold;">Cookies de Google</span>: Esto tiene m&aacute;s miga. Durante las fiestas de Vitoria, esta p&aacute;gina muestra mapas de Google. Es posible (y casi seguro) que estos mapas inserten cookies propias sobre las que no tenemos ning&uacute;n control. Sorry.</li></ul>';
 	
 	//Ads

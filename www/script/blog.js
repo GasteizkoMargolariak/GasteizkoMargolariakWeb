@@ -50,7 +50,7 @@ function postComment(post, lang){
 		var x = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	x.open("POST", "/blog/comment.php", true);
-	var params = "post=" + post + "&user=" + user + "&text=" + text + "&lang=" + lang;
+	var params = "from=web&post=" + post + "&user=" + user + "&text=" + text + "&lang=" + lang;
 	x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	x.onreadystatechange = function(){
 		if(x.readyState == 4){

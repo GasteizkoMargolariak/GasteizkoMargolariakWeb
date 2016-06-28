@@ -1,6 +1,12 @@
 <?php
 	include('../functions.php');
-	$con = startdb();
+	$con = startdb('rw');
+	
+	//Get post data
+	$os = mysqli_real_escape_string($con, $_GET['os']);
+	$user = mysqli_real_escape_string($con, $_GET['code']);
+	$fg = mysqli_real_escape_string($con, $_GET['fg']);
+	$ip = getUserIP();
 	
 	//Get client version
 	$get_version = mysqli_real_escape_string($con, $_GET['v']);
@@ -11,15 +17,20 @@
 		//Here Im sending the app an OK code, but its not OK.
 		error_log("Trying to sync with a client, but there is no db version!");
 		echo "<synced>1</synced>\n";
+		mysqli_query($con, "INSERT INTO stat_sync (user, fg, os, ip, synced) VALUES ('$user', $fg, '$os', '$ip', 0);");
 		exit(-1);
 	}
 	else{
 		$r_v = mysqli_fetch_array($q_v);
 		if ($r_v['value'] <= $get_version){
 			echo "<synced>1</synced>\n";
+			mysqli_query($con, "INSERT INTO stat_sync (user, fg, os, ip, synced) VALUES ('$user', $fg, '$os', '$ip', 0);");
 			exit(-1);
 		}
 	}
+	
+	mysqli_query($con, "INSERT INTO stat_sync (user, fg, os, ip, synced) VALUES ('$user', $fg, '$os', '$ip', 1);");
+	error_log("INSERT INTO stat_sync (user, fg, os, ip, synced) VALUES ('$user', $fg, '$os', '$ip', 1);");
 	
 	//Header
 	echo "<database>\n";

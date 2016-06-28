@@ -66,14 +66,14 @@
 	$lng['footer_help'] = 'Ayuda';
 	$lng['footer_privacy'] = 'Privacidad';
 	$lng['footer_app_google'] = 'App en Google Play';
-	$lng['cookie_message'] = '¡Utilizamos cookies! ¡Y nos obligan a cont&aacute;rtelo!<br/>Pero solo dos, y de las buenas.';
+	$lng['cookie_message'] = '¡Utilizamos cookies! ¡Y nos obligan a cont&aacute;rtelo!<br/>Pero pocas, y de las buenas.';
 	$lng['cookie_ok'] = 'Pues muy bien';
 	$lng['cookie_more'] = 'Cu&eacute;ntame m&aacute;s';
 	$lng['cookie_'] = '';
 	
 	// /lablanca/index.php
 	$lng['lablanca_no_title'] = 'Fiestas de La Virgen Blanca';
-	$lng['lablanca_description'] = 'Informacio&oacute;n sobre fiestas de La Blanca';
+	$lng['lablanca_description'] = 'Informaci&oacute;n sobre fiestas de La Blanca';
 	$lng['lablanca_no_intro'] = 'A la espera de Celed&oacute;n...';
 	$lng['lablanca_no_content'] = 'Las Fiestas de La Blanca. Esos d&iacute;as, del 4 al 9 de agosto, en los que Vitoria-Gasteiz se transforma. Se llena de color y alegr&iacute;a, y en cada esquina puedes encontrar actividades y espect&aacute;culos. Todos las estamos esperando.<br/><br/>Por desgracia, a&uacute;n hay que esperar m&aacute;s.<br/>';
 	$lng['lablanca_no_content_2'] = 'Nosotros ya estamos trabajando en ello. Tan pronto como vayamos sabiendo m&aacute;s, aqu&iacute; iremos publicando nuestro programa y otra informaci&oacute;n sobre las fiestas.';
@@ -93,7 +93,7 @@
 	$lng['activities_upcoming'] = 'Pr&oacute;ximas actividades';
 	$lng['activities_no_upcoming'] = 'No hay nuevas actividades a la vista. ¡Pronto organizaremos algo!';
 	$lng['activities_past'] = 'Activities pasadas';
-	$lng['activities_album'] = 'Album de fotos';
+	$lng['activities_album'] = '&Aacute;lbum de fotos';
 	$lng['activities_archive'] = 'Archivo';
 	$lng['activities_date'] = 'Fecha';
 	$lng['activities_price'] = 'Precio';
@@ -154,7 +154,7 @@
 	$lng['gallery_title'] = 'Galer&iacute;a';
 	$lng['gallery_description'] = 'Fotograf&iacute;as de Gasteizko Margolariak\'s';
 	$lng['gallery_header'] = 'Una imagen vale m&aacute;s que mil palabras. Por eso tratamos de recopilar todas las que podemos, de todos esos buenos momentos: las fiestas, las salidas, las quedadas...<br/><br/>¿Quieres ayudarnos? ¡Puedes <a href="http://' . $http_host . '/galeria/upload/">subir tus fotos</a>!';
-	$lng['gallery_albums'] = 'Albums';
+	$lng['gallery_albums'] = '&Aacute;lbums';
 	$lng['gallery_photos_singular'] = 'foto';
 	$lng['gallery_photos_plural'] = 'fotos';
 	$lng['gallery_read_more'] = 'Read more';
@@ -172,13 +172,13 @@
 	
 	// /galeria/upload.php
 	$lng['gallery_upload_header'] = 'Una imagen vale m&aacute;s que mil palabras.<br/><br/>Si tienes alguna foto chula con Gasteizko Margolariak, o relacionada con nosotros, ¡no dudes en subirla!<br/><br/>Eso s&iacute;, ten en cuenta que esta es una p&aacute;gina p&uacute;blica, asi que recuerda la regla de oro: "No subas nada que no querr&iacute;as que viera tu madre". Y si en las fotos sale m&aacute;s gente, piensa tambien en sus madres.<br/><br/>¡Muchas gracias por tu colaboraci&oacute;n!';
-	$lng['gallery_upload_select_album'] = '--Selecciona un album--';
+	$lng['gallery_upload_select_album'] = '--Selecciona un &aacute;lbum--';
 	$lng['gallery_upload_submit'] = 'Subir fotos';
 	$lng['gallery_upload_placeholder_title'] = 'T&iacute;tulo (opcional)';
 	$lng['gallery_upload_placeholder_description'] = 'Descripci&oacute;n (opcional)';
 	$lng['gallery_upload_drag'] = 'Arrastra aqu&iacute; tus fotos';
 	$lng['gallery_upload_select'] = 'O seleccionalas manualmente';
-	$lng['gallery_upload_tooltip_album'] = 'Elije el album m&aacute;s apropiado para tus fotos.';
+	$lng['gallery_upload_tooltip_album'] = 'Elije el &aacute;lbum m&aacute;s apropiado para tus fotos.';
 	$lng['gallery_upload_tooltip_name'] = 'Y tu nombre. No tiene que ser el de verdad. Si nos dices que eres Bob Esponja, nos lo creemos.';
 	$lng['gallery_upload_'] = '';
 	

@@ -78,7 +78,8 @@ CREATE TABLE post_comment (
 	username	VARCHAR(200),
 	lang		VARCHAR(10),
 	approved	BOOLEAN			NOT NULL				DEFAULT 1,
-	visit		INT				REFERENCES stat_visit.id
+	visit		INT				REFERENCES stat_visit.id,
+	app			VARCHAR(24)
 );
 
 DROP TABLE IF EXISTS place;
@@ -132,6 +133,17 @@ CREATE TABLE stat_view (
 	section	VARCHAR(80)		NOT NULL,
 	entry	VARCHAR(100)	NOT NULL,
 	dtime	TIMESTAMP		NOT NULL	DEFAULT now()
+);
+
+DROP TABLE IF EXIST stat_sync;
+CREATE TABLE stat_sync (
+	id		INT			NOT NULL	AUTO_INCREMENT	PRIMARY KEY,
+	dtime	TIMESTAMP	NOT NULL	DEFAULT now(),
+	user	VARCHAR(64)	NOT NULL,
+	fg		INT			NOT NULL	DEFAULT 1,
+	os		VARCHAR(64)	NOT NULL,
+	ip		VARCHAR(50)	NOT NULL,
+	synced	INT			NOT NULL	DEFAULT 0
 );
 
 DROP TABLE IF EXISTS photo;
@@ -188,7 +200,8 @@ CREATE TABLE photo_comment (
 	username	VARCHAR(200),
 	lang		VARCHAR(10),
 	approved	BOOLEAN			NOT NULL				DEFAULT 1,
-	visit		INT				REFERENCES stat_visit.id
+	visit		INT				REFERENCES stat_visit.id,
+	app			VARCHAR(24)
 );
 
 DROP TABLE IF EXISTS activity;
@@ -257,7 +270,8 @@ CREATE TABLE activity_comment (
 	username	VARCHAR(200),
 	lang		VARCHAR(10),
 	approved	BOOLEAN			NOT NULL				DEFAULT 1,
-	visit		INT				REFERENCES stat_visit.id
+	visit		INT				REFERENCES stat_visit.id,
+	app			VARCHAR(24)
 );
 
 DROP TABLE IF EXISTS festival;
