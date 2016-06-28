@@ -32,9 +32,18 @@
 	
 	//Format newlines in text
 	$text = str_replace(["\r\n", "\r", "\n"], "<br/>", $text);
-		
+	
+	//Get visit
+	$ip = getUserIP();
+	$visit = '';
+	$q = mysqli_query($con, "SELECT id FROM stat_visit WHERE ip = '$ip';");
+	if (mysqli_num_rows($q) > 0){
+		$r = mysqli_fetch_array($q);
+		$visit = $r['id'];
+	}
+	
 	//Insert row
-	mysqli_query($con, "INSERT INTO photo_comment (photo, text, username, lang) VALUES ($photo, '$text', '$user', '$lang');");
+	mysqli_query($con, "INSERT INTO photo_comment (photo, text, username, lang, visit) VALUES ($photo, '$text', '$user', '$lang', '$visit');");
 	version();
 	
 	//Prepare the page to update the comment section

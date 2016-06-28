@@ -77,7 +77,8 @@ CREATE TABLE post_comment (
 	user		INT				REFERENCES user.id,
 	username	VARCHAR(200),
 	lang		VARCHAR(10),
-	approved	BOOLEAN			NOT NULL				DEFAULT 1
+	approved	BOOLEAN			NOT NULL				DEFAULT 1,
+	visit		INT				REFERENCES stat_visit.id
 );
 
 DROP TABLE IF EXISTS place;
@@ -186,7 +187,8 @@ CREATE TABLE photo_comment (
 	user		INT				REFERENCES user.id,
 	username	VARCHAR(200),
 	lang		VARCHAR(10),
-	approved	BOOLEAN			NOT NULL				DEFAULT 1
+	approved	BOOLEAN			NOT NULL				DEFAULT 1,
+	visit		INT				REFERENCES stat_visit.id
 );
 
 DROP TABLE IF EXISTS activity;
@@ -254,7 +256,8 @@ CREATE TABLE activity_comment (
 	user		INT				REFERENCES user.id,
 	username	VARCHAR(200),
 	lang		VARCHAR(10),
-	approved	BOOLEAN			NOT NULL				DEFAULT 1
+	approved	BOOLEAN			NOT NULL				DEFAULT 1,
+	visit		INT				REFERENCES stat_visit.id
 );
 
 DROP TABLE IF EXISTS festival;

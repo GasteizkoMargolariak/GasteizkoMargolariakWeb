@@ -33,15 +33,23 @@
 	
 	//Format newlines in text
 	$text = str_replace(["\r\n", "\r", "\n"], "<br/>", $text);
-		
+	
+	//Get visit
+	$ip = getUserIP();
+	$visit = '';
+	$q = mysqli_query($con, "SELECT id FROM stat_visit WHERE ip = '$ip';");
+	if (mysqli_num_rows($q) > 0){
+		$r = mysqli_fetch_array($q);
+		$visit = $r['id'];
+	}
+	
 	//Insert row
-	mysqli_query($con, "INSERT INTO post_comment (post, text, username, lang) VALUES ($post, '$text', '$user', '$lang');");
+	mysqli_query($con, "INSERT INTO post_comment (post, text, username, lang, visit) VALUES ($post, '$text', '$user', '$lang', '$visit');");
 	version();
 	
 	//Prepare the page to update the comment section
 	//WARNING: If changes are done here, do the same in post.php
 	$q_comment = mysqli_query($con, "SELECT id, post, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, dtime, user, username, lang, text FROM post_comment WHERE post = $post AND approved = 1 ORDER BY dtime;");
-	error_log("SELECT id, post, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, dtime, user, username, lang, text FROM post_comment WHERE post = $post AND approved = 1 ORDER BY TIME;");
 	while ($r_comment = mysqli_fetch_array($q_comment)){
 		echo "<div itemprop='comment' itemscope itemtype='http://schema.org/UserComments' id='comment_$r_comment[id]' class='comment'>\n";
 		//When official users are implementes, see if there is user or username
