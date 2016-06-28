@@ -400,6 +400,10 @@
 				}
 			?>
 		</div>
-		<?php include("footer.php"); ad($con, $lang, $lng); ?>
+		<?php
+			include("footer.php");
+			$ad = ad($con, $lang, $lng); 
+			stats($ad, $ad_static, "index", "");
+		?>
 	</body>
 </html>

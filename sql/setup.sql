@@ -110,7 +110,27 @@ CREATE TABLE sponsor (
 	link			VARCHAR(300),
 	lat				DOUBLE,
 	lon				DOUBLE,
-	ammount			INT
+	ammount			INT,
+	print 			INT				DEFAULT 0,
+	print_static	INT				DEFAULT 0
+);
+
+DROP TABLE IF EXISTS stat_visit;
+CREATE TABLE stat_visit (
+	id		INT				NOT NULL	AUTO_INCREMENT	PRIMARY KEY,
+	ip		VARCHAR(50),
+	uagent	VARCHAR(400),
+	os		VARCHAR(150),
+	browser	VARCHAR(150)
+);
+
+DROP TABLE IF EXISTS stat_view;
+CREATE TABLE stat_view (
+	id		INT				NOT NULL	AUTO_INCREMENT	PRIMARY KEY,
+	visit	INT				NOT NULL	REFERENCES stat_visit.id,
+	section	VARCHAR(80)		NOT NULL,
+	entry	VARCHAR(100)	NOT NULL,
+	dtime	TIMESTAMP		NOT NULL	DEFAULT now()
 );
 
 DROP TABLE IF EXISTS photo;

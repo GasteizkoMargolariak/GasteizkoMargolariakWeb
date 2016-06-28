@@ -15,11 +15,15 @@
 			<div class="td" id="footer_center">
 				<br class="mobile"/><br class="mobile"/>
 				<?php
-					$q = mysqli_query($con, "SELECT name_$lang AS name, image, link FROM sponsor WHERE image != '' ORDER BY ammount DESC;");
+					$q = mysqli_query($con, "SELECT id, name_$lang AS name, image, link FROM sponsor WHERE image != '' ORDER BY ammount DESC;");
+					$ad_static = Array();
 					if (mysqli_num_rows($q) > 0){
 						echo("<span class='desktop'>$lng[footer_sponsors]</span></br class='desktop'>\n");
 						$idx = 0;
 						while ($r = mysqli_fetch_array($q)){
+							
+							array_push($ad_static, $r['id']);
+						
 							if ($idx == 0){
 								echo("<a target='_blank' href='$r[link]'><span class='desktop'>$r[name]</span><img src='/img/spo/miniature/$r[image]'/></a>");
 							}

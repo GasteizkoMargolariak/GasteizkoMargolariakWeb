@@ -287,6 +287,7 @@
 	}
 	
 	function ad($con, $lang, $lng){
+	$id = -1;
 		//If the user hasn't still see an add on this session
 		if (isset($_SESSION['ad']) == false){
 			//25% chance of seeing an add
@@ -294,7 +295,7 @@
 				//Create an array with weighted values
 				$q = mysqli_query($con, "SELECT id, round(ammount/10) AS value FROM sponsor;");
 				if (mysqli_num_rows($q) == 0){
-					return;
+					return $id;
 				}
 				$total = 0;
 				$sponsors = array();
@@ -335,6 +336,93 @@
 				$_SESSION['ad'] = 1;
 			}
 			
+		}
+		return $id;
+	}
+	
+	// Function to get visitor ip
+	function getUserIP(){
+		$client  = @$_SERVER['HTTP_CLIENT_IP'];
+		$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+		$remote  = $_SERVER['REMOTE_ADDR'];
+		if(filter_var($client, FILTER_VALIDATE_IP)){
+			$ip = $client;
+		}
+		elseif(filter_var($forward, FILTER_VALIDATE_IP)){
+			$ip = $forward;
+		}
+		else{
+			$ip = $remote;
+		}
+		return $ip;
+	}
+	
+	function stats($ad, $ad_static, $section, $id){
+		
+		// Get client data
+		$ip = getUserIP();
+		$browser_data = get_browser(null, true);
+		$os = $browser_data['platform'];
+		$browser = $browser_data['browser'];
+		$uagent = $browser_data['browser_name_pattern'];
+		//If bot, do nothing
+		$bot_kw = Array();
+		$bot_kw[0] = 'bot';
+		$bot_kw[1] = 'spider';
+		$bot_kw[2] = 'crawl';
+		$bot_kw[3] = '.com';
+		$bot_kw[4] = '.ru';
+		$bot_kw[5] = 'baidu';
+		$bot_kw[6] = 'survey';
+		$bot_kw[7] = 'scan';
+		$bot_kw[8] = 'feed';
+		$bot_kw[9] = 'bing';
+		$bot_kw[10] = 'yahoo';
+		$bot_kw[11] = 'engine';
+		$bot_kw[12] = 'preview';
+		$bot_kw[13] = 'checker';
+		$bot_kw[14] = 'catalog';
+		$bot_kw[15] = 'accelerator';
+		$bot_kw[16] = 'python';
+		$bot_kw[14] = 'qt';
+		$bot_kw[15] = 'webdav';
+		$bot_kw[16] = 'http';
+		$bot_kw[17] = 'url';
+		$bot_kw[18] = 'fake';
+		$bot_kw[19] = 'library';
+		$bot_kw[20] = 'commerce';
+		$bot_kw[21] = 'html';
+		$bot_kw[22] = 'fetch';
+		
+		$i = 1;
+		while ($i < sizeof($bot_kw)) {
+			if (strpos(strtolower($browser), $bot_kw[$i]) !== false){
+				mysqli_close($con);
+				return;
+			}
+			$i ++;
+		}
+		
+		//Look for a visit with the same IP in the last 30 mins.
+		$con = startdb('rw');
+		$q = mysqli_query($con, "SELECT stat_visit.id AS visitid FROM stat_view, stat_visit WHERE visit = stat_visit.id AND dtime > DATE_SUB(now(), INTERVAL 30 MINUTE) AND ip = '$ip' AND uagent = '$uagent';");
+		if (mysqli_num_rows($q) == 0){
+			mysqli_query($con, "INSERT INTO stat_visit (ip, uagent, os, browser) VALUES ('$ip', '$uagent', '$os', '$browser');");
+			$q = mysqli_query($con, "SELECT stat_visit.id AS visitid FROM stat_visit WHERE ip = '$ip' AND uagent = '$uagent' ORDER BY stat_visit.id DESC LIMIT 1;");
+		}
+		$r = mysqli_fetch_array($q);
+		$visit = $r['visitid'];
+		mysqli_query($con, "INSERT INTO stat_view (visit, section, entry) VALUES ($visit, '$section', '$id');");
+		
+		//Increase pop ad advertiser count
+		if ($ad > 0){
+			mysqli_query($con, "UPDATE sponsor SET print = print + 1 WHERE id = $ad;");
+		}
+		
+		if (is_array($ad_static)){
+			foreach ($ad_static as &$sponsor) {
+				mysqli_query($con, "UPDATE sponsor SET print_static = print_static + 1 WHERE id = $sponsor;");
+			}
 		}
 	}
 ?>

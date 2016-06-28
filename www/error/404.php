@@ -110,6 +110,9 @@
 				</ul>
 			</div>
 		</div>
-		<?php include("../footer.php"); ?>
+		<?php
+			include("../footer.php");
+			stats(-1, $ad_static, "error", "404");
+		?>
 	</body>
 </html>

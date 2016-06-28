@@ -78,5 +78,7 @@
 		echo "</div>\n"; //Cell
 		echo "</div>\n"; //Row
 		echo "</div>\n"; //Table
+		
+		stats(-1, 0, "photo", "$r[id]");
 	}
 ?>

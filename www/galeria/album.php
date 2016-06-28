@@ -19,6 +19,7 @@
 	}
 	else{
 		$r = mysqli_fetch_array($q);
+		$id = $r['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -105,7 +106,11 @@
 		</div>
 		<div id="photo_viewer" class="section">
 		</div>
-		<?php include("../footer.php"); ad($con, $lang, $lng); ?>
+		<?php
+			include("../footer.php");
+			$ad = ad($con, $lang, $lng); 
+			stats($ad, $ad_static, "galeria", "$id");
+		?>
 	</body>
 </html>
 

@@ -204,7 +204,8 @@
 		</div>
 		<?php
 			include("../footer.php");
-			mysqli_close($con);
+			$ad = ad($con, $lang, $lng); 
+			stats($ad, $ad_static, "blog", "$id");
 		?>
 	</body>
 </html>
