@@ -396,7 +396,7 @@
 		
 		$i = 1;
 		while ($i < sizeof($bot_kw)) {
-			if (strpos(strtolower($browser), $bot_kw[$i]) !== false){
+			if (strpos(strtolower($uagent), $bot_kw[$i]) !== false){
 				mysqli_close($con);
 				return;
 			}

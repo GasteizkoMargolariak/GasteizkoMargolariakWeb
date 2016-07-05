@@ -130,7 +130,7 @@
 				if (date("M") <= 8 || (date("M") == 8 && date("D") < 25)){
 					$year --;
 				}
-				$q_years = mysqli_query($con, "SELECT year FROM festival WHERE year != " . date("Y") . " ORDER BY year;");
+				$q_years = mysqli_query($con, "SELECT year FROM festival WHERE year != " . date("Y") . " ORDER BY year DESC;");
 				if (mysqli_num_rows($q_years) >= 0){
 					echo("<br/><br/><div class='section' id='past_festivals'>\n");
 					echo("<h3>$lng[lablanca_past_title]</h3>\n");

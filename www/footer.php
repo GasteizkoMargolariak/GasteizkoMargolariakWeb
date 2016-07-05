@@ -28,10 +28,10 @@
 								echo("<a target='_blank' href='$r[link]'><span class='desktop'>$r[name]</span><img src='/img/spo/miniature/$r[image]'/></a>");
 							}
 							elseif ($idx == 1){
-								echo("&nbsp;&nbsp;&nbsp;<a target='_blank' href='$r[link]'><img src='/img/spo/miniature/$r[image]'/><span class='desktop'>$r[name]</span></a></br class='desktop'>");
+								echo("&nbsp;&nbsp;&nbsp;<a target='_blank' href='$r[link]'><img src='/img/spo/thumb/$r[image]'/><span class='desktop'>$r[name]</span></a></br class='desktop'>");
 							}
 							else{
-								echo("<a target='_blank' href='$r[link]'><img src='/img/spo/miniature/$r[image]'/></a>");
+								echo("<a target='_blank' href='$r[link]'><img src='/img/spo/thumb/$r[image]'/></a>");
 							}
 							$idx ++;
 						}
