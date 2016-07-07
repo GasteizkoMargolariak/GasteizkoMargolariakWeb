@@ -16,7 +16,7 @@
 		<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title><?php echo $lng['actividades_title'];?></title>
+		<title><?php echo $lng['activities_title'];?></title>
 		<link rel="shortcut icon" href="<?php echo "http://$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>

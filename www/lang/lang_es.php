@@ -157,7 +157,8 @@
 	$lng['gallery_albums'] = '&Aacute;lbums';
 	$lng['gallery_photos_singular'] = 'foto';
 	$lng['gallery_photos_plural'] = 'fotos';
-	$lng['gallery_read_more'] = 'Read more';
+	$lng['gallery_read_more'] = 'Seguir leyendo';
+	$lng['gallery_user'] = 'Enviada por: ';
 	$lng['gallery_'] = '';
 	
 	// /galeria/album.php

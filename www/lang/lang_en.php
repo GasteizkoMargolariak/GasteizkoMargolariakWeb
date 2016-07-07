@@ -168,6 +168,7 @@
 	$lng['gallery_new_comment_content'] = 'Comment...';
 	$lng['gallery_new_comment_user'] = 'A name...';
 	$lng['gallery_new_comment_submit'] = 'Post';
+	$lng['gallery_user'] = 'Sent by: ';
 	$lng['gallery_'] = '';
 	
 	// /galeria/upload.php

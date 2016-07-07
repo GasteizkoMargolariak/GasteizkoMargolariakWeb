@@ -158,6 +158,7 @@
 	$lng['gallery_photos_singular'] = 'argazkia';
 	$lng['gallery_photos_plural'] = 'argazkiak';
 	$lng['gallery_read_more'] = 'Gehiago irakurri';
+	$lng['gallery_user'] = 'Arabera: ';
 	$lng['gallery_'] = '';
 	
 	// /galeria/album.php

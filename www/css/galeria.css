@@ -230,6 +230,14 @@ div#photo_data span#photo_date{
 	font-size:	80%;
 	font-style:	italic;
 }
+div#photo_data span#photo_user{
+	display:	block;
+	margin:		0.3em;
+	width:		90%;
+	text-align:	right;
+	font-size:	80%;
+	font-style:	italic;
+}
 
 
 div#photo_viewer_comments{

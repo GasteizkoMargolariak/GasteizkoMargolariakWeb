@@ -20,7 +20,7 @@ table.festival_section_table tr td div.entry{
 }
 
 table.festival_section_table tr td div#festivals_summary{
-	min-height:		15em;
+/* 	min-height:		15em; */
 }
 
 table.festival_section_table tr td div#festivals_summary img{

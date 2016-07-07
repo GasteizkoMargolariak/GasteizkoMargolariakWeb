@@ -9,7 +9,7 @@
 	
 	//Get photo data
 	$path = mysqli_real_escape_string($con, $_GET['path']);
-	$q = mysqli_query($con, "SELECT id, file, permalink, title_$lang AS title, description_$lang AS description, dtime, size, user, username FROM photo WHERE file = '$path' AND approved = 1");
+	$q = mysqli_query($con, "SELECT id, file, permalink, title_$lang AS title, description_$lang AS description, uploaded, size, user, username FROM photo WHERE file = '$path' AND approved = 1");
 	if (mysqli_num_rows($q) == 0){
 		exit(0);
 	}
@@ -34,7 +34,10 @@
 		if (strlen($r['description']) > 0){
 			echo "<span id='photo_description'>$r[description]</span>\n";
 		}
-		echo "<span id='photo_date'>" . formatDate($r['dtime'], $lang) . "</span>\n";
+		echo "<span id='photo_date'>" . formatDate($r['uploaded'], $lang) . "</span>\n";
+		if (strlen($r['username']) > 0){
+			echo "<span id='photo_user'>$lng[gallery_user]$r[username]</span>\n";
+		}
 		echo "</div>\n";
 		$q_comment = mysqli_query($con, "SELECT * FROM photo_comment WHERE photo = $r[id];");
 		$comment_count = mysqli_num_rows($q_comment);

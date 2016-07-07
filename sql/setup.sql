@@ -114,10 +114,11 @@ CREATE TABLE sponsor (
 	lon				DOUBLE,
 	ammount			INT,
 	print 			INT				DEFAULT 0,
-	print_static	INT				DEFAULT 0
+	print_static	INT				DEFAULT 0,
+	click			INT				DEFAULT 0
 );
 
-DROP TABLE IF EXISTS stat_visit;
+--DROP TABLE IF EXISTS stat_visit;
 CREATE TABLE stat_visit (
 	id		INT				NOT NULL	AUTO_INCREMENT	PRIMARY KEY,
 	ip		VARCHAR(50),
@@ -126,7 +127,7 @@ CREATE TABLE stat_visit (
 	browser	VARCHAR(150)
 );
 
-DROP TABLE IF EXISTS stat_view;
+--DROP TABLE IF EXISTS stat_view;
 CREATE TABLE stat_view (
 	id		INT				NOT NULL	AUTO_INCREMENT	PRIMARY KEY,
 	visit	INT				NOT NULL	REFERENCES stat_visit.id,
@@ -135,7 +136,7 @@ CREATE TABLE stat_view (
 	dtime	TIMESTAMP		NOT NULL	DEFAULT now()
 );
 
-DROP TABLE IF EXISTS stat_sync;
+--DROP TABLE IF EXISTS stat_sync;
 CREATE TABLE stat_sync (
 	id		INT			NOT NULL	AUTO_INCREMENT	PRIMARY KEY,
 	dtime	TIMESTAMP	NOT NULL	DEFAULT now(),
