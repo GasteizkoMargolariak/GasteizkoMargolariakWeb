@@ -3,7 +3,6 @@
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("functions.php");
 	$con = startdb();
-	//registerVisit($_SERVER['REQUEST_URI'], false);
 	echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
 <urlset

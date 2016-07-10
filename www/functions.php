@@ -413,7 +413,7 @@
 		$bot_kw[21] = 'html';
 		$bot_kw[22] = 'fetch';
 		
-		$i = 1;
+		$i = 0;
 		while ($i < sizeof($bot_kw)) {
 			if (strpos(strtolower($uagent), $bot_kw[$i]) !== false){
 				mysqli_close($con);

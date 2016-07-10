@@ -1,6 +1,6 @@
 <?php
 	$http_host = $_SERVER['HTTP_HOST'];
-	include("../../../php_functions.php");
+	include("../../functions.php");
 	$con = startdb('rw');
 	if (!checkSession($con)){
 		header("Location: /index.php");
