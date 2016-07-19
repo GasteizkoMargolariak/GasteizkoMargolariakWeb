@@ -102,8 +102,9 @@ textarea{
 
 /* Icon for slider sections */
 img.slid{
-	height:			1.2em;
-	width:			1.2em;
+	height:			0.9em;
+	width:			0.9em;
+	padding:		0.1em;
 	cursor:			pointer;
 	vertical-align:	middle;
 	transition:		opacity 0.5s ease-in-out;

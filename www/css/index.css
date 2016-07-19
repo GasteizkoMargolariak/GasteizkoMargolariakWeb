@@ -119,17 +119,26 @@ div#upcoming_details{
 	float:			right;
 	margin-right:	0;
 	text-align:		center;
-} 
+	padding-bottom:	2em;
+}
+
 
 div#upcoming_details table{
 	border-collapse:	collapse;
 	text-align:			left;
 	font-style:			italic;
 	font-size:			80%;
+	margin:				2em 2em 2em 4em;
+}
+
+div#upcoming_details table tr{
+	border-bottom:		0.2em solid #7777aa;
+	border-top:			0.2em solid #7777aa;
+	border-collapse:	collapse;
 }
 
 div#upcoming_details table td{
-	border:	0.1em solid #000000;
+	padding:	0.3em;
 }
 
 /* Table to present posts and photos on the same row */

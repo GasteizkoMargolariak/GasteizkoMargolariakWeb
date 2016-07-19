@@ -304,7 +304,7 @@
 						echo "<tr><td>$lng[index_upcoming_activity_max_people]</td><td>$r_activity[max_people]</td></tr>\n";
 					}
 					echo "</table>\n";
-					echo "<a href='http://$http_host/actividades/$r_activity[permalink]'>$lng[index_upcoming_activity_see]</a><br/>\n";
+					echo "<a href='http://$http_host/actividades/$r_activity[permalink]'>$lng[index_upcoming_activity_see]</a><br/><br/>\n";
 					echo "<a href='http://$http_host/actividades/'>$lng[index_upcoming_activity_see_all]</a>\n";
 					echo "</div></div></div></div>\n";
 					echo "</div>\n";//Entry

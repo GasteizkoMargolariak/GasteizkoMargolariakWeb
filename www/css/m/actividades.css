@@ -9,3 +9,7 @@ div#activity_image{
 div#activity_image img{
 	max-width:	100%;
 }
+
+table.future_data td{
+	padding:	0.3em 0.2em 0.3em 0.2em;
+}

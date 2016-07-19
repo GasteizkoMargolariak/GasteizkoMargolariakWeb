@@ -47,7 +47,7 @@
 				<img class='lang' alt='English' src='/img/lang/en.gif' onClick='changeLanguage("en", "<?php echo $http_host; ?>");'/>
 				<img class='lang' alt='Euskara' src='/img/lang/eu.gif' onClick='changeLanguage("eu", "<?php echo $http_host; ?>");'/>
 				<br class='desktop'/>
-				<a title="Google Play" href="https://play.google.com/store/apps/details?id=com.ivalentin.gm"><img class='app' alt="<?php echo $lng['footer_app_google']; ?>" src='/img/app/android.gif' /></a>
+				<a title="Google Play" href="https://play.google.com/store/apps/details?id=com.ivalentin.margolariak"><img class='app' alt="<?php echo $lng['footer_app_google']; ?>" src='/img/app/android.gif' /></a>
 			</div>
 		</div>
 	</div>

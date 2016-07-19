@@ -192,3 +192,40 @@ div.entry{
 	border:				0.05em solid #333333;
 	box-shadow:			0 0 0.2em #301078;
 }
+
+/******************************************
+* Styles for the ad window.               *
+******************************************/
+div#ad{
+	width:		70%;
+	position:	fixed;
+	bottom:		-25em;
+	left:		15%;
+	right:		15%
+}
+
+
+div#ad h3{
+	margin-top:	0.3em;
+}
+
+div#ad div#ad_details{
+	font-size:		90%;
+	margin:			0.3em;
+}
+
+div#ad div#ad_details img{
+	height:			1.2em;
+	width:			1.2em;
+	margin: 		0 0.5em 0 0.5em;
+}
+
+div#ad div.entry div#ad_image_container{
+	max-height:	9.5em;
+	margin:		0.5em 0.6em 0.5em 0.6em;
+	text-align:	center;
+}
+
+div#ad div.entry a{
+	font-size:		100%;
+}

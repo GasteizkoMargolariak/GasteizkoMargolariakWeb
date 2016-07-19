@@ -38,22 +38,8 @@ div#upcoming_details{
 } 
 
 div#upcoming_details table{
-	margin:	auto;
+	margin:	1em auto 2em auto;
 }
-
-/* Section of the latest posts */
-/*div#latest_posts{
-	display:	block;
-	width:		initial;
-}*/
-
-
-/* Section containing the latest photos */
-/*div#latest_photos{
-	float:		initial;
-	display:	block;
-	width:		initial;
-}*/
 
 div#content_table{
 	display:	block;
