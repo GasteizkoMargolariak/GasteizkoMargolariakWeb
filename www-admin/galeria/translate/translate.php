@@ -1,4 +1,3 @@
- 
 <?php
 	$http_host = $_SERVER['HTTP_HOST'];
 	$http_standard = substr($_SERVER['HTTP_HOST'], 0, strrpos($_SERVER['HTTP_HOST'], ':'));

@@ -56,10 +56,8 @@
 	}
 	
 	//Update itinerary entries
-	//echo $total_i;
 	for ($i = 0; $i < $total_i; $i ++){
 		$q_i = mysqli_query($con, "SELECT * FROM activity_itinerary WHERE activity = $id AND id = $i_id[$i];");
-		//echo "SELECT * FROM activity_itinerary WHERE activity = $id AND id = $i_id[$i];";
 		if (mysqli_num_rows($q_i) > 0){
 			$r_i = mysqli_fetch_array($q_i);
 			if (strlen($i_name_en[$i]) > 0 && $i_name_en[$i] != $r_i['name_en']){

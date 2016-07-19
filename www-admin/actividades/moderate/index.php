@@ -1,3 +1,12 @@
+<?php
+	$http_host = $_SERVER['HTTP_HOST'];
+	include("../../functions.php");
+	$con = startdb();
+	if (!checkSession($con)){
+		header("Location: /index.php");
+		exit (-1);
+	}
+	else{ ?>
 <html>
 	<head>
 		<meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
@@ -16,3 +25,5 @@
 	<body>
 	</body>
 </html>
+
+<?php } ?>

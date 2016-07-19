@@ -2,7 +2,7 @@
 	$http_host = $_SERVER['HTTP_HOST'];
 	$default_host = substr($http_host, 0, strpos($http_host, ':'));
 	include("../functions.php");
-	$con = startdb('rw');
+	$con = startdb();
 	if (!checkSession($con)){
 		exit (-1);
 	}
