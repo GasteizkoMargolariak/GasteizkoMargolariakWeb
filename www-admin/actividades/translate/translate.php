@@ -20,7 +20,7 @@
 	<head>
 		<meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title>A&ntilde;adir itinerario a <?php echo $r['title_es']; ?> - Administraci&oacute;n</title>
+		<title>Traducir <?php echo $r['title_es']; ?> - Administraci&oacute;n</title>
 		<!-- CSS files -->
 		<link rel="stylesheet" type="text/css" href="/css/ui.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/actividades.css"/>
@@ -30,6 +30,7 @@
 		<!-- Script files -->
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript" src="/script/ui.js"></script>
+		<script src="../../ckeditor/ckeditor.js"></script>
 	</head>
 	<body>
 		<?php include('../../toolbar.php'); ?>
@@ -63,14 +64,14 @@
 					echo "</div></td>\n";
 					
 					echo "<td class='translate_language'><div class='entry translation'>\n";
-					echo "<h3>Ingl&eacute;s</h4>\n<div class='translate_row_title'><span class='bold'>T&iacute;tulo: </span><input type='text' name='title_en' required value='$r[title_en]'/></div>\n";
-					echo "<div class='translate_row_description'><span class='bold'>Descripci&oacute;n</span><br/><textarea  name='text_en' required>$r[text_en]</textarea></div>\n";
+					echo "<h3>Ingl&eacute;s</h4><div class='translate_row_title'>\n<span class='bold'>T&iacute;tulo: </span><input required type='text' name='title_en' required value='$r[title_en]'/></div>\n";
+					echo "<div class='translate_row_description'><span class='bold'>Descripci&oacute;n</span><br/><textarea name='text_en' required>$r[text_en]</textarea></div>\n";
 					echo "<script>CKEDITOR.replace('text_en');</script>\n";
 					if (strlen($r['after_es']) > 0){
 						echo "<div class='translate_row_after'><span class='bold'>Texto para despu&eacute;s</span><br/><textarea name='after_en' required>$r[after_en]</textarea></div>\n";
 						echo "<script>CKEDITOR.replace('after_en');</script>\n";
 					}
-					$q_i = mysqli_query($con, "SELECT id, name_es, name_en, name_eu, description_es, description_en, description_eu, date_format(start, '%H:%i') AS start FROM activity_itinerary WHERE activity = $r[id];");
+					$q_i = mysqli_query($con, "SELECT id, name_es, name_en, name_en, description_es, description_en, description_en, date_format(start, '%H:%i') AS start FROM activity_itinerary WHERE activity = $r[id];");
 					if (mysqli_num_rows($q_i) > 0){
 						echo "<div class='translate_row_itinerary'><span class='bold'>Itinerario<br/></span><table id='table_translate_itinerary'>\n";
 						while ($r_i = mysqli_fetch_array($q_i)){

@@ -44,7 +44,7 @@
 				<a href="http://<?php echo $http_host; ?>/blog/moderate/">Moderar comentarios</a>
 			</td>
 			<td>
-				<a href="http://<?php echo $http_host; ?>/blog/translata/">Traducir posts</a>
+				<a href="http://<?php echo $http_host; ?>/blog/translate/">Traducir posts</a>
 			</td>
 		</tr>
 	</table>

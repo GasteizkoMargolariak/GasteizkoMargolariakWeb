@@ -13,3 +13,4 @@
 		mysqli_query($con, "DELETE FROM post WHERE id = $id;");
 		version();
 	}
+?>

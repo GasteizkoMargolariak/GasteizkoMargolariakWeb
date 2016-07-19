@@ -42,7 +42,6 @@
 /* Links */
 a{
 	color:				#4c9ed9;
-/* 	text-shadow:		0 0 0.0em #7799ff; */
 	text-decoration:	none;
 	transition:			all .2s ease-in-out;
 }
@@ -391,13 +390,9 @@ div#content{
 
 /* Sections */
 div.section{
-/* 	background-color:	#7cbed9; */
 	background-color:	#9bc1da;
-/* 	border-radius:		0 0 0.6em 0.6em; */
 	padding:			0.1em 0.3em 0.1em 0.1em;
 	border:				0.2em solid #9cd3d9;
-/* 	border-top:			0.3em solid #003; */
-/* 	box-shadow:			0 0 0.3em #dde; */
 }
 
 /* Title for each section */

@@ -11,7 +11,7 @@
 	
 	// Get current post id. Redirect if inexistent or invisible
 	$perm = mysqli_real_escape_string($con, $_GET['perm']);
-	$q = mysqli_query($con, "SELECT id, permalink, title_$lang AS title, text_$lang AS text, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, DATE_FORMAT(dtime,'%b %d, %Y') as dtime, comments FROM post WHERE permalink = '$perm' AND visible = 1;");
+	$q = mysqli_query($con, "SELECT id, permalink, title_$lang AS title, text_$lang AS text, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, DATE_FORMAT(dtime,'%b %d, %Y T%T') as dtime, comments FROM post WHERE permalink = '$perm' AND visible = 1;");
 	if (mysqli_num_rows($q) == 0){
 		header("Location: http://$http_host/blog/");
 		exit(-1);

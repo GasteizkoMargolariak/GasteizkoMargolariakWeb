@@ -131,7 +131,7 @@ div.translate_row_title{
 }
 
 div.translate_row_description{
-	height:		12em;
+	max-height:	20em;
 	overflow: 	auto;
 }
 
