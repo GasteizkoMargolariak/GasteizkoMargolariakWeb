@@ -14,5 +14,10 @@ Disallow: /lang/
 Disallow: /functions.php
 Disallow: /langtranslate.php
 
+User-agent: Googlebot-Image
+Disallow: /img/spo/
+Disallow: /img/social/
+Disallow: /img/misc/
 
-Sitemap: http://margolariak.es/sitemap.xml
+
+Sitemap: http://margolariak.com/sitemap.xml

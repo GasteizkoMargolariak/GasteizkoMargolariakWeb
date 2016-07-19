@@ -230,17 +230,22 @@
 			$_SESSION['name'] = $r['username'];
 			return true;
 		}
-		else
+		else{
+			error_log("Invalid login. username = $_SESSION[name], id = $_SESSION[id]");
 			return false;
+		}
 	}
 	
 	function checkSession($con){
 		session_start(['cookie_lifetime' => 1800,]);
 		$qr = mysqli_query($con, "SELECT id FROM user WHERE id = '$_SESSION[id]' AND md5(salt) = '$_SESSION[salt]';");
+		//error_log("SELECT id FROM user WHERE id = '$_SESSION[id]' AND md5(salt) = '$_SESSION[salt]';");
 		if (mysqli_num_rows($qr) == 1)
 			return true;
-		else
+		else{
 			return false;
+			error_log("Invalid session. username = $_SESSION[name], id = $_SESSION[id]");
+		}
 	}
 	
 
