@@ -69,8 +69,9 @@
 					echo "<meta itemprop='name' content='$lng[index_festivals_header] $year'/>\n";
 					echo "<meta itemprop='description' content='$lng[index_festivals_header] $year'/>\n";
 					echo "<meta itemprop='startDate' content='$year-08-04'/>\n";
-					echo "<meta itemprop='startDate' content='$year-08-09'/>\n";
-					echo "<meta itemprop='location' content='Vitoria-Gasteiz'/>\n";
+					echo "<meta itemprop='endDate' content='$year-08-09'/>\n";
+					echo "<meta itemprop='url' content='http://$http_host/lablanca/'/>\n";
+					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name' content='Vitoria-Gasteiz'/></span>\n");
 					echo "<h3>$lng[index_festivals_header] $year</h3>\n";
 					echo "<table class='festival_section_table'><tr>\n";
 					
@@ -80,6 +81,7 @@
 						echo "<td><div class='entry' id='festivals_summary'>\n";
 						$r_festivals = mysqli_fetch_array($q_festivals);
 						if ($r_festivals['img'] != ''){
+							echo "<meta itemprop='image' content='http://$http_host/img/fiestas/$r_festivals[img]'/>\n";
 							echo "<img id='festivals_image' alt=' ' src='http://$http_host/img/fiestas/$r_festivals[img]'/>\n";
 						}
 						if ($r_festivals['summary'] != ''){
@@ -123,7 +125,7 @@
 							if (strlen($r_sch_curr['isoend']) > 0){
 								echo "<meta itemprop='endDate' content='$r_sch_curr[isoend]'/>\n";
 							}
-							echo "<meta itemprop='location' content='Vitoria-Gasteiz'/>\n";
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' content='Vitoria-Gasteiz'/><span>\n");
 							echo "<span class='title'>$r_sch_curr[title]\n</span>";
 							if (strlen($r_sch_curr["description"]) > 0 && $r_sch_curr["description"] != $r_sch_curr["title"]){
 								echo "<br/><span class='description'>$r_sch_curr[description]</span>\n";
@@ -150,7 +152,7 @@
 							if (strlen($r_sch_curr['isoend']) > 0){
 								echo "<meta itemprop='endDate' content='$r_sch_next[isoend]'/>\n";
 							}
-							echo "<meta itemprop='location' content='Vitoria-Gasteiz'/>\n";
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name'>Vitoria-Gasteiz</meta></span>\n");
 							echo "<span class='title'>$r_sch_next[title] - $r_sch_next[st]\n</span>";
 							if (strlen($r_sch_next["description"]) > 0 && $r_sch_next["description"] != $r_sch_next["title"]){
 								echo "<br/><span class='description'>$r_sch_next[description]</span>\n";
@@ -186,7 +188,7 @@
 							if (strlen($r_sch_curr['isoend']) > 0){
 								echo "<meta itemprop='endDate' content='$r_sch_curr[isoend]'/>\n";
 							}
-							echo "<meta itemprop='location' content='Vitoria-Gasteiz'/>\n";
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name'>Vitoria-Gasteiz</meta></span>\n");
 							echo "<span class='title'>$r_sch_curr[title]\n</span>";
 							if (strlen($r_sch_curr["description"]) > 0 && $r_sch_curr["description"] != $r_sch_curr["title"]){
 								echo "<br/><span class='description'>$r_sch_curr[description]</span>\n";
@@ -214,7 +216,7 @@
 							if (strlen($r_sch_curr['isoend']) > 0){
 								echo "<meta itemprop='endDate' content='$r_sch_next[isoend]'/>\n";
 							}
-							echo "<meta itemprop='location' content='Vitoria-Gasteiz'/>\n";
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name'>Vitoria-Gasteiz</meta></span>\n");
 							echo "<span class='title'>$r_sch_next[title] - ($r_sch_next[st])\n</span>";
 							if (strlen($r_sch_next["description"]) > 0 && $r_sch_next["description"] != $r_sch_next["title"]){
 								echo "<br/><span class='description'>$r_sch_next[description]</span>\n";
@@ -250,15 +252,14 @@
 					echo "<meta itemprop='name' content='$r_activity[title]'/>\n";
 					echo "<meta itemprop='description' content='$r_activity[text]'/>\n";
 					echo "<meta itemprop='startDate endDate' content='$r_activity[isodate]'/>\n";
-					echo "<meta itemprop='location' content='$r_activity[city]'/>\n";
-					echo "<meta itemprop='url' content='http://$http_host/lablanca/'/>\n";
+					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name' content='$r_activity[city]'/></span>\n");
+					echo "<meta itemprop='url' content='http://$http_host/actividades/$r_activity[permalink]'/>\n";
 					echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 					echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 					echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
 					echo "<meta itemprop='logo' content='http://$http_host/img/logo/logo.png'/>\n";
 					echo "<meta itemprop='foundingDate' content='2013-02-03'/>\n";
 					echo "<meta itemprop='telephone' content='+34637140371'/>\n";
-					echo "<meta itemprop='url' content='http://$http_host'/>\n";
 					echo "</div>\n";
 					echo "<div id='upcoming_activity' class='table'><div class='tr'>\n";
 					
@@ -286,7 +287,7 @@
 					echo "<td>$lng[index_upcoming_activity_price]</td>";
 					if ($r_activity['price'] == 0){
 						echo "<td itemprop='offers' itemscope itemtype='http://schema.org/Offer'>$lng[index_upcoming_activity_free]\n";
-						echo "<meta itemprop='priceCurrency' content='EUR'/><meta itemprop='price' content='0'/></td>\n";
+						echo "<meta itemprop='priceCurrency' content='EUR'/><meta itemprop='price' content='0'/><meta itemprop='url' content='http://$http_host/actividades/$r_activity[permalink]'/>\n</td>\n";
 						echo "</tr><tr>\n";
 						echo "<td>$lng[index_upcoming_activity_inscription]</td>";
 						if ($r_activity['inscription'] == 1)
@@ -339,7 +340,7 @@
 										$q_post_image = mysqli_query($con, "SELECT image FROM post_image WHERE post = $r_post[id] ORDER BY idx LIMIT 1;");
 										if (mysqli_num_rows($q_post_image) > 0){
 											$r_post_image = mysqli_fetch_array($q_post_image);
-											echo "<meta itemprop='image' content='http://$http_host/img/blog/$r_post_image[image]'/>\n";
+											echo "<meta itemprop='image' content='http://$http_host/img/blog/preview/$r_post_image[image]'/>\n";
 											echo "<a href='http://$http_host/blog/$r_post[permalink]'><img src='http://$http_host/img/blog/miniature/$r_post_image[image]'/></a>\n";
 										}
 										echo "<h3><a itemprop='url' href='http://$http_host/blog/$r_post[permalink]'>$r_post[title]</a></h3>\n";
@@ -400,7 +401,7 @@
 							echo "<meta itemprop='name' content='$r_activity[title]'/>\n";
 							echo "<meta itemprop='description' content='$r_activity[text]'/>\n";
 							echo "<meta itemprop='startDate endDate' content='$r_activity[isodate]'/>\n";
-							echo "<meta itemprop='location' content='$r_activity[city]'/>\n";
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name'>$r_activity[city]</meta></span>\n");
 							echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 							echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 							echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
