@@ -181,7 +181,7 @@
 					
 						if (mysqli_num_rows($q_sch_curr) > 0){
 							$r_sch_curr = mysqli_fetch_array($q_sch_curr);
-							echo "<div id='festival_event' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'><h4>$lng[index_festivals_schedule_now]</h4>\n";
+							echo "<div class='festival_event' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'><h4>$lng[index_festivals_schedule_now]</h4>\n";
 							echo "<meta itemprop='inLanguage' content='$lang'/>\n";
 							echo "<meta itemprop='name' content='$r_sch_curr[title]'/>\n";
 							echo "<meta itemprop='startDate' content='$r_sch_curr[isostart]'/>\n";
@@ -208,8 +208,7 @@
 						
 						if (mysqli_num_rows($q_sch_next) > 0){
 							$r_sch_next = mysqli_fetch_array($q_sch_next);
-							echo "<div id='festival_event' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'><h4>$lng[index_festivals_schedule_next]</h4>\n";
-							echo "<div id='festival_event' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'><h4>$lng[index_festivals_schedule_now]</h4>\n";
+							echo "<div class='festival_event' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'><h4>$lng[index_festivals_schedule_next]</h4>\n";
 							echo "<meta itemprop='inLanguage' content='$lang'/>\n";
 							echo "<meta itemprop='name' content='$r_sch_next[title]'/>\n";
 							echo "<meta itemprop='startDate' content='$r_sch_next[isostart]'/>\n";

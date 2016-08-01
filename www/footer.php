@@ -41,7 +41,7 @@
 				<br class="mobile"/><br class="mobile"/><br class="mobile"/>
 			</div>
 			<div  class="td" id="footer_right" class="desktop">
-				<a href="<?php echo "http://$_SERVER[HTTP_HOST]/ayuda/";?>"><?php echo $lng['footer_help']; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo "http://$_SERVER[HTTP_HOST]/ayuda/#privacidad";?>"><?php echo $lng['footer_privacy'];?></a>
+				<a href="<?php echo "http://$_SERVER[HTTP_HOST]/ayuda/";?>"><?php echo $lng['footer_help']; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo "http://$_SERVER[HTTP_HOST]/ayuda/#section_privacy";?>"><?php echo $lng['footer_privacy'];?></a>
 				<br/><br class='mobile'/>
 				<img class='lang' alt='Espanol' src='/img/lang/es.gif' onClick='changeLanguage("es", "<?php echo $http_host; ?>");'/>
 				<img class='lang' alt='English' src='/img/lang/en.gif' onClick='changeLanguage("en", "<?php echo $http_host; ?>");'/>
@@ -58,8 +58,8 @@
 ?>
 <div id='cookie_popup'>
 	<span id='message'><?php echo $lng['cookie_message']; ?></span><br/><br/>
-	<span class='button pointer' onClick="dismissCookiePopUp('<?php echo $http_host; ?>');" id='button_ok'><?php echo $lng['cookie_ok']; ?></span>
-	<span class='button pointer' onClick="dismissCookiePopUp('<?php echo $http_host; ?>', true);" id='button_more'><?php echo $lng['cookie_more']; ?></span>
+	<span class='button pointer' style="cursor:pointer" id='button_ok'><a href="#" onClick="dismissCookiePopUp('<?php echo $http_host; ?>', false);" ><?php echo $lng['cookie_ok']; ?></a></span>
+	<span class='button pointer' style="cursor:pointer" id='button_more'><a href="#" onClick="dismissCookiePopUp('<?php echo $http_host; ?>', true);" ><?php echo $lng['cookie_more']; ?></a></span>
 </div>
 <?php
 }

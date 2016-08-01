@@ -346,7 +346,9 @@
 					echo("</div>\n");
 				}
 				echo($r['text']);
-				echo("<br/><br/><a target='_blank' href='https://www.google.es/maps/@$r[lat],$r[lon],14z'><img id='ad_pinpoint' src='/img/misc/pinpoint.png'\>$r[address]</a>\n");
+				if(strlen($r["address"]) > 0){
+					echo("<br/><br/><a target='_blank' href='https://www.google.es/maps/@$r[lat],$r[lon],14z'><img id='ad_pinpoint' src='/img/misc/pinpoint.png'\>$r[address]</a>\n");
+				}
 				echo("</div>\n");
 				echo("</div>\n");
 				echo("<script type='text/javascript'>showAd();</script>\n");

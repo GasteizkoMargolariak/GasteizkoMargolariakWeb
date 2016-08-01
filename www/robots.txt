@@ -13,8 +13,6 @@ Disallow: /script/
 Disallow: /lang/
 Disallow: /functions.php
 Disallow: /langtranslate.php
-
-User-agent: Googlebot-Image
 Disallow: /img/spo/
 Disallow: /img/social/
 Disallow: /img/misc/

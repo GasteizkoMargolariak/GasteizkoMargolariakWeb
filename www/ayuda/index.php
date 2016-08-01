@@ -111,7 +111,7 @@
 					</div>
 				</div>
 				<div class="content_cell">
-					<div class="section" id="section_association">
+					<div class="section" id="section_license">
 						<h3><?php echo $lng['help_license_title']; ?></h3>
 						<div class="entry">
 							<?php echo $lng['help_license']; ?>
@@ -121,7 +121,7 @@
 			</div>
 			<div class="content_row">
 				<div class="content_cell">
-					<div class="section" id="section_association">
+					<div class="section" id="section_privacy">
 						<h3><?php echo $lng['help_privacy_title']; ?></h3>
 						<div class="entry">
 							<?php echo $lng['help_privacy']; ?>
@@ -129,7 +129,7 @@
 					</div>
 				</div>
 				<div class="content_cell">
-					<div class="section" id="section_association">
+					<div class="section" id="section_cookie">
 						<h3><?php echo $lng['help_cookie_title']; ?></h3>
 						<div class="entry">
 							<?php echo $lng['help_cookie']; ?>

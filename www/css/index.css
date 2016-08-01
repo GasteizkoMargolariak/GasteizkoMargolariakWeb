@@ -36,6 +36,10 @@ table.festival_section_table tr td div#festival_entry_map{
 	text-align:	center;
 }
 
+div.festival_event{
+	margin-left:	1.5em;
+}
+
 table.festival_section_table tr td div#festival_entry_map h3{
 	text-align:	left;
 }

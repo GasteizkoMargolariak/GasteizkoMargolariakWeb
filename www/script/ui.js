@@ -48,7 +48,7 @@ function toggleMobileMenu(){
 	}
 }
 
-function dismissCookiePopUp(host, open = false){
+function dismissCookiePopUp(host, open){
 	//Set cookie
 	var date = new Date();
 	date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
@@ -58,9 +58,11 @@ function dismissCookiePopUp(host, open = false){
 	document.getElementById('cookie_popup').style.bottom = '-20em';
 	// Open the help window if required
 	if (open){
-		var win = window.open('http://' + host + '/ayuda/#privacidad', '_blank');
+		var win = window.open('http://' + host + '/ayuda/#section_cookie', '_blank');
 		win.focus();
 	}
+	return false;
+	return true;
 }
 
 function showAd(){
