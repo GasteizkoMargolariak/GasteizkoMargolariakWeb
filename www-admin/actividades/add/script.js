@@ -4,6 +4,9 @@ function showTab(lang){
 			document.getElementById('tab_content_es').style.display = 'inline-block';
 			document.getElementById('tab_content_eu').style.display = 'none';
 			document.getElementById('tab_content_en').style.display = 'none';
+			document.getElementById('tab_selector_es').style.color = '#000000';
+			document.getElementById('tab_selector_eu').style.color = '#8899bb';
+			document.getElementById('tab_selector_en').style.color = '#8899bb';
 			document.getElementById('tab_selector_es').style.zIndex = '3';
 			document.getElementById('tab_selector_eu').style.zIndex = '1';
 			document.getElementById('tab_selector_en').style.zIndex = '1';
@@ -15,6 +18,9 @@ function showTab(lang){
 			document.getElementById('tab_content_es').style.display = 'none';
 			document.getElementById('tab_content_eu').style.display = 'inline-block';
 			document.getElementById('tab_content_en').style.display = 'none';
+			document.getElementById('tab_selector_es').style.color = '#8899bb';
+			document.getElementById('tab_selector_eu').style.color = '#000000';
+			document.getElementById('tab_selector_en').style.color = '#8899bb';
 			document.getElementById('tab_selector_es').style.zIndex = '1';
 			document.getElementById('tab_selector_eu').style.zIndex = '3';
 			document.getElementById('tab_selector_en').style.zIndex = '1';
@@ -26,6 +32,9 @@ function showTab(lang){
 			document.getElementById('tab_content_es').style.display = 'none';
 			document.getElementById('tab_content_eu').style.display = 'none';
 			document.getElementById('tab_content_en').style.display = 'inline-block';
+			document.getElementById('tab_selector_es').style.color = '#8899bb';
+			document.getElementById('tab_selector_eu').style.color = '#8899bb';
+			document.getElementById('tab_selector_en').style.color = '#000000';
 			document.getElementById('tab_selector_es').style.zIndex = '1';
 			document.getElementById('tab_selector_eu').style.zIndex = '1';
 			document.getElementById('tab_selector_en').style.zIndex = '3';

@@ -156,13 +156,13 @@
 					case '9':
 					
 						break;
-					case default:
+					default:
 						exit(-1);
 				}
 				//Load schedule tables
 				echo "<table>\n";
 				echo "<tr>\n";
-				echo "<th></th>"
+				echo "<th></th>";
 				echo "<tr/>\n";
 				echo "</table>\n";
 				break;

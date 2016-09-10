@@ -46,6 +46,7 @@
 					echo "</div><br/><br/>\n";
 					echo "<form method='post' action='http://$http_host/actividades/translate/apply.php'>\n";
 					echo "<input type='hidden' name='id' value='$r[id]'/>\n";
+					
 					echo "<table id='table_translate_languages'><tr>\n";
 					echo "<td class='translate_language'><div class='entry translation'>\n";
 					echo "<h3>Castellano</h4><div class='translate_row_title'>\n<span class='bold'>T&iacute;tulo: </span>$r[title_es]</div>\n";
@@ -98,7 +99,7 @@
 						echo "</table></div>\n";
 					}
 					echo "</div></td>\n";
-					
+										
 					echo "</tr></table><div id='translate_controls'><input type='submit' value='Guardar'/><input type='button' value='Cancelar y salir' onClick='exitTranslation();'/></div></form>\n";
 				?>
 			</div>

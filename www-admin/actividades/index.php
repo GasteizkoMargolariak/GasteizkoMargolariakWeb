@@ -16,10 +16,10 @@
 		<title>Actividades - Administracion</title>
 		<!-- CSS files -->
 		<link rel="stylesheet" type="text/css" href="/css/ui.css"/>
-		<link rel="stylesheet" type="text/css" href="/css/blog.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/actividades.css"/>
 		<!-- CSS for mobile version -->
 		<link rel="stylesheet" type="text/css" media="(max-width : 990px)" href="/css/m/ui.css"/>
-		<link rel="stylesheet" type="text/css" media="(max-width : 990px)" href="/css/m/blog.css"/>
+		<link rel="stylesheet" type="text/css" media="(max-width : 990px)" href="/css/m/activiadades.css"/>
 		<!-- Script files -->
 		<script type="text/javascript" src="/script/ui.js"></script>
 	</head>
@@ -55,7 +55,7 @@
 								echo "<td class='activity_column_details'>$r[ptime]<br/>Por $r_user[username]<br/>Comentarios:";
 								// TODO: itinerary?
 								if ($r['comments'] == 1){
-									$q_comments = mysqli_query($con, "SELECT id FROM activity_comment WHERE post = $row[id];");
+									$q_comments = mysqli_query($con, "SELECT id FROM activity_comment WHERE activity = $r[id];");
 									echo "Si (" . mysqli_num_rows($q_comments) . ")";
 								}
 								else

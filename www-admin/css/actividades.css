@@ -11,12 +11,21 @@ span.tab_selector{
 	border-right:				0.1em solid #000000;
 	border-top-right-radius:	0.3em;
 	border-top-left-radius:		0.3em;
-	padding:					0.5em 0.5em 0 0.5em;
+	padding:					0.5em 0.5em 0.1em 0.5em;
 	background-color:			#cccccc;
+	font-weight:				bold;
 }
 
 span#tab_selector_es{
 	z-index:	3;
+}
+
+span#tab_selector_en{
+	color:			#8899bb;
+}
+
+span#tab_selector_eu{
+	color:			#8899bb;
 }
 
 span.tab_selector_hidden{
@@ -242,4 +251,69 @@ table#itinerary tr.itinerary_row td.text textarea{
 	min-width:	15em;
 	height:		7em;
 	resize:		none;
+}
+
+table#activity_list{
+	border-collapse:	collapse;
+}
+
+table#activity_list td, th{
+	border: 	1px solid black;
+	padding:	0.5em;
+}
+
+table#activity_list th{
+	background-color:	#999999;
+}
+
+table#activity_list td.activity_column_title{
+	width:	10%;
+}
+
+table#activity_list td.activity_column_text{
+	width:	25%;
+}
+
+table#activity_list td.activity_column_text img{
+	max-width:	6em;
+	max-height:	4em;
+	border:		0.1em solid black;
+	margin:		0.1em;
+}
+
+table#activity_list td.activity_column_details{
+	width:		10%;
+	text-align:	center;
+}
+
+table#activity_list td.activity_column_translations{
+	width:		10%;
+	text-align:	center;
+}
+
+table#activity_list td.activity_column_action{
+	width:		10%;
+	text-align:	center;
+}
+
+table#activity_list form{
+	margin:	0;
+}
+
+table#activity_list input[type="button"], input[type="submit"]{
+	width:			90%;
+	margin-top:		0.2em;
+	margin-bottom:	0.2em;
+}
+
+div#translate_controls{
+	width:			50%;
+	margin-left:	auto;
+	margin-right:	auto;
+	text-align:		center;
+}
+
+div#translate_controls input{
+	width:		100%;
+	margin-top:	1em;
 }

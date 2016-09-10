@@ -24,8 +24,11 @@
 		<link rel="stylesheet" type="text/css" media="(max-width : 990px)" href="/css/m/lablanca.css"/>
 		<!-- Script files -->
 		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="/script/ui.js"></script>
+		<script src="../ckeditor/ckeditor.js"></script>
 	</head>
 	<body onLoad='calculate("all");'>
+		<?php include('../toolbar.php'); ?>
 		<div id='content'>
 			<div class='section' id='section_header'>
 				<h4>Paso 1: Cabecera de la p&aacute;gina de fiestas</h4>
@@ -38,20 +41,29 @@
 						<?php
 							$q = mysqli_query($con, "SELECT * FROM festival WHERE year = $year;");
 							$r = mysqli_fetch_array($q);
-							echo "<textarea onChange='updateField(\"festival\", \"text_es\", this.value, $r[id], \"text\", false);calculate(\"header\");'>$r[text_es]</textarea>\n";
+							echo "<textarea id='text_es' onChange='updateField(\"festival\", \"text_es\", this.value, $r[id], \"text\", false);calculate(\"header\");'>$r[text_es]</textarea>\n";
 						?>
+						<script>
+							CKEDITOR.replace('text_es');
+						</script>
 					</div>
 					<div class='header_text'>
 						Texto ingl&eacute;s:
 						<?php
-							echo "<textarea onChange='updateField(\"festival\", \"text_en\", this.value, $r[id]);calculate(\"header\");'>$r[text_en]</textarea>\n";
+							echo "<textarea id='text_en' onChange='updateField(\"festival\", \"text_en\", this.value, $r[id]);calculate(\"header\");'>$r[text_en]</textarea>\n";
 						?>
+						<script>
+							CKEDITOR.replace('text_en');
+						</script>
 					</div>
 					<div class='header_text'>
 						Texto euskera:
 						<?php
-							echo "<textarea onChange='updateField(\"festival\", \"text_eu\", this.value, $r[id]);calculate(\"header\");'>$r[text_eu]</textarea>\n";
+							echo "<textarea id='text_eu' onChange='updateField(\"festival\", \"text_eu\", this.value, $r[id]);calculate(\"header\");'>$r[text_eu]</textarea>\n";
 						?>
+						<script>
+							CKEDITOR.replace('text_eu');
+						</script>
 					</div>
 					<div id='header_image'>
 						Cartel:<br/>
@@ -166,7 +178,7 @@
 							<td>
 								<select id='new_event_25_host' class='new_event_host'>
 									<option value='-2' selected='selected'>SELECCIONA...</option>
-									<option value='-1' selected='selected'>A&Ntilde;ADIR NUEVO...</option>
+									<option value='-1'>A&Ntilde;ADIR NUEVO...</option>
 									<?php
 										$q = mysqli_query($con, "SELECT * FROM people;");
 										while ($r = mysqli_fetch_array($q)){
@@ -178,7 +190,7 @@
 							<td>
 								<select id='new_event_25_host' class='new_event_host'>
 									<option value='-2' selected='selected'>SELECCIONA...</option>
-									<option value='-1' selected='selected'>A&Ntilde;ADIR NUEVO...</option>
+									<option value='-1'>A&Ntilde;ADIR NUEVO...</option>
 									<?php
 										$q = mysqli_query($con, "SELECT * FROM place;");
 										while ($r = mysqli_fetch_array($q)){

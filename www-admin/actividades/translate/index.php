@@ -28,10 +28,11 @@
 				<h3>Lista de actividades</h3>
 				<div class='entry'>
 					<?php
-						$q = mysqli_query($con, "SELECT * FROM activity;");
-						echo "<table class='translation_table'><tr><th>Nombre</th><th>Ingles</th><th>Euskera</th></tr>\n";
+						$q = mysqli_query($con, "SELECT id, title_es, title_eu, title_en, text_es, text_en, text_eu, DATE_FORMAT(date, '%b %d, %Y') AS dat FROM activity ORDER BY date;");
+						echo "<table class='translation_table'><tr><th>Nombre</th><th>Fecha</th><th>Ingles</th><th>Euskera</th></tr>\n";
 						while ($r = mysqli_fetch_array($q)){
 							echo "<tr><td><a href='http://$http_host/actividades/translate/translate.php?id=$r[id]'>$r[title_es]</a></td>";
+							echo("<td>$r[dat]</td>");
 							$total = 2; //Title and text are mandatory
 							$translated_en = 0;
 							$translated_eu = 0;
