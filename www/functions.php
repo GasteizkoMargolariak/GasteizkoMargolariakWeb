@@ -269,7 +269,7 @@
 	
 	/****************************************************
 	* Text shortener. Given a string, it trims in the   *
-	* proximity of the desired streng, ut to the next   * 
+	* proximity of the desired string, ut to the next   * 
 	* white character. If indicated, it will append a   *
 	* link to the full text.                            *
 	*                                                   *

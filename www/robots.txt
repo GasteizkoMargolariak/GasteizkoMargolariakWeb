@@ -8,6 +8,7 @@ Disallow: /galeria/load_photo.php
 Disallow: /galeria/save.php
 Disallow: /error/
 Disallow: /app/
+Disallow: /API/
 Disallow: /css/
 Disallow: /script/
 Disallow: /lang/
