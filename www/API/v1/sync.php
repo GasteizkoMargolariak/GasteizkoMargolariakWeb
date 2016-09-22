@@ -1,8 +1,17 @@
 <?php
 	// Gasteizko Margolariak API v1 //
 	
-	define('DEF_FORMAT', 1);
+	//TODO: Include another JSON structure with database section versions.
+	//TODO: Read and parse $_GET params.
+	//TODO: Register the call on the database.
+	
+	//List of available data formatting
 	define('FOR_JSON', 1);
+	
+	//Default info format
+	define('DEF_FORMAT', 1);
+
+	//Database section identifiers
 	define('SEC_ALL', 0);
 	define('SEC_BLOG', 1);
 	define('SEC_ACTIVITIES', 2);
@@ -21,15 +30,40 @@
 	*             to get them all.                      *
  	****************************************************/
 	function get_version($con, $section = SEC_ALL){
-		//TODO
-		return(30);
+		if ($section == SEC_ALL){
+			$q = mysqli_query($con, "SELECT SUM(version) AS version FROM version;");
+		}
+		else{
+			$q = mysqli_query($con, "SELECT version FROM version WHERE section = '$section';");
+		}
+		if (mysqli_num_rows == 0){
+			//'Bad request' status code
+			var_dump(http_response_code(400));
+			return 0;
+		}
+		else{
+			$r = mysqli_fetch_array($q);
+			return($r['version']);
+		}
 	}
 	
+	/****************************************************
+	* Prepares the info of the database or a portion of *
+	* it in the selected format.                        * 
+	*                                                   *
+	* @params:                                          *
+	*    con: (MySQL server connection) RO mode enough. *
+	*    section: (string): 'blog', 'activities',       *
+	*             'gallery', 'lablanca', 'global'. None *
+	*             to get them all.                      *
+	*    format: (int): 1: json (default).              *
+ 	****************************************************/
 	function sync($con, $section = SEC_ALL, $version = 0, $format = DEF_FORMAT){
 		
 		//Skip if current version equal or higher than the one in the database.
 		if ($version >= get_version($con, $section)){
-			//TODO: print something?
+			//'No content' status code
+			var_dump(http_response_code(204));
 			return;
 		}
 		
@@ -50,6 +84,8 @@
 				$tables = [ 'activity', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
 				break;
 			default:
+				//'Bad request' staus code
+				var_dump(http_response_code(400));
 				return;
 		}
 		
@@ -59,7 +95,7 @@
 				foreach($tables as $table){
 					$db[] = [ $table => get_table($con, $table, $format) ];
 				}
-				return(json_encode($db)); //FIXME: Calling this here too escapes doblequotes
+				return(json_encode($db));
 				break;
 		}
 		
@@ -73,11 +109,10 @@
 	* @params:                                          *
 	*    con: (MySQL server connection) RO mode enough. *
 	*    table (string): The name of the table.         *
-	*    format: (int): 1: json (default).              *
  	****************************************************/
-	function get_table($con, $table, $format = DEF_FORMAT){
-		//TODO: table to lowercase
-		switch (table){
+	function get_table($con, $table){
+		$table = strtolower($table);
+		switch ($table){
 			case "activity":
 				$q = mysqli_query($con, "SELECT id, permalink, date, city, title_es, title_en, title_eu, text_es, text_eu, text_en, after_es, after_en, after_eu, price, inscription, max_people, album FROM activity WHERE visible = 1;");
 				break;
@@ -105,7 +140,8 @@
 				}
 				//If forbidden table
 				else{
-					//TODO
+					//'Forbidden' status code
+					var_dump(http_response_code(403));
 					return;
 				}
 		}
@@ -121,9 +157,9 @@
 		//return(json_encode($rows));
 	}
 	
-	//TODO: Remove when tested
-	include("../../functions.php");
-	$con = startdb('ro');
-	//get_table($con, 'festival');
-	echo(sync($con, SEC_ALL));
+	//TEST: Remove when tested
+	//include("../../functions.php");
+	//$con = startdb('ro');
+	//echo(get_table($con, 'post'));
+	//echo(sync($con, SEC_ALL));
 ?>
