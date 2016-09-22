@@ -380,6 +380,12 @@ CREATE TABLE settings (
 	changed		TIMESTAMP	NOT NULL		DEFAULT now()
 );
 
+DROP TABLE IF EXISTS version;
+CREATE TABLE version (
+	section		VARCHAR(12)	PRIMARY KEY,
+	version		INT			DEFAULT 1
+);
+
 DROP TABLE IF EXISTS member;
 CREATE TABLE member (
 	id			INT				AUTO_INCREMENT	PRIMARY KEY,
