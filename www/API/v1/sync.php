@@ -1,22 +1,32 @@
-<?php
+ <?php
 	// Gasteizko Margolariak API v1 //
 	
-	//TODO: Include another JSON structure with database section versions.
-	//TODO: Read and parse $_GET params.
 	//TODO: Register the call on the database.
-	
+		
 	//List of available data formatting
-	define('FOR_JSON', 1);
+	define('FOR_JSON', 'json');
 	
 	//Default info format
-	define('DEF_FORMAT', 1);
+	define('DEF_FORMAT', FOR_JSON);
 
 	//Database section identifiers
-	define('SEC_ALL', 0);
-	define('SEC_BLOG', 1);
-	define('SEC_ACTIVITIES', 2);
-	define('SEC_GALLERY', 3);
-	define('SEC_LABLANCA', 4);
+	define('SEC_ALL', 'all');
+	define('SEC_BLOG', 'blog');
+	define('SEC_ACTIVITIES', 'activities');
+	define('SEC_GALLERY', 'gallery');
+	define('SEC_LABLANCA', 'lablanca');
+	
+	//Posible actions
+	define('ACTION_SYNC', 'sync');
+	define('ACTION_VERSION', 'version');
+	
+	//$_GET valid parameters
+	define('GET_CLIENT', 'client');
+	define('GET_ACTION', 'action');
+	define('GET_SECTION', 'section');
+	define('GET_VERSION', 'version');
+	define('GET_FOREGROUND', 'foreground');
+	define('GET_FORMAT', 'json')
 	
 	
 	/****************************************************
@@ -58,14 +68,7 @@
 	*             to get them all.                      *
 	*    format: (int): 1: json (default).              *
  	****************************************************/
-	function sync($con, $section = SEC_ALL, $version = 0, $format = DEF_FORMAT){
-		
-		//Skip if current version equal or higher than the one in the database.
-		if ($version >= get_version($con, $section)){
-			//'No content' status code
-			var_dump(http_response_code(204));
-			return;
-		}
+	function sync($con, $section = SEC_ALL, $format = DEF_FORMAT){
 		
 		switch ($section){
 			case SEC_BLOG:
@@ -152,14 +155,73 @@
 			$rows[] = $r;
 		}
 		return $rows;
-		
-		//Print array
-		//return(json_encode($rows));
 	}
 	
-	//TEST: Remove when tested
-	//include("../../functions.php");
-	//$con = startdb('ro');
-	//echo(get_table($con, 'post'));
-	//echo(sync($con, SEC_ALL));
+	//Connect to the database
+	$con = startdb('rw');
+	
+	//Get data from URL
+	$client = mysqli_real_escape_string($con, $_GET[GET_CLIENT]);
+	$action = strtolower(mysqli_real_escape_string($con, $_GET[GET_ACTION]));
+	$section = strtolower(mysqli_real_escape_string($con, $_GET[GET_SECTION]));
+	$version = mysqli_real_escape_string($con, $_GET[GET_VERSION]);
+	$foregroud = mysqli_real_escape_string($con, $_GET[GET_FOREGROUND]);
+	$format = strtolower(mysqli_real_escape_string($con, $_GET[GET_FORMAT]));
+	
+	//Validate data
+	if (strlen($client) < 1){
+		$client = '';
+	}
+	if ($action != ACTION_SYNC && $action != ACTION_VERSION){
+		//Bad request
+		var_dump(http_response_code(400));
+		exit(-1);
+	}
+	if (strlen($section) > 0 && $section != SEC_ALL && $section != SEC_BLOG && $section != SEC_ACTIVITIES && $section != SEC_GALLERY && $section != SEC_LABLANCA ){
+		//Bad request
+		var_dump(http_response_code(400));
+		exit(-1);
+	}
+	if (strlen($section) == 0){
+		$section = SEC_ALL;
+	}
+	if (is_int($version) == false){
+		//Bad request
+		var_dump(http_response_code(400));
+		exit(-1);
+	}
+	if (strlen($foregroud) < 1){
+		$foreground = 1;
+	}
+	if ($foreground != 0 && $foregroud != 0){
+		//Bad request
+		var_dump(http_response_code(400));
+		exit(-1);
+	}
+	if (strlen($format) < 1){
+		$format = DEF_FORMAT;
+	}
+	if ($format != FOR_JSON){
+		//Bad request
+		var_dump(http_response_code(400));
+		exit(-1);
+	}
+	
+	//If the client just needs to know the version number
+	if ($action == ACTION_VERSION){
+		echo (get_version($con, $section));
+	}
+	//If the clients wants to actually perform a sync
+	else{
+		//If the client version is up to date, send a no content status
+		if ($version >= get_version($con, $section)){
+			//No content
+			var_dump(http_response_code(204));
+			exit(0);
+		}
+		//If the client needs an update
+		else{
+			echo(sync($con, $section));
+		}	
+	}
 ?>
