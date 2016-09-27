@@ -20,6 +20,7 @@
 	
 	//$_GET valid parameters
 	define('GET_CLIENT', 'client');
+	define('GET_USER', 'user');
 	define('GET_ACTION', 'action');
 	define('GET_SECTION', 'section');
 	define('GET_VERSION', 'version');
@@ -33,6 +34,41 @@
 	define('ERR_FOREGROUND', '-FOREGROUND:');
 	define('ERR_FORMAT', '-FORMAT:');
 	
+	/****************************************************
+	* This function is called from almost everywhere at *
+	* the beggining of the page. It initializes the     *
+	* session variables, connect to the db, enabling    *
+	* the variable $con for futher use everywhere in    *
+	* the php code, and populates the arrays $user      *
+	* and $permission, with info about the user.        *
+	*                                                   *
+	* @return: (db connection): The connection handler. *
+	****************************************************/
+	function startdb(){
+		//Include the db configuration file. It's somehow like this
+		/*
+		<?php
+			$host = 'XXXX';
+			$db_name = 'XXXX';
+			$username_ro = 'XXXX';
+			$username_rw = 'XXXX';
+			$pass_ro = 'XXXX';
+			$pass_rw = 'XXXX';
+		?>
+		*/
+		include('../../.htpasswd');
+		
+		//Connect to to database
+		$con = mysqli_connect($host, $username_rw, $pass_rw, $db_name);
+		
+		//Set encoding options
+		mysqli_set_charset($con, 'utf-8');
+		header('Content-Type: text/html; charset=utf8');
+		mysqli_query($con, 'SET NAMES utf8;');
+		
+		//Return the db connection
+		return $con;
+	}	
 	
 	/****************************************************
 	* Echoes the version of one or more of the sections *
@@ -53,7 +89,7 @@
 		}
 		if (mysqli_num_rows == 0){
 			//'Bad request' status code
-			var_dump(http_response_code(400));
+			http_response_code(400);
 			return 0;
 		}
 		else{
@@ -93,7 +129,7 @@
 				break;
 			default:
 				//'Bad request' staus code
-				var_dump(http_response_code(400));
+				http_response_code(400);
 				return;
 		}
 		
@@ -128,7 +164,7 @@
 				$q = mysqli_query($con, "SELECT activity_comment.id AS id, activity, text, dtime, CONCAT(user.username, user) AS user, lang FROM activity_comment, user WHERE activity_comment.user = user.id AND approved = 1;");
 				break;
 			case "album":
-				$q = mysqli_query($con, "SELECT id, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, open;");
+				$q = mysqli_query($con, "SELECT id, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, open FROM album;");
 				break;
 			case "photo":
 				$q = mysqli_query($con, "SELECT photo.id AS id, file, permalink, text_es, text_en, text_eu, description_es, description_en, description_eu, uploaded, place, width, height, size, CONCAT(username, user) AS user FROM photo, user WHERE user.id = photo.user AND approved = 1;");
@@ -149,7 +185,7 @@
 				//If forbidden table
 				else{
 					//'Forbidden' status code
-					var_dump(http_response_code(403));
+					http_response_code(403);
 					return;
 				}
 		}
@@ -162,8 +198,30 @@
 		return $rows;
 	}
 	
-	function log_sync(){
-		//TODO;
+	function get_user_ip(){
+		$client  = @$_SERVER['HTTP_CLIENT_IP'];
+		$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+		$remote  = $_SERVER['REMOTE_ADDR'];
+		if(filter_var($client, FILTER_VALIDATE_IP)){
+			$ip = $client;
+		}
+		elseif(filter_var($forward, FILTER_VALIDATE_IP)){
+			$ip = $forward;
+		}
+		else{
+			$ip = $remote;
+		}
+		return $ip;
+	}
+	
+	function log_sync($con, $client, $user, $action, $section, $version, $new_version, $foreground, $format, $error){
+		$ip = get_user_ip();
+		$browser_data = get_browser(null, true);
+		$os = $browser_data['platform'];
+		$browser = $browser_data['browser'];
+		$uagent = $browser_data['browser_name_pattern'];
+		mysqli_query($con, "INSERT INTO sync (client, user, action, section, version_from, version_to, fg, format, error, ip, os, uagent) VALUES ('$client', '$user', '$action', '$section', $version, $new_version, $foreground, '$format', '$error', '$ip', '$os', '$uagent');");
+		error_log("INSERT INTO sync (client, user, action, section, version_from, version_to, fg, format, error, ip, os, uagent) VALUES ('$client', '$user', '$action', '$section', $version, $new_version, $foreground, '$format', '$error', '$ip', '$os', '$uagent');");
 	}
 	
 	//Connect to the database
@@ -171,13 +229,14 @@
 	
 	//Get data from URL
 	$client = mysqli_real_escape_string($con, $_GET[GET_CLIENT]);
+	$user = mysqli_real_escape_string($con, $_GET[GET_USER]);
 	$action = strtolower(mysqli_real_escape_string($con, $_GET[GET_ACTION]));
 	$section = strtolower(mysqli_real_escape_string($con, $_GET[GET_SECTION]));
 	$version = mysqli_real_escape_string($con, $_GET[GET_VERSION]);
 	$foregroud = mysqli_real_escape_string($con, $_GET[GET_FOREGROUND]);
 	$format = strtolower(mysqli_real_escape_string($con, $_GET[GET_FORMAT]));
 	
-	//Initialize error message
+	//Initialize some variables
 	$error = '';
 	$new_version = -1;
 	
@@ -185,30 +244,37 @@
 	if (strlen($client) < 1){
 		$client = '';
 	}
+	if (strlen($user) < 1){
+		$user = '';
+	}
 	if ($action != ACTION_SYNC && $action != ACTION_VERSION){
 		//Bad request
-		var_dump(http_response_code(400));
+		http_response_code(400);
 		$error = $error . ERR_ACTION . mysqli_real_escape_string($con, $_GET[GET_ACTION]);
 	}
 	if (strlen($section) > 0 && $section != SEC_ALL && $section != SEC_BLOG && $section != SEC_ACTIVITIES && $section != SEC_GALLERY && $section != SEC_LABLANCA ){
 		//Bad request
-		var_dump(http_response_code(400));
+		http_response_code(400);
 		$error = $error . ERR_SECTION . mysqli_real_escape_string($con, $_GET[GET_SECTION]);
 	}
 	if (strlen($section) == 0){
 		$section = SEC_ALL;
 	}
+	if (strlen($version) == 0){
+		$version = -1;
+	}
 	if (is_int($version) == false){
 		//Bad request
-		var_dump(http_response_code(400));
+		http_response_code(400);
 		$error = $error . ERR_VERSION . mysqli_real_escape_string($con, $_GET[GET_VERSION]);
+		$version = -1;
 	}
 	if (strlen($foregroud) < 1){
 		$foreground = 1;
 	}
 	if ($foreground != 0 && $foregroud != 0){
 		//Bad request
-		var_dump(http_response_code(400));
+		http_response_code(400);
 		$error = $error . ERR_FOREGROUND . mysqli_real_escape_string($con, $_GET[GET_BACKGROUND]);
 	}
 	if (strlen($format) < 1){
@@ -216,7 +282,7 @@
 	}
 	if ($format != FOR_JSON){
 		//Bad request
-		var_dump(http_response_code(400));
+		http_response_code(400);
 		$error = $error . ERR_FORMAT . mysqli_real_escape_string($con, $_GET[GET_FORMAT]);
 	}
 	
@@ -233,8 +299,7 @@
 			$new_version = get_version($con, $section);
 			if ($version >= $new_version){
 				//No content
-				var_dump(http_response_code(204));
-				exit(0);
+				http_response_code(204);
 			}
 			//If the client needs an update
 			else{
@@ -244,7 +309,7 @@
 	}
 	
 	//Log the sync in the database
-	log_sync($client, $action, $section, $version, $new_version, $foregroud, $format, $error);
+	log_sync($con, $client, $user, $action, $section, $version, $new_version, $foreground, $format, $error);
 	
 	
 ?>
