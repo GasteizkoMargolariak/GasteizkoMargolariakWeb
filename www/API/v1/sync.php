@@ -1,7 +1,5 @@
  <?php
 	// Gasteizko Margolariak API v1 //
-	
-	//TODO: Register the call on the database.
 		
 	//List of available data formatting
 	define('FOR_JSON', 'json');
@@ -26,7 +24,14 @@
 	define('GET_SECTION', 'section');
 	define('GET_VERSION', 'version');
 	define('GET_FOREGROUND', 'foreground');
-	define('GET_FORMAT', 'json')
+	define('GET_FORMAT', 'json');
+	
+	//Error messages
+	define('ERR_ACTION', '-ACTION:');
+	define('ERR_SECTION', '-SECTION:');
+	define('ERR_VERSION', '-VERSION:');
+	define('ERR_FOREGROUND', '-FOREGROUND:');
+	define('ERR_FORMAT', '-FORMAT:');
 	
 	
 	/****************************************************
@@ -157,6 +162,10 @@
 		return $rows;
 	}
 	
+	function log_sync(){
+		//TODO;
+	}
+	
 	//Connect to the database
 	$con = startdb('rw');
 	
@@ -168,6 +177,10 @@
 	$foregroud = mysqli_real_escape_string($con, $_GET[GET_FOREGROUND]);
 	$format = strtolower(mysqli_real_escape_string($con, $_GET[GET_FORMAT]));
 	
+	//Initialize error message
+	$error = '';
+	$new_version = -1;
+	
 	//Validate data
 	if (strlen($client) < 1){
 		$client = '';
@@ -175,12 +188,12 @@
 	if ($action != ACTION_SYNC && $action != ACTION_VERSION){
 		//Bad request
 		var_dump(http_response_code(400));
-		exit(-1);
+		$error = $error . ERR_ACTION . mysqli_real_escape_string($con, $_GET[GET_ACTION]);
 	}
 	if (strlen($section) > 0 && $section != SEC_ALL && $section != SEC_BLOG && $section != SEC_ACTIVITIES && $section != SEC_GALLERY && $section != SEC_LABLANCA ){
 		//Bad request
 		var_dump(http_response_code(400));
-		exit(-1);
+		$error = $error . ERR_SECTION . mysqli_real_escape_string($con, $_GET[GET_SECTION]);
 	}
 	if (strlen($section) == 0){
 		$section = SEC_ALL;
@@ -188,7 +201,7 @@
 	if (is_int($version) == false){
 		//Bad request
 		var_dump(http_response_code(400));
-		exit(-1);
+		$error = $error . ERR_VERSION . mysqli_real_escape_string($con, $_GET[GET_VERSION]);
 	}
 	if (strlen($foregroud) < 1){
 		$foreground = 1;
@@ -196,7 +209,7 @@
 	if ($foreground != 0 && $foregroud != 0){
 		//Bad request
 		var_dump(http_response_code(400));
-		exit(-1);
+		$error = $error . ERR_FOREGROUND . mysqli_real_escape_string($con, $_GET[GET_BACKGROUND]);
 	}
 	if (strlen($format) < 1){
 		$format = DEF_FORMAT;
@@ -204,24 +217,34 @@
 	if ($format != FOR_JSON){
 		//Bad request
 		var_dump(http_response_code(400));
-		exit(-1);
+		$error = $error . ERR_FORMAT . mysqli_real_escape_string($con, $_GET[GET_FORMAT]);
 	}
 	
-	//If the client just needs to know the version number
-	if ($action == ACTION_VERSION){
-		echo (get_version($con, $section));
-	}
-	//If the clients wants to actually perform a sync
-	else{
-		//If the client version is up to date, send a no content status
-		if ($version >= get_version($con, $section)){
-			//No content
-			var_dump(http_response_code(204));
-			exit(0);
+	//If there has not been an error, procede
+	if (strlen($error) == 0){
+		//If the client just needs to know the version number
+		if ($action == ACTION_VERSION){
+			$new_version = get_version($con, $section);
+			echo ($new_version);
 		}
-		//If the client needs an update
+		//If the clients wants to actually perform a sync
 		else{
-			echo(sync($con, $section));
-		}	
+			//If the client version is up to date, send a no content status
+			$new_version = get_version($con, $section);
+			if ($version >= $new_version){
+				//No content
+				var_dump(http_response_code(204));
+				exit(0);
+			}
+			//If the client needs an update
+			else{
+				echo(sync($con, $section));
+			}	
+		}
 	}
+	
+	//Log the sync in the database
+	log_sync($client, $action, $section, $version, $new_version, $foregroud, $format, $error);
+	
+	
 ?>
