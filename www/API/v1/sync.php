@@ -21,6 +21,10 @@
 	//Default action
 	define('DEF_ACTION', ACTION_SYNC);
 	
+	//Output keys
+	define('KEY_VERSION', 'version');
+	define('KEY_DATA', 'data');
+	
 	//$_GET valid parameters
 	define('GET_CLIENT', 'client');
 	define('GET_USER', 'user');
@@ -74,7 +78,7 @@
 	}	
 	
 	/****************************************************
-	* Echoes the version of one or more of the sections *
+	* Gives the version of one or more of the sections  *
 	* of the database, or the global section.           * 
 	*                                                   *
 	* @params:                                          *
@@ -100,6 +104,23 @@
 			$r = mysqli_fetch_array($q);
 			return($r['version']);
 		}
+	}
+	
+	/****************************************************
+	* Gives the version of every section of the db.     *
+	*                                                   *
+	* @params:                                          *
+	*    con: (MySQL server connection) RO mode enough. *
+	* @return: (Assoc. array): The versions of the db.  *
+ 	****************************************************/
+	function get_all_versions($con){
+		$v = array();
+		$v[] = [SEC_ALL => get_version($con, SEC_ALL)];
+		$v[] = [SEC_BLOG => get_version($con, SEC_BLOG)];
+		$v[] = [SEC_ACTIVITIES => get_version($con, SEC_ACTIVITIES)];
+		$v[] = [SEC_GALLERY => get_version($con, SEC_GALLERY)];
+		$v[] = [SEC_LABLANCA => get_version($con, SEC_LABLANCA)];
+		return $v;
 	}
 	
 	/****************************************************
@@ -138,13 +159,24 @@
 				return;
 		}
 		
+		$v = array();
+		if ($section == SEC_ALL){
+			$v = get_all_versions($con);
+		}
+		else{
+			$v[] = [ $section => get_version($con, $section) ];
+		}
+		
 		switch ($format){
 			case FOR_JSON:
 				$db = array();
 				foreach($tables as $table){
 					$db[] = [ $table => get_table($con, $table, $format) ];
 				}
-				return(json_encode($db));
+				$data = array();
+				$data[] = [ KEY_VERSION => $v ];
+				$data[] = [ KEY_DATA => $db];
+				return(json_encode($data));
 				break;
 		}
 		
@@ -276,7 +308,7 @@
 		$user = '';
 	}
 	if (strlen($action) < 1){
-		$action = DEF_ACTION
+		$action = DEF_ACTION;
 	}
 	if ($action != ACTION_SYNC && $action != ACTION_VERSION){
 		//Bad request

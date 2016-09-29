@@ -1,3 +1,5 @@
+#RewriteMap lc int:tolower
+
 ErrorDocument 403     /error/403.php
 ErrorDocument 404     /error/404.php
 ErrorDocument 500     /error/500.php
@@ -12,6 +14,8 @@ AddHandler php5-cgi .xml
 # </FilesMatch>
 Options +FollowSymlinks
 RewriteEngine on
+CheckSpelling on
+
 
 RewriteRule ^sitemap.xml$ /sitemap.php [NC]
 RewriteRule ^imgmap.xml$ /sitemap-image.php [NC]
@@ -44,6 +48,10 @@ RewriteRule ^galeria/([A-Z\-a-z0-9{3,}]+)/$ /galeria/album.php?perm=$1 [NC]
 RewriteRule ^galeria/([A-Z\-a-z0-9{3,}]+)/([A-Z\-a-z0-9{3,}]+)$ /galeria/photo.php?album=$2&perm=$1 [NC]
 RewriteRule ^galeria/([A-Z\-a-z0-9{3,}]+)/([A-Z\-a-z0-9{3,}]+)/$ /galeria/photo.php?album=$2&perm=$1 [NC]
 
+#API redirections
+#TODO: This changes the url in the browser
+RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)$ /API/V$1/help/$2.php [NC,QSA,L]
+RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)/$ /API/V$1/help/$2.php [L,NC]
 
 # BEGIN Cache-Control Headers
 <IfModule mod_expires.c>
