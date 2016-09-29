@@ -18,6 +18,9 @@
 	define('ACTION_SYNC', 'sync');
 	define('ACTION_VERSION', 'version');
 	
+	//Default action
+	define('DEF_ACTION', ACTION_SYNC);
+	
 	//$_GET valid parameters
 	define('GET_CLIENT', 'client');
 	define('GET_USER', 'user');
@@ -79,6 +82,7 @@
 	*    section: (string): 'blog', 'activities',       *
 	*             'gallery', 'lablanca', 'global'. None *
 	*             to get them all.                      *
+	* @return: (int): The version of the db section.    *
  	****************************************************/
 	function get_version($con, $section = SEC_ALL){
 		if ($section == SEC_ALL){
@@ -108,6 +112,7 @@
 	*             'gallery', 'lablanca', 'global'. None *
 	*             to get them all.                      *
 	*    format: (int): 1: json (default).              *
+	* @return: (String): data in the desired format.    *
  	****************************************************/
 	function sync($con, $section = SEC_ALL, $format = DEF_FORMAT){
 		
@@ -153,6 +158,7 @@
 	* @params:                                          *
 	*    con: (MySQL server connection) RO mode enough. *
 	*    table (string): The name of the table.         *
+	* @return: (Assoc Array): Data in the table.        *
  	****************************************************/
 	function get_table($con, $table){
 		$table = strtolower($table);
@@ -185,6 +191,7 @@
 				//If forbidden table
 				else{
 					//'Forbidden' status code
+					//TODO: I dont want execution stopping here
 					http_response_code(403);
 					return;
 				}
@@ -198,6 +205,12 @@
 		return $rows;
 	}
 	
+	
+	/****************************************************
+	* gets the IP address of the client.                *
+	*                                                   *
+	* @return: (String): Client IP address.             *
+ 	****************************************************/
 	function get_user_ip(){
 		$client  = @$_SERVER['HTTP_CLIENT_IP'];
 		$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -214,6 +227,21 @@
 		return $ip;
 	}
 	
+	/****************************************************
+	* Registers the request in the database.            *
+	*                                                   *
+	* @params:                                          *
+	*    con: (MySQL server connection) RO mode enough. *
+	*    client: (string): The client identifier.       *
+	*    user: (string): A unique end user identifier.  *
+	*    action: (string): Requested action.            *
+	*    section: (string): Requested database section. *
+	*    version: (int): Version of the client db.      *
+	*    new_version: (int): Returned version.          *
+	*    foreground: (int): 1 for fg syncs, 0 for bg.   *
+	*    format: (string): Requested format.            *
+	*    error: (string): Error message to store.       *
+	****************************************************/
 	function log_sync($con, $client, $user, $action, $section, $version, $new_version, $foreground, $format, $error){
 		$ip = get_user_ip();
 		$browser_data = get_browser(null, true);
@@ -246,6 +274,9 @@
 	}
 	if (strlen($user) < 1){
 		$user = '';
+	}
+	if (strlen($action) < 1){
+		$action = DEF_ACTION
 	}
 	if ($action != ACTION_SYNC && $action != ACTION_VERSION){
 		//Bad request
