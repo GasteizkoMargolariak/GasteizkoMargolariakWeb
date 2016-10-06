@@ -72,7 +72,7 @@
 					echo "<meta itemprop='endDate' content='$year-08-09'/>\n";
 					echo "<meta itemprop='url' content='http://$http_host/lablanca/'/>\n";
 					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name' content='Vitoria-Gasteiz'/></span>\n");
-					echo "<h3>$lng[index_festivals_header] $year</h3>\n";
+					echo "<h3 class='section_title'>$lng[index_festivals_header] $year</h3>\n";
 					echo "<table class='festival_section_table'><tr>\n";
 					
 					//Summary
