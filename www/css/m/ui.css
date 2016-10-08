@@ -21,7 +21,6 @@ div#header_m{
 	width:		100%;
 	margin:		0;
 	padding:	0;
-/* 	max-height:	0; */
 	transition:	max-height 0.9s ease-in-out;
 }
 
@@ -30,17 +29,17 @@ div#header_m img#mobile_logo{
 	float:			left;
 	width:			4em;
 	margin-right:	-4em;
-	-webkit-filter:	drop-shadow(0 0 0.1em #000000);
+	-webkit-filter:	drop-shadow(0 0 0.2em #336);
 	filter:			url(#drop-shadow);
-	filter:			drop-shadow(0 0 0.1em #000000);
+	filter:			drop-shadow(0 0 0.2em #336);
 	-ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#444')";
 	filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#444')";
+	border:			0.05em solid #000011;
+	border-radius:	100%;
 }
 
 div#header_menu_m div{
-/* 	margin-top:			0; */
 	padding-top:		0.6em;
-/* 	height:				2.4em; */
 	font-weight:		bold;
 	text-align:			center;
 	background-color:	#aaaaaa;
@@ -48,8 +47,8 @@ div#header_menu_m div{
 }
 
 div#header_menu_m div#header_m_slider{
-	display:	none;
-	background-color:	#4c9ed8;
+	display:			none;
+	background-color:	#0078ff;
 }
 
 div#header_menu_m div#header_m_slider img{
@@ -60,13 +59,13 @@ div#header_menu_m div#header_m_slider img{
 
 div#header_menu_m div#header_m_title{
 	vertical-align:		middle;
-/* 	height: 			2.5em; */
+	color:				#ffffff;
 	max-height:			3.5em;
 	padding-top:		0.75em;
 	transition:			max-height 0.3s ease-in-out;
 	overflow:			hidden;
 	padding:			0;
-	background-color:	#4c9ed8
+	background-color:	#0078ff
 }
 
 div#header_menu_m div#header_m_title span {
@@ -91,7 +90,7 @@ div#header_menu_m div.header_m_link{
 	border:				0;
 	overflow:			hidden;
 	transition:			max-height 0.3s ease-in-out;
-	background-color:	#4c9ed8;
+	background-color:	#0078ff;
 }
 
 div#header_menu_m div.header_m_link a{
@@ -178,21 +177,6 @@ div#content{
 	min-width:	initial;
 }
 
-/* Sections */
-div.section{
-	padding:			0.1em;
-	border:				0.05em solid #333333;
-	box-shadow:			0 0 0.4em #000000;
-}
-
-/* Entries */
-div.entry{
-	padding:			0.2em;
-	margin:				0.3em;
-	border:				0.05em solid #333333;
-	box-shadow:			0 0 0.2em #301078;
-}
-
 /******************************************
 * Styles for the ad window.               *
 ******************************************/
@@ -203,7 +187,6 @@ div#ad{
 	left:		15%;
 	right:		15%
 }
-
 
 div#ad h3{
 	margin-top:	0.3em;
@@ -235,7 +218,6 @@ div#ad div.entry a{
 ******************************************/
 div#cookie_popup{
 	font-size:					80%;
-/* 	display:					inline-block; */
 	color:						#dddddd;
 	text-align:					center;
 	position:					fixed;
@@ -245,7 +227,6 @@ div#cookie_popup{
 	left:						0em;
 	right:						0em;
 	bottom:						0em;
-/* 	width:						100%; */
 	-ms-transform:				rotate(0deg); /* IE 9 */
 	-ms-transform-origin:		0% 0%; /* IE 9 */
 	-webkit-transform:			rotate(00deg); /* Chrome, Safari, Opera */

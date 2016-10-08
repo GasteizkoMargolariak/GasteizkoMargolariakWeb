@@ -1,22 +1,4 @@
 /******************************************
-* Color scheme.                           *
-*                                         *
-* background: #ddddff                     *
-* link:       #4c9ed9                     *
-* link-h:     #bbf                        *
-* section:    #4c9ed7                     *
-* shadows:    #dde                        *
-* shadows-h:  #111                        *
-* header:     #9bc1da                     *
-* entry:      #ffffff                     *
-* border:     #003                        *
-* extra1:     #eeeeff                     *
-* extra2:     #4c9ed8                        *
-* extra3:     #                           *
-*                                         *
-******************************************/
-
-/******************************************
 * Hide elements intended for mobile.      *
 ******************************************/
 .mobile{
@@ -168,10 +150,8 @@ div#header img{
 	margin:			0;
 	margin-left:	-1em;
 	margin-bottom:	-0.8em;
-/* 	padding:		1%; */
 	vertical-align:	middle;
 	-webkit-filter:	drop-shadow(0 0 0.4em #dde);
-/*     filter:			url(#drop-shadow); */
 	filter:			drop-shadow(0 0 0.4em #dde);
 	border:			0.1em solid #000011;
 	border-radius:	100%;
@@ -181,15 +161,15 @@ div#header img{
 
 /* Section of the header containing links to sections */
 div#header_menu{
-	display:			inline-block;
-	vertical-align:		middle;
-	width:				90%;
-	margin-top:			-0.2em;
-	margin-left:		-4%;
-	background-color:	#f5fbff;
-	border-top-right-radius:		0.5em;
-	border-bottom-right-radius:		0.5em;
-	border:				0.1em solid #1a4d6a;
+	display:					inline-block;
+	vertical-align:				middle;
+	width:						90%;
+	margin-top:					-0.2em;
+	margin-left:				-4%;
+	background-color:			#f5fbff;
+	border-top-right-radius:	0.5em;
+	border-bottom-right-radius:	0.5em;
+	border:						0.1em solid #1a4d6a;
 }
 
 /* Table with the links to the sections */
@@ -250,12 +230,8 @@ div#footer{
 	background-color:	#0078ff;
 	border-top:			0.1em solid #1a4d6a;
 	margin-top:			1em;
-/* 	margin:				-0.5em auto 2.5em auto; */
 	padding:			0.5em 0 0.5em 0;
 	width:				100%;
-/* 	background-color:	#9bc1da; */
-/* 	border-radius:		0 0 0.3em 0.3em; */
-/* 	border-top:		0.2em solid #9cd3d9; */
 	box-shadow:			0 0 2em #dde;
 	text-align:			center;
 	color:				#ccddff
@@ -280,26 +256,21 @@ div#footer div#footer_table div.td{
 	vertical-align:	top;
 }
 
+/* Registry number */
 div#footer span#footer_info{
 	font-size:	80%;
 	font-style:	italic;
 	color:		#222233;
 }
 
-div#footer div#footer_table div#footer_center{
-
-}
-
-div#footer div#footer_table div#footer_center a{
-	font-weight:	bold;
-}
-
+/* Sponsor images and logos */
 div#footer div#footer_table div#footer_center img{
 	max-height:		3.3em;
 	min-height:		2em;
 	min-width:		3em;
 	max-width:		5em;
 	border:			0.1em solid #111122;
+	border-radius:	0.2em;
 	margin:			0;
 	margin:			0.1em 0.4em 0.1em 0.4em;
 	vertical-align:	middle;
@@ -328,7 +299,6 @@ img.lang:hover{
 /* Mobile app link image in the footer */
 img.app{
 	height:			2em;
-/* 	margin:			0.5em; */
 	border-radius:	0.4em;
 	border:			0.15em solid #003;
 	cursor:			pointer;
@@ -361,12 +331,11 @@ img.footer_social_icon:hover{
 ******************************************/
 div#cookie_popup{
 	font-size:					80%;
-/* 	display:					inline-block; */
 	color:						#dddddd;
 	text-align:					center;
 	position:					fixed;
 	background-color:			#4c9ed8;
-	border:					0078ff	0.5em solid #265774;
+	border:						0.5em solid #265774;
 	padding:					1em 10em 1em 10em;
 	left:						-9em;
 	bottom:						9em;
@@ -416,19 +385,13 @@ div#content{
 
 /* Sections */
 div.section{
-/* 	background-color:	#9bc1da; */
-/* 	padding:			0.1em 0.3em 0.1em 0.1em; */
-/* 	border:				-0.1em solid #9cd3d9; */
-/* 	border:				0.1em solid #000011;  */
 	border-left:		0.1em solid #000011;
 	border-right:		0.1em solid #000011;
 	border-bottom:		0.1em solid #000011;
 	border-radius:		1em;
 	padding:			0 0 0.5em 0;
-/* 	background: linear-gradient(135deg, transparent 1.2em, #98c8ff 0) top left; */
 	background-color:	#98c8ff;
 	-webkit-filter:	drop-shadow(0 0 0.4em #000011);
-/*     filter:			url(#drop-shadow); */
 	filter:			drop-shadow(0 0 0.4em #000011);
     -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
     filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
@@ -438,20 +401,16 @@ div.section{
 .section_title{
 	font-size:	120%;
 	font-style:	bold;
-/* 	margin-top:	0.5em; */
 	color:		#ffffff;
 	background-color:	#0078ff;
-/* 	background: linear-gradient(135deg, transparent 0.8em, #0078ff 0) top left; */
 	padding:			0.5em 2em 0.1em 1.5em;
 	border-top-left-radius:	0.7em;
 	border-top-right-radius:	0.7em;
 	border:		0.1em solid #000011;
-
 	margin:				0;
 }
 
 div.section a.go_to_section{
-/* 	color:			#222266; */
 	margin-right:	2em;
 	font-weight:	bold;
 	text-shadow:	0 0 0.0em #ffffff;
