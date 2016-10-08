@@ -63,7 +63,7 @@
 			<div class="content_row">
 				<div class="content_cell">
 					<div class="section" id="section_association">
-						<h3><?php echo $lng['us_association']; ?></h3>
+						<h3 class='section_title'><?php echo $lng['us_association']; ?></h3>
 						<div class="entry">
 							<img src="/img/nosotros/logo.png" alt=" "/>
 							<?php echo $lng['us_association_content']; ?>
@@ -72,7 +72,7 @@
 				</div>
 				<div class="content_cell">
 					<div class="section" id="section_cuadrilla">
-						<h3><?php echo $lng['us_cuadrilla']; ?></h3>
+						<h3 class='section_title'><?php echo $lng['us_cuadrilla']; ?></h3>
 						<div class="entry">
 							<img src="/img/nosotros/margolo.png" alt=" "/>
 							<?php echo $lng['us_cuadrilla_content']; ?>
@@ -83,7 +83,7 @@
 			<div class="content_row">
 				<div class="content_cell">
 					<div class="section" id="section_activities">
-						<h3><?php echo $lng['us_activities']; ?></h3>
+						<h3 class='section_title'><?php echo $lng['us_activities']; ?></h3>
 						<div class="entry">
 							<img src="/img/nosotros/actividades.png" alt=" "/>
 							<?php echo $lng['us_activities_content']; ?>
@@ -92,7 +92,7 @@
 				</div>
 				<div class="content_cell">
 					<div class="section" id="section_transparency">
-						<h3><?php echo $lng['us_transparency']; ?></h3>
+						<h3 class='section_title'><?php echo $lng['us_transparency']; ?></h3>
 						<div class="entry">
 							<img src="/img/nosotros/transparencia.png" alt=" "/>
 							<?php echo $lng['us_transparency_content']; ?>

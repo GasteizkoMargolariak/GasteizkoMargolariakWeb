@@ -90,7 +90,7 @@
 						}
 						else{
 							echo "<span id='festivals_summary_text'><br/>" . cutText($r_festivals['text'], 300, "$lng[index_read_more]", "http://$http_host/lablanca/") . "</span>\n";
-							echo "<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://$http_host/lablanca/'>$lng[index_festivals_link]</a>\n";
+							//echo "<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://$http_host/lablanca/'>$lng[index_festivals_link]</a>\n";
 						}
 						echo "</div></td>\n";
 					}
@@ -235,6 +235,7 @@
 						echo "</div></td>\n"; //close city schedule entry;
 					}
 					echo "</tr></table>\n";
+					echo "<a class='go_to_section' href='http://$http_host/lablanca/'>$lng[index_festivals_link]</a><br/>\n";
 					echo "</div>\n";
 				}
 			
@@ -304,9 +305,10 @@
 					}
 					echo "</table>\n";
 					echo "<a href='http://$http_host/actividades/$r_activity[permalink]'>$lng[index_upcoming_activity_see]</a><br/><br/>\n";
-					echo "<a href='http://$http_host/actividades/'>$lng[index_upcoming_activity_see_all]</a>\n";
+					
 					echo "</div></div></div></div>\n";
 					echo "</div>\n";//Entry
+					echo "<a class='go_to_section' href='http://$http_host/actividades/'>$lng[index_upcoming_activity_see_all]</a><br/>\n";
 					echo "</div>\n";//Section
 				}
 			?>

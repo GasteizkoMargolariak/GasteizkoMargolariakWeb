@@ -64,6 +64,7 @@
 			<?php include("common/leftpanel.php"); ?>
 			<div id="middle_column" class="section">
 				<?php
+					echo("<h3 class='section_title'>$lng[section_blog]</h3>\n");
 					$offset = (int) $_GET['o'];
 					$q = mysqli_query($con, "SELECT id, permalink, title_$lang AS title, text_$lang AS text, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, dtime, comments FROM post WHERE visible = 1 ORDER BY dtime DESC LIMIT 5 OFFSET $offset;");
 					while($r = mysqli_fetch_array($q)){

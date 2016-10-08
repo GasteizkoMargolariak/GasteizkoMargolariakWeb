@@ -137,7 +137,7 @@
 				}
 				if (mysqli_num_rows($q_years) >= 0){
 					echo("<br/><br/><div class='section' id='past_festivals'>\n");
-					echo("<h3>$lng[lablanca_past_title]</h3>\n");
+					echo("<h3 class='section_title'>$lng[lablanca_past_title]</h3>\n");
 					echo("<div class='entry'><ul>\n");
 					while ($r_years = mysqli_fetch_array($q_years)){
 						echo("<li><a href='http://$http_host/lablanca/$r_years[year]'>$lng[lablanca_past_link] $r_years[year]</a></li>\n");

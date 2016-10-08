@@ -64,7 +64,7 @@
 		<?php
 			//Upcoming activities
 			echo "<div class='section'>\n";
-			echo "<h3>$lng[activities_upcoming]</h3>\n";
+			echo "<h3 class='section_title'>$lng[activities_upcoming]</h3>\n";
 			$q_upcoming = mysqli_query($con, "SELECT id, permalink, date, DATE_FORMAT(date, '%Y-%m-%d') AS isodate, title_$lang AS title, text_$lang AS text, price, inscription, people, max_people, user, dtime, comments, city FROM activity WHERE visible = 1 AND date > now() ORDER BY date;");
 			if (mysqli_num_rows($q_upcoming) > 0){
 				while ($r_activity = mysqli_fetch_array($q_upcoming)){
@@ -139,7 +139,7 @@
 			$q_past = mysqli_query($con, "SELECT id, permalink, date, title_$lang AS title, after_$lang AS text, text_$lang AS alt_text, price, inscription, people, max_people, user, dtime, comments FROM activity WHERE id != $next_activity_id AND visible = 1 AND date < now() ORDER BY date DESC;");
 			if (mysqli_num_rows($q_past) > 0){
 				echo "<br/><br/><div class='section'>\n";
-				echo "<h3>$lng[activities_past]</h3>\n";
+				echo "<h3 class='section_title'>$lng[activities_past]</h3>\n";
 				$i = 0;
 				while ($r_past = mysqli_fetch_array($q_past)){
 					echo "<div class='entry past_activity'>\n";

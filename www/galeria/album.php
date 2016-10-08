@@ -75,7 +75,7 @@
 			<div class="section" id="album">
 				<?php
 					//Header
-					echo "<h3 id='album_title'>$r[title]</h3>\n";
+					echo "<h3 class='section_title' id='album_title'>$r[title]</h3>\n";
 					if ($r['description'] != ''){
 						echo "<div class='entry' id='album_header'>\n";
 						echo $r['description'];

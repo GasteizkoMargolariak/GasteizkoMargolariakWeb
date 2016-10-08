@@ -18,7 +18,7 @@
 	<div class='content_tr'>
 		<div class='content_td' id='content_td_schedule'>
 			<div class='section' id='schedule'>
-				<h3><?php echo $lng['lablanca_schedule']; ?></h3>
+				<h3 class='section_title'><?php echo $lng['lablanca_schedule']; ?></h3>
 					<?php
 						$q_days = mysqli_query($con, "SELECT id, date, DATE_FORMAT(date, '%Y-%m-%d') AS isodate, name_$lang AS name FROM festival_day WHERE year(date) = $year ORDER BY date");
 						while ($r_days = mysqli_fetch_array($q_days)){
@@ -63,7 +63,7 @@
 		</div>
 		<div class='content_td' id='content_td_prices'>
 			<div class='section' id='prices'>
-				<h3><?php echo $lng['lablanca_prices']; ?></h3>
+				<h3 class='section_title'><?php echo $lng['lablanca_prices']; ?></h3>
 				<div class='entry'>
 					<?php
 						$q_days = mysqli_query($con, "SELECT id, date, DATE_FORMAT(date, '%Y-%m-%d') AS isodate, name_$lang AS name, price FROM festival_day WHERE year(date) = $year ORDER BY date");

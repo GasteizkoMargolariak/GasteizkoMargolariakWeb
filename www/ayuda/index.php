@@ -63,7 +63,7 @@
 			<div class="content_row">
 				<div class="content_cell">
 					<div class="section" id="section_association">
-						<h3><?php echo $lng['help_contact_title']; ?></h3>
+						<h3 class='section_title'><?php echo $lng['help_contact_title']; ?></h3>
 						<div class="entry">
 							<table id="association">
 								<tr>
@@ -112,7 +112,7 @@
 				</div>
 				<div class="content_cell">
 					<div class="section" id="section_license">
-						<h3><?php echo $lng['help_license_title']; ?></h3>
+						<h3 class='section_title'><?php echo $lng['help_license_title']; ?></h3>
 						<div class="entry">
 							<?php echo $lng['help_license']; ?>
 						</div>
@@ -130,7 +130,7 @@
 				</div>
 				<div class="content_cell">
 					<div class="section" id="section_cookie">
-						<h3><?php echo $lng['help_cookie_title']; ?></h3>
+						<h3 class='section_title'><?php echo $lng['help_cookie_title']; ?></h3>
 						<div class="entry">
 							<?php echo $lng['help_cookie']; ?>
 						</div>

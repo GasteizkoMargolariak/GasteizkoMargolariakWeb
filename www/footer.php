@@ -10,7 +10,7 @@
 				<a title="Youtube" target="_blank" href="https://www.youtube.com/user/GasteizkoMargolariak"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/youtube.gif" alt="Youtube"/></a>
 				<a title="Instagram" target="_blank" href="https://instagram.com/gmargolariak/"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/instagram.gif" alt="nstagram"/></a>
 <!--  				<a title="RSS" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/rss.xml"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/rss.gif" alt="RSS"/></a> -->
-				<br/><span class='desktop'><?php echo($lng['footer_info']); ?></span>
+				<br/><span id="footer_info" class='desktop'><?php echo($lng['footer_info']); ?></span>
 			</div>
 			<div class="td" id="footer_center">
 				<br class="mobile"/><br class="mobile"/>
@@ -19,21 +19,21 @@
 					$ad_static = Array();
 					if (mysqli_num_rows($q) > 0){
 						echo("<span class='desktop'>$lng[footer_sponsors]</span></br class='desktop'>\n");
-						$idx = 0;
+						//$idx = 0;
 						while ($r = mysqli_fetch_array($q)){
 							
 							array_push($ad_static, $r['id']);
 						
-							if ($idx == 0){
-								echo("<a target='_blank' href='$r[link]'><span class='desktop'>$r[name]</span><img src='/img/spo/miniature/$r[image]'/></a>");
-							}
-							elseif ($idx == 1){
-								echo("&nbsp;&nbsp;&nbsp;<a target='_blank' href='$r[link]'><img src='/img/spo/thumb/$r[image]'/><span class='desktop'>$r[name]</span></a></br class='desktop'>");
-							}
-							else{
+							//if ($idx == 0){
+							//	echo("<a target='_blank' href='$r[link]'><span class='desktop'>$r[name]</span><img src='/img/spo/miniature/$r[image]'/></a>");
+							//}
+							//elseif ($idx == 1){
+							//	echo("&nbsp;&nbsp;&nbsp;<a target='_blank' href='$r[link]'><img src='/img/spo/thumb/$r[image]'/><span class='desktop'>$r[name]</span></a></br class='desktop'>");
+							//}
+							//else{
 								echo("<a target='_blank' href='$r[link]'><img src='/img/spo/thumb/$r[image]'/></a>");
-							}
-							$idx ++;
+							//}
+							//$idx ++;
 						}
 						
 					}

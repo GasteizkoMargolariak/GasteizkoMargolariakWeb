@@ -102,7 +102,7 @@
 			?>
 			<div id="middle_column">
 				<div class="section">
-					<h3 id="activity_title"><?php echo($r['title']); ?></h3>
+					<h3 class='section_title' id="activity_title"><?php echo($r['title']); ?></h3>
 					<span id="activity_date"><?php echo(formatDate($r['date'], $lang, false)); ?></span>
 					<div class="entry" itemscope itemtype='http://schema.org/Event'>
 						<?php

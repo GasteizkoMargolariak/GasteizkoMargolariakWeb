@@ -68,7 +68,7 @@
 			<br/>
 			<div class="section" id="album_list">
 				<?php
-					echo "<h3>$lng[gallery_albums]</h3>\n";
+					echo "<h3 class='section_title'>$lng[gallery_albums]</h3>\n";
 					//Album with photos with dates
 					$q = mysqli_query($con, "SELECT album.id AS id, album.permalink AS permalink, album, album.title_$lang AS title, album.description_$lang AS description FROM photo_album, photo, album WHERE album.id = photo_album.album AND photo = photo.id GROUP BY album ORDER BY avg(photo.uploaded) DESC;");
 					while ($r = mysqli_fetch_array($q)){
