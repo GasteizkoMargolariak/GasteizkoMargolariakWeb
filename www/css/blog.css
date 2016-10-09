@@ -23,6 +23,8 @@ div#middle_column{
 div#search_panel{
 /* 	padding:		0 1em 1em 1em; */
 	margin-bottom:	1em;
+	border-top:		0.1em solid #000011;
+	text-align:		center;
 }
 
 div#search_panel div#search_panel_inputs{

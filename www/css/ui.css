@@ -62,31 +62,34 @@ body{
 
 /* WARNING: If styles change dhere, make changes on commment scripts */
 input[type="text"], input[type="number"], input[type="date"]{
-	border-radius:		0.5em;
+	border-radius:		0.3em;
 	height:				1.5em;
-	border:				0.4em solid #9cd3d9;
-	color:				#cccccc;
-	background-color:	#223344;
+	border:				0.2em solid #406896;
+	color:				#ccccdc;
+	background-color:	#0F263C;
+	margin:				0.1em;
 }
 
 input[type="button"], input[type="submit"], select{
-	border-radius:		0.5em;
-	height:				2.5em;
-	border:				0.4em solid #9cd3d9;
+	border-radius:		0.3em;
+	height:				2em;
+	border:				0.2em solid #406896;
 	font-weight:		bold;
 	color:				#ffffff;
-	background-color:	#335577;
+	background-color:	#618CB7;
 	cursor:				pointer;
+	margin:				0.1em;
 }
 
 textarea{
-	border-radius:		0.5em;
+	border-radius:		0.3em;
 	min-height:			2em;
 	max-height:			15em;
-	border:				0.4em solid #9cd3d9;
+	border:				0.2em solid #406896;
 	color:				#bbbbbb;
 	background-color:	#223344;
 	resize:				vertical;
+	margin:				0.1em;
 }
 
 /******************************************

@@ -90,12 +90,12 @@
  	****************************************************/
 	function get_version($con, $section = SEC_ALL){
 		if ($section == SEC_ALL){
-			$q = mysqli_query($con, "SELECT SUM(version) AS version FROM version;");
+		$q = mysqli_query($con, "SELECT SUM(version) AS version FROM version;");
 		}
 		else{
 			$q = mysqli_query($con, "SELECT version FROM version WHERE section = '$section';");
 		}
-		if (mysqli_num_rows == 0){
+		if (mysqli_num_rows($q) == 0){
 			//'Bad request' status code
 			http_response_code(400);
 			return 0;
@@ -292,8 +292,8 @@
 	$user = mysqli_real_escape_string($con, $_GET[GET_USER]);
 	$action = strtolower(mysqli_real_escape_string($con, $_GET[GET_ACTION]));
 	$section = strtolower(mysqli_real_escape_string($con, $_GET[GET_SECTION]));
-	$version = mysqli_real_escape_string($con, $_GET[GET_VERSION]);
-	$foregroud = mysqli_real_escape_string($con, $_GET[GET_FOREGROUND]);
+	$version = (int) mysqli_real_escape_string($con, $_GET[GET_VERSION]);
+	$foregroud = (int) mysqli_real_escape_string($con, $_GET[GET_FOREGROUND]);
 	$format = strtolower(mysqli_real_escape_string($con, $_GET[GET_FORMAT]));
 	
 	//Initialize some variables

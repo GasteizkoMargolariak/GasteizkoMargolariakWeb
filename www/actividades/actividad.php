@@ -201,13 +201,13 @@
 							$res_year = mysqli_query($con, "SELECT year(date) AS year FROM activity WHERE visible = 1 GROUP BY year(date) ORDER BY year DESC;");
 							while($row_year = mysqli_fetch_array($res_year)){
 								echo "<div class='year pointer' onClick=\"toggleElement('year_$row_year[year]');\">";
-								echo "<img class='slid' id='slid_year_$row_year[year]' src='http://$http_host/img/misc/slid-right.png' alt=' '/>" . $row_year['year'];
+								echo("<img class='slid' id='slid_year_$row_year[year]' src='http://$http_host/img/misc/slid-right.png' alt=' '/><span class='fake_a'>$row_year[year]</span>");
 								echo "</div>\n";
 								echo "<div class='list_year pointer' id='list_year_$row_year[year]'>\n";
 								$res_month = mysqli_query($con, "SELECT month(date) AS month FROM activity WHERE visible = 1 AND year(date) = $row_year[year] GROUP BY month(date) ORDER BY month DESC;");
 								while($row_month = mysqli_fetch_array($res_month)){
 									echo "<div class='month pointer' onClick=\"toggleElement('month_$row_year[year]_$row_month[month]');\">";
-									echo "<img class='slid' id='slid_month_$row_year[year]_$row_month[month]' src='http://$http_host/img/misc/slid-right.png' alt=' '/>" . $lng['months'][$row_month['month'] - 1];
+									echo("<img class='slid' id='slid_month_$row_year[year]_$row_month[month]' src='http://$http_host/img/misc/slid-right.png' alt=' '/><span class='fake_a'>" . $lng['months'][$row_month['month'] - 1] . "</span>");
 									echo "</div>\n";
 									echo "<ul id='list_month_$row_year[year]_$row_month[month]' class='activity_list'>\n";
 									$res_title = mysqli_query($con, "SELECT id, permalink, title_$lang AS title FROM activity WHERE visible = 1 AND year(date) = $row_year[year] AND month(date) = '$row_month[month]' ORDER BY date DESC;");
