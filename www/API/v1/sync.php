@@ -171,7 +171,10 @@
 			case FOR_JSON:
 				$db = array();
 				foreach($tables as $table){
-					$db[] = [ $table => get_table($con, $table, $format) ];
+					$req_table = get_table($con, $table, $format);
+					if ($req_table != -1){
+						$db[] = [ $table => $req_table];
+					}
 				}
 				$data = array();
 				$data[] = [ KEY_VERSION => $v ];
@@ -205,7 +208,7 @@
 				$q = mysqli_query($con, "SELECT id, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, open FROM album;");
 				break;
 			case "photo":
-				$q = mysqli_query($con, "SELECT photo.id AS id, file, permalink, text_es, text_en, text_eu, description_es, description_en, description_eu, uploaded, place, width, height, size, CONCAT(username, user) AS user FROM photo, user WHERE user.id = photo.user AND approved = 1;");
+				$q = mysqli_query($con, "SELECT photo.id AS id, file, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, uploaded, place, width, height, size, CONCAT(photo.username, user) AS user FROM photo, user WHERE user.id = photo.user AND approved = 1;");
 				break;
 			case "post":
 				$q = mysqli_query($con, "SELECT post.id AS id, permalink, title_es, title_en, title_eu, text_es, text_en, text_eu, username, dtime FROM post, user WHERE user.id = user AND visible = 1;");
@@ -213,11 +216,13 @@
 			case "post_comment":
 				$q = mysqli_query($con, "SELECT post_comment.id AS id, post, text, dtime, CONCAT(user.username, user) AS user, lang FROM post_comment, user WHERE post_comment.user = user.id AND approved = 1;");
 				break;
+			case "sponsor":
+				$q = mysqli_query($con, "SELECT id, name_es, name_en, name_eu, text_es, text_en, text_eu, image, address_es, address_en, address_eu, link, lat, lon FROM sponsor;");
 				
 			//Other cases: 
 			default:
 				//If the table is a public one and has not been listed above, all of its fields are public.
-				if (in_array($table, ['activity_image', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'post_image', 'post_tag', 'settings', 'sponsor'])){
+				if (in_array($table, ['activity_image', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'post_image', 'post_tag', 'settings'])){
 					$q = mysqli_query($con, "SELECT * FROM $table;");
 				}
 				//If forbidden table
@@ -227,6 +232,11 @@
 					http_response_code(403);
 					return;
 				}
+		}
+		
+		//If no rows, return
+		if (mysqli_num_rows($q) == 0){
+			return -1;
 		}
 		
 		//Create result array
@@ -366,7 +376,11 @@
 			}
 			//If the client needs an update
 			else{
-				echo(sync($con, $section));
+				$out = sync($con, $section);
+				$out = str_replace('\"', '\u0022s', $out);
+				$out = str_replace(':""', ':null', $out);
+				$out = "{\"sync\":$out}";
+				echo($out);
 			}	
 		}
 	}
