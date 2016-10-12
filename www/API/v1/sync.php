@@ -142,7 +142,7 @@
 				$tables = [ 'post', 'post_comment', 'post_image', 'post_tag' ];
 				break;
 			case SEC_ACTIVITIES:
-				$tables = [ 'activity', 'activity_comment', 'activity_image', 'activity_tag', 'activity_itinerary', 'location', 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
+				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'activity_itinerary', 'location', 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
 				break;
 			case SEC_GALLERY:
 				$tables = [ 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
@@ -151,7 +151,7 @@
 				$tables = [ 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'people' ];
 				break;
 			case SEC_ALL:
-				$tables = [ 'activity', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
+				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
 				break;
 			default:
 				//'Bad request' staus code
@@ -208,7 +208,7 @@
 				$q = mysqli_query($con, "SELECT id, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, open FROM album;");
 				break;
 			case "photo":
-				$q = mysqli_query($con, "SELECT photo.id AS id, file, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, uploaded, place, width, height, size, CONCAT(photo.username, user) AS user FROM photo, user WHERE user.id = photo.user AND approved = 1;");
+				$q = mysqli_query($con, "SELECT photo.id AS id, file, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, uploaded, place, width, height, size, CONCAT(photo.username, user) AS username FROM photo, user WHERE user.id = photo.user AND approved = 1;");
 				break;
 			case "post":
 				$q = mysqli_query($con, "SELECT post.id AS id, permalink, title_es, title_en, title_eu, text_es, text_en, text_eu, username, dtime FROM post, user WHERE user.id = user AND visible = 1;");
@@ -218,11 +218,15 @@
 				break;
 			case "sponsor":
 				$q = mysqli_query($con, "SELECT id, name_es, name_en, name_eu, text_es, text_en, text_eu, image, address_es, address_en, address_eu, link, lat, lon FROM sponsor;");
+				break;
+			case "settings":
+				$q = mysqli_query($con, "SELECT name, value FROM settings");
+				break;
 				
 			//Other cases: 
 			default:
 				//If the table is a public one and has not been listed above, all of its fields are public.
-				if (in_array($table, ['activity_image', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'post_image', 'post_tag', 'settings'])){
+				if (in_array($table, ['activity_image', 'activity_itinerary', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'post_image', 'post_tag'])){
 					$q = mysqli_query($con, "SELECT * FROM $table;");
 				}
 				//If forbidden table
