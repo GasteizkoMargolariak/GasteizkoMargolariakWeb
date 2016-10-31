@@ -121,6 +121,5 @@
 	if (strlen($error) == 0){
 		echo(show_notifications($con, $target, $format));
 	}
-	
-	//Log the request
-	//log_sync(); //TODO;
+
+?>
