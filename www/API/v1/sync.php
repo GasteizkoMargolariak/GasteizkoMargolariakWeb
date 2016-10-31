@@ -211,7 +211,7 @@
 				$q = mysqli_query($con, "SELECT photo.id AS id, file, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, uploaded, place, width, height, size, CONCAT(photo.username, user) AS username FROM photo, user WHERE user.id = photo.user AND approved = 1;");
 				break;
 			case "post":
-				$q = mysqli_query($con, "SELECT post.id AS id, permalink, title_es, title_en, title_eu, text_es, text_en, text_eu, username, dtime FROM post, user WHERE user.id = user AND visible = 1;");
+				$q = mysqli_query($con, "SELECT post.id AS id, permalink, title_es, title_en, title_eu, text_es, text_en, text_eu, comments, username, dtime FROM post, user WHERE user.id = user AND visible = 1;");
 				break;
 			case "post_comment":
 				$q = mysqli_query($con, "SELECT post_comment.id AS id, post, text, dtime, CONCAT(user.username, user) AS user, lang FROM post_comment, user WHERE post_comment.user = user.id AND approved = 1;");
@@ -381,7 +381,7 @@
 			//If the client needs an update
 			else{
 				$out = sync($con, $section);
-				$out = str_replace('\"', '\u0022s', $out);
+				$out = str_replace('\"', '\u0022', $out);
 				$out = str_replace(':""', ':null', $out);
 				$out = "{\"sync\":$out}";
 				echo($out);
