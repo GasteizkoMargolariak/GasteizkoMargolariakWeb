@@ -62,10 +62,10 @@
 	
 	function show_notifications($con, $target = DEF_TARGET, $format = DEF_FORMAT){
 		if ($target == TARGET_GM){
-			$query = "SELECT id, title_es, title_en, title_eu, text_es, text_en, text_eu, dtime, internal AS gm, duration, 0 AS seen FROM notification WHERE internal = 1 AND dtime > NOW() - INTERVAL duration MINUTE ORDER BY dtime DESC";
+			$query = "SELECT id, title_es, title_en, title_eu, text_es, text_en, text_eu, dtime, internal AS gm, duration, action, 0 AS seen FROM notification WHERE internal = 1 AND dtime > NOW() - INTERVAL duration MINUTE ORDER BY dtime DESC";
 		}
 		else{
-			$query = "SELECT id, title_es, title_en, title_eu, text_es, text_en, text_eu, dtime, internal AS gm, duration, 0 AS seen FROM notification WHERE dtime > NOW() - INTERVAL duration MINUTE ORDER BY dtime DESC";
+			$query = "SELECT id, title_es, title_en, title_eu, text_es, text_en, text_eu, dtime, internal AS gm, duration, action, 0 AS seen FROM notification WHERE dtime > NOW() - INTERVAL duration MINUTE ORDER BY dtime DESC";
 		}
 		$q = mysqli_query($con, $query);
 		switch ($format){
