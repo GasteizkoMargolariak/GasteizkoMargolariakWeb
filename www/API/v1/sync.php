@@ -202,7 +202,7 @@
 				$q = mysqli_query($con, "SELECT id, permalink, date, city, title_es, title_en, title_eu, text_es, text_eu, text_en, after_es, after_en, after_eu, price, inscription, max_people, album FROM activity WHERE visible = 1;");
 				break;
 			case "activity_comment":
-				$q = mysqli_query($con, "SELECT activity_comment.id AS id, activity, text, dtime, IFNULL(user, user.username) AS user, lang FROM activity_comment, user WHERE (activity_comment.user = user.id OR user IS NULL) AND approved = 1;");
+				$q = mysqli_query($con, "SELECT id, activity, text, dtime, username, lang FROM activity_comment WHERE approved = 1;");
 				break;
 			case "album":
 				$q = mysqli_query($con, "SELECT id, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, open FROM album;");
@@ -214,10 +214,10 @@
 				$q = mysqli_query($con, "SELECT post.id AS id, permalink, title_es, title_en, title_eu, text_es, text_en, text_eu, comments, username, dtime FROM post, user WHERE user.id = user AND visible = 1;");
 				break;
 			case "post_comment":
-				$q = mysqli_query($con, "SELECT post_comment.id AS id, post, text, dtime, IFNULL(user, user.username) AS user, lang FROM post_comment, user WHERE (post_comment.user = user.id OR user IS NULL) AND approved = 1;");
+				$q = mysqli_query($con, "SELECT post_comment.id AS id, post, text, dtime, username, lang FROM post_comment WHERE approved = 1;");
 				break;
 			case "photo_comment":
-				$q = mysqli_query($con, "SELECT photo_comment.id AS id, post, text, dtime, IFNULL(user, user.username) AS user, lang FROM photo_comment, user WHERE (photo_comment.user = user.id OR user IS NULL) AND approved = 1;");
+				$q = mysqli_query($con, "SELECT photo_comment.id AS id, post, text, dtime, username, lang FROM photo_comment WHERE approved = 1;");
 				break;
 			case "sponsor":
 				$q = mysqli_query($con, "SELECT id, name_es, name_en, name_eu, text_es, text_en, text_eu, image, address_es, address_en, address_eu, link, lat, lon FROM sponsor;");
