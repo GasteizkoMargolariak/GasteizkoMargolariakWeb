@@ -306,6 +306,6 @@
 	$query = $query . ", text, username, app) VALUES ($item_id, \"$text\", \"$username\", \"client\");";
 	//echo($query);
 	mysqli_query($con, $query);
-	mysqli_query($con "UPDATE version SET version = version + 1 WHERE section = '$section';");
+	mysqli_query($con, "UPDATE version SET version = version + 1 WHERE section = '$section';");
 
 ?>
