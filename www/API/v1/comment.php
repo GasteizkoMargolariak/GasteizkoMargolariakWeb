@@ -288,20 +288,24 @@
 	
 	//If code gets here, there were no errors. Build query.
 	$query = "INSERT INTO ";
+	$section = "";
 	switch ($target){
 		case TARGET_POST:
 			$query = $query . "post_comment (post";
+			$section = "blog";
 			break;
 		case TARGET_PHOTO:
 			$query = $query . "photo_comment (photo";
+			$section = "gallery";
 			break;
 		case TARGET_ACTIVITY:
 			$query = $query . "activity_comment (activity";
+			$section = "activity";
 			break;
 	}
 	$query = $query . ", text, username, app) VALUES ($item_id, \"$text\", \"$username\", \"client\");";
 	//echo($query);
 	mysqli_query($con, $query);
-	
+	mysqli_query($con "UPDATE version SET version = version + 1 WHERE section = '$section';");
 
 ?>
