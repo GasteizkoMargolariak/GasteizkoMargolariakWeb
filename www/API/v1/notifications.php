@@ -68,15 +68,20 @@
 			$query = "SELECT id, title_es, title_en, title_eu, text_es, text_en, text_eu, dtime, internal AS gm, duration, action, 0 AS seen FROM notification WHERE dtime > NOW() - INTERVAL duration MINUTE ORDER BY dtime DESC";
 		}
 		$q = mysqli_query($con, $query);
-		switch ($format){
-			case FOR_JSON:
-				//Create result array
-				$rows = array();
-				while($r = mysqli_fetch_assoc($q)) {
-					$rows[] = $r;
-				}
-				return(json_encode($rows));
-				break;
+		if (mysqli_num_rows($q) == 0){
+			http_response_code(204);
+		}
+		else{
+			switch ($format){
+				case FOR_JSON:
+					//Create result array
+					$rows = array();
+					while($r = mysqli_fetch_assoc($q)) {
+						$rows[] = $r;
+					}
+					return(json_encode($rows));
+					break;
+			}
 		}
 	}
 	
