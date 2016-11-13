@@ -19,7 +19,7 @@
 				$q_tag = mysqli_query($con, "SELECT tag, count(post) AS count FROM post_tag GROUP BY tag;");
 				while($r_tag = mysqli_fetch_array($q_tag)){
 					$size = round(60 + 100 * $r_tag['count'] / $max);	//TEST: Relativize
-					echo "<a href='http://$http_host/blog/buscar/tag/$r_tag[tag]'><span style='font-size: $size%'>$r_tag[tag]</span></a>\n";
+					echo "<a href='$proto$http_host/blog/buscar/tag/$r_tag[tag]'><span style='font-size: $size%'>$r_tag[tag]</span></a>\n";
 				}
 			?>
 		</div>
