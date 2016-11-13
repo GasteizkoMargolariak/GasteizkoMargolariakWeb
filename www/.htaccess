@@ -53,6 +53,10 @@ RewriteRule ^galeria/([A-Z\-a-z0-9{3,}]+)/([A-Z\-a-z0-9{3,}]+)/$ /galeria/photo.
 RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)$ /API/V$1/help/$2.php [NC,QSA,L]
 RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)/$ /API/V$1/help/$2.php [L,NC]
 
+#Force https TODO
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
 # BEGIN Cache-Control Headers
 <IfModule mod_expires.c>
 	ExpiresActive on
@@ -102,3 +106,4 @@ RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)/$ /API/V$1/help/$2.php [L
 #MCacheSize 1024
 
 #CacheFile footer.php toolbar.php img/*/* project/*/render/* project/*/render/*/preview/* project/*/render/*/miniature/*
+

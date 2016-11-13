@@ -1,7 +1,10 @@
 <?php
 	session_start();
+	#$proto = $_SERVER['SERVER_PROTOCOL'];
+	#$proto = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("functions.php");
+	$proto = getProtocol();
 	$con = startdb();
 	
 	//Language
@@ -17,7 +20,7 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<title><?php echo $lng['index_title'];?></title>
-		<link rel="shortcut icon" href="<?php echo "http://$http_host/img/logo/favicon.ico";?>">
+		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
 			<?php 
@@ -37,22 +40,22 @@
 			<?php include("script/ui.js"); ?>
 		</script>
 		<!-- Meta tags -->
-		<link rel="canonical" href="<?php echo "http://$http_host"; ?>"/>
-		<link rel="author" href="<?php echo "http://$http_host"; ?>"/>
-		<link rel="publisher" href="<?php echo "http://$http_host"; ?>"/>
+		<link rel="canonical" href="<?php echo "$proto$http_host"; ?>"/>
+		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
+		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo $lng['index_description'];?>"/>
 		<meta property="og:title" content="<?php echo $lng['index_title'];?>"/>
-		<meta property="og:url" content="<?php echo "http://$http_host"; ?>"/>
+		<meta property="og:url" content="<?php echo "$proto$http_host"; ?>"/>
 		<meta property="og:description" content="<?php echo $lng['index_description'];?>"/>
-		<meta property="og:image" content="<?php echo "http://$http_host/img/logo/logo.png";?>"/>
+		<meta property="og:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta property="og:site_name" content="<?php echo $lng['index_title'];?>"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
 		<meta name="twitter:card" content="summary"/>
 		<meta name="twitter:title" content="<?php echo $lng['index_title'];?>"/>
 		<meta name="twitter:description" content="<?php echo $lng['index_description'];?>"/>
-		<meta name="twitter:image" content="<?php echo "http://$http_host/img/logo/logo.png";?>"/>
-		<meta name="twitter:url" content="<?php echo"http://$http_host"; ?>"/>
+		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
+		<meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
 		<meta name="robots" content="index follow"/>
 	</head>
 	<body>
@@ -64,13 +67,13 @@
 				$q_settings = mysqli_query($con, "SELECT value FROM settings WHERE name = 'festivals';");
 				$r_settings = mysqli_fetch_array($q_settings);
 				if ($r_settings['value'] == 1){
-					echo "<div class='section' id='festivales' itemscope itemtype='http://schema.org/Event'>\n";
+					echo "<div class='section' id='festivales' itemscope itemtype='$protoschema.org/Event'>\n";
 					echo "<meta itemprop='inLanguage' content='$lang'/>\n";
 					echo "<meta itemprop='name' content='$lng[index_festivals_header] $year'/>\n";
 					echo "<meta itemprop='description' content='$lng[index_festivals_header] $year'/>\n";
 					echo "<meta itemprop='startDate' content='$year-08-04'/>\n";
 					echo "<meta itemprop='endDate' content='$year-08-09'/>\n";
-					echo "<meta itemprop='url' content='http://$http_host/lablanca/'/>\n";
+					echo "<meta itemprop='url' content='$proto$http_host/lablanca/'/>\n";
 					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name' content='Vitoria-Gasteiz'/></span>\n");
 					echo "<h3 class='section_title'>$lng[index_festivals_header] $year</h3>\n";
 					echo "<table class='festival_section_table'><tr>\n";
@@ -81,16 +84,16 @@
 						echo "<td><div class='entry' id='festivals_summary'>\n";
 						$r_festivals = mysqli_fetch_array($q_festivals);
 						if ($r_festivals['img'] != ''){
-							echo "<meta itemprop='image' content='http://$http_host/img/fiestas/$r_festivals[img]'/>\n";
-							echo "<img id='festivals_image' alt=' ' src='http://$http_host/img/fiestas/$r_festivals[img]'/>\n";
+							echo "<meta itemprop='image' content='$proto$http_host/img/fiestas/$r_festivals[img]'/>\n";
+							echo "<img id='festivals_image' alt=' ' src='$proto$http_host/img/fiestas/$r_festivals[img]'/>\n";
 						}
 						if ($r_festivals['summary'] != ''){
 							echo "<span id='festivals_summary_text'><br/>$r_festivals[summary]</span>\n";
-							echo "<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://$http_host/lablanca/'>$lng[index_festivals_link]</a>\n";
+							echo "<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='$proto$http_host/lablanca/'>$lng[index_festivals_link]</a>\n";
 						}
 						else{
-							echo "<span id='festivals_summary_text'><br/>" . cutText($r_festivals['text'], 300, "$lng[index_read_more]", "http://$http_host/lablanca/") . "</span>\n";
-							//echo "<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://$http_host/lablanca/'>$lng[index_festivals_link]</a>\n";
+							echo "<span id='festivals_summary_text'><br/>" . cutText($r_festivals['text'], 300, "$lng[index_read_more]", "$proto$http_host/lablanca/") . "</span>\n";
+							//echo "<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='$proto$http_host/lablanca/'>$lng[index_festivals_link]</a>\n";
 						}
 						echo "</div></td>\n";
 					}
@@ -132,7 +135,7 @@
 								echo "<meta itemprop='description' content='$r_sch_curr[description]'/>\n";
 							}
 							echo "<table class='location'><tr>\n";
-							echo "<td><a target='_blank' href='http://maps.google.com/maps?q=$r_sch_curr[lat],$r_sch_curr[lon]+(My+Point)&z=14&ll=$r_sch_curr[lat],$r_sch_curr[lon]'><img alt=' ' src='http://$http_host/img/misc/pinpoint.png'/></a></td>\n"; 
+							echo "<td><a target='_blank' href='http://maps.google.com/maps?q=$r_sch_curr[lat],$r_sch_curr[lon]+(My+Point)&z=14&ll=$r_sch_curr[lat],$r_sch_curr[lon]'><img alt=' ' src='$proto$http_host/img/misc/pinpoint.png'/></a></td>\n"; 
 							//If name and address are the same, show only name
 							if ($r_sch_curr['place'] == $r_sch_curr['address']){
 								echo "<td>$r_sch_curr[place]</td></tr></table>\n";
@@ -159,7 +162,7 @@
 								echo "<meta itemprop='description' content='$r_sch_next[description]'/>\n";
 							}
 							echo "<table class='location'><tr>\n";
-							echo "<td><a target='_blank' href='http://maps.google.com/maps?q=$r_sch_next[lat],$r_sch_next[lon]+(My+Point)&z=14&ll=$r_sch_next[lat],$r_sch_next[lon]'><img alt=' ' src='http://$http_host/img/misc/pinpoint.png'/></a></td>\n"; 
+							echo "<td><a target='_blank' href='http://maps.google.com/maps?q=$r_sch_next[lat],$r_sch_next[lon]+(My+Point)&z=14&ll=$r_sch_next[lat],$r_sch_next[lon]'><img alt=' ' src='$proto$http_host/img/misc/pinpoint.png'/></a></td>\n"; 
 							//If name and address are the same, show only name
 							if ($r_sch_next['place'] == $r_sch_next['address']){
 								echo "<td>$r_sch_next[place]</td></tr></table>\n";
@@ -195,7 +198,7 @@
 								echo "<meta itemprop='description' content='$r_sch_curr[description]'/>\n";
 							}
 							echo "<table class='location'><tr>\n";
-							echo "<td><a target='_blank' href='http://maps.google.com/maps?q=$r_sch_curr[lat],$r_sch_curr[lon]+(My+Point)&z=14&ll=$r_sch_curr[lat],$r_sch_curr[lon]'><img alt=' ' src='http://$http_host/img/misc/pinpoint.png'/></a></td>\n"; 
+							echo "<td><a target='_blank' href='http://maps.google.com/maps?q=$r_sch_curr[lat],$r_sch_curr[lon]+(My+Point)&z=14&ll=$r_sch_curr[lat],$r_sch_curr[lon]'><img alt=' ' src='$proto$http_host/img/misc/pinpoint.png'/></a></td>\n"; 
 							//If name and address are the same, show only name
 							if ($r_sch_curr['place'] == $r_sch_curr['address']){
 								echo "<td>$r_sch_curr[place]</td></tr></table>\n";
@@ -222,7 +225,7 @@
 								echo "<meta itemprop='description' content='$r_sch_next[description]'/>\n";
 							}
 							echo "<table class='location'><tr>\n";
-							echo "<td><a target='_blank' href='http://maps.google.com/maps?q=$r_sch_next[lat],$r_sch_next[lon]+(My+Point)&z=14&ll=$r_sch_next[lat],$r_sch_next[lon]'><img alt=' ' src='http://$http_host/img/misc/pinpoint.png'/></a></td>\n"; 
+							echo "<td><a target='_blank' href='http://maps.google.com/maps?q=$r_sch_next[lat],$r_sch_next[lon]+(My+Point)&z=14&ll=$r_sch_next[lat],$r_sch_next[lon]'><img alt=' ' src='$proto$http_host/img/misc/pinpoint.png'/></a></td>\n"; 
 							//If name and address are the same, show only name
 							if ($r_sch_next['place'] == $r_sch_next['address']){
 								echo "<td>$r_sch_next[place]</td></tr></table>\n";
@@ -235,7 +238,7 @@
 						echo "</div></td>\n"; //close city schedule entry;
 					}
 					echo "</tr></table>\n";
-					echo "<a class='go_to_section' href='http://$http_host/lablanca/'>$lng[index_festivals_link]</a><br/>\n";
+					echo "<a class='go_to_section' href='$proto$http_host/lablanca/'>$lng[index_festivals_link]</a><br/>\n";
 					echo "</div>\n";
 				}
 			
@@ -253,11 +256,11 @@
 					echo "<meta itemprop='description' content='$r_activity[text]'/>\n";
 					echo "<meta itemprop='startDate endDate' content='$r_activity[isodate]'/>\n";
 					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name' content='$r_activity[city]'/></span>\n");
-					echo "<meta itemprop='url' content='http://$http_host/actividades/$r_activity[permalink]'/>\n";
+					echo "<meta itemprop='url' content='$proto$http_host/actividades/$r_activity[permalink]'/>\n";
 					echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 					echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 					echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
-					echo "<meta itemprop='logo' content='http://$http_host/img/logo/logo.png'/>\n";
+					echo "<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>\n";
 					echo "<meta itemprop='foundingDate' content='2013-02-03'/>\n";
 					echo "<meta itemprop='telephone' content='+34637140371'/>\n";
 					echo "</div>\n";
@@ -268,15 +271,15 @@
 					if (mysqli_num_rows($q_activity_image) > 0){
 						$r_activity_image = mysqli_fetch_array($q_activity_image);
 						echo "<div class='td'><div id='upcoming_image'>\n";
-						echo "<a href='http://$http_host/actividades/$r_activity[permalink]'>\n";
-						echo "<meta itemprop='image' content='http://$http_host/img/actividades/$r_activity_image[image]'/>\n";
-						echo "<img src='http://$http_host/img/actividades/miniature/$r_activity_image[image]' alt='$r_activity[title]'/>\n";
+						echo "<a href='$proto$http_host/actividades/$r_activity[permalink]'>\n";
+						echo "<meta itemprop='image' content='$proto$http_host/img/actividades/$r_activity_image[image]'/>\n";
+						echo "<img src='$proto$http_host/img/actividades/miniature/$r_activity_image[image]' alt='$r_activity[title]'/>\n";
 						echo "</a>\n";
 						echo "</div></div>\n";
 					}
 					echo "<div class='td'><div id='upcoming_text'>\n";
-					echo "<h3><a itemprop='url' href='http://$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
-					echo "<p>". cutText($r_activity['text'], 250, "$lng[index_read_more]", "http://$http_host/actividades/$r_activity[permalink]") . "</p>\n";
+					echo "<h3><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
+					echo "<p>". cutText($r_activity['text'], 250, "$lng[index_read_more]", "$http_host/actividades/$r_activity[permalink]") . "</p>\n";
 					echo "</div></div>\n";
 					echo "<div class='td'><div id='upcoming_details'>\n";
 					echo "<table>\n";
@@ -287,7 +290,7 @@
 					echo "<td>$lng[index_upcoming_activity_price]</td>";
 					if ($r_activity['price'] == 0){
 						echo "<td itemprop='offers' itemscope itemtype='http://schema.org/Offer'>$lng[index_upcoming_activity_free]\n";
-						echo "<meta itemprop='priceCurrency' content='EUR'/><meta itemprop='price' content='0'/><meta itemprop='url' content='http://$http_host/actividades/$r_activity[permalink]'/>\n</td>\n";
+						echo "<meta itemprop='priceCurrency' content='EUR'/><meta itemprop='price' content='0'/><meta itemprop='url' content='$proto$http_host/actividades/$r_activity[permalink]'/>\n</td>\n";
 						echo "</tr><tr>\n";
 						echo "<td>$lng[index_upcoming_activity_inscription]</td>";
 						if ($r_activity['inscription'] == 1)
@@ -304,11 +307,11 @@
 						echo "<tr><td>$lng[index_upcoming_activity_max_people]</td><td>$r_activity[max_people]</td></tr>\n";
 					}
 					echo "</table>\n";
-					echo "<a href='http://$http_host/actividades/$r_activity[permalink]'>$lng[index_upcoming_activity_see]</a><br/><br/>\n";
+					echo "<a href='$proto$http_host/actividades/$r_activity[permalink]'>$lng[index_upcoming_activity_see]</a><br/><br/>\n";
 					
 					echo "</div></div></div></div>\n";
 					echo "</div>\n";//Entry
-					echo "<a class='go_to_section' href='http://$http_host/actividades/'>$lng[index_upcoming_activity_see_all]</a><br/>\n";
+					echo "<a class='go_to_section' href='$proto$http_host/actividades/'>$lng[index_upcoming_activity_see_all]</a><br/>\n";
 					echo "</div>\n";//Section
 				}
 			?>
@@ -329,27 +332,27 @@
 										echo "<meta itemprop='datePublished dateModified' content='$r_post[isodate]'/>\n";
 										echo "<meta itemprop='headline name' content='$r_post[title]'/>\n";
 										echo "<meta itemprop='articleBody text' content='$r_post[text]'/>\n";
-										echo "<meta itemprop='mainEntityOfPage' content='http://$http_host'/>\n";
+										echo "<meta itemprop='mainEntityOfPage' content='$proto$http_host'/>\n";
 										echo "<div class='hidden' itemprop='author publisher' itemscope itemtype='http://schema.org/Organization'>\n";
 										echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 										echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
-										echo "<meta itemprop='logo' content='http://$http_host/img/logo/logo.png'/>\n";
+										echo "<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>\n";
 										echo "<meta itemprop='foundingDate' content='03-02-2013'/>\n";
 										echo "<meta itemprop='telephone' content='+34637140371'/>\n";
-										echo "<meta itemprop='url' content='http://$http_host'/>\n";
+										echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 										echo "</div>\n";
 										$q_post_image = mysqli_query($con, "SELECT image FROM post_image WHERE post = $r_post[id] ORDER BY idx LIMIT 1;");
 										if (mysqli_num_rows($q_post_image) > 0){
 											$r_post_image = mysqli_fetch_array($q_post_image);
-											echo "<meta itemprop='image' content='http://$http_host/img/blog/preview/$r_post_image[image]'/>\n";
-											echo "<a href='http://$http_host/blog/$r_post[permalink]'><img src='http://$http_host/img/blog/miniature/$r_post_image[image]'/></a>\n";
+											echo "<meta itemprop='image' content='$proto$http_host/img/blog/preview/$r_post_image[image]'/>\n";
+											echo "<a href='$proto$http_host/blog/$r_post[permalink]'><img src='$proto$http_host/img/blog/miniature/$r_post_image[image]'/></a>\n";
 										}
-										echo "<h3><a itemprop='url' href='http://$http_host/blog/$r_post[permalink]'>$r_post[title]</a></h3>\n";
-										echo "<p>". cutText($r_post['text'], 100, "$lng[index_read_more]", "http://$http_host/blog/$r_post[permalink]") . "</p>\n";
+										echo "<h3><a itemprop='url' href='$proto$http_host/blog/$r_post[permalink]'>$r_post[title]</a></h3>\n";
+										echo "<p>". cutText($r_post['text'], 100, "$lng[index_read_more]", "$proto$http_host/blog/$r_post[permalink]") . "</p>\n";
 										echo "<span>" . formatDate($r_post['dtime'], $lang, false) . "</span>\n";
 										echo "</div>\n";
 									}
-								echo "<a class='go_to_section' href='http://$http_host/blog/'>$lng[index_see_all_posts]</a><br/>\n";
+								echo "<a class='go_to_section' href='$proto$http_host/blog/'>$lng[index_see_all_posts]</a><br/>\n";
 								}
 							?>
 						</div>
@@ -373,9 +376,9 @@
 										$r_album = mysqli_fetch_array($q_album);
 										echo "<td itemscope itemtype='http://schema.org/Photograph'>\n";
 										echo "<meta itemprop='datePublished' content='$r_photos[isodate]'/>\n";
-										echo "<a href='http://$http_host/galeria/$r_album[permalink]'>\n";
+										echo "<a href='$proto$http_host/galeria/$r_album[permalink]'>\n";
 										echo "<meta itemprop='image' content='http://$http_host/img/galeria/$r_photos[file]'/>\n";
-										echo "<img src='http://$http_host/img/galeria/miniature/$r_photos[file]' alt='$r_photos[title]' /></a></td>\n";
+										echo "<img src='$proto$http_host/img/galeria/miniature/$r_photos[file]' alt='$r_photos[title]' /></a></td>\n";
 										$i ++;
 										if ($i % 2 == 0)
 										echo "</tr><tr>";
@@ -383,7 +386,7 @@
 									echo "</tr>\n";
 									echo "</table>\n";
 									echo "</div>\n";
-									echo "<a class='go_to_section' href='http://$http_host/galeria/'>$lng[index_see_all_photos]</a><br/>\n";
+									echo "<a class='go_to_section' href='$proto$http_host/galeria/'>$lng[index_see_all_photos]</a><br/>\n";
 								}
 							?>
 						</div>
@@ -406,35 +409,35 @@
 							echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 							echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 							echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
-							echo "<meta itemprop='logo' content='http://$http_host/img/logo/logo.png'/>\n";
+							echo "<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>\n";
 							echo "<meta itemprop='foundingDate' content='03-02-2013'/>\n";
 							echo "<meta itemprop='telephone' content='+34637140371'/>\n";
-							echo "<meta itemprop='url' content='http://$http_host'/>\n";
+							echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 							echo "</div>\n";
-							echo "<h3><a itemprop='url' href='http://$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
+							echo "<h3><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
 							echo "<table class='latest_activity'><tr>\n";
 							$q_activity_image = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $r_activity[id] ORDER BY idx LIMIT 1;");
 							if (mysqli_num_rows($q_activity_image) > 0){
 								$r_activity_image = mysqli_fetch_array($q_activity_image);
-								echo "<td class='latest_activity_image'><a href='http://$http_host/actividades/$r_activity[permalink]'>\n";
-								echo "<meta itemprop='image' content='http://$http_host/img/actividades/$r_activity_image[image]'/>\n";
-								echo "<img src='http://$http_host/img/actividades/miniature/$r_activity_image[image]' alt='$r_activity[title]'/>\n";
+								echo "<td class='latest_activity_image'><a href='$proto$http_host/actividades/$r_activity[permalink]'>\n";
+								echo "<meta itemprop='image' content='$proto$http_host/img/actividades/$r_activity_image[image]'/>\n";
+								echo "<img src='$proto$http_host/img/actividades/miniature/$r_activity_image[image]' alt='$r_activity[title]'/>\n";
 								echo "</a></td>\n";
 							}
 							//echo "<div class='activity_text'>\n";
-							//echo "<p>". cutText($r_activity['text'], 300, "$lng[index_read_more]", "http://$http_host/actividades/$r_activity[permalink]") . "</p>\n";
+							//echo "<p>". cutText($r_activity['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</p>\n";
 							if ($r_activity['after'] == ''){
-								echo "<td class='latest_activity_text'>" . cutText($r_activity['text'], 300, "$lng[index_read_more]", "http://$http_host/actividades/$r_activity[permalink]") . "</td>\n";
+								echo "<td class='latest_activity_text'>" . cutText($r_activity['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</td>\n";
 							}
 							else{
-								echo "<td class='latest_activity_text'>" . cutText($r_activity['after'], 300, "$lng[index_read_more]", "http://$http_host/actividades/$r_activity[permalink]") . "</td>\n";
+								echo "<td class='latest_activity_text'>" . cutText($r_activity['after'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</td>\n";
 							}
 							echo "</tr></table>\n";
 							//echo "</div>\n";
 							//echo "</div>\n";
 							echo "</div>\n";
 						}
-						echo "<a class='go_to_section' href='http://$http_host/actividades/'>$lng[index_upcoming_activity_see_all]</a><br/>\n";
+						echo "<a class='go_to_section' href='$proto$http_host/actividades/'>$lng[index_upcoming_activity_see_all]</a><br/>\n";
 						echo "</div>";
 						
 					}
