@@ -3,6 +3,7 @@
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("../functions.php");
 	$con = startdb();
+	$proto = getProtocol();
 	
 	//Language
 	$lang = selectLanguage();
@@ -14,7 +15,7 @@
 	$perm = mysqli_real_escape_string($con, $_GET['perm']);
 	$q = mysqli_query($con, "SELECT id, permalink, title_$lang AS title, text_$lang AS text, after_$lang AS after, price, inscription, people, max_people, user, date, DATE_FORMAT(date, '%Y-%m-%d %T') AS cdate, DATE_FORMAT(date, '%Y-%m-%d') AS isodate, DATE_FORMAT(date,'%b %d, %Y') as fdate, dtime, comments, city FROM activity WHERE permalink = '$perm' AND visible = 1;");
 	if (mysqli_num_rows($q) == 0){
-		header("Location: http://$http_host/actividades/");
+		header("Location: $proto$http_host/actividades/");
 		exit(-1);
 	}
 	$r = mysqli_fetch_array($q);
@@ -26,7 +27,7 @@
 		<meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<title><?php echo $r["title"] . " - Gasteizko Margolariak"; ?></title>
-		<link rel="shortcut icon" href="<?php echo "http://$http_host/img/logo/favicon.ico";?>">
+		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
 			<?php 
@@ -49,20 +50,20 @@
 			?>
 		</script>
 		<!-- Meta tags -->
-		<link rel="canonical" href="<?php echo "http://$http_host/actividades/" . $r['permalink']; ?>"/>
-		<link rel="author" href="<?php echo "http://$http_host"; ?>"/>
-		<link rel="publisher" href="<?php echo "http://$http_host"; ?>"/>
+		<link rel="canonical" href="<?php echo "$proto$http_host/actividades/" . $r['permalink']; ?>"/>
+		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
+		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo strip_tags($r["text"]);?>"/>
 		<meta property="og:title" content="<?php echo $r["title"] . " - Gasteizko Margolariak"; ?>"/>
-		<meta property="og:url" content="<?php echo "http://$http_host/actividades/" . $r['permalink']; ?>"/>
+		<meta property="og:url" content="<?php echo "$proto$http_host/actividades/" . $r['permalink']; ?>"/>
 		<meta property="og:description" content="<?php echo strip_tags($r["text"]);?>"/>
 		<?php
 			$q_i = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $id ORDER BY idx;");
 			if (mysqli_num_rows($q_i) == 0)
-				$img = "http://$http_host/img/logo/cover.png";
+				$img = "$proto$http_host/img/logo/cover.png";
 			else{
 				$r_i = mysqli_fetch_array($q_i);
-				$img = "http://$http_host/img/actividades/preview/" . $r_i['image'];
+				$img = "$proto$http_host/img/actividades/preview/" . $r_i['image'];
 			}
 		?>
 		<meta property="og:image" content="<?php echo $img;?>"/>
@@ -85,7 +86,7 @@
 		<meta name="twitter:title" content="<?php echo $r["title"] . " - Gasteizko Margolariak";?>"/>
 		<meta name="twitter:description" content="<?php echo strip_tags($r["text"]);?>"/>
 		<meta name="twitter:image" content="<?php echo $img;?>"/>
-		<meta name="twitter:url" content="<?php echo "http://$http_host/actividades/$r[permalink]"; ?>"/>
+		<meta name="twitter:url" content="<?php echo "$proto$http_host/actividades/$r[permalink]"; ?>"/>
 		<meta name="robots" content="index follow"/>
 	</head>
 	<body>
@@ -107,7 +108,7 @@
 					<div class="entry" itemscope itemtype='http://schema.org/Event'>
 						<?php
 						
-							echo "<meta itemprop='url' href='http://$http_host/actividades/$r[permalink]'/>\n";
+							echo "<meta itemprop='url' href='$proto$http_host/actividades/$r[permalink]'/>\n";
 							echo "<meta itemprop='inLanguage' content='$lang'/>\n";
 							echo "<meta itemprop='name' content='$r[title]'/>\n";
 							echo "<meta itemprop='description' content='$r[text]'/>\n";
@@ -116,15 +117,15 @@
 							echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 							echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 							echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
-							echo "<meta itemprop='logo' content='http://$http_host/img/logo/logo.png'/>\n";
+							echo "<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>\n";
 							echo "<meta itemprop='foundingDate' content='03-02-2013'/>\n";
 							echo "<meta itemprop='telephone' content='+34637140371'/>\n";
-							echo "<meta itemprop='url' content='http://$http_host'/>\n";
+							echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 							echo "</div>\n";
 						
 							if (mysqli_num_rows($q_i) > 0){
-								echo "<meta itemprop='image' content='http://$http_host/img/actividades/$r_i[image]'/>\n";
-								echo "<div id='activity_image'><img src='http://$http_host/img/actividades/preview/$r_i[image]'/></div>\n";
+								echo "<meta itemprop='image' content='$proto$http_host/img/actividades/$r_i[image]'/>\n";
+								echo "<div id='activity_image'><img src='$proto$http_host/img/actividades/preview/$r_i[image]'/></div>\n";
 							}
 							echo "<div id='activity_description'><p>\n";
 							if ($future == false && strlen($r['after']) > 0){
@@ -201,18 +202,18 @@
 							$res_year = mysqli_query($con, "SELECT year(date) AS year FROM activity WHERE visible = 1 GROUP BY year(date) ORDER BY year DESC;");
 							while($row_year = mysqli_fetch_array($res_year)){
 								echo "<div class='year pointer' onClick=\"toggleElement('year_$row_year[year]');\">";
-								echo("<img class='slid' id='slid_year_$row_year[year]' src='http://$http_host/img/misc/slid-right.png' alt=' '/><span class='fake_a'>$row_year[year]</span>");
+								echo("<img class='slid' id='slid_year_$row_year[year]' src='$proto$http_host/img/misc/slid-right.png' alt=' '/><span class='fake_a'>$row_year[year]</span>");
 								echo "</div>\n";
 								echo "<div class='list_year pointer' id='list_year_$row_year[year]'>\n";
 								$res_month = mysqli_query($con, "SELECT month(date) AS month FROM activity WHERE visible = 1 AND year(date) = $row_year[year] GROUP BY month(date) ORDER BY month DESC;");
 								while($row_month = mysqli_fetch_array($res_month)){
 									echo "<div class='month pointer' onClick=\"toggleElement('month_$row_year[year]_$row_month[month]');\">";
-									echo("<img class='slid' id='slid_month_$row_year[year]_$row_month[month]' src='http://$http_host/img/misc/slid-right.png' alt=' '/><span class='fake_a'>" . $lng['months'][$row_month['month'] - 1] . "</span>");
+									echo("<img class='slid' id='slid_month_$row_year[year]_$row_month[month]' src='$proto$http_host/img/misc/slid-right.png' alt=' '/><span class='fake_a'>" . $lng['months'][$row_month['month'] - 1] . "</span>");
 									echo "</div>\n";
 									echo "<ul id='list_month_$row_year[year]_$row_month[month]' class='activity_list'>\n";
 									$res_title = mysqli_query($con, "SELECT id, permalink, title_$lang AS title FROM activity WHERE visible = 1 AND year(date) = $row_year[year] AND month(date) = '$row_month[month]' ORDER BY date DESC;");
 									while($row_title = mysqli_fetch_array($res_title))
-										echo "<li><a href='http://$http_host/actividades/" . $row_title['permalink']  . "'>$row_title[title]</a></li>\n";
+										echo "<li><a href='$proto$http_host/actividades/" . $row_title['permalink']  . "'>$row_title[title]</a></li>\n";
 									echo "</ul>\n";
 								}
 								echo "</div>\n";
