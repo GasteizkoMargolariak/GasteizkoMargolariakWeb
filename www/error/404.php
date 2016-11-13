@@ -2,6 +2,7 @@
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("../functions.php");
 	$con = startdb();
+	$proto = getProtocol();
 	
 	//Language
 	$lang = selectLanguage();
@@ -15,7 +16,7 @@
 		<meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<title><?php echo $lng['error_title'] ?> - Gasteizko Margolariak</title>
-		<link rel="shortcut icon" href="<?php echo "http://$http_host/img/logo/favicon.ico";?>">
+		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
 			<?php 
@@ -102,7 +103,7 @@
 						<a href="javascript: history.go(-1);"><?php echo $lng['error_404_solution_0']; ?></a>
 					</li>
 					<li>
-						<a href="<?php echo "http://$http_host/";?>"><?php echo $lng['error_404_solution_1']; ?></a>
+						<a href="<?php echo "$proto$http_host/";?>"><?php echo $lng['error_404_solution_1']; ?></a>
 					</li>
 					<li>
 						<a target='_blank' href="https://www.youtube.com/results?search_query=cats"><?php echo $lng['error_404_solution_2']; ?></a>
