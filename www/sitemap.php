@@ -28,7 +28,7 @@
 		</image:image>
 	</url>
 	<url>
-		<loc>http://<?php echo $http_host; ?>/help/</loc>
+		<loc>http://<?php echo $http_host; ?>/ayuda/</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.5</priority>
 	</url>
