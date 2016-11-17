@@ -133,6 +133,7 @@
 				}
 				if (date("M") <= 8){
 					$q_years = mysqli_query($con, "SELECT year FROM festival WHERE year != " . date("Y") . " ORDER BY year DESC;");
+				}
 				else{
 					$q_years = mysqli_query($con, "SELECT year FROM festival WHERE year <= " . date("Y") . " ORDER BY year DESC;");
 				}
