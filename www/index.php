@@ -88,7 +88,7 @@
 							echo "<img id='festivals_image' alt=' ' src='$proto$http_host/img/fiestas/$r_festivals[img]'/>\n";
 						}
 						if ($r_festivals['summary'] != ''){
-							echo "<span id='festivals_summary_text'><br/>$r_festivals[summary]</span>\n";
+							echo "<span class='entry_title' id='festivals_summary_text'><br/>$r_festivals[summary]</span>\n";
 							echo "<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='$proto$http_host/lablanca/'>$lng[index_festivals_link]</a>\n";
 						}
 						else{
@@ -104,7 +104,7 @@
 					if (mysqli_num_rows($q_location) > 0){
 						$r_location = mysqli_fetch_array($q_location);
 						echo "<td><div class='entry' id='festival_entry_map'>\n";
-						echo "<h3>$lng[index_festivals_location]</h3>\n";
+						echo "<h3 class='entr_title'>$lng[index_festivals_location]</h3>\n";
 						echo "<iframe src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCZHP7t2on_G3eyyoCTfhGAlDx1mJnX7iI&q=$r_location[lat],$r_location[lon]' allowfullscreen></iframe>\n";
 						echo "</div>\n";
 					}
@@ -117,7 +117,7 @@
 					$q_sch_next = mysqli_query($con, "SELECT festival_event.id AS id, gm, title_$lang AS title, description_$lang AS description, host, place, date_format(start, '%H:%i') AS st, date_format(end, '%H:%i') AS end, DATE_FORMAT(start, '%Y-%m-%dT%H:%i:00') AS isostart, DATE_FORMAT(end, '%Y-%m-%dT%H:%i:00') AS isoend, place.name_$lang AS place, address_$lang AS address, lat, lon FROM festival_event, place WHERE place.id = festival_event.place AND gm = 1 AND start > NOW() AND start < NOW() + INTERVAL 240 MINUTE ORDER BY start LIMIT 1;");
 					if (mysqli_num_rows($q_sch_curr) > 0 || mysqli_num_rows($q_sch_next) > 0){
 						echo "<td><div class='entry festival_schedule'>\n";
-						echo "<h3>$lng[index_festivals_gm_schedule]</h3>\n";
+						echo "<h3 class='entry_title'>$lng[index_festivals_gm_schedule]</h3>\n";
 					
 						if (mysqli_num_rows($q_sch_curr) > 0){
 							$r_sch_curr = mysqli_fetch_array($q_sch_curr);
@@ -180,7 +180,7 @@
 					$q_sch_next = mysqli_query($con, "SELECT festival_event.id AS id, gm, title_$lang AS title, description_$lang AS description, host, place, date_format(start, '%H:%i') AS st, date_format(end, '%H:%i') AS end, DATE_FORMAT(start, '%Y-%m-%dT%H:%i:00') AS isostart, DATE_FORMAT(end, '%Y-%m-%dT%H:%i:00') AS isoend, place.name_$lang AS place, address_$lang AS address, lat, lon FROM festival_event, place WHERE place.id = festival_event.place AND gm = 0 AND start > NOW() AND start < NOW() + INTERVAL 240 MINUTE ORDER BY start LIMIT 1;");
 					if (mysqli_num_rows($q_sch_curr) > 0 || mysqli_num_rows($q_sch_next) > 0){
 						echo "<td><div class='entry festival_schedule' >\n";
-						echo "<h3>$lng[index_festivals_city_schedule]</h3>\n";
+						echo "<h3 class='entry_title'>$lng[index_festivals_city_schedule]</h3>\n";
 					
 						if (mysqli_num_rows($q_sch_curr) > 0){
 							$r_sch_curr = mysqli_fetch_array($q_sch_curr);
@@ -278,7 +278,7 @@
 						echo "</div></div>\n";
 					}
 					echo "<div class='td'><div id='upcoming_text'>\n";
-					echo "<h3><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
+					echo "<h3 class='entry_title'><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
 					echo "<p>". cutText($r_activity['text'], 250, "$lng[index_read_more]", "$http_host/actividades/$r_activity[permalink]") . "</p>\n";
 					echo "</div></div>\n";
 					echo "<div class='td'><div id='upcoming_details'>\n";
@@ -323,7 +323,7 @@
 								echo "<h3 class='section_title'>$lng[index_latest_posts]</h3>\n";
 								$q_post = mysqli_query($con, "SELECT id, permalink, title_$lang AS title, text_$lang AS text, dtime, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate FROM post WHERE visible = 1 ORDER BY dtime DESC LIMIT 2;");
 								if (mysqli_num_rows($q_post) == 0){
-									echo "<div class='entry'>$lng[index_no_post]</div>\n";
+									echo "<div class='entry'><h3 class='entry_title'>$lng[index_no_post]</div>\n";
 								}
 								else{
 									while ($r_post = mysqli_fetch_array($q_post)){
@@ -347,7 +347,7 @@
 											echo "<meta itemprop='image' content='$proto$http_host/img/blog/preview/$r_post_image[image]'/>\n";
 											echo "<a href='$proto$http_host/blog/$r_post[permalink]'><img src='$proto$http_host/img/blog/miniature/$r_post_image[image]'/></a>\n";
 										}
-										echo "<h3><a itemprop='url' href='$proto$http_host/blog/$r_post[permalink]'>$r_post[title]</a></h3>\n";
+										echo "<h3 class='entry_title'><a itemprop='url' href='$proto$http_host/blog/$r_post[permalink]'>$r_post[title]</a></h3>\n";
 										echo "<p>". cutText($r_post['text'], 100, "$lng[index_read_more]", "$proto$http_host/blog/$r_post[permalink]") . "</p>\n";
 										echo "<span>" . formatDate($r_post['dtime'], $lang, false) . "</span>\n";
 										echo "</div>\n";
@@ -414,7 +414,7 @@
 							echo "<meta itemprop='telephone' content='+34637140371'/>\n";
 							echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 							echo "</div>\n";
-							echo "<h3><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
+							echo "<h3 class='entry_title'><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
 							echo "<table class='latest_activity'><tr>\n";
 							$q_activity_image = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $r_activity[id] ORDER BY idx LIMIT 1;");
 							if (mysqli_num_rows($q_activity_image) > 0){

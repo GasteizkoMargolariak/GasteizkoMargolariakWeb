@@ -1,5 +1,5 @@
 <div class='section'>
-	<h3><?php echo str_replace('#', $year, $lng['lablanca_title']);?></h3>
+	<h3 class='section_title'><?php echo str_replace('#', $year, $lng['lablanca_title']);?></h3>
 	<div class='entry'>
 	<?php
 		//Some text for the festivals
