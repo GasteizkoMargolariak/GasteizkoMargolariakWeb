@@ -3,6 +3,7 @@
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("../functions.php");
 	$con = startdb();
+	$proto = getProtocol();
 	
 	//Language
 	$lang = selectLanguage();
@@ -17,7 +18,7 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<title><?php echo $lng['activities_title'];?></title>
-		<link rel="shortcut icon" href="<?php echo "http://$http_host/img/logo/favicon.ico";?>">
+		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
 			<?php 
@@ -40,22 +41,22 @@
 			?>
 		</script>
 		<!-- Meta tags -->
-		<link rel="canonical" href="<?php echo "http://$http_host/actividades/"; ?>"/>
-		<link rel="author" href="<?php echo "http://$http_host"; ?>"/>
-		<link rel="publisher" href="<?php echo "http://$http_host"; ?>"/>
+		<link rel="canonical" href="<?php echo "$proto$http_host/actividades/"; ?>"/>
+		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
+		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo $lng['activities_description'];?>"/>
 		<meta property="og:title" content="<?php echo $lng['activities_title'];?>"/>
-		<meta property="og:url" content="<?php echo "http://$http_host/activities/"; ?>"/>
+		<meta property="og:url" content="<?php echo "$proto$http_host/activities/"; ?>"/>
 		<meta property="og:description" content="<?php echo $lng['activities_description'];?>"/>
-		<meta property="og:image" content="<?php echo "http://$http_host/img/logo/logo.png";?>"/>
+		<meta property="og:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta property="og:site_name" content="<?php echo $lng['index_title'];?>"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
 		<meta name="twitter:card" content="summary"/>
 		<meta name="twitter:title" content="<?php echo $lng['activities_title'];?>"/>
 		<meta name="twitter:description" content="<?php echo $lng['activities_description'];?>"/>
-		<meta name="twitter:image" content="<?php echo "http://$http_host/img/logo/logo.png";?>"/>
-		<meta name="twitter:url" content="<?php echo"http://$http_host"; ?>"/>
+		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
+		<meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
 		<meta name="robots" content="index follow"/>
 	</head>
 	<body>
@@ -77,13 +78,13 @@
 					echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 					echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 					echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
-					echo "<meta itemprop='logo' content='http://$http_host/img/logo/logo.png'/>\n";
+					echo "<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>\n";
 					echo "<meta itemprop='foundingDate' content='03-02-2013'/>\n";
 					echo "<meta itemprop='telephone' content='+34637140371'/>\n";
-					echo "<meta itemprop='url' content='http://$http_host'/>\n";
+					echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 					echo "</div>\n";
 					echo "<div id='upcoming_text'>\n";
-					echo "<h3><a itemprop='url' href='http://$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a><span class='title_date'> - " . formatDate($r_activity['date'], $lang, false) . "</span></h3>\n";
+					echo "<h3><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a><span class='title_date'> - " . formatDate($r_activity['date'], $lang, false) . "</span></h3>\n";
 					//Table with details
 					echo "<table class='future_details'><tr>\n";
 					//If image, show it
@@ -91,9 +92,9 @@
 					if (mysqli_num_rows($q_activity_image) > 0){
 						$r_activity_image = mysqli_fetch_array($q_activity_image);
 						echo "<td><div id='upcoming_image'>\n";
-						echo "<a href='http://$http_host/actividades/$r_activity[permalink]'>\n";
-						echo "<meta itemprop='image' content='http://$http_host/img/actividades/view/$r_activity_image[image]'/>\n";
-						echo "<img src='http://$http_host/img/actividades/preview/$r_activity_image[image]' alt='$r_activity[title]'/>\n";
+						echo "<a href='$proto$http_host/actividades/$r_activity[permalink]'>\n";
+						echo "<meta itemprop='image' content='$proto$http_host/img/actividades/view/$r_activity_image[image]'/>\n";
+						echo "<img src='$proto$http_host/img/actividades/preview/$r_activity_image[image]' alt='$r_activity[title]'/>\n";
 						echo "</a>\n";
 						echo "</div></td>\n";
 					}
@@ -115,11 +116,11 @@
 					//Show link to schedule (if any)
 					$q_itinerary = mysqli_query($con, "SELECT id FROM activity_itinerary WHERE activity = $r_activity[id];");
 					if (mysqli_num_rows($q_itinerary) > 0){
-						echo "<tr><td></td><td><a href='http://$http_host/actividades/$r_activity[permalink]'>$lng[activities_see_itinerary]</a></td></tr>\n";
+						echo "<tr><td></td><td><a href='$proto$http_host/actividades/$r_activity[permalink]'>$lng[activities_see_itinerary]</a></td></tr>\n";
 					}
 					echo "</table>";
 					echo "</td></tr></table>\n";
-					echo "<p>". cutText($r_activity['text'], 300, "$lng[index_read_more]", "http://$http_host/actividades/$r_activity[permalink]") . "</p>\n";
+					echo "<p>". cutText($r_activity['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</p>\n";
 					echo "</div>\n";
 				}
 				echo "</div>\n";
@@ -145,11 +146,11 @@
 					echo "<div class='entry past_activity'>\n";
 					$q_activity_image = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $r_past[id] ORDER BY idx LIMIT 1;");
 					if ($i == 0 && mysqli_num_rows($q_upcoming) == 0){
-						echo "<h3><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-down.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='http://$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
+						echo "<h3><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-down.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
 						echo "<div class='past_activity_details past_activity_details_first' id='past_activity_details_$r_past[id]'>\n";
 					}
 					else{
-						echo "<h3><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-right.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='http://$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
+						echo "<h3><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-right.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
 						echo "<div class='past_activity_details' id='past_activity_details_$r_past[id]'>\n";
 					}
 					$i ++;
@@ -157,17 +158,17 @@
 					if (mysqli_num_rows($q_activity_image) > 0){
 						$r_activity_image = mysqli_fetch_array($q_activity_image);
 						echo "<td><div class='past_image'>\n";
-						echo "<a href='http://$http_host/actividades/$r_past[permalink]'>\n";
-						echo "<img src='http://$http_host/img/actividades/miniature/$r_activity_image[image]' alt='$r_past[title]'/>\n"; 
+						echo "<a href='$proto$http_host/actividades/$r_past[permalink]'>\n";
+						echo "<img src='$proto$http_host/img/actividades/miniature/$r_activity_image[image]' alt='$r_past[title]'/>\n"; 
 						echo "</a>\n";
 						echo "</div></td>\n";
 					}
 					echo "<td><div class='past_text'>\n";
 					if (strlen($r_past['text']) > 0){
-						echo "<p>". cutText($r_past['text'], 300, "$lng[index_read_more]", "http://$http_host/actividades/$r_past[permalink]") . "</p>\n";
+						echo "<p>". cutText($r_past['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_past[permalink]") . "</p>\n";
 					}
 					else{
-						echo "<p>". cutText($r_past['alt_text'], 300, "$lng[index_read_more]", "http://$http_host/actividades/$r_past[permalink]") . "</p>\n";
+						echo "<p>". cutText($r_past['alt_text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_past[permalink]") . "</p>\n";
 					}
 					echo "</div></td></tr></table>\n";
 					//TODO show footer with price, maxpeople, etc

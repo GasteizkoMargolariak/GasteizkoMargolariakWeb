@@ -1,4 +1,4 @@
-<?php //TODO: Revisiti this file. I dont know what does it do ?>
+<?php //TODO: Revisit this file.?>
 <div class="section">
 	<h3><?php echo($lng['lablanca_no_intro']); ?></h3>
 	<div class="entry">

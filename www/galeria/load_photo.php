@@ -2,6 +2,7 @@
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("../functions.php");
 	$con = startdb();
+	$proto = getProtocol();
 	
 	//Language
 	$lang = selectLanguage();
@@ -20,9 +21,9 @@
 		echo "</br>\n";
 		//Arrows
 		echo "<div id='viewer_controls'>\n";
-		echo "<img id='viewer_arrow_left' class='pointer' alt=' ' src='http://$http_host/img/misc/slid-left.png' onClick='scrollPhoto(-1);'/>\n";
-		echo "<img id='viewer_arrow_right' class='pointer' alt=' ' src='http://$http_host/img/misc/slid-right.png' onClick='scrollPhoto(1);'/>\n";
-		echo "<img id='viewer_close' class='pointer mobile' alt=' ' src='http://$http_host/img/misc/close.png' onClick='closeViewer();'/>\n";
+		echo "<img id='viewer_arrow_left' class='pointer' alt=' ' src='$proto$http_host/img/misc/slid-left.png' onClick='scrollPhoto(-1);'/>\n";
+		echo "<img id='viewer_arrow_right' class='pointer' alt=' ' src='$proto$http_host/img/misc/slid-right.png' onClick='scrollPhoto(1);'/>\n";
+		echo "<img id='viewer_close' class='pointer mobile' alt=' ' src='$proto$http_host/img/misc/close.png' onClick='closeViewer();'/>\n";
 		echo "</div>\n"; //viewer_controls
 		echo "</div>\n"; //cell
 		echo "<div class='viewer_cell' id='cell_details'>\n";

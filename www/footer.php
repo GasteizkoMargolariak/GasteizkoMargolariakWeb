@@ -3,13 +3,13 @@
 		<div class="tr">
 			<div class="td" id="footer_left">
 				<span id="footer_follow" class="desktop"><?php echo $lng['footer_follow']?></span><br/>
-				<a title="Facebook" target="_blank" href="https://www.facebook.com/gmargolariak"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/facebook.gif" alt="Facebook"/></a>
-				<a title="Twitter" target="_blank" href="https://twitter.com/gmargolariak"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/twitter.gif" alt="Twitter"/></a>
-				<a title="Google+" target="_blank" href="https://plus.google.com/106661466029005469492"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/googleplus.gif" alt="Google+"/></a>
+				<a title="Facebook" target="_blank" href="https://www.facebook.com/gmargolariak"><img class="footer_social_icon" src="<?php echo $proto . $_SERVER['HTTP_HOST']; ?>/img/social/facebook.gif" alt="Facebook"/></a>
+				<a title="Twitter" target="_blank" href="https://twitter.com/gmargolariak"><img class="footer_social_icon" src="<?php echo $proto . $_SERVER['HTTP_HOST']; ?>/img/social/twitter.gif" alt="Twitter"/></a>
+				<a title="Google+" target="_blank" href="https://plus.google.com/106661466029005469492"><img class="footer_social_icon" src="<?php echo $proto . $_SERVER['HTTP_HOST']; ?>/img/social/googleplus.gif" alt="Google+"/></a>
 				<br class="desktop"/>
-				<a title="Youtube" target="_blank" href="https://www.youtube.com/user/GasteizkoMargolariak"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/youtube.gif" alt="Youtube"/></a>
-				<a title="Instagram" target="_blank" href="https://instagram.com/gmargolariak/"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/instagram.gif" alt="nstagram"/></a>
-<!--  				<a title="RSS" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/rss.xml"><img class="footer_social_icon" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/social/rss.gif" alt="RSS"/></a> -->
+				<a title="Youtube" target="_blank" href="https://www.youtube.com/user/GasteizkoMargolariak"><img class="footer_social_icon" src="<?php echo $proto . $_SERVER['HTTP_HOST']; ?>/img/social/youtube.gif" alt="Youtube"/></a>
+				<a title="Instagram" target="_blank" href="https://instagram.com/gmargolariak/"><img class="footer_social_icon" src="<?php echo $proto . $_SERVER['HTTP_HOST']; ?>/img/social/instagram.gif" alt="nstagram"/></a>
+<!--  				<a title="RSS" href="<?php echo $proto.$_SERVER['HTTP_HOST']; ?>/rss.xml"><img class="footer_social_icon" src="<?php echo $proto . $_SERVER['HTTP_HOST']; ?>/img/social/rss.gif" alt="RSS"/></a> -->
 				<br/><span id="footer_info" class='desktop'><?php echo($lng['footer_info']); ?></span>
 			</div>
 			<div class="td" id="footer_center">
@@ -41,7 +41,7 @@
 				<br class="mobile"/><br class="mobile"/><br class="mobile"/>
 			</div>
 			<div  class="td" id="footer_right" class="desktop">
-				<a href="<?php echo "http://$_SERVER[HTTP_HOST]/ayuda/";?>"><?php echo $lng['footer_help']; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo "http://$_SERVER[HTTP_HOST]/ayuda/#section_privacy";?>"><?php echo $lng['footer_privacy'];?></a>
+				<a href="<?php echo "$proto$_SERVER[HTTP_HOST]/ayuda/";?>"><?php echo $lng['footer_help']; ?></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo "$proto$_SERVER[HTTP_HOST]/ayuda/#section_privacy";?>"><?php echo $lng['footer_privacy'];?></a>
 				<br/><br class='mobile'/>
 				<img class='lang' alt='Espanol' src='/img/lang/es.gif' onClick='changeLanguage("es", "<?php echo $http_host; ?>");'/>
 				<img class='lang' alt='English' src='/img/lang/en.gif' onClick='changeLanguage("en", "<?php echo $http_host; ?>");'/>
