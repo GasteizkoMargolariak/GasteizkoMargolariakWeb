@@ -108,7 +108,7 @@
 					echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 					echo "</div>\n";
 					echo "<div class='entry'>\n";
-					echo "<h2>$r[title]</h2>\n";
+					echo "<h3 class='entry_title'>$r[title]</h3>\n";
 					if ($r_image != null){
 						echo "<div class='image_container'>\n";
 						echo "<meta itemprop='image' content='$proto$http_host/img/blog/$r_image[image]'/>\n";
