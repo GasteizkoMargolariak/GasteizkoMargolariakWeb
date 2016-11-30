@@ -30,7 +30,7 @@
 		echo "<div id='photo_viewer_details'>\n";
 		echo "<div class='entry' id='photo_data'>\n";
 		if (strlen($r['title']) > 0){
-			echo "<h4>$r[title]</h4>\n";
+			echo "<h3 class='entry_title'>$r[title]</h3>\n";
 		}
 		if (strlen($r['description']) > 0){
 			echo "<span id='photo_description'>$r[description]</span>\n";
@@ -46,13 +46,13 @@
 		echo "<div id='photo_viewer_comment_counter'>\n";
 		switch ($comment_count){
 			case 0:
-				echo "<h4><meta itemprop='interactionCount' content='0'/>$lng[gallery_comment_count_0]</h4>\n";
+				echo "<h3 class='entry_title'><meta itemprop='interactionCount' content='0'/>$lng[gallery_comment_count_0]</h3>\n";
 				break;
 			case 1:
-				echo "<h4><span itemprop='interactionCount'>1</span> $lng[gallery_comment_count_1]</h4>\n";
+				echo "<h3 class='entry_title'><span itemprop='interactionCount'>1</span> $lng[gallery_comment_count_1]</h3>\n";
 				break;
 			default:
-				echo "<h4><span itemprop='interactionCount'>$comment_count</span> $lng[gallery_comment_count_several]</h4>\n";
+				echo "<h3 class='entry_title'><span itemprop='interactionCount'>$comment_count</span> $lng[gallery_comment_count_several]</h3>\n";
 		}
 		echo "</div>\n";
 		echo "<div id='comment_list'>\n";
