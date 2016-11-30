@@ -84,7 +84,7 @@
 					echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 					echo "</div>\n";
 					echo "<div id='upcoming_text'>\n";
-					echo "<h3><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a><span class='title_date'> - " . formatDate($r_activity['date'], $lang, false) . "</span></h3>\n";
+					echo "<h3 class='entry_title'><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a><span class='title_date'> - " . formatDate($r_activity['date'], $lang, false) . "</span></h3>\n";
 					//Table with details
 					echo "<table class='future_details'><tr>\n";
 					//If image, show it
@@ -126,7 +126,7 @@
 				echo "</div>\n";
 			}
 			else{ //No upcoming activities
-				echo("<div class='entry'>\n$lng[activities_no_upcoming]\n</div>\n");
+				echo("<div class='entry'><h3 class='entry_title'>\n$lng[activities_no_upcoming]\n</h3></div>\n");
 			}
 			echo "</div>\n";
 				
@@ -146,11 +146,11 @@
 					echo "<div class='entry past_activity'>\n";
 					$q_activity_image = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $r_past[id] ORDER BY idx LIMIT 1;");
 					if ($i == 0 && mysqli_num_rows($q_upcoming) == 0){
-						echo "<h3><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-down.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
+						echo "<h3 class='entry_title'><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-down.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
 						echo "<div class='past_activity_details past_activity_details_first' id='past_activity_details_$r_past[id]'>\n";
 					}
 					else{
-						echo "<h3><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-right.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
+						echo "<h3 class='entry_title'><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-right.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
 						echo "<div class='past_activity_details' id='past_activity_details_$r_past[id]'>\n";
 					}
 					$i ++;

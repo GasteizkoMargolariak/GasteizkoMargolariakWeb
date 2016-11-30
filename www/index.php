@@ -104,7 +104,7 @@
 					if (mysqli_num_rows($q_location) > 0){
 						$r_location = mysqli_fetch_array($q_location);
 						echo "<td><div class='entry' id='festival_entry_map'>\n";
-						echo "<h3 class='entr_title'>$lng[index_festivals_location]</h3>\n";
+						echo "<h3 class='entry_title'>$lng[index_festivals_location]</h3>\n";
 						echo "<iframe src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCZHP7t2on_G3eyyoCTfhGAlDx1mJnX7iI&q=$r_location[lat],$r_location[lon]' allowfullscreen></iframe>\n";
 						echo "</div>\n";
 					}
