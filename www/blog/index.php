@@ -83,7 +83,7 @@
 						echo "<meta itemprop='telephone' content='+34637140371'/>\n";
 						echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 						echo "</div>\n";
-						echo "<h2><a itemprop='url' href='$proto$http_host/blog/$r[permalink]'>$r[title]</a></h2>\n";
+						echo "<h3 class='entry_title'><a itemprop='url' href='$proto$http_host/blog/$r[permalink]'>$r[title]</a></h2>\n";
 						$q_image = mysqli_query($con, "SELECT image FROM post_image WHERE post = $r[id] ORDER BY idx LIMIT 1;");
 						if (mysqli_num_rows($q_image) > 0){
 							$r_image = mysqli_fetch_array($q_image);

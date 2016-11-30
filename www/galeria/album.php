@@ -90,7 +90,7 @@
 						echo "<div class='entry photo'>\n<div class='photo_container'>\n";
 						echo "<img class='pointer photo_img' path='$r_photo[file]' onClick=\"showPhotoByPath('$r_photo[file]');\" src='/img/galeria/miniature/$r_photo[file]' /></div>\n";
 						if (strlen($r_photo['title']) > 0 ){
-							echo "<h4><a href='javascript:;' onClick=\"showPhotoByPath('$r_photo[file]');\">$r_photo[title]</a></h4>\n";
+							echo "<h3 class='entry_title'><a href='javascript:;' onClick=\"showPhotoByPath('$r_photo[file]');\">$r_photo[title]</a></h4>\n";
 						}
 						if (strlen($r_photo['description']) > 0 ){
 							echo "<span class='photo_description'>" . cutText($r_photo['description'], 50) . "</span>\n";

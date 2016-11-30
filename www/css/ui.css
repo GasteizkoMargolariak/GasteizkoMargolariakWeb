@@ -430,6 +430,17 @@ div.section a.go_to_section{
 	transition:			all .3s ease-in-out;
 }
 
+h3.entry_title{
+	color: 		#275573;
+	font-weight:	bold;
+	font-size:	1.3em;
+	margin:		1em 1em 0.3em 0em;
+}
+
+h3.entry_title a{
+	color: 		#275573;
+}
+
 /* Comments */
 div.comment{
 	margin:	0.5em 1em 0.5em 1em;

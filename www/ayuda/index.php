@@ -123,7 +123,7 @@
 			<div class="content_row">
 				<div class="content_cell">
 					<div class="section" id="section_privacy">
-						<h3><?php echo $lng['help_privacy_title']; ?></h3>
+						<h3 class="section_title"><?php echo $lng['help_privacy_title']; ?></h3>
 						<div class="entry">
 							<?php echo $lng['help_privacy']; ?>
 						</div>

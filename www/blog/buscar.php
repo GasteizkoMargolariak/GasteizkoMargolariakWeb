@@ -116,7 +116,7 @@
 							echo "<meta itemprop='telephone' content='+34637140371'/>\n";
 							echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 							echo "</div>\n";
-							echo "<h2 class='post_search_title'><a itemprop='url' href='$proto$http_host/blog/$r[permalink]'>$r[title]</a></h2>\n";
+							echo "<h3 class='entry_title post_search_title'><a itemprop='url' href='$proto$http_host/blog/$r[permalink]'>$r[title]</a></h2>\n";
 							# Tags (if any) and date
 							echo "<table class='post_footer post_footer_search'><tr>\n";
 							$q_tag = mysqli_query($con, "SELECT tag FROM post_tag WHERE post= $r[id];");

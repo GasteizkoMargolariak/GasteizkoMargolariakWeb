@@ -86,10 +86,14 @@
 							}
 							echo "</tr>\n</table>\n";
 							$q_count = mysqli_query($con, "SELECT album FROM photo_album WHERE album = $r[id];");
-							if (mysqli_num_rows($q_count) == 1)
-								echo "<h4><a href='$proto$http_host/galeria/$r[permalink]'>$r[title]</a> - 1 $lng[gallery_photos_singular]</h4>\n";
-							else
-								echo "<h4><a href='$proto$http_host/galeria/$r[permalink]'>$r[title]</a> - " . mysqli_num_rows($q_count) . " $lng[gallery_photos_plural]</h4>\n";
+							if (mysqli_num_rows($q_count) == 1){
+								echo "<h3 class='entry_title'><a href='$proto$http_host/galeria/$r[permalink]'>$r[title]</a></h3>\n";
+								echo("1 $lng[gallery_photos_singular]");
+							}
+							else{
+								echo "<h3 class='entry_title'><a href='$proto$http_host/galeria/$r[permalink]'>$r[title]</a></h3>\n";
+								echo(mysqli_num_rows($q_count) . " $lng[gallery_photos_plural]");
+							}
 							if (strlen($r['description']) > 0){
 								echo "<p>". cutText($r['description'], 100, "$lng[gallery_read_more]", "$proto$http_host/galeria/$r[permalink]") . "</p>\n";
 							}
