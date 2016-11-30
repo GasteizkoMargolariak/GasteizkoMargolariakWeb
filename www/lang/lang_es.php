@@ -23,7 +23,7 @@
 	
 	// /index.php
 	$lng['index_title'] = 'Gasteizko Margolariak';
-	$lng['index_description'] = 'Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak';
+	$lng['index_description'] = 'Cuadrilla de Blusas y Neskas Gasteizko Margolariak';
 	$lng['index_festivals_header'] = 'Fiestas';
 	$lng['index_festivals_link'] = 'Ir a la p&aacute;gina de fiestas';
 	$lng['index_festivals_location'] = '¡Estamos aq&iacute;!';
@@ -75,8 +75,8 @@
 	$lng['lablanca_no_title'] = 'Fiestas de La Virgen Blanca';
 	$lng['lablanca_description'] = 'Informaci&oacute;n sobre fiestas de La Blanca';
 	$lng['lablanca_no_intro'] = 'A la espera de Celed&oacute;n...';
-	$lng['lablanca_no_content'] = 'Las Fiestas de La Blanca. Esos d&iacute;as, del 4 al 9 de agosto, en los que Vitoria-Gasteiz se transforma. Se llena de color y alegr&iacute;a, y en cada esquina puedes encontrar actividades y espect&aacute;culos. Todos las estamos esperando.<br/><br/>Por desgracia, a&uacute;n hay que esperar m&aacute;s.<br/>';
-	$lng['lablanca_no_content_2'] = 'Nosotros ya estamos trabajando en ello. Tan pronto como vayamos sabiendo m&aacute;s, aqu&iacute; iremos publicando nuestro programa y otra informaci&oacute;n sobre las fiestas.';
+	$lng['lablanca_no_content'] = 'Las Fiestas de La Blanca. Esos d&iacute;as, del 4 al 9 de agosto, en los que Vitoria-Gasteiz se transforma. Se llena de color y alegr&iacute;a, y en cada esquina puedes encontrar actividades y espect&aacute;culos.<br/>';
+	$lng['lablanca_no_content_2'] = 'Nosotros, como cuadrilla de Blusas y Nescas, ya estamos trabajando en ello. Tan pronto como vayamos sabiendo m&aacute;s, aqu&iacute; iremos publicando nuestro programa y otra informaci&oacute;n sobre las fiestas.<br/><br/>';
 	$lng['lablanca_title'] = 'Fiestas de La Blanca #';
 	$lng['lablanca_schedule'] = 'Nuestro programa de fiestas';
 	$lng['lablanca_prices'] = 'Tarifas';
@@ -89,7 +89,7 @@
 	
 	// /actividades/index.php
 	$lng['activities_title'] = 'Actividades - Gasteizko Margolariak';
-	$lng['activities_descrption'] = 'Asociacion Cultural Recreativa Gasteizko Margolariak - Actividades';
+	$lng['activities_descrption'] = 'Actividades de Gasteizko Margolariak';
 	$lng['activities_upcoming'] = 'Pr&oacute;ximas actividades';
 	$lng['activities_no_upcoming'] = 'No hay nuevas actividades a la vista. ¡Pronto organizaremos algo!';
 	$lng['activities_past'] = 'Activities pasadas';
@@ -112,7 +112,7 @@
 	
 	// /blog/index.php
 	$lng['blog_title'] = 'Blog - Gasteizko Margolariak';
-	$lng['blog_descrption'] = 'Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak - Blog';
+	$lng['blog_descrption'] = 'Blog de Gasteizko Margolariak';
 	$lng['blog_search'] = 'Buscar';
 	$lng['blog_tag_cloud'] = 'Nube de tags';
 	$lng['blog_archive'] = 'Archivo';
@@ -138,7 +138,7 @@
 	
 	// /nosotros/index.php
 	$lng['us_title'] = 'Nosotros - Gasteizko Margolariak';
-	$lng['us_description'] = 'Asociaci&oacute;n Cultural Gasteizko Margolariak';
+	$lng['us_description'] = 'Cuadrilla de Blusas y Neskas Gasteizko Margolariak';
 	$lng['us_association'] = 'La asociaci&oacute;n';
 	$lng['us_association_content'] = 'La Asociaci&oacute;n Cultural Gasteizko Margolariak nace en el a&ntilde;o 2013 con la idea de estimular la participaci&oacute;n ciudadana y fortalecer la cultura y las tradiciones de Vitoria-Gasteiz.<br/><br/>En nuestro nombre se refleja un barrio en el que las calles nos recuerdan a grandes pintores: el barrio de San Mart&iacute;n. Estamos representados en los barrios, y creemos que son la esencia de esta ciudad.';
 	$lng['us_cuadrilla'] = 'La cuadrilla';
