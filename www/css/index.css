@@ -145,6 +145,22 @@ div#upcoming_details table td{
 	padding:	0.3em;
 }
 
+/* Us section */
+div#us p{
+	display:		inline-block;
+	width:			70%;
+	vertical-align:	top;
+}
+
+div#us div{
+	display:	inline-block;
+	width:		20%;
+}
+
+div#us div img{
+	opacity:	0.5;
+}
+
 /* Table to present posts and photos on the same row */
 div#content_table{
 	display:	table;

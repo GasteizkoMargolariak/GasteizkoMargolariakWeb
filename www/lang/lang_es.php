@@ -47,6 +47,8 @@
 	$lng['index_no_photos'] = 'No hay fotos';
 	$lng['index_see_all_photos'] = 'Ir a la galer&iacute;a';
 	$lng['index_read_more'] = 'Seguir leyendo';
+	$lng['index_us'] = 'Gasteizko Margolariak';
+	$lng['index_us_content'] = 'Gasteizko Margolariak somos una Cuadrilla de Blusas y Neskas de Vitoria-Gasteiz';
 	$lng['index_'] = '';
 	
 	// /header.php
