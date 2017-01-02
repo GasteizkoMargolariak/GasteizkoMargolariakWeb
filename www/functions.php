@@ -315,6 +315,13 @@
 		mysqli_query($con, 'UPDATE settings SET value = value + 1 WHERE name = "version";');
 	}
 	
+	/****************************************************
+        * Shows an ad at random. It does that one in three  *
+        * times, and only one per session (inserts a cookie *
+        * to know if the ad has been shown. A sponsor has   *
+        * more chances of having his ad popping the more it *
+	* contributes with Gasteizko Margolariak.           *
+        ****************************************************/
 	function ad($con, $lang, $lng){
 	$id = -1;
 		//If the user hasn't still see an add on this session
@@ -344,12 +351,12 @@
 				$q = mysqli_query($con, "SELECT name_$lang AS name, text_$lang AS text, image, address_$lang AS address, link, lat, lon FROM sponsor WHERE id = $id;");
 				$r = mysqli_fetch_array($q);
 				echo("<div id='ad' class='section'>\n");
+				echo("<h3 class='section_title'><a target='_blank' href='$r[link]'>$r[name]</a></h3>\n");
+				echo("<div class='entry'>\n");
 				echo("<div id='ad_details'>\n");
 				echo($lng['ad_title']);
 				echo("<img class='pointer' src='/img/misc/slid-close.png' onClick='closeAd();' />\n");
 				echo("</div>\n");
-				echo("<h3><a target='_blank' href='$r[link]'>$r[name]</a></h3>\n");
-				echo("<div class='entry'>\n");
 				if (strlen($r['image']) > 0){
 					echo("<div id='ad_image_container'>\n");
 					echo("<img src='/img/spo/miniature/$r[image]'/>\n");
