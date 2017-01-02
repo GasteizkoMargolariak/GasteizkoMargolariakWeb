@@ -66,7 +66,8 @@
 				$year = date("Y");
 				$q_settings = mysqli_query($con, "SELECT value FROM settings WHERE name = 'festivals';");
 				$r_settings = mysqli_fetch_array($q_settings);
-				if ($r_settings['value'] == 1){
+				$festivals = $r_settings['value'];
+				if ($festivals == 1){
 					echo "<div class='section' id='festivales' itemscope itemtype='$protoschema.org/Event'>\n";
 					echo "<meta itemprop='inLanguage' content='$lang'/>\n";
 					echo "<meta itemprop='name' content='$lng[index_festivals_header] $year'/>\n";
@@ -315,6 +316,15 @@
 					echo "</div>\n";//Section
 				}
 			?>
+			<div class='section'>
+				<h3 class='section_title'><?php echo($lng['index_us']); ?></h3>
+				<div class='entry' id='us'>
+					<p><?php echo($lng['index_us_content']); ?></p>
+					<div><img src='<?php echo("$proto$http_host/img/logo/GasteizkoMargolariak.png"); ?>'/></div>
+				</div>
+				<a class='go_to_section' href='<?php echo($proto.$http_host); ?>/nosotros/'><?php echo($lng['index_us_more']) ?></a>
+				<br/>
+			</div>
 			<div id='content_table'>
 				<div class='content_row'>
 					<div class='content_cell' id='cell_posts'>
@@ -442,9 +452,22 @@
 						
 					}
 				}
+				//Festivals section (if no festivals shown on top)
+				if ($festivals == 0){
+					?>
+						<div class='section'>
+							<h3 class='section_title'><?php echo($lng['index_festivals_header']); ?></h3>
+							<div class='entry'>
+							<?php echo (cutText($lng['lablanca_no_content'] . '<br/>' . $lng['lablanca_no_content_2'], 300, "$lng[index_read_more]", "$proto$http_host/lablanca/")); ?>
+							</div>
+						</div>
+					<?php
+				}
 			?>
 		</div>
 		<?php
+
+			//Footer
 			include("footer.php");
 			$ad = ad($con, $lang, $lng); 
 			stats($ad, $ad_static, "index", "");

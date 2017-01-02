@@ -122,6 +122,11 @@ img.slid{
 	font-style:	italic;
 }
 
+/*Elements with a bold font*/
+.bold{
+	font-weight:	bold;
+}
+
 
 /******************************************
 * Styles for the site header that is      *

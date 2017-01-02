@@ -145,6 +145,25 @@ div#upcoming_details table td{
 	padding:	0.3em;
 }
 
+/* Us section */
+div#us p{
+	display:	inline-block;
+	vertical-align:	top;
+}
+
+div#us div{
+	position:	absolute;
+	top:		4em;
+	right:		3em;
+	text-align:	center;
+}
+
+div#us div img{
+	opacity:	0.4;
+	max-height:	100px;
+	max-width:	100px;
+}
+
 /* Table to present posts and photos on the same row */
 div#content_table{
 	display:	table;

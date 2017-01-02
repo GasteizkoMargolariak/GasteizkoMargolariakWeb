@@ -47,6 +47,9 @@
 	$lng['index_no_photos'] = 'There are no recent photos';
 	$lng['index_see_all_photos'] = 'Go to the gallery';
 	$lng['index_read_more'] = 'Read more';
+	$lng['index_us'] = 'Gasteizko Margolariak';
+	$lng['index_us_content'] = 'We at Gasteizko Margolariak ar a Cuadrilla de Blusas y Neskas from Vitoria-Gasteiz<br/><br/>We became a Cuadrilla de Blusas y Neskas in 2013 and, on that same year, members of the Comisión de Blusas y Neskas.<br/><br/>Since then we have done nothing but grow with and thanks to the people who have chosen to bet on us.';
+	$lng['index_us_more'] = 'More about us';
 	$lng['index_'] = '';
 	
 	//header.php
@@ -84,7 +87,6 @@
 	$lng['lablanca_prices_offers'] = 'Packs';
 	$lng['lablanca_past_title'] = 'Carteles de Fiestas de a&ntilde;os anteriores';
 	$lng['lablanca_past_link'] = 'Fiestas de la Blanca de ';
-	$lng['lablanca_'] = '';
 	$lng['lablanca_'] = '';
 	
 	// /actividades/index.php
@@ -139,6 +141,8 @@
 	// /nosotros/index.php
 	$lng['us_title'] = 'About Us - Gasteizko Margolariak';
 	$lng['us_description'] = 'Asociacion Cultural Gasteizko Margolariak';
+	$lng['us_introduction'] = 'Quienes somos';
+	$lng['us_introduction_content'] = 'Somos una Cuadrilla de Blusas y Neskas de Vitoria-Gasteiz. Participamos en las fiestas de la ciudad, animando, organizando actividades, para nuestros miembros y para el p&uacute;blico en general.<br/><br/>Pero eso no es todo: Permanecemos activos durante el resto del a&ntilde;o, organizando actividades, tanto dentro como fuera de la ciudad: Competiciones, excursiones, eventos solidarios...';
 	$lng['us_association'] = 'The association';
 	$lng['us_association_content'] = 'La Asociaci&oacute;n Cultural Gasteizko Margolariak nace en el a&ntilde;o 2013 con la idea de estimular la participaci&oacute;n ciudadana y fortalecer la cultura y las tradiciones de Vitoria-Gasteiz.<br/><br/>En nuestro nombre se refleja un barrio en el que las calles nos recuerdan a grandes pintores: el barrio de San Mart&iacute;n. Estamos representados en los barrios, y creemos que son la esencia de esta ciudad.';
 	$lng['us_cuadrilla'] = 'La cuadrilla';
@@ -146,7 +150,6 @@
 	$lng['us_activities'] = 'What we do';
 	$lng['us_activities_content'] = 'Excursiones, partidos, causas ben&eacute;ficas... No solo se nos ve en fiestas.<br/><br/>Creemos que, como Cuadrilla de Blusas y Neskas, existimos por y para la ciudad, y por eso organizamos actividades durante todo el a&ntilde;o, para todo aquel que quiera acompa&ntilde;arnos<br/><br/>Si quieres saber lo que hacemos, te sugerimos que eches un vistazo a nuestra <a href="/galeria/">galer&iacute;a</a>. Y si quieres conocernos, apuntate a la siguiente <a href="/actividades/">actividad</a>!';
 	$lng['us_transparency'] = 'Transparency';
-	//$lng['us_transparency_content'] = '¿Te preocupa saber d&oacute;nde va tu dinero? En Gasteizko Margolariak queremos que est&eacute;s tranquilo.<br/><br/>Muchas de nuestras actividades son gratuitas. Otras, como las fiestas de La Blanca, tienen una cuota de inscripci&oacute;n. Gasteizko Margolariak no es una empresa, es una Asociaci&oacute;n cultural, y como tal, no tenemos beneficios.<br/><br/>Queremos ser transparentes, y por eso ponemos a tu disposici&oacute;n nuestras cuentas de manera online, para que sepas que cada euro se reinvierte en ti.';
 	$lng['us_transparency_content'] = '¿Te preocupa saber d&oacute;nde va tu dinero? En Gasteizko Margolariak queremos que est&eacute;s tranquilo.<br/><br/>Muchas de nuestras actividades son gratuitas. Otras, como las fiestas de La Blanca, tienen una cuota de inscripci&oacute;n. Gasteizko Margolariak no es una empresa, es una Asociaci&oacute;n cultural, y como tal, no tenemos beneficios.<br/><br/>Queremos ser transparentes, y por eso, empezanod en 2016, pondremos a tu disposici&oacute;n nuestras cuentas de manera online, para que sepas que cada euro se reinvierte en t&iacute;.';
 	$lng['us_'] = '';
 	
@@ -158,6 +161,7 @@
 	$lng['gallery_photos_singular'] = 'photo';
 	$lng['gallery_photos_plural'] = 'photos';
 	$lng['gallery_read_more'] = 'Read more';
+	$lng['gallery_user'] = 'Sent by: ';
 	$lng['gallery_'] = '';
 	
 	// /galeria/album.php
@@ -168,7 +172,6 @@
 	$lng['gallery_new_comment_content'] = 'Comment...';
 	$lng['gallery_new_comment_user'] = 'A name...';
 	$lng['gallery_new_comment_submit'] = 'Post';
-	$lng['gallery_user'] = 'Sent by: ';
 	$lng['gallery_'] = '';
 	
 	// /galeria/upload.php
