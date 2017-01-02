@@ -109,7 +109,7 @@ function scrollPhoto(inc){
 
 //WARNING: If changed in css, change here.
 function defaultInputBorder(id){
-	id.style.border = '0.4em solid #9cd3d9'
+	id.style.border = '0.2em solid #0078ff'
 }
 
 function postComment(photo, lang){
