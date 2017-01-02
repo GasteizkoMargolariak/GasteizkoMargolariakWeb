@@ -93,6 +93,10 @@ textarea{
 	margin:				0.1em;
 }
 
+li{
+	list-style-image:	url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVQImWNgIBqU//+PWwKGcUoQVECanVgAAJSsH/KywgEfAAAAAElFTkSuQmCC');
+}
+
 /******************************************
 * Common elements present across the      *
 * whle site.                              *
