@@ -322,6 +322,8 @@
 					<p><?php echo($lng['index_us_content']); ?></p>
 					<div><img src='<?php echo("$proto$http_host/img/logo/GasteizkoMargolariak.png"); ?>'/></div>
 				</div>
+				<a class='go_to_section' href='<?php echo($proto.$http_host); ?>/nosotros/'><?php echo($lng['index_us_more']) ?></a>
+				<br/>
 			</div>
 			<div id='content_table'>
 				<div class='content_row'>

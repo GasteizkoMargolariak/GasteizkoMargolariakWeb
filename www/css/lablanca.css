@@ -183,3 +183,25 @@ div#prices table#table_offers p.description{
 	font-size:	90%;
 	font-style:	italic;
 }
+
+
+/* No fiestas */
+
+ul#no_fiestas{
+	margin:			0 2em 2em 2em;
+	list-style-image:	url('https://margolariak.com/img/misc/ul.png');
+	list-style-type:	circle;
+}
+
+ul#no_fiestas li{
+	margin-top: 2em;
+}
+
+ul#no_fiestas li span{
+	font-weight:	bold;
+	font-style:	italic;
+	font-size:	110%;
+	color:		#001133;
+	margin-right:	0.3em;
+	letter-spacing:	0.05em;
+}

@@ -147,18 +147,21 @@ div#upcoming_details table td{
 
 /* Us section */
 div#us p{
-	display:		inline-block;
-	width:			70%;
+	display:	inline-block;
 	vertical-align:	top;
 }
 
 div#us div{
-	display:	inline-block;
-	width:		20%;
+	position:	absolute;
+	top:		4em;
+	right:		3em;
+	text-align:	center;
 }
 
 div#us div img{
-	opacity:	0.5;
+	opacity:	0.4;
+	max-height:	100px;
+	max-width:	100px;
 }
 
 /* Table to present posts and photos on the same row */
