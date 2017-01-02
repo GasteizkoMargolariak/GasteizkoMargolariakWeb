@@ -20,7 +20,7 @@ function launchSearch(where){
 
 //WARNING: If changed in css, change here.
 function defaultInputBorder(id){
-	id.style.border = '0.4em solid #9cd3d9'
+	id.style.border = '0.2em solid #0078ff'
 }
 
 function postComment(post, lang){
@@ -32,12 +32,12 @@ function postComment(post, lang){
 	//Check fields
 	if (text.length == 0){
 		defaultBorderStyle = document.getElementById('new_comment_text').style.border;
-		document.getElementById('new_comment_text').style.border = '0.4em solid #fc5359';
+		document.getElementById('new_comment_text').style.border = '0.2em solid #fc5359';
 		document.getElementById('new_comment_text').focus();
 		return false;
 	}
 	if (user.length == 0){
-		document.getElementById('new_comment_user').style.border = '0.4em solid #fc5359';
+		document.getElementById('new_comment_user').style.border = '0.2em solid #fc5359';
 		document.getElementById('new_comment_user').focus();
 		return false;
 	}

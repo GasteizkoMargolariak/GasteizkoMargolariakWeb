@@ -87,19 +87,17 @@
 			<?php include("common/leftpanel.php"); ?>
 			<div id="middle_column">
 				<div class="section">
+					<h3 class="section_title"><?php echo($lng['blog_search']);?></h3>
 					<div class="entry">
 						<?php
 							if (mysqli_num_rows($q) == 1){
-								echo "$lng[blog_search_1]<span class='italic'>$search_term</span>$lng[blog_search_2]<span class='italic'>$search_field</span>: " . strval(mysqli_num_rows($q)) . $lng['blog_search_result'];
+								echo "$lng[blog_search_1]<span class='italic'>$search_term</span>&nbsp: " . strval(mysqli_num_rows($q)) . $lng['blog_search_result'];
 							}
 							else{
-								echo "$lng[blog_search_1]<span class='italic'>$search_term</span>$lng[blog_search_2]<span class='italic'>$search_field</span>: " . strval(mysqli_num_rows($q)) . $lng['blog_search_results'];
+								echo "$lng[blog_search_1]<span class='italic'>$search_term</span>&nbsp: " . strval(mysqli_num_rows($q)) . $lng['blog_search_results'];
 							}
 						?>
 					</div>
-				</div>
-				<br/>
-				<div class="section">
 					<?php
 						while($r = mysqli_fetch_array($q)){
 							echo "<div itemscope itemtype='http://schema.org/BlogPosting' class='entry blog_entry'>\n";
@@ -134,7 +132,7 @@
 								echo "<td><span class='date'>" . formatDate($r['dtime'], $lang, false) . "</span>&nbsp;&nbsp;&nbsp;$tag_string</td>\n";
 							}
 							else{
-								echo "<td><span class='date'></span>" . formatDate($r['dtime'], $lang) . "</span>/td>\n";
+								echo "<td><span class='date'></span>" . formatDate($r['dtime'], $lang) . "</span></td>\n";
 							}
 							echo "</tr></table><hr class='post_search_separator'/>\n";
 							#Image and text

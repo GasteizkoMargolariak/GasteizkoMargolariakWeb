@@ -64,32 +64,37 @@ body{
 input[type="text"], input[type="number"], input[type="date"]{
 	border-radius:		0.3em;
 	height:				1.5em;
-	border:				0.2em solid #406896;
-	color:				#ccccdc;
-	background-color:	#0F263C;
+	border:				0.2em solid #0078ff;
+	color:				#002255;
+	background-color:	#ccddff;
 	margin:				0.1em;
 }
 
 input[type="button"], input[type="submit"], select{
 	border-radius:		0.3em;
 	height:				2em;
-	border:				0.2em solid #406896;
+	border:				0.2em solid #0078ff;
 	font-weight:		bold;
 	color:				#ffffff;
-	background-color:	#618CB7;
+	background-color:	#124567;
 	cursor:				pointer;
 	margin:				0.1em;
+	letter-spacing: 	0.1em;
 }
 
 textarea{
 	border-radius:		0.3em;
 	min-height:			2em;
 	max-height:			15em;
-	border:				0.2em solid #406896;
-	color:				#bbbbbb;
-	background-color:	#223344;
+	border:				0.2em solid #0078ff;
+	color:				#002255;
+	background-color:	#ccddff;
 	resize:				vertical;
 	margin:				0.1em;
+}
+
+li{
+	list-style-image:	url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVQImWNgIBqU//+PWwKGcUoQVECanVgAAJSsH/KywgEfAAAAAElFTkSuQmCC');
 }
 
 /******************************************
@@ -496,23 +501,22 @@ div#comment_new input[type='submit']{
 ******************************************/
 div#ad{
 	border:						0.1em solid #000011;
-	width:						25%;
+	width:						45%;
 	max-width:					25em;
 	min-width:					12em;
-	max-height:					20em;
+	max-height:					25em;
 	position:					fixed;
 	bottom:						-25em;
 	left:						3em;
 	margin-bottom:				0;
 	box-shadow:					0 0 2em #111122;
-	border-top-left-radius:		1em;
-	border-top-right-radius:	1em;
+	border-bottom-left-radius:		0em;
+	border-bottom-right-radius:	0em;
 	transition:					bottom .5s ease-in-out;
 }
 
-
-div#ad h3{
-	margin-top:	0.3em;
+div#ad h3 a{
+	color:		#ffffff
 }
 
 div#ad div#ad_details{
@@ -538,7 +542,8 @@ div#ad div.entry div#ad_image_container{
 
 div#ad div.entry div#ad_image_container img{
 	max-height:	9em;
-	border:	0.1em solid #111111;
+	max-width:	100%;
+	border:		0.1em solid #111111;
 }
 
 div#ad div.entry a{

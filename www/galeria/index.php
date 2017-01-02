@@ -61,11 +61,6 @@
 	<body>
 		<?php include("../header.php"); ?>
 		<div id="content">
-			<div class="section">
-				<div class="entry">
-					<?php echo $lng['gallery_header']; ?>
-				</div>
-			</div>
 			<br/>
 			<div class="section" id="album_list">
 				<?php
@@ -103,6 +98,10 @@
 					//Albums with no photos or photos without dates
 					$q = mysqli_query($con, "SELECT id, title_es FROM album WHERE id NOT IN (SELECT album FROM photo_album, photo WHERE photo = photo.id GROUP BY album);");
 				?>
+				<div class="entry" id="gallery_entry_contribute">
+                                        <?php echo $lng['gallery_header']; ?>
+                                </div>
+
 			</div>
 		</div>
 		<?php

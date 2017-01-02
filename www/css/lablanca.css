@@ -189,12 +189,12 @@ div#prices table#table_offers p.description{
 
 ul#no_fiestas{
 	margin:			0 2em 2em 2em;
-	list-style-image:	url('https://margolariak.com/img/misc/ul.png');
-	list-style-type:	circle;
 }
 
 ul#no_fiestas li{
 	margin-top: 2em;
+	list-style-image:       url('https://margolariak.com/img/misc/ul.png');
+        list-style-type:        circle;
 }
 
 ul#no_fiestas li span{
