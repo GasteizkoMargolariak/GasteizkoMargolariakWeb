@@ -48,8 +48,8 @@
 	$lng['index_see_all_photos'] = 'Ir a la galer&iacute;a';
 	$lng['index_read_more'] = 'Seguir leyendo';
 	$lng['index_us'] = 'Gasteizko Margolariak';
-	$lng['index_us_content'] = 'Gasteizko Margolariak somos una Cuadrilla de Blusas y Neskas de Vitoria-Gasteiz<br/><br/>Nos convertimos en Cuadrilla de Blusas y Neskas en 2013, y en ese mismo año, miembros de la Comisión de Blusas y Neskas.<br/><br/>Desde entonces no hemos hecho mas que crecer junto con todos los que han decidido, año tras año, apostar por nosotros.';
-	$lng['index_us_more'] = 'M&aacute;s sobre nosotros.';
+	$lng['index_us_content'] = 'Somos una Cuadrilla de Blusas y Neskas de Vitoria-Gasteiz. Participamos en las fiestas de la ciudad, animando, organizando actividades, para nuestros miembros y para el p&uacute;blico en general.<br/><br/>Pero eso no es todo: Permanecemos activos durante el resto del a&ntilde;o, organizando actividades, tanto dentro como fuera de la ciudad: Competiciones, excursiones, eventos solidarios...';
+	$lng['index_us_more'] = 'M&aacute;s sobre nosotros';
 	$lng['index_'] = '';
 	
 	// /header.php
@@ -88,7 +88,6 @@
 	$lng['lablanca_past_title'] = 'Carteles de Fiestas de a&ntilde;os anteriores';
 	$lng['lablanca_past_link'] = 'Fiestas de la Blanca de ';
 	$lng['lablanca_'] = '';
-	//$lng['lablanca_'] = '';
 	
 	// /actividades/index.php
 	$lng['activities_title'] = 'Actividades - Gasteizko Margolariak';
@@ -151,7 +150,6 @@
 	$lng['us_activities'] = 'Lo que hacemos';
 	$lng['us_activities_content'] = 'Excursiones, partidos, causas ben&eacute;ficas... No solo se nos ve en fiestas.<br/><br/>Creemos que, como Cuadrilla de Blusas y Neskas, existimos por y para la ciudad, y por eso organizamos actividades durante todo el a&ntilde;o, para todo aquel que quiera acompa&ntilde;arnos<br/><br/>Si quieres saber lo que hacemos, te sugerimos que eches un vistazo a nuestra <a href="/galeria/">galer&iacute;a</a>. Y si quieres conocernos, apuntate a la siguiente <a href="/actividades/">actividad</a>!';
 	$lng['us_transparency'] = 'Transparencia';
-	//$lng['us_transparency_content'] = '¿Te preocupa saber d&oacute;nde va tu dinero? En Gasteizko Margolariak queremos que est&eacute;s tranquilo.<br/><br/>Muchas de nuestras actividades son gratuitas. Otras, como las fiestas de La Blanca, tienen una cuota de inscripci&oacute;n. Gasteizko Margolariak no es una empresa, es una Asociaci&oacute;n cultural, y como tal, no tenemos beneficios.<br/><br/>Queremos ser transparentes, y por eso ponemos a tu disposici&oacute;n nuestras cuentas de manera online, para que sepas que cada euro se reinvierte en ti.';
 	$lng['us_transparency_content'] = '¿Te preocupa saber d&oacute;nde va tu dinero? En Gasteizko Margolariak queremos que est&eacute;s tranquilo.<br/><br/>Muchas de nuestras actividades son gratuitas. Otras, como las fiestas de La Blanca, tienen una cuota de inscripci&oacute;n. Gasteizko Margolariak no es una empresa, es una Asociaci&oacute;n cultural, y como tal, no tenemos beneficios.<br/><br/>Queremos ser transparentes, y por eso, empezando en 2016, pondremos a tu disposici&oacute;n nuestras cuentas de manera online, para que sepas que cada euro se reinvierte en t&iacute;.';
 	$lng['us_'] = '';
 	
