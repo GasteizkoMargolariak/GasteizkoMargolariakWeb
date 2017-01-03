@@ -46,8 +46,6 @@
 								<ul>
 									<li><a href='/actividades/add/'>Nueva actividad</a></li>
 									<li><a href='/actividades/'>Gestionar actividades</a></li>
-									<li><a href='/actividades/moderate/'>Moderar comentarios</a></li>
-									<li><a href='/actividades/translate/'>Traducir actividades</a></li>
 								</ul>
 							</div>
 						</div>

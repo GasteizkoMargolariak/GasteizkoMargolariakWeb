@@ -52,12 +52,6 @@
 			<td>
 				<a href="http://<?php echo $http_host; ?>/actividades/">Gestionar actividades</a>
 			</td>
-			<td>
-				<a href="http://<?php echo $http_host; ?>/actividades/moderate/">Moderar comentarios</a>
-			</td>
-			<td>
-				<a href="http://<?php echo $http_host; ?>/actividades/translate/">Traducir actividades</a>
-			</td>
 		</tr>
 	</table>
 </div>
