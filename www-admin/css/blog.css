@@ -1,27 +1,11 @@
 /* /blog/add/index.php */
 
-div.blog_add_language{
-	width:			31%;
-	display:		inline-block;
-	vertical-align:	top;
-}
-
-div#images{
-	display:		inline-block;
-	vertical-align:	top;
-	width:			60%;
-}
-
-div#settings{
-	display:		inline-block;
-	vertical-align:	top;
-	width:			35%;
-}
-
+/* Post title */
 input[type=text]{
 	width:	100%;
 }
 
+/* Post text */ 
 textarea{
 	width:	100%;
 	height:	20em;
@@ -41,7 +25,18 @@ img.image_upload_preview{
 	height:		5em;
 }
 
-/* /blog/inex.php */
+/* Buttons */
+div#add_button_container{
+	text-align:	center;
+}
+
+div#add_button_container input{
+	width:	30%;
+	margin:	0.5em auto 0.5em auto;	
+}
+
+
+/* /blog/index.php */
 
 table#blog_post_list{
 	border-collapse: collapse;
