@@ -35,8 +35,6 @@
 								<ul>
 									<li><a href='/blog/add/'>Nuevo post</a></li>
 									<li><a href='/blog/'>Gestionar posts</a></li>
-									<li><a href='/blog/moderate/'>Moderar comentarios</a></li>
-									<li><a href='/blog/translate/'>Traducir posts</a></li>
 								</ul>
 							</div>
 						</div>

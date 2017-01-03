@@ -28,7 +28,7 @@
 		<?php include('../toolbar.php'); ?>
 		<div id='content'>
 			<div class="section">
-				<h3>Entradas del blog - <a href="/blog/add/">Anadir nueva</a></h3>
+				<h3 class="section_title">Entradas del blog - <a href="/blog/add/">A&ntilde;adir nueva</a></h3>
 				<div class="entry">
 					<table id='blog_post_list'>
 						<tr>
@@ -39,9 +39,10 @@
 							<th>Accion</th>
 						</tr>
 						<?php
-							$query = mysqli_query($con, "SELECT id, title_es, title_eu, title_en, text_es, text_eu, text_en, user, visible, comments, DATE_FORMAT(dtime, '%b %d, %Y %H:%i:%s') AS ptime FROM post ORDER BY id DESC;");
+							$query = mysqli_query($con, "SELECT id, title_es, title_eu, title_en, text_es, text_eu, text_en, user, visible, comments, DATE_FORMAT(dtime, '%b %d, %Y %H:%i:%s') AS ptime, permalink FROM post ORDER BY id DESC;");
 							while ($r = mysqli_fetch_array($query)){
-								echo "<tr>\n<td class='blog_column_title'>" . cutText($r['title_es'], 35, '', '') . "</td>\n<td class='blog_column_text'>" . cutText($r['text_es'], 80, '', '') . "\n";
+								echo "<tr>\n<td class='blog_column_title'><a href='https://margolariak.com/blog/$r[permalink]'>" . cutText($r['title_es'], 35, '', '') . "</a></td>";
+								echo "<td class='blog_column_text'>" . str_replace('<br/>', ' ', cutText($r['text_es'], 60, '', '')) . "\n";
 								
 								$q_image = mysqli_query($con, "SELECT image FROM post_image WHERE post = $r[id] ORDER BY idx;");
 								if (mysqli_num_rows($q_image) > 0){
@@ -90,9 +91,8 @@
 								echo "Ingl&eacute;s: " . intval($translated_en * 100 / $total) . "%<br/>Euskera: " . intval($translated_eu * 100 / $total) . "%\n";
 								
 								
-								echo "\n</td>\n<td class='blog_column_action'>\n<form method='get' action='http://$http_host/blog/edit/index.php'>\n<input type='submit' value='Editar'/>\n<input type='hidden' name='p' value='$r[id]'/></form>\n";
+								echo "\n</td>\n<td class='blog_column_action'>\n<form method='get' action='http://$http_host/blog/edit/index.php'>\n<input type='submit' value='Editar / Trducir'/>\n<input type='hidden' name='p' value='$r[id]'/></form>\n";
 								echo "<input type='button' onClick='delete_post($r[id], \"$r[title_es]\");' value='Borrar'/>";
-								echo "<form action='/blog/translate/translate.php'>\n<input type='hidden' name='id' value='$r[id]'/><input type='submit' value='Traducir'/>\n</form>";
 								echo "<form action='/blog/moderate/moderate.php?p=$r[id]'>\n<input type='submit' value='Moderar comentarios'/>\n</form>";
 								echo "</td>\n</tr>";
 							}

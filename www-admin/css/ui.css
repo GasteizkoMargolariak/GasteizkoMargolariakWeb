@@ -70,7 +70,7 @@ input[type="text"], input[type="number"], input[type="date"]{
 	margin:				0.1em;
 }
 
-input[type="button"], input[type="submit"], select{
+input[type="button"], input[type="submit"], input[type="password"], input[type="file"], select{
 	border-radius:		0.3em;
 	height:				2em;
 	border:				0.2em solid #0078ff;
@@ -288,4 +288,31 @@ table.translation_table th{
 
 table.translation_table td{
 	border:	1px solid #000000;
+}
+
+
+/******************************************
+* Language selectors                      *
+******************************************/
+
+div#lang_tabs{
+	margin-top:	2em;
+	margin-bottom:	2em;
+}
+
+div#lang_tabs table{
+	width:	100%;
+}
+
+div#lang_tabs td{
+	color:		#555555;
+	font-weight:	bold;
+	width:		33%;
+	border:		0.1em solid black;
+	margin:		0;
+}
+
+div#lang_tabs td.lang_tabs_active{
+	color:		#0078ff;
+	border-bottom:	0.1em solid #ffffff;
 }
