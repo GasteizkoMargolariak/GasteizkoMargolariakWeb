@@ -1,46 +1,25 @@
-.stroke{
-	text-decoration:	line-through;
+/******************************************
+* Hide elements intended for mobile.      *
+******************************************/
+.mobile{
+	display:	none;
 }
 
-.underline{
-	text-decoration:	underline;
+/******************************************
+* Fonts used across the page              *
+******************************************/
+
+/* Glogal font */
+@font-face{
+	font-family:	font;
+	src:			url('/font/FreeSans.ttf')
 }
 
-.bold{
-	font-weight:	bold;
-}
 
-.italic{
-	font-style:	italic;
-}
-
-input[type="text"], input[type="number"], input[type="date"], input[type="password"]{
-	border-radius:		0.5em;
-	height:				2em;
-	border:				0.4em solid #9cd3d9;
-	color:				#cccccc;
-	background-color:	#223344;
-}
-
-input[type="button"], input[type="submit"], select{
-	border-radius:		0.5em;
-	height:				2.5em;
-	border:				0.4em solid #9cd3d9;
-	font-weight:		bold;
-	color:				#ffffff;
-	background-color:	#335577;
-	cursor:				pointer;
-}
-
-textarea{
-	border-radius:		0.5em;
-	min-height:			2em;
-	max-height:			15em;
-	border:				0.4em solid #9cd3d9;
-	color:				#bbbbbb;
-	background-color:	#223344;
-	resize:				vertical;
-}
+/******************************************
+* Styles for html tags, without id or     *
+* class.                                  *
+******************************************/
 
 /* Links */
 a{
@@ -54,6 +33,74 @@ a:hover{
 	text-shadow:		0 0 0.4em #265885;
 	text-decoration:	underline;
 }
+
+/* Fake links */
+.fake_a{
+	color:				#4c9ed9;
+	text-decoration:	none;
+	transition:			all .2s ease-in-out;
+}
+
+.fake_a:hover{
+	color:				#347;
+	text-shadow:		0 0 0.4em #265885;
+	text-decoration:	underline;
+}
+
+/* Body */
+body{
+	font-family:		font;
+	margin:				0;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b5d3e5+0,e5f4ff+10,e5f4ff+90,b5d3e5+100 */
+	background: #b5d3e5; /* Old browsers */
+	background: -moz-linear-gradient(left, #b5d3e5 0%, #e5f4ff 10%, #e5f4ff 90%, #b5d3e5 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #b5d3e5 0%,#e5f4ff 10%,#e5f4ff 90%,#b5d3e5 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #b5d3e5 0%,#e5f4ff 10%,#e5f4ff 90%,#b5d3e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5d3e5', endColorstr='#b5d3e5',GradientType=1 ); /* IE6-9 */
+
+}
+
+/* WARNING: If styles change dhere, make changes on commment scripts */
+input[type="text"], input[type="number"], input[type="date"]{
+	border-radius:		0.3em;
+	height:				1.5em;
+	border:				0.2em solid #0078ff;
+	color:				#002255;
+	background-color:	#ccddff;
+	margin:				0.1em;
+}
+
+input[type="button"], input[type="submit"], select{
+	border-radius:		0.3em;
+	height:				2em;
+	border:				0.2em solid #0078ff;
+	font-weight:		bold;
+	color:				#ffffff;
+	background-color:	#124567;
+	cursor:				pointer;
+	margin:				0.1em;
+	letter-spacing: 	0.1em;
+}
+
+textarea{
+	border-radius:		0.3em;
+	min-height:			2em;
+	max-height:			15em;
+	border:				0.2em solid #0078ff;
+	color:				#002255;
+	background-color:	#ccddff;
+	resize:				vertical;
+	margin:				0.1em;
+}
+
+li{
+	list-style-image:	url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVQImWNgIBqU//+PWwKGcUoQVECanVgAAJSsH/KywgEfAAAAAElFTkSuQmCC');
+}
+
+/******************************************
+* Common elements present across the      *
+* whle site.                              *
+******************************************/
 
 /* Icon for slider sections */
 img.slid{
@@ -70,64 +117,86 @@ img.slid{
 	cursor:	pointer;
 }
 
-
-/* Body */
-body{
-	font-family:		font;
-	margin:				0;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b5d3e5+0,e5f4ff+10,e5f4ff+90,b5d3e5+100 */
-	background: #b5d3e5; /* Old browsers */
-	background: -moz-linear-gradient(left, #b5d3e5 0%, #e5f4ff 10%, #e5f4ff 90%, #b5d3e5 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left, #b5d3e5 0%,#e5f4ff 10%,#e5f4ff 90%,#b5d3e5 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, #b5d3e5 0%,#e5f4ff 10%,#e5f4ff 90%,#b5d3e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5d3e5', endColorstr='#b5d3e5',GradientType=1 ); /* IE6-9 */
+/* Elemnts not to be displayed */
+.hidden{
+	display:	none;
 }
+
+/* Elements with an italic font */
+.italic{
+	font-style:	italic;
+}
+
+/*Elements with a bold font*/
+.bold{
+	font-weight:	bold;
+}
+
+/*Stroked elements*/
+.stroke{
+	text-decoration:	line-through;
+}
+
+/*Underlined elements*/
+.underline{
+	text-decoration:	underline;
+}
+
 
 /* Content */
 div#content{
 	margin:		3em auto auto auto;
 	width:		90%;
 	max-width:	80em;
+	min-width:	60em;
 }
 
 /* Sections */
 div.section{
-	background-color:	#9bc1da;
-	padding:			0.1em 0.3em 0.1em 0.1em;
-	border:				0.2em solid #9cd3d9;
+	border-left:		0.1em solid #000011;
+	border-right:		0.1em solid #000011;
+	border-bottom:		0.1em solid #000011;
+	border-radius:		1em;
+	padding:			0 0 0.5em 0;
+	background-color:	#98c8ff;
+	-webkit-filter:		drop-shadow(0 0 0.4em #000011);
+	filter:				drop-shadow(0 0 0.4em #000011);
+    -ms-filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
+    filter:				"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
 }
 
 /* Title for each section */
 div.section .section_title{
-	font-size:	130%;
-	font-style:	bold;
-	margin-top:	0.5em;
+	font-size:					120%;
+	font-style:					bold;
+	color:						#ffffff;
+	background-color:			#0078ff;
+	padding:					0.5em 2em 0.1em 1.5em;
+	border-top-left-radius:		0.7em;
+	border-top-right-radius:	0.7em;
+	border:						0.1em solid #000011;
+	margin:						0;
 }
 
 /* Entries */
-div.entry{
+.entry{
 	background-color:	#ffffff;
 	padding:			0.2em;
 	margin:				0.4em;
-	border:				0.2em solid #9cd3d9;
+	border:				0.1em solid #6D6990;
+	border-radius:		0.3em;
 	box-shadow:			inset 0 0 0.2em #dde;
 	transition:			all .3s ease-in-out;
 }
 
-td.entry{
-	background-color:	#ffffff;
-	padding:			0.2em;
-	margin:				0.4em;
-	border:				0.2em solid #9cd3d9;
-	box-shadow:			inset 0 0 0.2em #dde;
-	transition:			all .3s ease-in-out;
-}
 
+/******************************************
+* Main toolbar.                           *
+******************************************/
 div#member_action input{
 	margin:	0.5em 2em 0.5em 2em;
 }
 
-/* Toolbar styles */
 div#toolbar{
 	background-color:	#000000;
 	margin:				0;
@@ -167,6 +236,9 @@ div#toolbar td a{
 	transition:			all .3s ease-in-out;
 }
 
+/******************************************
+* Secondary toolbars.                     *
+******************************************/
 div.secondary_toolbar{
 	background-color:	#333333;
 	margin:				0;
@@ -201,6 +273,9 @@ div.secondary_toolbar td a:hover{
 	text-decoration:	none;
 }
 
+/******************************************
+* Translation elements.                   *
+******************************************/
 table.translation_table{
 	border-collapse:	collapse;
 }
