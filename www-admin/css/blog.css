@@ -40,7 +40,7 @@ div#add_button_container input{
 
 table#blog_post_list{
 	border-collapse:	collapse;
-	margin:			0.5em;
+	margin:				0.5em;
 }
 
 table#blog_post_list td, th{
@@ -84,7 +84,7 @@ table#blog_post_list td.blog_column_action{
 }
 
 table#blog_post_list td.blog_column_action input{
-        margin: 	0.05em;
+	margin: 	0.05em;
 	padding:	0.06em;
 	font-size:	70%
 }

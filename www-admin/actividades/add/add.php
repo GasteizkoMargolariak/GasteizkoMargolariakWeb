@@ -121,7 +121,7 @@
 		
 		//Insert into database and get id
 		mysqli_query($con, "INSERT INTO activity (permalink, date, title_es, title_eu, title_en, text_es, text_eu, text_en, price, inscription, max_people, user, visible, comments, city) VALUES('$permalink', $date, '$title_es', '$title_eu', '$title_en', '$text_es', '$text_eu', '$text_en', $price, $inscription, $people, $user, $visible, $comments, '$city');");
-		$q = mysqli_query($con, "SELECT id FROM activity WHERE permalink = '$permalink' ORDER BY time DESC LIMIT 1;");
+		$q = mysqli_query($con, "SELECT id FROM activity WHERE permalink = '$permalink' ORDER BY dtime DESC LIMIT 1;");
 		$r = mysqli_fetch_array($q);
 		$id = $r['id'];
 		
