@@ -226,6 +226,7 @@ input#save_itinerary{
 
 table#activity_list{
 	border-collapse:	collapse;
+	margin:				0.5em;
 }
 
 table#activity_list td, th{
@@ -234,7 +235,7 @@ table#activity_list td, th{
 }
 
 table#activity_list th{
-	background-color:	#999999;
+	background-color:	#66aaff;
 }
 
 table#activity_list td.activity_column_title{
@@ -245,14 +246,25 @@ table#activity_list td.activity_column_text{
 	width:	25%;
 }
 
+table#activity_list td.activity_column_text ul{
+	margin:		0;
+}
+
+table#activity_list td.activity_column_text li{
+	margin:		0.5em 0.1em 0 0.2em;
+	font-size:	80%;
+	font-style:	italic;
+}
+
 table#activity_list td.activity_column_text img{
-	max-width:	6em;
-	max-height:	4em;
+	max-width:	5em;
+	max-height:	2em;
 	border:		0.1em solid black;
-	margin:		0.1em;
+	margin:		0.05em;
 }
 
 table#activity_list td.activity_column_details{
+	font-size:	80%;
 	width:		10%;
 	text-align:	center;
 }
@@ -267,11 +279,17 @@ table#activity_list td.activity_column_action{
 	text-align:	center;
 }
 
+table#activity_list td.activity_column_action input{
+	margin: 	0.05em;
+	padding:	0.06em;
+	font-size:	70%
+}
+
 table#activity_list form{
 	margin:	0;
 }
 
-table#activity_list input[type="button"], input[type="submit"]{
+table#activity_list td.activity_column_action input[type="button"], input[type="submit"]{
 	width:			90%;
 	margin-top:		0.2em;
 	margin-bottom:	0.2em;

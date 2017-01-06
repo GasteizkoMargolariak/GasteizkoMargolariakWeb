@@ -91,7 +91,7 @@
 								echo "Ingl&eacute;s: " . intval($translated_en * 100 / $total) . "%<br/>Euskera: " . intval($translated_eu * 100 / $total) . "%\n";
 								
 								
-								echo "\n</td>\n<td class='blog_column_action'>\n<form method='get' action='http://$http_host/blog/edit/index.php'>\n<input type='submit' value='Editar / Trducir'/>\n<input type='hidden' name='p' value='$r[id]'/></form>\n";
+								echo "\n</td>\n<td class='blog_column_action'>\n<form method='get' action='http://$http_host/blog/edit/index.php'>\n<input type='submit' value='Editar / Traducir'/>\n<input type='hidden' name='p' value='$r[id]'/></form>\n";
 								echo "<input type='button' onClick='delete_post($r[id], \"$r[title_es]\");' value='Borrar'/>";
 								echo "<form action='/blog/moderate/moderate.php?p=$r[id]'>\n<input type='submit' value='Moderar comentarios'/>\n</form>";
 								echo "</td>\n</tr>";
