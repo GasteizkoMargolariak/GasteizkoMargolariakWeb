@@ -56,37 +56,51 @@
 		<?php include('../../toolbar.php'); ?>
 		<div id='content'>
 			<div class="section">
-				<h3>Editar post</h3>
+				<h3 class="section_title">Editar post</h3>
 				<form action="edit.php" maxlength="120" method="post" enctype="multipart/form-data" onsubmit="return validate_post();">
 					<?php
 						echo "<input type='hidden' name='id' value='$id'/>\n";
 					?>
-					<div class="entry blog_add_language">
-						<h4>Castellano (obligatorio)</h4>
-						<input type="text" id="title_es" name="title_es" placeholder="Titulo" value="<?php echo $title_es;?>"/><br/><br/>
-						<textarea name="text_es" id="text_es" placeholder="Texto"><?php echo $text_es;?></textarea>
-						<script>
-							CKEDITOR.replace('text_es');
-						</script>
-					</div>
-					<div class="entry blog_add_language">
-						<h4>Euskera (opcional)</h4>
-						<input type="text" name="title_eu" id="title_eu" placeholder="Titulo" value="<?php echo $title_eu;?>"/><br/><br/>
-						<textarea name="text_eu" id="text_eu" placeholder="Texto"><?php echo $text_eu;?></textarea>
-						<script>
-							CKEDITOR.replace('text_eu');
-						</script>
-					</div>
-					<div class="entry blog_add_language">
-						<h4>Ingles (opcional)</h4>
-						<input type="text" name="title_en" id="title_en" placeholder="Titulo" value="<?php echo $title_en;?>"/><br><br/>
-						<textarea name="text_en" id="text_en" placeholder="Texto"><?php echo $text_en;?></textarea>
-						<script>
-							CKEDITOR.replace('text_es');
-						</script>
-					</div>
+					<div class="entry">
+						<div id="lang_tabs">
+							<table>
+								<tr>
+									<td class="pointer lang_tabs_active" id="lang_tab_es" onclick="showLanguage('es');">
+										Castellano
+									</td>
+									<td class="pointer" id="lang_tab_eu" onclick="showLanguage('eu');">
+										Euskera
+									</td>
+									<td class="pointer" id="lang_tab_en" onclick="showLanguage('en');">
+										Ingl&eacute;s
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="content_lang_es" class="blog_add_language">
+							<input type="text" id="title_es" name="title_es" placeholder="Titulo" value="<?php echo $title_es;?>"/><br/><br/>
+							<textarea name="text_es" id="text_es" placeholder="Texto"><?php echo $text_es;?></textarea>
+							<script>
+								CKEDITOR.replace('text_es');
+							</script>
+						</div>
+						<div id="content_lang_eu" class="blog_add_language" style="display:none;">
+							<input type="text" name="title_eu" id="title_eu" placeholder="Titulu" value="<?php echo $title_eu;?>"/><br/><br/>
+							<textarea name="text_eu" id="text_eu" placeholder="Textua"><?php echo $text_eu;?></textarea>
+							<script>
+								CKEDITOR.replace('text_eu');
+							</script>
+						</div>
+						<div id="content_lang_en" class="blog_add_language" style="display:none;">
+							<input type="text" name="title_en" id="title_en" placeholder="Title" value="<?php echo $title_en;?>"/><br><br/>
+							<textarea name="text_en" id="text_en" placeholder="Content"><?php echo $text_en;?></textarea>
+							<script>
+								CKEDITOR.replace('text_es');
+							</script>
+						</div>
+					</div> <!--Entry-->
 					<div class="entry" id="images">
-						<h4>Imagenes</h4>
+						<h4>Im&aacute;genes</h4>
 						<ul>
 							<li>
 								Principal (Aparecera sobre el texto y en las previsualizaciones)<br/>
@@ -95,12 +109,12 @@
 										$q_img = mysqli_query($con, "SELECT image FROM post_image WHERE post = $id AND idx = 0");
 										if (mysqli_num_rows($q_img) == 0){
 											echo "<img class='image_upload_preview' id='image_preview_0' src='/img/misc/alpha.png'/>\n";
-											echo "<input type='button' style='diplay:none;' onClick='delete_image(0, image_preview_0, this);' value='Eliminar'";
+											echo "<input type='button' style='display:none;' onClick='delete_image(0, image_preview_0, this);' value='Eliminar'";
 										}
 										else{
 											$r_img = mysqli_fetch_array($q_img);
 											echo "<img class='image_upload_preview' style='display:block;' id='image_preview_0' src='http://$default_host/img/blog/miniature/$r_img[image]'/>\n";
-											echo "<input type='button' style='diplay:block;' onClick='delete_image(0, image_preview_0, this);' value='Eliminar'";
+											echo "<input type='button' style='display:block;' onClick='delete_image(0, image_preview_0, this);' value='Eliminar'";
 										}
 									?>
 									<br/><br/>
@@ -115,12 +129,12 @@
 										$q_img = mysqli_query($con, "SELECT image FROM post_image WHERE post = $id AND idx = 1");
 										if (mysqli_num_rows($q_img) == 0){
 											echo "<img class='image_upload_preview' id='image_preview_1' src='/img/misc/alpha.png'/>\n";
-											echo "<input type='button' style='diplay:none;' onClick='delete_image(1, image_preview_1, this);' value='Eliminar'";
+											echo "<input type='button' style='display:none;' onClick='delete_image(1, image_preview_1, this);' value='Eliminar'";
 										}
 										else{
 											$r_img = mysqli_fetch_array($q_img);
 											echo "<img class='image_upload_preview' style='display:block;' id='image_preview_1' src='http://$default_host/img/blog/miniature/$r_img[image]'/>\n";
-											echo "<input type='button' style='diplay:block;' onClick='delete_image(1, image_preview_1, this);' value='Eliminar'";
+											echo "<input type='button' style='display:block;' onClick='delete_image(1, image_preview_1, this);' value='Eliminar'";
 										}
 									?>
 									<br/><br/>
@@ -132,12 +146,12 @@
 										$q_img = mysqli_query($con, "SELECT image FROM post_image WHERE post = $id AND idx = 2");
 										if (mysqli_num_rows($q_img) == 0){
 											echo "<img class='image_upload_preview' id='image_preview_2' src='/img/misc/alpha.png'/>\n";
-											echo "<input type='button' style='diplay:none;' onClick='delete_image(2, image_preview_2, this);' value='Eliminar'";
+											echo "<input type='button' style='display:none;' onClick='delete_image(2, image_preview_2, this);' value='Eliminar'";
 										}
 										else{
 											$r_img = mysqli_fetch_array($q_img);
 											echo "<img class='image_upload_preview' style='display:block;' id='image_preview_2' src='http://$default_host/img/blog/miniature/$r_img[image]'/>\n";
-											echo "<input type='button' style='diplay:block;' onClick='delete_image(2, image_preview_2, this);' value='Eliminar'";
+											echo "<input type='button' style='display:block;' onClick='delete_image(2, image_preview_2, this);' value='Eliminar'";
 										}
 									?>
 									<br/><br/>
@@ -149,12 +163,12 @@
 										$q_img = mysqli_query($con, "SELECT image FROM post_image WHERE post = $id AND idx = 3");
 										if (mysqli_num_rows($q_img) == 0){
 											echo "<img class='image_upload_preview' id='image_preview_3' src='/img/misc/alpha.png'/>\n";
-											echo "<input type='button' style='diplay:none;' onClick='delete_image(3, image_preview_3, this);' value='Eliminar'";
+											echo "<input type='button' style='display:none;' onClick='delete_image(3, image_preview_3, this);' value='Eliminar'";
 										}
 										else{
 											$r_img = mysqli_fetch_array($q_img);
 											echo "<img class='image_upload_preview' style='display:block;' id='image_preview_3' src='http://$default_host/img/blog/miniature/$r_img[image]'/>\n";
-											echo "<input type='button' style='diplay:block;' onClick='delete_image(3, image_preview_3, this);' value='Eliminar'";
+											echo "<input type='button' style='display:block;' onClick='delete_image(3, image_preview_3, this);' value='Eliminar'";
 										}
 									?>
 									<br/><br/>
@@ -169,8 +183,11 @@
 						<label><input type="checkbox" name="visible" <?php if ($r['visible'] == 1) echo 'checked'; ?>/>Post visible</label><br/><br/>
 						<label><input type="checkbox" name="comments" <?php if ($r['comments'] == 1) echo 'checked'; ?>/>Permitir comentarios</label><br/><br/>
 						<br/><br/><br/><br/>
-						<input type="button" value="Previsualizar" onClick="alert(validate_post());"/> <!--TODO-->
-						<input type="submit" value="Publicar"/>
+						<div id="add_button_container">
+							<input type="button" value="Previsualizar" onClick="alert(validate_post());"/> <!--TODO-->
+							<br/>
+							<input type="submit" value="Publicar"/>
+						</div>
 					</div>
 				</form>
 			</div>

@@ -1,68 +1,21 @@
 /* /actividades/add/index.php */
 
-span.tab_selector{
-	z-index:					1;
-	position:					relative;
-	margin-bottom:				0;
-	margin-right:				1em;
-	margin-left:				1em;
-	border-top:					0.1em solid #000000;
-	border-left:				0.1em solid #000000;
-	border-right:				0.1em solid #000000;
-	border-top-right-radius:	0.3em;
-	border-top-left-radius:		0.3em;
-	padding:					0.5em 0.5em 0.1em 0.5em;
-	background-color:			#cccccc;
-	font-weight:				bold;
+input[type="text"]{
+	width:	100%;
 }
 
-span#tab_selector_es{
-	z-index:	3;
-}
-
-span#tab_selector_en{
-	color:			#8899bb;
-}
-
-span#tab_selector_eu{
-	color:			#8899bb;
-}
-
-span.tab_selector_hidden{
-	border-bottom:	0.1em solid #000000;
-}
-
-div.tab_content{
-	z-index:			2;
-	position:			relative;
-	display:			inline-block;
-	vertical-align:		top;
-	margin-top:			-0.1em;
-	background-color:	#cccccc;
-	width:				30%;
-	min-width:			25em;
-	text-align:			center;
-}
-
-div.tab_content input[type="text"]{
-	width:		90%;
-}
-
-div.tab_content textarea{
-	width:		90%;
-	height:		25em;
-	resize: 	none;
+textarea{
+	width:		100%;
+	height:		20em;
 }
 
 div.tab_content_hidden{
 	display:	none;
 }
 
-div#activity_images{
-	display:		inline-block;
-	width:			40%;
-	min-width:		20em;
-	vertical-align:	top;
+div#activity_images input[name="city"]{
+        width:  	100%;
+	max-width:	15em;
 }
 
 div#activity_images input[name="day"]{
@@ -103,12 +56,16 @@ img.image_upload_preview{
 	vertical-align:	middle;
 }
 
-div#activity_options{
-	width:			15%;
-	min-width:		14em;
-	display:		inline-block;
-	vertical-align:	top;
+/* Buttons */
+div#button_container{
+        text-align:     center;
 }
+
+div#button_container input{
+        width:  30%;
+        margin: 0.5em auto 0.5em auto;
+}
+
 
 /* Translate page */
 
@@ -198,8 +155,9 @@ div.translate_row_itinerary table td textarea{
 
 /* /actividades/add/itinerary.php */
 table#itinerary{
+	margin:			1em;
 	border-collapse:	collapse; 
-	border:				0.1em solid #000000;
+	border:			0.1em solid #000000;
 }
 
 table#itinerary tr.itinerary_row{
@@ -214,12 +172,22 @@ table#itinerary tr#itinerary_row_0{
 }
 
 table#itinerary tr.itinerary_row td.itinerary_cell{
-	border:	0.1em solid #000000;
+	border:		0.1em solid #000000;
+	padding:	0.5em;
+}
+
+table#itinerary tr.itinerary_row td.itinerary_cell_content{
+        width:	100%;
 }
 
 table#itinerary tr.itinerary_row td.itinerary_cell h4{
 	margin:	0.3em;
 }
+
+table#itinerary tr.itinerary_row td.time{
+        min-width:  11em;
+}
+
 
 table#itinerary tr.itinerary_row td.time input{
 	width:	3em;
@@ -243,18 +211,22 @@ table#itinerary tr.itinerary_row td.time span:hover{
 	text-decoration:	underline;
 }
 
-table#itinerary tr.itinerary_row td.title input{
-	min-width:	3em;
-}
-
 table#itinerary tr.itinerary_row td.text textarea{
 	min-width:	15em;
 	height:		7em;
 	resize:		none;
 }
 
+input#save_itinerary{
+	width:	30%;
+	margin:	1em 30% 1em 30%;
+}
+
+/* Activity list */
+
 table#activity_list{
 	border-collapse:	collapse;
+	margin:				0.5em;
 }
 
 table#activity_list td, th{
@@ -263,7 +235,7 @@ table#activity_list td, th{
 }
 
 table#activity_list th{
-	background-color:	#999999;
+	background-color:	#66aaff;
 }
 
 table#activity_list td.activity_column_title{
@@ -274,14 +246,25 @@ table#activity_list td.activity_column_text{
 	width:	25%;
 }
 
+table#activity_list td.activity_column_text ul{
+	margin:		0;
+}
+
+table#activity_list td.activity_column_text li{
+	margin:		0.5em 0.1em 0 0.2em;
+	font-size:	80%;
+	font-style:	italic;
+}
+
 table#activity_list td.activity_column_text img{
-	max-width:	6em;
-	max-height:	4em;
+	max-width:	5em;
+	max-height:	2em;
 	border:		0.1em solid black;
-	margin:		0.1em;
+	margin:		0.05em;
 }
 
 table#activity_list td.activity_column_details{
+	font-size:	80%;
 	width:		10%;
 	text-align:	center;
 }
@@ -296,11 +279,17 @@ table#activity_list td.activity_column_action{
 	text-align:	center;
 }
 
+table#activity_list td.activity_column_action input{
+	margin: 	0.05em;
+	padding:	0.06em;
+	font-size:	70%
+}
+
 table#activity_list form{
 	margin:	0;
 }
 
-table#activity_list input[type="button"], input[type="submit"]{
+table#activity_list td.activity_column_action input[type="button"], input[type="submit"]{
 	width:			90%;
 	margin-top:		0.2em;
 	margin-bottom:	0.2em;

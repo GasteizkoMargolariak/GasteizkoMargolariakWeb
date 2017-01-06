@@ -12,7 +12,7 @@
 	<head>
 		<meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title>Nuevo post - Administracion</title>
+		<title>Moderar comentarios - Administracion</title>
 		<!-- CSS files -->
 		<link rel="stylesheet" type="text/css" href="/css/ui.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/blog.css"/>
@@ -24,5 +24,12 @@
 		<script type="text/javascript" src="/script/ui.js"></script>
 	</head>
 	<body>
+	<?php include('../../toolbar.php'); ?>
+                <div id='content'>
+                        <div class="section">
+                                <h3 class="section_title">Moderar comentarios</h3>
+				<h4 span class="TODO">En construcci&oacute;n</h4>
+			</div>
+		</div>
 	</body>
 </html>

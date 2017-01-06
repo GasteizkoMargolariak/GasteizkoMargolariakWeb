@@ -132,6 +132,16 @@ img.slid{
 	font-weight:	bold;
 }
 
+/*Stroked elements*/
+.stroke{
+	text-decoration:	line-through;
+}
+
+/*Underlined elements*/
+.underline{
+	text-decoration:	underline;
+}
+
 
 /******************************************
 * Styles for the site header that is      *
@@ -404,23 +414,23 @@ div.section{
 	border-radius:		1em;
 	padding:			0 0 0.5em 0;
 	background-color:	#98c8ff;
-	-webkit-filter:	drop-shadow(0 0 0.4em #000011);
-	filter:			drop-shadow(0 0 0.4em #000011);
-    -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
-    filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
+	-webkit-filter:		drop-shadow(0 0 0.4em #000011);
+	filter:				drop-shadow(0 0 0.4em #000011);
+    -ms-filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
+    filter:				"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
 }
 
 /* Title for each section */
-.section_title{
-	font-size:	120%;
-	font-style:	bold;
-	color:		#ffffff;
-	background-color:	#0078ff;
-	padding:			0.5em 2em 0.1em 1.5em;
-	border-top-left-radius:	0.7em;
+div.section .section_title{
+	font-size:					120%;
+	font-style:					bold;
+	color:						#ffffff;
+	background-color:			#0078ff;
+	padding:					0.5em 2em 0.1em 1.5em;
+	border-top-left-radius:		0.7em;
 	border-top-right-radius:	0.7em;
-	border:		0.1em solid #000011;
-	margin:				0;
+	border:						0.1em solid #000011;
+	margin:						0;
 }
 
 div.section a.go_to_section{

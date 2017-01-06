@@ -27,7 +27,7 @@
 		<?php include('../toolbar.php'); ?>
 		<div id='content'>
 			<div class="section">
-				<h3>Actividades - <a href="/actividades/add/">Anadir nueva</a></h3>
+				<h3 class="section_title">Actividades - <a href="/actividades/add/">Anadir nueva</a></h3>
 				<div class="entry">
 					<table id='activity_list'>
 						<tr>
@@ -40,8 +40,10 @@
 						<?php
 							$q = mysqli_query($con, "SELECT id, DATE_FORMAT(date, '%b %d, %Y') AS dat, title_es, title_eu, title_en, text_es, text_eu, text_en, user, visible, comments, DATE_FORMAT(dtime, '%b %d, %Y %H:%i:%s') AS ptime FROM activity ORDER BY date DESC;");
 							while ($r = mysqli_fetch_array($q)){
-								echo "<tr>\n<td class='activity_column_title'>" . cutText($r['title_es'], 35, '', '') . "<br/>$r[dat]</td>\n<td class='activity_column_text'>" . cutText($r['text_es'], 80, '', '') . "\n";
+								echo "<tr>\n<td class='activity_column_title'>" . cutText($r['title_es'], 35, '', '') . "<br/>$r[dat]</td>";
+								echo "<td class='activity_column_text'>" . str_replace('<br/>', ' ', cutText($r['text_es'], 60, '', '')) . "\n";
 								
+								//Images
 								$q_image = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $r[id] ORDER BY idx;");
 								if (mysqli_num_rows($q_image) > 0){
 									echo "<br/>";
@@ -49,11 +51,23 @@
 										echo "<img src='http://$default_host/img/actividades/miniature/$r_image[image]'\>\n";
 								}
 								
+								//Itinerary
+								$q_itinerary = mysqli_query($con, "SELECT count(id) AS count FROM activity_itinerary WHERE activity = $r[id]");
+								$r_itinerary = mysqli_fetch_array($q_itinerary);
+								if ($r_itinerary['count'] == 0){
+									echo("<ul><li>Sin itinerario.</li></ul>");
+								}
+								elseif ($r_itinerary['count'] == 1){
+									echo("<ul><li>1 entrada de itinerario.</li></ul>");
+								}
+								else{
+									echo("<ul><li>$r_itinerary[count] entradas de itinerario.</li></ul>");
+								}
+								
 								echo "</td>\n";
 								$q_user = mysqli_query($con, "SELECT username FROM user WHERE id = $r[user];");
 								$r_user = mysqli_fetch_array($q_user);
 								echo "<td class='activity_column_details'>$r[ptime]<br/>Por $r_user[username]<br/>Comentarios:";
-								// TODO: itinerary?
 								if ($r['comments'] == 1){
 									$q_comments = mysqli_query($con, "SELECT id FROM activity_comment WHERE activity = $r[id];");
 									echo "Si (" . mysqli_num_rows($q_comments) . ")";
@@ -61,7 +75,7 @@
 								else
 									echo "No";
 								echo "<br/>Visible: ";
-								if ($row['visible'] == 1)
+								if ($r['visible'] == 1)
 									echo "Si";
 								else
 									echo "No";
@@ -70,14 +84,13 @@
 									echo "No";
 								else
 									echo "Si";
-								echo "<br/>Ingles: ";
+								echo "<br/>Ingl&eacute;s: ";
 									if (strlen($r['text_en']) == 0 || $r['text_en'] == $r['text_es'])
 									echo "No";
 								else
 									echo "Si";
-								echo "\n</td>\n<td class='activity_column_action'>\n<form action='/activity/edit/edit.php?p=$r[id]'>\n<input type='submit' value='Editar'/>\n</form>\n";
+								echo "\n</td>\n<td class='activity_column_action'>\n<form action='/activity/edit/edit.php?p=$r[id]'>\n<input type='submit' value='Editar / Traducir'/>\n</form>\n";
 								echo "<input type='button' onClick='delete_activity($r[id], \"$r[title_es]\");' value='Borrar'/>";
-								echo "<form action='/activity/translate/translate.php'>\n<input type='hidden' name='id' value='$r[id]'/><input type='submit' value='Traducir'/>\n</form>";
 								echo "<form action='/activity/moderate/moderate.php?p=$r[id]'>\n<input type='submit' value='Moderar comentarios'/>\n</form>";
 								echo "</td>\n</tr>";
 							}
