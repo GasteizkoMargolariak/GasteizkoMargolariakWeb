@@ -74,7 +74,7 @@
 					echo "<meta itemprop='name' content='$r_activity[title]'/>\n";
 					echo "<meta itemprop='description' content='$r_activity[text]'/>\n";
 					echo "<meta itemprop='startDate endDate' content='$r_activity[isodate]'/>\n";
-					echo "<meta itemprop='location' content='$r_activity[city]'/>\n";
+					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name' content='$r_activity[city]'/><meta itemprop='name' content='$r_activity[city]'/></span>\n");
 					echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 					echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 					echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
@@ -137,21 +137,41 @@
 			else{
 				$next_activity_id = $r_activity['id'];
 			}
-			$q_past = mysqli_query($con, "SELECT id, permalink, date, title_$lang AS title, after_$lang AS text, text_$lang AS alt_text, price, inscription, people, max_people, user, dtime, comments FROM activity WHERE id != $next_activity_id AND visible = 1 AND date < now() ORDER BY date DESC;");
+			$q_past = mysqli_query($con, "SELECT id, permalink, date, DATE_FORMAT(date, '%Y-%m-%d') AS isodate, title_$lang AS title, after_$lang AS text, text_$lang AS alt_text, price, inscription, people, max_people, user, dtime, comments, city FROM activity WHERE id != $next_activity_id AND visible = 1 AND date < now() ORDER BY date DESC;");
 			if (mysqli_num_rows($q_past) > 0){
 				echo "<br/><br/><div class='section'>\n";
 				echo "<h3 class='section_title'>$lng[activities_past]</h3>\n";
 				$i = 0;
 				while ($r_past = mysqli_fetch_array($q_past)){
-					echo "<div class='entry past_activity'>\n";
+					echo("<div class='entry past_activity' itemscope itemtype='http://schema.org/Event'>\n");
+					echo("<meta itemprop='inLanguage' content='$lang'/>\n");
+					echo("<meta itemprop='name' content='$r_past[title]'/>\n");
+					echo("<meta itemprop='startDate endDate' content='$r_past[isodate]'/>\n");
+					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name' content='$r_past[city]'/><meta itemprop='name' content='$r_past[city]'/></span>\n");
+					echo("<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n");
+					echo("<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n");
+					echo("<meta itemprop='name' content='Gasteizko Margolariak'/>\n");
+					echo("<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>\n");
+					echo("<meta itemprop='foundingDate' content='03-02-2013'/>\n");
+					echo("<meta itemprop='telephone' content='+34637140371'/>\n");
+					echo("<meta itemprop='url' content='$proto$http_host'/>\n");
+					echo("</div>\n");
 					$q_activity_image = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $r_past[id] ORDER BY idx LIMIT 1;");
 					if ($i == 0 && mysqli_num_rows($q_upcoming) == 0){
-						echo "<h3 class='entry_title'><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-down.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
-						echo "<div class='past_activity_details past_activity_details_first' id='past_activity_details_$r_past[id]'>\n";
+						echo("<h3 class='entry_title'>");
+						echo("<img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-down.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;\n");
+						echo("<a itemprop='url' href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a>\n");
+						echo("<span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span>\n");
+						echo("</h3>\n");
+						echo("<div class='past_activity_details past_activity_details_first' id='past_activity_details_$r_past[id]'>\n");
 					}
 					else{
-						echo "<h3 class='entry_title'><img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-right.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;<a href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a><span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span></h3>\n"; //TODO clickable TODO Slider onClick
-						echo "<div class='past_activity_details' id='past_activity_details_$r_past[id]'>\n";
+						echo("<h3 class='entry_title'>");
+						echo("<img id='slid_past_activity_$r_past[id]' class='slid' src='/img/misc/slid-right.png' onclick=\"showPastActivity('$r_past[id]')\"/>&nbsp;&nbsp;");
+						echo("<a itemprop='url' href='$proto$http_host/actividades/$r_past[permalink]'>$r_past[title]</a>");
+						echo("<span class='title_date'> - " . formatDate($r_past['date'], $lang, false) . "</span>");
+						echo("</h3>\n");
+						echo("<div class='past_activity_details' id='past_activity_details_$r_past[id]'>\n");
 					}
 					$i ++;
 					echo "<table class='past_activity'><tr>\n";
@@ -159,19 +179,21 @@
 						$r_activity_image = mysqli_fetch_array($q_activity_image);
 						echo "<td><div class='past_image'>\n";
 						echo "<a href='$proto$http_host/actividades/$r_past[permalink]'>\n";
+						echo("<meta itemprop='image' content='$proto$http_host/img/actividades/view/$r_activity_image[image]'/>\n");
 						echo "<img src='$proto$http_host/img/actividades/miniature/$r_activity_image[image]' alt='$r_past[title]'/>\n"; 
 						echo "</a>\n";
 						echo "</div></td>\n";
 					}
 					echo "<td><div class='past_text'>\n";
 					if (strlen($r_past['text']) > 0){
+						echo("<meta itemprop='description' content='$r_past[text]'/>\n");
 						echo "<p>". cutText($r_past['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_past[permalink]") . "</p>\n";
 					}
 					else{
+						echo("<meta itemprop='description' content='$r_past[alt_text]'/>\n");
 						echo "<p>". cutText($r_past['alt_text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_past[permalink]") . "</p>\n";
 					}
 					echo "</div></td></tr></table>\n";
-					//TODO show footer with price, maxpeople, etc
 					echo "</div>\n"; //past_activity_details
 					echo "</div>\n"; //past_activity
 				}

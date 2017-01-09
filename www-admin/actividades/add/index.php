@@ -27,33 +27,46 @@
 		<?php include('../../toolbar.php'); ?>
 		<div id='content'>
 			<div class="section">
-				<h3>Nueva actividad</h3>
-				<form action="add.php" maxlength="120" method="post" enctype="multipart/form-data" onsubmit="return validateActivity();">
-					<span class="tab_selector pointer" id="tab_selector_es" onClick="showTab('es');">Castellano</span>
-					<span class="tab_selector tab_selector_hidden pointer" id="tab_selector_eu" onClick="showTab('eu');">Euskera</span>
-					<span class="tab_selector tab_selector_hidden pointer" id="tab_selector_en" onClick="showTab('en');">Ingles</span>
-					<br/>
-					<div class="section tab_content" id="tab_content_es">
-						<input type="text" id="title_es" name="title_es" placeholder="Titulo (castellano)"/><br/><br/>
-						<textarea name="text_es" id="text_es" placeholder="Texto (castellano)"></textarea>
-						<script>
-							CKEDITOR.replace('text_es');
-						</script>
-					</div>
-					<div class="section tab_content section tab_content_hidden" id="tab_content_eu">
-						<input type="text" id="title_eu" name="title_eu" placeholder="Titulo (euskera)"/><br/><br/>
-						<textarea name="text_eu" id="text_eu" placeholder="Texto (euskera)"></textarea>
-						<script>
-							CKEDITOR.replace('text_eu');
-						</script>
-					</div>
-					<div class="section tab_content section tab_content_hidden" id="tab_content_en">
-						<input type="text" id="title_en" name="title_en" placeholder="Titulo (ingles)"/><br/><br/>
-						<textarea name="text_en" id="text_en" placeholder="Texto (ingles)"></textarea>
-						<script>
-							CKEDITOR.replace('text_en');
-						</script>
-					</div>
+				<h3 class="section_title">Nueva actividad</h3>
+				<form action="/actividades/add/add.php" maxlength="120" method="post" enctype="multipart/form-data" onsubmit="return validateActivity();">
+					<div class="entry">
+						<div id="lang_tabs">
+							<table>
+								<tr>
+									<td class="pointer lang_tabs_active" id="lang_tab_es" onclick="showLanguage('es');">
+										Castellano
+									</td>
+									<td class="pointer" id="lang_tab_eu" onclick="showLanguage('eu');">
+										Euskera
+									</td>
+									<td class="pointer" id="lang_tab_en" onclick="showLanguage('en');">
+										Ingl&eacute;s
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="content_lang_es">
+							<input type="text" id="title_es" name="title_es" placeholder="Titulo"/><br/><br/>
+							<textarea name="text_es" id="text_es" placeholder="Texto"></textarea>
+							<script>
+								CKEDITOR.replace('text_es');
+							</script>
+						</div>
+						<div id="content_lang_eu" style="display:none;">
+							<input type="text" id="title_eu" name="title_eu" placeholder="Titulu"/><br/><br/>
+							<textarea name="text_eu" id="text_eu" placeholder="Textua"></textarea>
+							<script>
+								CKEDITOR.replace('text_eu');
+							</script>
+						</div>
+						<div id="content_lang_en" style="display:none;">
+							<input type="text" id="title_en" name="title_en" placeholder="Title"/><br/><br/>
+							<textarea name="text_en" id="text_en" placeholder="Content"></textarea>
+							<script>
+								CKEDITOR.replace('text_en');
+							</script>
+						</div>
+					</div> <!--Entry-->
 					<div class="entry" id="activity_images">
 						<h4>Detalles</h4>
 						Ciudad:<input type="text" name="city" length="30" value="Vitoria-Gasteiz"/><br/><br/>
@@ -66,9 +79,8 @@
 						<input type="text" length="2" name="minute" placeholder="mm"/>-->
 						<br/><br/>Precio (en blanco si es gratuita):
 						<input type="text" length="4" name="price" placeholder="eur"/>
-						<br/><label><input type="checkbox" name="inscription" checked/>Se requiere inscripcion</label>
-						<br/>Numero de plazas (en blanco para ilimitadas): <input type="text" length="4" name="people" placeholder="#"/>
-						
+						<br/><br/><label><input type="checkbox" name="inscription" checked/>Se requiere inscripcion</label>
+						<br/><br/>Numero de plazas (en blanco para ilimitadas): <input type="text" length="4" name="people" placeholder="#"/>
 						
 						<h4>Imagenes</h4>
 						<ul>
@@ -104,8 +116,11 @@
 						<label><input type="checkbox" name="comments" checked/>Permitir comentarios</label><br/><br/>
 						<label><input type="checkbox" name="admin"/>Publicar como Gasteizko Margolariak en lugar de mi nombre</label>
 						<br/><br/><br/><br/>
-						<input type="button" value="Previsualizar" onClick="alert(validateActivity());"/> <!--TODO-->
-						<input type="submit" value="Publicar"/>
+						<div id="button_container">
+							<input type="button" value="Previsualizar" onClick="alert(validateActivity());"/> <!--TODO-->
+							</br>
+							<input type="submit" value="Publicar"/>
+						</div>
 					</div>
 				</form>
 			</div>

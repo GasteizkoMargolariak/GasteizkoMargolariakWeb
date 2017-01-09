@@ -43,17 +43,17 @@
 		<link rel="canonical" href="<?php echo "$proto$http_host"; ?>"/>
 		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
 		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
-		<meta name="description" content="<?php echo $lng['index_description'];?>"/>
+		<meta name="description" content="<?php echo $lng['index_us_content'];?>"/>
 		<meta property="og:title" content="<?php echo $lng['index_title'];?>"/>
 		<meta property="og:url" content="<?php echo "$proto$http_host"; ?>"/>
-		<meta property="og:description" content="<?php echo $lng['index_description'];?>"/>
+		<meta property="og:description" content="<?php echo $lng['index_us_content'];?>"/>
 		<meta property="og:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta property="og:site_name" content="<?php echo $lng['index_title'];?>"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
 		<meta name="twitter:card" content="summary"/>
 		<meta name="twitter:title" content="<?php echo $lng['index_title'];?>"/>
-		<meta name="twitter:description" content="<?php echo $lng['index_description'];?>"/>
+		<meta name="twitter:description" content="<?php echo $lng['index_us_content'];?>"/>
 		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
 		<meta name="robots" content="index follow"/>
@@ -75,7 +75,7 @@
 					echo "<meta itemprop='startDate' content='$year-08-04'/>\n";
 					echo "<meta itemprop='endDate' content='$year-08-09'/>\n";
 					echo "<meta itemprop='url' content='$proto$http_host/lablanca/'/>\n";
-					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name' content='Vitoria-Gasteiz'/></span>\n");
+					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name' content='Vitoria-Gasteiz'/></span>\n");
 					echo "<h3 class='section_title'>$lng[index_festivals_header] $year</h3>\n";
 					echo "<table class='festival_section_table'><tr>\n";
 					
@@ -156,7 +156,7 @@
 							if (strlen($r_sch_curr['isoend']) > 0){
 								echo "<meta itemprop='endDate' content='$r_sch_next[isoend]'/>\n";
 							}
-							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name'>Vitoria-Gasteiz</meta></span>\n");
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name'>Vitoria-Gasteiz</meta></span>\n");
 							echo "<span class='title'>$r_sch_next[title] - $r_sch_next[st]\n</span>";
 							if (strlen($r_sch_next["description"]) > 0 && $r_sch_next["description"] != $r_sch_next["title"]){
 								echo "<br/><span class='description'>$r_sch_next[description]</span>\n";
@@ -192,7 +192,7 @@
 							if (strlen($r_sch_curr['isoend']) > 0){
 								echo "<meta itemprop='endDate' content='$r_sch_curr[isoend]'/>\n";
 							}
-							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name'>Vitoria-Gasteiz</meta></span>\n");
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name'>Vitoria-Gasteiz</meta></span>\n");
 							echo "<span class='title'>$r_sch_curr[title]\n</span>";
 							if (strlen($r_sch_curr["description"]) > 0 && $r_sch_curr["description"] != $r_sch_curr["title"]){
 								echo "<br/><span class='description'>$r_sch_curr[description]</span>\n";
@@ -219,7 +219,7 @@
 							if (strlen($r_sch_curr['isoend']) > 0){
 								echo "<meta itemprop='endDate' content='$r_sch_next[isoend]'/>\n";
 							}
-							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name'>Vitoria-Gasteiz</meta></span>\n");
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name'>Vitoria-Gasteiz</meta></span>\n");
 							echo "<span class='title'>$r_sch_next[title] - ($r_sch_next[st])\n</span>";
 							if (strlen($r_sch_next["description"]) > 0 && $r_sch_next["description"] != $r_sch_next["title"]){
 								echo "<br/><span class='description'>$r_sch_next[description]</span>\n";
@@ -256,7 +256,7 @@
 					echo "<meta itemprop='name' content='$r_activity[title]'/>\n";
 					echo "<meta itemprop='description' content='$r_activity[text]'/>\n";
 					echo "<meta itemprop='startDate endDate' content='$r_activity[isodate]'/>\n";
-					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name' content='$r_activity[city]'/></span>\n");
+					echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name' content='$r_activity[city]'/></span>\n");
 					echo "<meta itemprop='url' content='$proto$http_host/actividades/$r_activity[permalink]'/>\n";
 					echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 					echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
@@ -316,11 +316,12 @@
 					echo "</div>\n";//Section
 				}
 			?>
-			<div class='section'>
-				<h3 class='section_title'><?php echo($lng['index_us']); ?></h3>
+			<div class='section' itemscope itemtype='http://schema.org/Organization'>
+				<meta itemprop='url' content='<?php echo("$proto$http_host"); ?>'/>
+				<h3 class='section_title' itemprop='name'><?php echo($lng['index_us']); ?></h3>
 				<div class='entry' id='us'>
-					<p><?php echo($lng['index_us_content']); ?></p>
-					<div><img src='<?php echo("$proto$http_host/img/logo/GasteizkoMargolariak.png"); ?>'/></div>
+					<p itemprop='description'><?php echo($lng['index_us_content']); ?></p>
+					<div><img itemprop='logo' src='<?php echo("$proto$http_host/img/logo/GasteizkoMargolariak.png"); ?>'/></div>
 				</div>
 				<a class='go_to_section' href='<?php echo($proto.$http_host); ?>/nosotros/'><?php echo($lng['index_us_more']) ?></a>
 				<br/>
@@ -415,7 +416,7 @@
 							echo "<meta itemprop='name' content='$r_activity[title]'/>\n";
 							echo "<meta itemprop='description' content='$r_activity[text]'/>\n";
 							echo "<meta itemprop='startDate endDate' content='$r_activity[isodate]'/>\n";
-							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address name'>$r_activity[city]</meta></span>\n");
+							echo("<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name' content='$r_activity[city]'/><meta itemprop='name' content='$r_activity[city]'/></span>\n");
 							echo "<div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>\n";
 							echo "<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n";
 							echo "<meta itemprop='name' content='Gasteizko Margolariak'/>\n";
