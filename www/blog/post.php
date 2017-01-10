@@ -107,8 +107,8 @@
 					echo "<meta itemprop='telephone' content='+34637140371'/>\n";
 					echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 					echo "</div>\n";
-					echo "<div class='entry'>\n";
-					echo "<h3 class='entry_title'>$r[title]</h3>\n";
+					echo("<h3 class='section_title'>$r[title]</h3>\n");
+					echo("<div class='entry'>\n");
 					if ($r_image != null){
 						echo "<div class='image_container'>\n";
 						echo "<meta itemprop='image' content='$proto$http_host/img/blog/$r_image[image]'/>\n";
