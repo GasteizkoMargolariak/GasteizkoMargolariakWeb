@@ -82,7 +82,7 @@
 						$i = 0;
 						$q_photo = mysqli_query($con, "SELECT * FROM photo, photo_album WHERE id = photo AND album = $r[album] ORDER BY rand() LIMIT 4;");
 						while ($r_photo = mysqli_fetch_array($q_photo)){
-							echo("<td><a href='$proto$http_host/galeria/$r[permalink]'>");
+							echo("<td><a itemprop='url' href='$proto$http_host/galeria/$r[permalink]'>");
 							echo("<meta itemprop='image' content='$proto$http_host/img/galeria/view/$r_photo[file]'/>\n");
 							echo("<img src='$proto$http_host/img/galeria/miniature/$r_photo[file]'/></a></td>\n");
 							$i ++;
@@ -92,7 +92,7 @@
 						echo "</tr>\n</table>\n";
 						$q_count = mysqli_query($con, "SELECT album FROM photo_album WHERE album = $r[id];");
 						if (mysqli_num_rows($q_count) == 1){
-							echo "<h3 class='entry_title'><a href='$proto$http_host/galeria/$r[permalink]'>$r[title]</a></h3>\n";
+							echo "<h3 class='entry_title' itemprop='name'><a href='$proto$http_host/galeria/$r[permalink]'>$r[title]</a></h3>\n";
 							echo("1 $lng[gallery_photos_singular]");
 						}
 						else{
