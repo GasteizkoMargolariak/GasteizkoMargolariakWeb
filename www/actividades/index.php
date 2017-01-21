@@ -98,17 +98,17 @@
 						echo "</a>\n";
 						echo "</div></td>\n";
 					}
-					echo "<td>\n<table class='future_data'>\n";
-					echo "<tr><td>$lng[activities_date]</td><td>" . formatDate($r_activity['date'], $lang, false) . "</td></tr>\n";
+					echo("<td>\n<table class='future_data'>\n");
+					echo("<tr><td class='title'>$lng[activities_city]</td><td>$r_activity[city]</td></tr>\n");
 					if ($r_activity['price'] == 0){
-						echo "<tr><td>$lng[activities_price]</td><td itemprop='offers' itemscope itemtype='http://schema.org/Offer'>\n";
+						echo "<tr><td class='title'>$lng[activities_price]</td><td itemprop='offers' itemscope itemtype='http://schema.org/Offer'>\n";
 						echo "<meta itemprop='priceCurrency' content='EUR'/><meta itemprop='price' content='0'/>\n";
 						echo "$lng[activities_price_0]</td></tr>\n";
 					}
 					else{
-						echo "<tr><td>$lng[activities_price]</td><td itemprop='offers' itemscope itemtype='http://schema.org/Offer'>\n";
+						echo "<tr><td class='title'>$lng[activities_price]</td><td itemprop='offers' itemscope itemtype='http://schema.org/Offer'>\n";
 						echo "<meta itemprop='priceCurrency' content='EUR'/><meta itemprop='price' content='$r_activity[price]'/>\n";
-						echo "$r_activity[price]€;</td></tr>\n";
+						echo("$r_activity[price]€</td></tr>\n");
 					}
 					if ($r_activity['max_people'] != 0){
 						echo "<tr><td>$lng[activities_maxpeople]</td><td>$r_activity[max_people]</td></tr>\n";

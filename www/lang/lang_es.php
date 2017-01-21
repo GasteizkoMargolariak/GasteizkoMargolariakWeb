@@ -98,6 +98,7 @@
 	$lng['activities_album'] = '&Aacute;lbum de fotos';
 	$lng['activities_archive'] = 'Archivo';
 	$lng['activities_date'] = 'Fecha';
+	$lng['activities_city'] = 'Ciudad';
 	$lng['activities_price'] = 'Precio';
 	$lng['activities_price_0'] = 'Gratuita';
 	$lng['activities_maxpeople'] = 'Plazas';
