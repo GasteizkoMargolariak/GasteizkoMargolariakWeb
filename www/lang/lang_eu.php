@@ -98,6 +98,7 @@
 	$lng['activities_album'] = 'Argazki albuma';
 	$lng['activities_archive'] = 'Artxiboa';
 	$lng['activities_date'] = 'Data';
+	$lng['activities_city'] = 'Hiria';
 	$lng['activities_price'] = 'Prezioa';
 	$lng['activities_price_0'] = 'Doan';
 	$lng['activities_maxpeople'] = 'Plazak';
