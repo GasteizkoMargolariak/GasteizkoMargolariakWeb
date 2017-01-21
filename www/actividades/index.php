@@ -122,6 +122,7 @@
 					echo "</td></tr></table>\n";
 					echo "<p>". cutText($r_activity['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</p>\n";
 					echo "</div>\n";
+					echo "</div>\n"; //Entry
 				}
 				echo "</div>\n";
 			}
