@@ -198,9 +198,9 @@ div#ad div#ad_details{
 }
 
 div#ad div#ad_details img{
-	height:			1.2em;
-	width:			1.2em;
-	margin: 		0 0.5em 0 0.5em;
+	height:			2em;
+	width:			2em;
+	margin: 		0.3 0.5em 0.3 0.5em;
 }
 
 div#ad div.entry div#ad_image_container{
