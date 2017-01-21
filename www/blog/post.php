@@ -160,7 +160,7 @@
 						echo "<hr>\n";
 						$q_comment = mysqli_query($con, "SELECT id, post, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, dtime, user, username, lang, text FROM post_comment WHERE post = $id AND approved = 1 ORDER BY dtime;");
 						$count = mysqli_num_rows($q_comment);
-						echo "<meta itemprop='commentCount interationCount' content='$count'/>\n";
+						echo "<meta itemprop='commentCount interactionCount' content='$count'/>\n";
 						switch ($count){
 							case 0:
 								echo "<h4><meta itemprop='interactionCount' content='0'/></meta>$lng[blog_comments_0]</h4>\n";

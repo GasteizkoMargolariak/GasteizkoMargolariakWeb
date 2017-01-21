@@ -17,7 +17,7 @@
 		<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title><?php echo $lng['gallery_title'];?></title>
+		<title><?php echo $lng['gallery_title'];?> - Gasteizko Margolariak</title>
 		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
@@ -44,7 +44,7 @@
 		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
 		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo $lng['gallery_description'];?>"/>
-		<meta property="og:title" content="<?php echo $lng['gallery_title'];?>"/>
+		<meta property="og:title" content="<?php echo $lng['gallery_title'];?> - Gasteizko Margolariak"/>
 		<meta property="og:url" content="<?php echo "$proto$http_host"; ?>"/>
 		<meta property="og:description" content="<?php echo $lng['gallery_description'];?>"/>
 		<meta property="og:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
@@ -52,7 +52,7 @@
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
 		<meta name="twitter:card" content="summary"/>
-		<meta name="twitter:title" content="<?php echo $lng['gallery_title'];?>"/>
+		<meta name="twitter:title" content="<?php echo $lng['gallery_title'];?> - Gasteizko Margolariak"/>
 		<meta name="twitter:description" content="<?php echo $lng['gallery_description'];?>"/>
 		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
@@ -82,7 +82,7 @@
 						$i = 0;
 						$q_photo = mysqli_query($con, "SELECT * FROM photo, photo_album WHERE id = photo AND album = $r[album] ORDER BY rand() LIMIT 4;");
 						while ($r_photo = mysqli_fetch_array($q_photo)){
-							echo("<td><a href='$proto$http_host/galeria/$r[permalink]'>");
+							echo("<td><a itemprop='url' href='$proto$http_host/galeria/$r[permalink]'>");
 							echo("<meta itemprop='image' content='$proto$http_host/img/galeria/view/$r_photo[file]'/>\n");
 							echo("<img src='$proto$http_host/img/galeria/miniature/$r_photo[file]'/></a></td>\n");
 							$i ++;
@@ -92,7 +92,7 @@
 						echo "</tr>\n</table>\n";
 						$q_count = mysqli_query($con, "SELECT album FROM photo_album WHERE album = $r[id];");
 						if (mysqli_num_rows($q_count) == 1){
-							echo "<h3 class='entry_title'><a href='$proto$http_host/galeria/$r[permalink]'>$r[title]</a></h3>\n";
+							echo "<h3 class='entry_title' itemprop='name'><a href='$proto$http_host/galeria/$r[permalink]'>$r[title]</a></h3>\n";
 							echo("1 $lng[gallery_photos_singular]");
 						}
 						else{

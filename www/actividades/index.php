@@ -17,7 +17,7 @@
 		<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title><?php echo $lng['activities_title'];?></title>
+		<title><?php echo $lng['activities_title'];?> - Gasteizko Margolariak</title>
 		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
@@ -45,7 +45,7 @@
 		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
 		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo $lng['activities_description'];?>"/>
-		<meta property="og:title" content="<?php echo $lng['activities_title'];?>"/>
+		<meta property="og:title" content="<?php echo $lng['activities_title'];?> - Gasteizko Margolariak"/>
 		<meta property="og:url" content="<?php echo "$proto$http_host/activities/"; ?>"/>
 		<meta property="og:description" content="<?php echo $lng['activities_description'];?>"/>
 		<meta property="og:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
@@ -53,7 +53,7 @@
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
 		<meta name="twitter:card" content="summary"/>
-		<meta name="twitter:title" content="<?php echo $lng['activities_title'];?>"/>
+		<meta name="twitter:title" content="<?php echo $lng['activities_title'];?> - Gasteizko Margolariak"/>
 		<meta name="twitter:description" content="<?php echo $lng['activities_description'];?>"/>
 		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
