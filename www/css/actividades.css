@@ -62,7 +62,7 @@ div#activity_description{
 }
 
 div#activity_details{
-	text-align:	center;
+	text-align:		center;
 }
 
 div#activity_details table#activity_details{
@@ -71,34 +71,40 @@ div#activity_details table#activity_details{
 }
 
 div#activity_details table#activity_details tr{
-	border-bottom:		0.2em solid #7777aa;
-	border-top:			0.2em solid #7777aa;
 	border-collapse:	collapse;
 }
 
 div#activity_details table#activity_details td{
-	text-align:	right;
-	padding:	0.2em 0.5em 0.2em 0.5em;
+	vertical-align:	bottom;
+	text-align:		left;
+	padding:		1em 1em 1em 1em;
 }
 
 div#activity_details table#activity_details td.field_name{
-	font-weight:	bold;
+	font-style:	italic;
+	font-size:	80%;
 }
 
 div#activity_itinerary tr{
-	border-bottom:		0.2em solid #7777aa;
-	border-top:			0.2em solid #7777aa;
+	border-bottom:		0.02em solid #000000;
+	border-top:			0.02em solid #000000;
 	border-collapse:	collapse;
+	border-radius:		0.5em;
+}
+
+div#activity_itinerary tr.th{
+	border-top:			0em solid #000000;
 }
 
 div#activity_itinerary table#activity_itinerary{
-	max-width:	50em;
-	margin: 			0 auto 0 auto;
+	max-width:			50em;
+	margin: 			2em auto 2em auto;
 	border-collapse:	collapse;
 }
 
 div#activity_itinerary table#activity_itinerary th{
-	border:		0.1em solid #7777aa;
+	border:		0em solid #000000;
+	border-top:	0em;
 	text-align:	center;
 }
 
@@ -111,8 +117,9 @@ div#activity_itinerary table#activity_itinerary td h5{
 	margin:	0;
 }
 
-div#activity_itinerary table#activity_itinerary td p{
-	margin:	0;
+div#activity_itinerary table#activity_itinerary td span.address, p.description{
+	margin:		0 0 0 1em;
+	font-size:	80%;
 }
 
 
