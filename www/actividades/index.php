@@ -124,7 +124,7 @@
 					echo "</div>\n";
 					echo "</div>\n"; //Entry
 				}
-				echo "</div>\n";
+
 			}
 			else{ //No upcoming activities
 				echo("<div class='entry'><h3 class='entry_title'>\n$lng[activities_no_upcoming]\n</h3></div>\n");
