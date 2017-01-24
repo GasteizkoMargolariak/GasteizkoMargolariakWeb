@@ -103,11 +103,9 @@
 			?>
 			<div id="middle_column">
 				<div class="section">
-					<h3 class='section_title' id="activity_title"><?php echo($r['title']); ?></h3>
-					<span id="activity_date"><?php echo(formatDate($r['date'], $lang, false)); ?></span>
+					<h3 class='section_title' id="activity_title"><?php echo($r['title']); ?> - <?php echo(formatDate($r['date'], $lang, false)); ?></h3>
 					<div class="entry" itemscope itemtype='http://schema.org/Event'>
 						<?php
-						
 							echo "<meta itemprop='url' href='$proto$http_host/actividades/$r[permalink]'/>\n";
 							echo "<meta itemprop='inLanguage' content='$lang'/>\n";
 							echo "<meta itemprop='name' content='$r[title]'/>\n";
@@ -136,8 +134,9 @@
 							}
 							echo "</p></div></br>\n";
 							if ($future){
-								echo "<div itemscope itemtype='http://schema.org/Offer' id='activity_details'><table id='activity_details'>\n";
-								echo "<tr><td class='field_name'>$lng[activities_date]</td><td>" . formatDate($r['date'], $lang, false) . "</td></tr>\n";
+								echo("<div itemscope itemtype='http://schema.org/Offer' id='activity_details'><table id='activity_details'>\n");
+								echo("<tr><td class='field_name'>$lng[activities_date]</td><td>" . formatDate($r['date'], $lang, false) . "</td></tr>\n");
+								echo("<tr><td class='field_name'>$lng[activities_city]</td><td>$r[city]</td></tr>\n");
 								echo "<meta itemprop='priceCurrency' content='EUR'/><meta itemprop='price' content='$r[price]'/>\n";
 								if ($r['price'] == 0){
 									echo "<tr><td class='field_name'>$lng[activities_price]</td><td>$lng[activities_price_0]</td></tr>\n";
@@ -147,19 +146,20 @@
 									if ($r['max_people'] != 0){
 										echo "<tr><td class='field_name'>$lng[activities_maxpeople]</td><td>$r[max_people]</td></tr>\n";
 									}
-									if ($r['inscription'] == 1){
+									/*if ($r['inscription'] == 1){
 										echo "<tr><td class='field_name'>$lng[activities_inscription]</td><td>$lng[yes]</td></tr>\n";
 									}
 									else{
 										echo "<tr><td class='field_name'>$lng[activities_inscription]</td><td>$lng[no]</td></tr>\n";
-									}
+									}*/
 								}
 								echo "</table></div>\n";
+								echo("</div><br/><div class='entry'>\n");
 								$q_it = mysqli_query($con, "SELECT activity_itinerary.name_$lang AS name, description_$lang AS description, place.name_$lang AS place_name, place.address_$lang AS place_address, DATE_FORMAT(start, '%H:%i') AS start, DATE_FORMAT(end, '%H:%i') AS end, DATE_FORMAT(start, '%Y-%m-%d') AS isostart, DATE_FORMAT(end, '%Y-%m-%d') AS isoend FROM activity_itinerary, place WHERE place.id = activity_itinerary.place AND activity = $r[id] ORDER BY start;");
 								if (mysqli_num_rows($q_it) > 0){
-									echo "<div id='activity_itinerary'><h4>Itinerario</h4>\n";
+									echo "<div id='activity_itinerary'><h3 class='entry_title'>Itinerario</h3>\n";
 									echo "<table id='activity_itinerary'>\n";
-									echo "<tr><th>$lng[activities_when]</th><th>$lng[activities_what]</th><th>$lng[activities_where]</th></tr>\n";
+									echo "<tr class='th'><th>$lng[activities_when]</th><th>$lng[activities_what]</th><th>$lng[activities_where]</th></tr>\n";
 									while ($r_it = mysqli_fetch_array($q_it)){
 										echo "<tr>\n";
 										echo "<div class='hidden' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'>\n";
@@ -178,12 +178,12 @@
 										else{
 											echo "<td>$r_it[start]</td>";
 										}
-										echo "<td><h5>$r_it[name]</h5>$r_it[description]</td>\n";
+										echo "<td><h5>$r_it[name]</h5><p class='description'>$r_it[description]</p></td>\n";
 										if ($r_it['place_name'] == $r_it['place_address']){
 											echo "<td>$r_it[place_name]</td>\n";
 										}
 										else{
-											echo "<td>$r_it[place_name]<br/>($r_it[place_address])</td>\n";
+											echo "<td>$r_it[place_name]<span class='address'>($r_it[place_address])</span></td>\n";
 										}
 										echo "</tr>\n";
 									}
