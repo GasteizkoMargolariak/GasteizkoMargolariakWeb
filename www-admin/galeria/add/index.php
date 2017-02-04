@@ -72,7 +72,7 @@
 						<h4>Ajustes</h4>
 						<label><input type="checkbox" name="visible" checked/>&Aacute;lbum visible</label><br/><br/>
 						<label><input type="checkbox" name="comments" checked/>Permitir comentarios</label><br/><br/>
-						<label><input type="checkbox" name="public" checked/>Permitir que los usuarios suban sus fotos (previa moderaci&oacute;n).</label>
+						<label><input type="checkbox" name="public" checked/>Permitir que los usuarios suban sus fotos (previa moderaci&oacute;n).</label><br/><br/>
 						<label><input type="checkbox" name="populate" checked/>A&ntilde;adir fotos en la siguiente pantalla</label>
 						<br/><br/><br/><br/>
 						<div id="add_button_container">

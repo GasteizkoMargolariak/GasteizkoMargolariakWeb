@@ -18,11 +18,12 @@
 		$comments = mysqli_real_escape_string($con, $_POST['comments']);
 		$visible = mysqli_real_escape_string($con, $_POST['visible']);
 		$public = mysqli_real_escape_string($con, $_POST['public']);
-		$populate = mysqli_real_escape_string($con, $_POST['populate'])
+		$populate = mysqli_real_escape_string($con, $_POST['populate']);
 		
 		//Check spanish title and generate permalink
-		if ($title_es == null)
+		if ($title_es == null){
 			exit();
+		}
 		else{
 			$permalink = permalink($title_es);
 			$i = 2;
@@ -67,9 +68,9 @@
 		else
 			$public = 0;
 		if ($populate == 'on')
-                        $populate = 1;
-                else
-                        $populate = 0;
+			$populate = 1;
+		else
+			$populate = 0;
 	
 		// If no translations, same text in all languages
 		if (strlen($text_eu) == 0){
@@ -83,13 +84,19 @@
 		}
 		
 		//Insert into database and get id
-		mysqli_query($con, "INSERT INTO album (permalink, title_es, title_eu, title_en, text_es, text_eu, text_en, open, visible, comments) VALUES ('$permalink', '$title_es', '$title_eu', '$title_en', '$text_es', '$text_eu', '$text_en', $public, $visible, $comments);");
+		mysqli_query($con, "INSERT INTO album (permalink, title_es, title_eu, title_en, description_es, description_eu, description_en, open) VALUES ('$permalink', '$title_es', '$title_eu', '$title_en', '$text_es', '$text_eu', '$text_en', $public);");
 		$res_album = mysqli_query($con, "SELECT id FROM album WHERE permalink = '$permalink' ORDER BY dtime DESC LIMIT 1;");
 		$row_album = mysqli_fetch_array($res_album);
 		$album_id = $row_album['id'];
 		
 		version();
 		
-		header("Location: /galeria/");
+		//Redirect
+		if ($populate == 1){
+			header("Location: /galeria/");
+		}
+		else{
+			header("Location: /galeria/upload.php?album=$album_id");
+		}
 	}
 ?>

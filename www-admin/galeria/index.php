@@ -27,7 +27,7 @@
 		<?php include('../toolbar.php'); ?>
 		<div id='content'>
 			<div class="section">
-				<h3 class="section_title">Galer&iacute;a - <a href="/actividades/add/">A&ntilde;adir &aacute;lbum</a></h3>
+				<h3 class="section_title">Galer&iacute;a - <a href="/galeria/add/">A&ntilde;adir &aacute;lbum</a></h3>
 				<div class="entry">
 					<table id='album_list'>
 						<tr>
