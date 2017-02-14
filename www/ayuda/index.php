@@ -138,6 +138,16 @@
 					</div>
 				</div>
 			</div>
+			<div class="content_row">
+				<div class="content_cell">
+					<div class="section" id="section_ads">
+						<h3 class="section_title"><?php echo $lng['help_ad_title']; ?></h3>
+						<div class="entry">
+							<?php echo $lng['help_ad']; ?>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<?php
 			include("../footer.php");
