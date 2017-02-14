@@ -323,7 +323,7 @@
 	* contributes with Gasteizko Margolariak.           *
         ****************************************************/
 	function ad($con, $lang, $lng){
-	$id = -1;
+		$id = -1;
 		//If the user hasn't still see an add on this session
 		if (isset($_SESSION['ad']) == false){
 			//25% chance of seeing an add
@@ -366,6 +366,10 @@
 				if(strlen($r["address"]) > 0){
 					echo("<br/><br/><a target='_blank' href='https://www.google.es/maps/@$r[lat],$r[lon],14z'><img id='ad_pinpoint' src='/img/misc/pinpoint.png'\>$r[address]</a>\n");
 				}
+				echo("<br/><br/><br class='mobile'/><br class='mobile'/>");
+				echo("<div id='ad_policy'>\n");
+				echo("<a target='_blank' href='$proto$http_host/ayuda/#section_ads'>" . $lng['help_ad_title'] . "</a>\n");
+				echo("</div>\n");
 				echo("</div>\n");
 				echo("</div>\n");
 				echo("<script type='text/javascript'>showAd();</script>\n");
