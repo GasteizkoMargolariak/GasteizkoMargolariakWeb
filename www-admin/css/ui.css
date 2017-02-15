@@ -61,7 +61,7 @@ body{
 }
 
 /* WARNING: If styles change dhere, make changes on commment scripts */
-input[type="text"], input[type="number"], input[type="date"]{
+input[type="text"], input[type="number"], input[type="date"], input[type="password"]{
 	border-radius:		0.3em;
 	height:				1.5em;
 	border:				0.2em solid #0078ff;
@@ -70,7 +70,7 @@ input[type="text"], input[type="number"], input[type="date"]{
 	margin:				0.1em;
 }
 
-input[type="button"], input[type="submit"], input[type="password"], input[type="file"], select{
+input[type="button"], input[type="submit"], input[type="file"], select{
 	border-radius:		0.3em;
 	height:				2em;
 	border:				0.2em solid #0078ff;
