@@ -28,7 +28,7 @@
 		<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title><?php echo $r['title'];?></title>
+		<title><?php echo $r['title'];?> - Gasteizko Margolariak</title>
 		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
@@ -56,7 +56,7 @@
 		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
 		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo strip_tags($r['description']);?>"/>
-		<meta property="og:title" content="<?php echo $l['title'];?>"/>
+		<meta property="og:title" content="<?php echo $l['title'];?> - Gasteizko Margolariak"/>
 		<meta property="og:url" content="<?php echo "$proto$http_host/galeria/$perm"; ?>"/>
 		<meta property="og:description" content="<?php echo strip_tags($r['description']); ?>"/>
 		<meta property="og:image" content="<?php  echo "$proto$http_host/img/logo/logo.png";?>"/> 
@@ -64,7 +64,7 @@
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
 		<meta name="twitter:card" content="summary"/>
-		<meta name="twitter:title" content="<?php echo $l['title'];?>"/>
+		<meta name="twitter:title" content="<?php echo $l['title'];?> - Gasteizko Margolariak"/>
 		<meta name="twitter:description" content="<?php echo strip_tags($r['description']); ?>"/>
 		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta name="twitter:url" content="<?php echo "$proto$http_host/galeria/$perm"; ?>"/>
@@ -73,10 +73,18 @@
 	<body onLoad="populatePhotos();" onkeypress="keyDown(event);">
 		<?php include("../header.php"); ?>
 		<div id="content">
-			<div class="section" id="album">
+			<div class="section" id="album" itemscope itemtype='https://schema.org/ImageGallery'>
+				<div class='hidden' itemprop='author creator' itemscope itemtype='http://schema.org/Organization'>\n");
+					<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n");
+					<meta itemprop='name' content='Gasteizko Margolariak'/>\n");
+					<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>\n");
+					<meta itemprop='foundingDate' content='03-02-2013'/>\n");
+					<meta itemprop='telephone' content='+34637140371'/>\n");
+					<meta itemprop='url' content='<?php echo("$proto$http_host"); ?>'/>\n");
+				</div>\n");
 				<?php
 					//Header
-					echo "<h3 class='section_title' id='album_title'>$r[title]</h3>\n";
+					echo("<h3 class='section_title' itemprop='name' id='album_title'>$r[title]</h3>\n");
 					if ($r['description'] != ''){
 						echo "<div class='entry' id='album_header'>\n";
 						echo $r['description'];
@@ -89,6 +97,7 @@
 					while ($r_photo = mysqli_fetch_array($q_photo)){
 						echo "<div class='entry photo'>\n<div class='photo_container'>\n";
 						echo "<img class='pointer photo_img' path='$r_photo[file]' onClick=\"showPhotoByPath('$r_photo[file]');\" src='/img/galeria/miniature/$r_photo[file]' /></div>\n";
+						echo("<meta itemprop='image' content='$proto$http_host/img/galeria/view/$r_photo[file]'/>\n");
 						if (strlen($r_photo['title']) > 0 ){
 							echo "<h3 class='entry_title'><a href='javascript:;' onClick=\"showPhotoByPath('$r_photo[file]');\">$r_photo[title]</a></h4>\n";
 						}
