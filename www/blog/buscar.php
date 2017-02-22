@@ -39,7 +39,7 @@
 		<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title><?php echo $lng['blog_title'];?></title>
+		<title><?php echo $lng['blog_title'];?> - Gasteizko Margolariak</title>
 		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
@@ -67,7 +67,7 @@
 		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
 		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo $lng['blog_descrption'];?>"/>
-		<meta property="og:title" content="<?php echo $lng['blog_title'];?>"/>
+		<meta property="og:title" content="<?php echo $lng['blog_title'];?> - Gasteizko Margolariak"/>
 		<meta property="og:url" content="<?php echo "$proto$http_host/blog"; ?>"/>
 		<meta property="og:description" content="<?php echo $lng['blog_description'];?>"/>
 		<meta property="og:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
@@ -75,7 +75,7 @@
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
 		<meta name="twitter:card" content="summary"/>
-		<meta name="twitter:title" content="<?php echo $lng['blog_title'];?>"/>
+		<meta name="twitter:title" content="<?php echo $lng['blog_title'];?> - Gasteizko Margolariak"/>
 		<meta name="twitter:description" content="<?php echo $lng['blog_description'];?>"/>
 		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
@@ -87,19 +87,17 @@
 			<?php include("common/leftpanel.php"); ?>
 			<div id="middle_column">
 				<div class="section">
+					<h3 class="section_title"><?php echo($lng['blog_search']);?></h3>
 					<div class="entry">
 						<?php
 							if (mysqli_num_rows($q) == 1){
-								echo "$lng[blog_search_1]<span class='italic'>$search_term</span>$lng[blog_search_2]<span class='italic'>$search_field</span>: " . strval(mysqli_num_rows($q)) . $lng['blog_search_result'];
+								echo "$lng[blog_search_1]<span class='italic'>$search_term</span>&nbsp: " . strval(mysqli_num_rows($q)) . $lng['blog_search_result'];
 							}
 							else{
-								echo "$lng[blog_search_1]<span class='italic'>$search_term</span>$lng[blog_search_2]<span class='italic'>$search_field</span>: " . strval(mysqli_num_rows($q)) . $lng['blog_search_results'];
+								echo "$lng[blog_search_1]<span class='italic'>$search_term</span>&nbsp: " . strval(mysqli_num_rows($q)) . $lng['blog_search_results'];
 							}
 						?>
 					</div>
-				</div>
-				<br/>
-				<div class="section">
 					<?php
 						while($r = mysqli_fetch_array($q)){
 							echo "<div itemscope itemtype='http://schema.org/BlogPosting' class='entry blog_entry'>\n";
@@ -116,7 +114,7 @@
 							echo "<meta itemprop='telephone' content='+34637140371'/>\n";
 							echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 							echo "</div>\n";
-							echo "<h2 class='post_search_title'><a itemprop='url' href='$proto$http_host/blog/$r[permalink]'>$r[title]</a></h2>\n";
+							echo "<h3 class='entry_title post_search_title'><a itemprop='url' href='$proto$http_host/blog/$r[permalink]'>$r[title]</a></h2>\n";
 							# Tags (if any) and date
 							echo "<table class='post_footer post_footer_search'><tr>\n";
 							$q_tag = mysqli_query($con, "SELECT tag FROM post_tag WHERE post= $r[id];");
@@ -134,7 +132,7 @@
 								echo "<td><span class='date'>" . formatDate($r['dtime'], $lang, false) . "</span>&nbsp;&nbsp;&nbsp;$tag_string</td>\n";
 							}
 							else{
-								echo "<td><span class='date'></span>" . formatDate($r['dtime'], $lang) . "</span>/td>\n";
+								echo "<td><span class='date'></span>" . formatDate($r['dtime'], $lang) . "</span></td>\n";
 							}
 							echo "</tr></table><hr class='post_search_separator'/>\n";
 							#Image and text

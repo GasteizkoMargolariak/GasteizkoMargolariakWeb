@@ -28,34 +28,48 @@
 		<?php include('../../toolbar.php'); ?>
 		<div id='content'>
 			<div class="section">
-				<h3>Nuevo post</h3>
+				<h3 class="section_title">Nuevo post</h3>
 				<form action="add.php" maxlength="120" method="post" enctype="multipart/form-data" onsubmit="return validate_post();">
-					<div class="entry blog_add_language">
-						<h4>Castellano (obligatorio)</h4>
-						<input type="text" id="title_es" name="title_es" placeholder="Titulo"/><br/><br/>
-						<textarea name="text_es" id="text_es" placeholder="Texto"></textarea>
-						<script>
-							CKEDITOR.replace('text_es');
-						</script>
-					</div>
-					<div class="entry blog_add_language">
-						<h4>Euskera (opcional)</h4>
-						<input type="text" name="title_eu" id="title_eu" placeholder="Titulo"><br/><br/>
-						<textarea name="text_eu" id="text_eu" placeholder="Texto"></textarea>
-						<script>
-							CKEDITOR.replace('text_eu');
-						</script>
-					</div>
-					<div class="entry blog_add_language">
-						<h4>Ingles (opcional)</h4>
-						<input type="text" name="title_en" id="title_en" placeholder="Titulo"><br><br/>
-						<textarea name="text_en" id="text_en" placeholder="Texto"></textarea>
-						<script>
-							CKEDITOR.replace('text_en');
-						</script>
-					</div>
+					<div class="entry">
+						<div id="lang_tabs">
+							<table>
+								<tr>
+									<td class="pointer lang_tabs_active" id="lang_tab_es" onclick="showLanguage('es');">
+										Castellano
+									</td>
+									<td class="pointer" id="lang_tab_eu" onclick="showLanguage('eu');">
+										Euskera
+									</td>
+									<td class="pointer" id="lang_tab_en" onclick="showLanguage('en');">
+										Ingl&eacute;s
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="content_lang_es" class="blog_add_language">
+							<input type="text" id="title_es" name="title_es" placeholder="Titulo"/><br/><br/>
+							<textarea name="text_es" id="text_es" placeholder="Texto"></textarea>
+							<script>
+								CKEDITOR.replace('text_es');
+							</script>
+						</div>
+						<div id="content_lang_eu" class="blog_add_language" style="display:none;">
+							<input type="text" name="title_eu" id="title_eu" placeholder="Titulu"><br/><br/>
+							<textarea name="text_eu" id="text_eu" placeholder="Textua"></textarea>
+							<script>
+								CKEDITOR.replace('text_eu');
+							</script>
+						</div>
+						<div id="content_lang_en" class="blog_add_language" style="display:none;">
+							<input type="text" name="title_en" id="title_en" placeholder="Titlu"><br><br/>
+							<textarea name="text_en" id="text_en" placeholder="Content"></textarea>
+							<script>
+								CKEDITOR.replace('text_en');
+							</script>
+						</div>
+					</div> <!--Entry-->
 					<div class="entry" id="images">
-						<h4>Imagenes</h4>
+						<h4>Im&aacute;genes</h4>
 						<ul>
 							<li>
 								Principal (Aparecera sobre el texto y en las previsualizaciones)<br/>
@@ -87,8 +101,11 @@
 						<label><input type="checkbox" name="comments" checked/>Permitir comentarios</label><br/><br/>
 						<label><input type="checkbox" name="admin"/>Publicar como Gasteizko Margolariak en lugar de mi nombre</label>
 						<br/><br/><br/><br/>
-						<input type="button" value="Previsualizar" onClick="alert(validate_post());"/> <!--TODO-->
-						<input type="submit" value="Publicar"/>
+						<div id="add_button_container">
+							<input type="button" value="Previsualizar" onClick="alert(validate_post());"/> <!--TODO-->
+							<br/>
+							<input type="submit" value="Publicar"/>
+						</div>
 					</div>
 				</form>
 			</div>

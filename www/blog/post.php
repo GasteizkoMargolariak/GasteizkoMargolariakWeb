@@ -107,8 +107,8 @@
 					echo "<meta itemprop='telephone' content='+34637140371'/>\n";
 					echo "<meta itemprop='url' content='$proto$http_host'/>\n";
 					echo "</div>\n";
-					echo "<div class='entry'>\n";
-					echo "<h2>$r[title]</h2>\n";
+					echo("<h3 class='section_title'>$r[title]</h3>\n");
+					echo("<div class='entry'>\n");
 					if ($r_image != null){
 						echo "<div class='image_container'>\n";
 						echo "<meta itemprop='image' content='$proto$http_host/img/blog/$r_image[image]'/>\n";
@@ -160,7 +160,7 @@
 						echo "<hr>\n";
 						$q_comment = mysqli_query($con, "SELECT id, post, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, dtime, user, username, lang, text FROM post_comment WHERE post = $id AND approved = 1 ORDER BY dtime;");
 						$count = mysqli_num_rows($q_comment);
-						echo "<meta itemprop='commentCount interationCount' content='$count'/>\n";
+						echo "<meta itemprop='commentCount interactionCount' content='$count'/>\n";
 						switch ($count){
 							case 0:
 								echo "<h4><meta itemprop='interactionCount' content='0'/></meta>$lng[blog_comments_0]</h4>\n";

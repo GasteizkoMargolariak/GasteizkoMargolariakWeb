@@ -30,26 +30,22 @@
 				<div class='section_row'>
 					<div class='section_cell'>
 						<div class='section'>
-							<h3>Blog</h3>
+							<h3 class='section_title'>Blog</h3>
 							<div class='entry'>
 								<ul>
 									<li><a href='/blog/add/'>Nuevo post</a></li>
 									<li><a href='/blog/'>Gestionar posts</a></li>
-									<li><a href='/blog/moderate/'>Moderar comentarios</a></li>
-									<li><a href='/blog/translate/'>Traducir posts</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class='section_cell'>
 						<div class='section'>
-							<h3>Actividades</h3>
+							<h3 class='section_title'>Actividades</h3>
 							<div class='entry'>
 								<ul>
 									<li><a href='/actividades/add/'>Nueva actividad</a></li>
 									<li><a href='/actividades/'>Gestionar actividades</a></li>
-									<li><a href='/actividades/moderate/'>Moderar comentarios</a></li>
-									<li><a href='/actividades/translate/'>Traducir actividades</a></li>
 								</ul>
 							</div>
 						</div>
@@ -58,7 +54,7 @@
 				<div class='section_row'>
 					<div class='section_cell'>
 						<div class='section'>
-							<h3>Galeria</h3>
+							<h3 class='section_title'>Galeria</h3>
 							<div class='entry'>
 								<ul>
 									<li><a href='/galeria/add/'>Crear album</a></li>
@@ -72,7 +68,7 @@
 					</div>
 					<div class='section_cell'>
 						<div class='section'>
-							<h3>Fiestas</h3>
+							<h3 class='section_title'>Fiestas</h3>
 							<div class='entry'>
 								<ul>
 									<li><a href='/lablanca/'>Preparar las fiestas</a></li>
@@ -86,7 +82,7 @@
 				<div class='section_row'>
 					<div class='section_cell'>
 						<div class='section'>
-							<h3>Miembros</h3>
+							<h3 class='section_title'>Miembros</h3>
 							<div class='entry'>
 								<ul>
 									<li><a href='/miembros/'>Consultar y buscar</a></li>
@@ -98,7 +94,7 @@
 					</div>
 					<div class='section_cell'>
 						<div class='section'>
-							<h3>Estadisticas</h3>
+							<h3 class='section_title'>Estadisticas</h3>
 							<div class='entry'>
 								<ul>
 									<li><a href='/estadisticas/web.php'>Estadisticas Web</a></li>
@@ -112,7 +108,7 @@
 				<div class='section_row'>
 					<div class='section_cell'>
 						<div class='section'>
-							<h3>Ajustes</h3>
+							<h3 class='section_title'>Ajustes</h3>
 							<div class='entry'>
 								<ul>
 									<li><a href=''>Cambiar ajustes</a></li>

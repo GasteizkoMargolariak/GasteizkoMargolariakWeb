@@ -21,6 +21,7 @@
 	</head>
 	<body>
 		<div class='section'>
+			<h3 class='section_title'>Credenciales</h3>
 			<div class='entry'>
 				<form method='post' action='/login.php'>
 					<table>
