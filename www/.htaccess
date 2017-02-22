@@ -30,6 +30,8 @@ RewriteRule ^blog/([0-9]+)/$ /blog/index.php?o=$1 [NC]
 
 RewriteRule ^lablanca/([0-9]+)$ /lablanca/index.php?year=$1 [NC]
 
+RewriteRule ^archivo/([A-Z\-a-z0-9]{3,}+)$ /archivo/index.php?file=$1 [NC]
+RewriteRule ^archivo/([A-Z\-a-z0-9]{3,}+)/$ /archivo/index.php?file=$1 [NC]
 
 RewriteRule ^actividades/search/([A-Za-z0-9]+)/([A-Za-z0-9]+)$ /actividades/buscar.php?where=$1&query=$2 [NC]
 RewriteRule ^actividades/search/([A-Za-z0-9]+)/([A-Za-z0-9]+)/$ /actividades/buscar.php?where=$1&query=$2 [NC]
