@@ -151,7 +151,7 @@
 				$tables = [ 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'people' ];
 				break;
 			case SEC_ALL:
-				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
+				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'people', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
 				break;
 			default:
 				//'Bad request' staus code
