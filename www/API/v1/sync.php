@@ -229,7 +229,7 @@
 			//Other cases: 
 			default:
 				//If the table is a public one and has not been listed above, all of its fields are public.
-				if (in_array($table, ['activity_image', 'activity_itinerary', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'people' 'post_image', 'post_tag'])){
+				if (in_array($table, ['activity_image', 'activity_itinerary', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'people', 'post_image', 'post_tag'])){
 					$q = mysqli_query($con, "SELECT * FROM $table;");
 				}
 				//If forbidden table
