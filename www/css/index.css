@@ -32,7 +32,7 @@ table.festival_section_table tr td div#festivals_summary img{
 	margin-right:	2em;
 }
 
-table.festival_section_table tr td div#festival_entry_map{
+div#map{
 	text-align:	center;
 }
 
@@ -40,15 +40,11 @@ div.festival_event{
 	margin-left:	1.5em;
 }
 
-table.festival_section_table tr td div#festival_entry_map h3{
-	text-align:	left;
-}
-
-table.festival_section_table tr td div#festival_entry_map iframe{
-	width:		80%;
+div#map iframe{
+	width:		100%;
 	margin:		auto;
-	min-height:	15em;
-	max-height:	20em;
+	min-height:	20em;
+	max-height:	25em;
 }
 
 table.festival_section_table tr td div.festival_schedule span.title{

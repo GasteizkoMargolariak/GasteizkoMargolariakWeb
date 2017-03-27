@@ -61,7 +61,21 @@
 	<body>
 		<?php include("header.php"); ?>
 		<div id="content">
-			<?php
+
+<?php		//Location section
+				$q_location = mysqli_query($con, "SELECT lat, lon FROM location WHERE action = 'report' AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
+          if (mysqli_num_rows($q_location) > 0){
+            $r_location = mysqli_fetch_array($q_location);
+?>
+						<div class='section' id='location'>
+							<h3 class='section_title'><?=$lng[index_festivals_location]?></h3>
+            	<div class='entry' id='map'>
+								<iframe src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCZHP7t2on_G3eyyoCTfhGAlDx1mJnX7iI&q=<?=$r_location[lat]?>,<?=$r_location[lon]?>' allowfullscreen></iframe>
+							</div>
+						</div>
+<?php
+          }
+
 				//Festivals section
 				$year = date("Y");
 				$q_settings = mysqli_query($con, "SELECT value FROM settings WHERE name = 'festivals';");
@@ -97,17 +111,6 @@
 							//echo "<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='$proto$http_host/lablanca/'>$lng[index_festivals_link]</a>\n";
 						}
 						echo "</div></td>\n";
-					}
-					
-					
-					//Location
-					$q_location = mysqli_query($con, "SELECT lat, lon FROM location WHERE action = 'report' AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
-					if (mysqli_num_rows($q_location) > 0){
-						$r_location = mysqli_fetch_array($q_location);
-						echo "<td><div class='entry' id='festival_entry_map'>\n";
-						echo "<h3 class='entry_title'>$lng[index_festivals_location]</h3>\n";
-						echo "<iframe src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCZHP7t2on_G3eyyoCTfhGAlDx1mJnX7iI&q=$r_location[lat],$r_location[lon]' allowfullscreen></iframe>\n";
-						echo "</div>\n";
 					}
 					
 					echo "</tr></table>\n";
