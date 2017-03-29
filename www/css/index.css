@@ -1,5 +1,5 @@
 /* Festival section */
-table.festival_section_table{
+/*div#festivals{
 	width:	100%;
 }
 
@@ -20,16 +20,22 @@ table.festival_section_table tr td div.entry{
 }
 
 table.festival_section_table tr td div#festivals_summary{
-/* 	min-height:		15em; */
+ 	min-height:		15em;
 }
 
-table.festival_section_table tr td div#festivals_summary img{
+table.festival_section_table tr td div#festivals_summary img{*/
+div#festivals img{
 	display:		inline-block;
 	max-width:		40%;
 	max-height:		15em;
 	vertical-align:	top;
-	float:			left;
+	wfloat:			left;
 	margin-right:	2em;
+}
+
+div#festivals #festivals_summary_text{
+	display:		inline-block;
+	max-width:	50%;
 }
 
 div#map{
