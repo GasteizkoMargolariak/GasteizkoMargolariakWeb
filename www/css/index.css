@@ -1,3 +1,5 @@
+/* Location section */
+
 /* Festival section */
 /*div#festivals{
 	width:	100%;
@@ -34,24 +36,52 @@ div#festivals img{
 }
 
 div#festivals #festivals_summary_text{
-	display:		inline-block;
+	display:	inline-block;
 	max-width:	50%;
 }
 
-div#map{
-	text-align:	center;
+div#festivals div#festivals_schedule_table{
+	display:	table;
+	width:		100%;
+}
+
+div#festivals div#festivals_schedule_table div#festivals_schedule_row{
+	display:	table-row;
+}
+
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell{
+	display:	table-cell;
+	width:		50%;
+}
+
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div#festivals_gm{
+	margin: 0.4em 0.2em 0.4em 0.4em;
+}
+
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div#festivals_city{
+	margin: 0.4em 0.4em 0.4em 0.2em;
 }
 
 div.festival_event{
-	margin-left:	1.5em;
+	margin:			1em;
+	padding:		0.3em 0.3em 0.3em 1em;
+	border-left:	0.em solid black;
 }
 
-div#map iframe{
-	width:		100%;
-	margin:		auto;
-	min-height:	20em;
-	max-height:	25em;
+div.festival_event span.title{
+	font-weight:	bold;
+	margin:			0.5em;
 }
+
+div.festival_event span.description{
+	font-weight:	bold;
+	margin:			0.2em 1em 1em 1em;
+}
+
+div.festival_event table.location{
+	margin:		0.3em 1em 0.3em 1.6em;
+}
+
 
 table.festival_section_table tr td div.festival_schedule span.title{
 	font-weight:	bold;
