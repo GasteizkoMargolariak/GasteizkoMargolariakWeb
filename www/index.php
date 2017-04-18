@@ -136,45 +136,48 @@
 												<meta itemprop='startDate' content='<?=$r_sch_curr['isostart']?>'/>
 												<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'>
 													<meta itemprop='address' content='Vitoria-Gasteiz'/>
-												<span>
+												</span>
 <?php
 												if (strlen($r_sch_curr['isoend']) > 0){
 													echo("<meta itemprop='endDate' content='$r_sch_curr[isoend]'/>\n");
 												}
 ?>
-												<span class='title'><?=$r_sch_curr['title']?></span>
+												<div class='schedule_content'>
+													<span class='title'><?=$r_sch_curr['title']?></span>
 <?php
-												if (strlen($r_sch_curr["description"]) > 0 && $r_sch_curr["description"] != $r_sch_curr["title"]){
-													echo("<br/><p class='description'>$r_sch_curr[description]</p>\n");
-													echo("<meta itemprop='description' content='$r_sch_curr[description]'/>\n");
-												}
+													if (strlen($r_sch_curr["description"]) > 0 && $r_sch_curr["description"] != $r_sch_curr["title"]){
+														echo("<br/><p class='description'>$r_sch_curr[description]</p>\n");
+														echo("<meta itemprop='description' content='$r_sch_curr[description]'/>\n");
+													}
 ?>
-												<table class='location'>
-													<tr>
-														<td>
-															<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>'>
-																<img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
-															</a>
-														</td>
-														<td>
+													<table class='location'>
+														<tr>
+															<td>
+																<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>'>
+																	<img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
+																</a>
+															</td>
+															<td>
 <?php
-															//If name and address are the same, show only name
-															if ($r_sch_curr['place'] == $r_sch_curr['address']){
-																echo("$r_sch_curr[place]\n");
-															}
-															else{
-																echo("$r_sch_curr[place] <span class='address'>- $r_sch_curr[address]</span>\n");
-															}
+																//If name and address are the same, show only name
+																if ($r_sch_curr['place'] == $r_sch_curr['address']){
+																	echo("$r_sch_curr[place]\n");
+																}
+																else{
+																	echo("$r_sch_curr[place] <br/><span class='address'> $r_sch_curr[address]</span>\n");
+																}
 ?>
-														</td>
-													</tr>
-												</table>
+															</td>
+														</tr>
+													</table>
+												</div> <!--.schedule_content  -->
 											</div> <!-- festival-event -->
 <?php
 										} // if (mysqli_num_rows($q_sch_curr) > 0)
 										if (mysqli_num_rows($q_sch_next) > 0){
 											$r_sch_next = mysqli_fetch_array($q_sch_next);
 ?>
+											
 											<div class='festival_event' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'>
 												<h4><?=$lng['index_festivals_schedule_next']?></h4>
 												<meta itemprop='inLanguage' content='<?=$lang?>'/>
@@ -183,36 +186,40 @@
 												<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'>
 													<meta itemprop='address' itemprop='name'>Vitoria-Gasteiz</meta>
 												</span>
-												<span class='title'><?=$r_sch_next['title']?> - <?=$r_sch_next['st']?></span>
 <?php
 												if (strlen($r_sch_curr['isoend']) > 0){
-													echo "<meta itemprop='endDate' content='$r_sch_next[isoend]'/>\n";
-												}
-												if (strlen($r_sch_next["description"]) > 0 && $r_sch_next["description"] != $r_sch_next["title"]){
-													echo "<br/><p class='description'>$r_sch_next[description]</p>\n";
-													echo "<meta itemprclass='entry'op='description' content='$r_sch_next[description]'/>\n";
+													echo("<meta itemprop='endDate' content='$r_sch_next[isoend]'/>\n");
 												}
 ?>
-												<table class='location'>
-													<tr>
-														<td>
-															<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>'>
-																<img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
-															</a>
-														</td>
-														<td>
+												<div class='schedule_content'>
+													<span class='title'><?=$r_sch_next['title']?> - <?=$r_sch_next['st']?></span>
 <?php
-															//If name and address are the same, show only name
-															if ($r_sch_next['place'] == $r_sch_next['address']){
-																echo("$r_sch_next[place]\n");
-															}
-															else{
-																echo("$r_sch_next[place] <span class='address'>- $r_sch_next[address]</span>\n");
-															}
+													if (strlen($r_sch_next["description"]) > 0 && $r_sch_next["description"] != $r_sch_next["title"]){
+														echo("<br/><p class='description'>$r_sch_next[description]</p>\n");
+														echo("<meta itemprclass='entry'op='description' content='$r_sch_next[description]'/>\n");
+													}
 ?>
-														</td>
-													</tr>
-												</table>
+													<table class='location'>
+														<tr>
+															<td>
+																<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>'>
+																	<img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
+																</a>
+															</td>
+															<td>
+<?php
+																//If name and address are the same, show only name
+																if ($r_sch_next['place'] == $r_sch_next['address']){
+																	echo("$r_sch_next[place]\n");
+																}
+																else{
+																	echo("$r_sch_next[place] </br><span class='address'> $r_sch_next[address]</span>\n");
+																}
+?>
+															</td>
+														</tr>
+													</table>
+												</div> <!--.schedule_content  -->
 											</div> <!-- festival-event -->
 <?php
 										}
@@ -244,36 +251,41 @@
 												<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'>
 													<meta itemprop='address' itemprop='name'>Vitoria-Gasteiz</meta>
 												</span>
-												<span class='title'><?=$r_sch_curr['title']?></span>
 <?php
 												if (strlen($r_sch_curr['isoend']) > 0){
-													echo "<meta itemprop='endDate' content='$r_sch_curr[isoend]'/>\n";
-												}
-												if (strlen($r_sch_curr["description"]) > 0 && $r_sch_curr["description"] != $r_sch_curr["title"]){
-													echo "<br/><p class='description'>$r_sch_curr[description]</p>\n";
-													echo "<meta itemprop='description' content='$r_sch_curr[description]'/>\n";
+													echo("<meta itemprop='endDate' content='$r_sch_curr[isoend]'/>\n");
 												}
 ?>
-												<table class='location'>
-													<tr>
-														<td>
-															<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>'>
-																<img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
-															</a>
-														</td>
-														<td>
+												<div class='schedule_content'>
+													<span class='title'><?=$r_sch_curr['title']?></span>
 <?php
-															//If name and address are the same, show only name
-															if ($r_sch_curr['place'] == $r_sch_curr['address']){
-																echo("$r_sch_curr[place]\n");
-															}
-															else{
-																echo("$r_sch_curr[place] <span class='address'>- $r_sch_curr[address]</span>\n");
-															}
+
+													if (strlen($r_sch_curr["description"]) > 0 && $r_sch_curr["description"] != $r_sch_curr["title"]){
+														echo("<br/><p class='description'>$r_sch_curr[description]</p>\n");
+														echo("<meta itemprop='description' content='$r_sch_curr[description]'/>\n");
+													}
 ?>
-														</td>
-													</tr>
-												</table>
+													<table class='location'>
+														<tr>
+															<td>
+																<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>'>
+																	<img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
+																</a>
+															</td>
+															<td>
+<?php
+																//If name and address are the same, show only name
+																if ($r_sch_curr['place'] == $r_sch_curr['address']){
+																	echo("$r_sch_curr[place]\n");
+																}
+																else{
+																	echo("$r_sch_curr[place] <br/><span class='address'> $r_sch_curr[address]</span>\n");
+																}
+?>
+															</td>
+														</tr>
+													</table>
+												</div> <!--.schedule_content  -->
 											</div> <!-- festival-event -->
 <?php
 										}
@@ -290,36 +302,40 @@
 												<span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'>
 													<meta itemprop='address' itemprop='name'>Vitoria-Gasteiz</meta>
 												</span>
-												<span class='title'><?=$r_sch_next['title']?> - (<?=$r_sch_next['st']?>)</span>
 <?php
 												if (strlen($r_sch_curr['isoend']) > 0){
 													echo "<meta itemprop='endDate' content='$r_sch_next[isoend]'/>\n";
 												}
-												if (strlen($r_sch_next["description"]) > 0 && $r_sch_next["description"] != $r_sch_next["title"]){
-													echo "<br/><p class='description'>$r_sch_next[description]</p>\n";
-													echo "<meta itemprop='description' content='$r_sch_next[description]'/>\n";
-												}
 ?>
-												<table class='location'>
-													<tr>
-														<td>
-															<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>'>
-																<img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
-															</a>
-														</td>
-														<td>
+												<div class='schedule_content'>
+													<span class='title'><?=$r_sch_next['title']?> - <?=$r_sch_next['st']?></span>
 <?php
-															//If name and address are the same, show only name
-															if ($r_sch_next['place'] == $r_sch_next['address']){
-																echo("$r_sch_next[place]\n");
-															}
-															else{
-																echo("$r_sch_next[place] <span class='address'>- $r_sch_next[address]</span>\n");
-															}
+													if (strlen($r_sch_next["description"]) > 0 && $r_sch_next["description"] != $r_sch_next["title"]){
+														echo "<br/><p class='description'>$r_sch_next[description]</p>\n";
+														echo "<meta itemprop='description' content='$r_sch_next[description]'/>\n";
+													}
 ?>
-														</td>
-													</tr>
-												</table>
+													<table class='location'>
+														<tr>
+															<td>
+																<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>'>
+																	<img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
+																</a>
+															</td>
+															<td>
+<?php
+																//If name and address are the same, show only name
+																if ($r_sch_next['place'] == $r_sch_next['address']){
+																	echo("$r_sch_next[place]\n");
+																}
+																else{
+																	echo("$r_sch_next[place] <br/><span class='address'> $r_sch_next[address]</span>\n");
+																}
+?>
+															</td>
+														</tr>
+													</table>
+												</div> <!--.schedule_content  -->
 											</div> <!-- festival-event -->
 <?php
 										}

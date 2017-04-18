@@ -26,7 +26,7 @@ table.festival_section_table tr td div#festivals_summary{
 }
 
 table.festival_section_table tr td div#festivals_summary img{*/
-div#festivals img{
+div#festivals div#festivals_summary img{
 	display:		inline-block;
 	max-width:		40%;
 	max-height:		15em;
@@ -62,24 +62,48 @@ div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festiv
 	margin: 0.4em 0.4em 0.4em 0.2em;
 }
 
-div.festival_event{
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div.festival_event{
 	margin:			1em;
-	padding:		0.3em 0.3em 0.3em 1em;
-	border-left:	0.em solid black;
+	padding:		0.3em 0.3em 0.3em 0.5em;
 }
 
-div.festival_event span.title{
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div.festival_event h4{
+	margin:			1em 0.2em 0.2em 0em;
 	font-weight:	bold;
-	margin:			0.5em;
+	color:			#444444;
 }
 
-div.festival_event span.description{
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div.festival_event div.schedule_content{
+	border-left:	0.1em dotted black;
+	margin-left:	0.5em;
+}
+
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div.festival_event span.title{
 	font-weight:	bold;
-	margin:			0.2em 1em 1em 1em;
+	font-size:		120%;
+	color:			#275573;
+	margin:			1em 0.5em 0.7em 0.2em;
 }
 
-div.festival_event table.location{
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div.festival_event p.description{
+	margin:	0.2em 1em 1em 1em;
+}
+
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div.festival_event table.location{
 	margin:		0.3em 1em 0.3em 1.6em;
+	font-size:	90%;
+	color:		#222222;
+}
+
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div.festival_event table.location img{
+	max-width:	1.3em;
+	max-hieght:	1.5em;
+}
+
+div#festivals div#festivals_schedule_table div#festivals_schedule_row div.festivals_schedule_cell div.festival_event table.location span.address{
+	font-size:	80%;
+	font-style:	italic;
+	color:		#444444;
 }
 
 
