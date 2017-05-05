@@ -3,6 +3,8 @@
 	include("../functions.php");
 	$con = startdb();
 	$proto = getProtocol();
+	$http_host = $_SERVER['HTTP_HOST'];
+	$server = "$proto" . "$http_host";
 	
 	//Language
 	$lang = selectLanguage();
