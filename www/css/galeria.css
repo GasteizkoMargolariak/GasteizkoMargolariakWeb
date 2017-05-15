@@ -134,40 +134,67 @@ div#photo_viewer{
 
 /* /galeria/load_photo.php */
 
+div#photo_viewer div#viewer_container{
+	height:		100%;
+	margin:		-2em 0 0 0;
+	padding:	2em 0 0 0;
+}
+
+div#photo_viewer h3.section_title div#viewer_close_container{
+	height:			1.5em;
+	float:			right;
+	margin-top:		-0.3em;
+	margin-right:	-0.4em;
+}
+
+div#photo_viewer h3.section_title div#viewer_close_container img#viewer_close{
+	height:	100%;
+}
+
 div#photo_viewer div#viewer_table{
 	display:	table;
-	height:		100%;
+	/*height:		100%;*/
 	width:		100%;
 }
 
 div#photo_viewer div#viewer_table div.viewer_row{
 	display:	table-row;
-	height:		100%;
+	/*height:		100%;*/
 	width:		100%;
 }
 
 div#photo_viewer div#viewer_table div.viewer_row div.viewer_cell{
 	display:		table-cell;
-	max-height:		100%;
+	/*max-height:		100%;*/
 	vertical-align:	top;
 }
 
 div#photo_viewer div#viewer_table div.viewer_row div#cell_image{
 	text-align:	center;
-	position:	fixed;
+	/*position:	fixed;
 	bottom:	10%;
-	top:	11%; /*Viewer is 10%*/
+	top:	11%; 
 	left:	11%;
-	right:	40%;
+	right:	40%;*/
+	padding:	0.5em 1em 0.5em 1em;
 	
 }
 
-div#photo_viewer div#viewer_table div.viewer_row div#cell_details{
+div#photo_viewer div#viewer_table div.viewer_row div#cell_image td.arrow{
+	width:	10%;
+}
+
+div#photo_viewer div#viewer_table div.viewer_row div#cell_image td#image{
+    width:  80%;
+}
+
+
+div#photo_viewer div#viewer_table div.viewer_row div#cell_comments{
 	width:		40%;
 }
 
 div#photo_viewer_image_container{
-	height:				85%;
+	/*height:				85%;*/
 	width:				100%;
 	position:			relative;
 	display:			inline-block;
@@ -187,13 +214,13 @@ img#photo_viewer_image{
 }
 
 div#photo_viewer div#viewer_controls{
-	height:		10%;
+	/*height:		10%;*/
 	width:		100%;
 	text-align:	center;
 	bottom:		10%;
-	left:		0;
-	right:		0;
-	position:	fixed;
+	/*left:		0;*/
+	/*right:		0;*/
+	/*position:	fixed;*/
 }
 
 div#photo_viewer div#viewer_controls img{
@@ -202,20 +229,44 @@ div#photo_viewer div#viewer_controls img{
 	transition:	all .3s ease-in-out;
 }
 
-div#photo_viewer div#viewer_controls img:hover{
-	-webkit-filter:	drop-shadow(0 0 0.3em #775599);
+div#photo_viewer img.viewer_arrow{
+	/*position:	fixed;
+	top:		50%;*/
+	height:		3em;
+	width:		3em;
+	/*margin-top:	-1.5em;*/
+	opacity:	0.4;
+}
+
+div#photo_viewer img.viewer_arrow:hover{
+    -webkit-filter:	drop-shadow(0 0 0.3em #775599);
     filter:			drop-shadow(0 0 0.3em #775599);
     -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#759')";
     filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#759')";
+	opacity:		0.8;
+}
+
+
+div#photo_viewer img#viewer_arrow_left{
+	left:	0%;
+}
+
+div#photo_viewer img#viewer_arrow_right{
+    right:	0%;
 }
 
 div#photo_viewer_details{
-	position:	fixed;
+	/*position:	fixed;
 	top:		11%;
 	bottom:		11%;
 	right:		12%;
 	left:		60%;
-	overflow-y:	auto;
+	overflow-y:	auto;*/
+}
+
+div#photo_data{
+	position:	relative;
+	height:		100%;
 }
 
 div#photo_data h4{

@@ -4,6 +4,7 @@
 	include("../functions.php");
 	$con = startdb();
 	$proto = getProtocol();
+	#server = "$proto$http_host";
 	
 	//Language
 	$lang = selectLanguage();
@@ -32,15 +33,15 @@
 		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
-			<?php 
-				include("../css/ui.css"); 
+			<?php
+				include("../css/ui.css");
 				include("../css/galeria.css");
 			?>
 		</style>
 		<!-- CSS for mobile version -->
 		<style media="(max-width : 990px)">
-			<?php 
-				include("../css/m/ui.css"); 
+			<?php
+				include("../css/m/ui.css");
 				include("../css/m/galeria.css");
 			?>
 		</style>
@@ -59,7 +60,7 @@
 		<meta property="og:title" content="<?php echo $l['title'];?> - Gasteizko Margolariak"/>
 		<meta property="og:url" content="<?php echo "$proto$http_host/galeria/$perm"; ?>"/>
 		<meta property="og:description" content="<?php echo strip_tags($r['description']); ?>"/>
-		<meta property="og:image" content="<?php  echo "$proto$http_host/img/logo/logo.png";?>"/> 
+		<meta property="og:image" content="<?php  echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta property="og:site_name" content="Gasteizko Margolariak"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
@@ -74,14 +75,15 @@
 		<?php include("../header.php"); ?>
 		<div id="content">
 			<div class="section" id="album" itemscope itemtype='https://schema.org/ImageGallery'>
-				<div class='hidden' itemprop='author creator' itemscope itemtype='http://schema.org/Organization'>\n");
-					<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>\n");
-					<meta itemprop='name' content='Gasteizko Margolariak'/>\n");
-					<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>\n");
-					<meta itemprop='foundingDate' content='03-02-2013'/>\n");
-					<meta itemprop='telephone' content='+34637140371'/>\n");
-					<meta itemprop='url' content='<?php echo("$proto$http_host"); ?>'/>\n");
-				</div>\n");
+				<div class='hidden' itemprop='author creator' itemscope itemtype='http://schema.org/Organization'>
+					<meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>
+					<meta itemprop='name' content='Gasteizko Margolariak'/>
+					<meta itemprop='logo' content='$proto$http_host/img/logo/logo.png'/>
+					<meta itemprop='foundingDate' content='03-02-2013'/>
+					<meta itemprop='telephone' content='+34637140371'/>
+					<meta itemprop='url' content='<?=$server ?>'/>
+				</div>o
+
 				<?php
 					//Header
 					echo("<h3 class='section_title' itemprop='name' id='album_title'>$r[title]</h3>\n");
