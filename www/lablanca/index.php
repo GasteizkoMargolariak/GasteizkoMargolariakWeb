@@ -2,6 +2,9 @@
 	session_start();
 	include("../functions.php");
 	$con = startdb();
+	$proto = getProtocol();
+	$http_host = $_SERVER['HTTP_HOST'];
+	$server = "$proto" . "$http_host";
 	
 	//Language
 	$lang = selectLanguage();
@@ -52,8 +55,9 @@
 					echo $lng['lablanca_no_title'];
 				}
 			?>
+			 - Gasteizko Margolariak
 		</title>
-		<link rel="shortcut icon" href="<?php echo "http://$http_host/img/logo/favicon.ico";?>">
+		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
 			<?php 
@@ -76,9 +80,9 @@
 			?>
 		</script>
 		<!-- Meta tags -->
-		<link rel="canonical" href="<?php echo "http://$http_host/lablanca/"; ?>"/>
-		<link rel="author" href="<?php echo "http://$http_host"; ?>"/>
-		<link rel="publisher" href="<?php echo "http://$http_host"; ?>"/>
+		<link rel="canonical" href="<?php echo "$proto$http_host/lablanca/"; ?>"/>
+		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
+		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo $lng['lablanca_description'];?>"/>
 		<meta property="og:title" 
 			content="<?php
@@ -88,11 +92,11 @@
 				else{
 					echo $lng['lablanca_no_title'];
 				}
-			?>"
+			?> - Gasteizko Margolariak"
 		/>
-		<meta property="og:url" content="<?php echo "http://$http_host"; ?>"/>
+		<meta property="og:url" content="<?php echo "$proto$http_host"; ?>"/>
 		<meta property="og:description" content="<?php echo $lng['lablanca_description'];?>"/>
-		<meta property="og:image" content="<?php echo "http://$http_host/img/logo/logo.png";?>"/>
+		<meta property="og:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta property="og:site_name" content="<?php echo $lng['lablanca_title'];?>"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
@@ -105,11 +109,11 @@
 				else{
 					echo $lng['lablanca_no_title'];
 				}
-			?>"
+			?> - Gasteizko Margolariak"
 		/>
 		<meta name="twitter:description" content="<?php echo $lng['lablanca_description'];?>"/>
-		<meta name="twitter:image" content="<?php echo "http://$http_host/img/logo/logo.png";?>"/>
-		<meta name="twitter:url" content="<?php echo"http://$http_host"; ?>"/>
+		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
+		<meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
 		<meta name="robots" content="index follow"/>
 	</head>
 	<body>
@@ -132,6 +136,7 @@
 				}
 				if (date("M") <= 8){
 					$q_years = mysqli_query($con, "SELECT year FROM festival WHERE year != " . date("Y") . " ORDER BY year DESC;");
+				}
 				else{
 					$q_years = mysqli_query($con, "SELECT year FROM festival WHERE year <= " . date("Y") . " ORDER BY year DESC;");
 				}
@@ -140,7 +145,7 @@
 					echo("<h3 class='section_title'>$lng[lablanca_past_title]</h3>\n");
 					echo("<div class='entry'><ul>\n");
 					while ($r_years = mysqli_fetch_array($q_years)){
-						echo("<li><a href='http://$http_host/lablanca/$r_years[year]'>$lng[lablanca_past_link] $r_years[year]</a></li>\n");
+						echo("<li><a href='$proto$http_host/lablanca/$r_years[year]'>$lng[lablanca_past_link] $r_years[year]</a></li>\n");
 					}		
 					echo("</ul></div>\n");
 					echo("</div>\n");

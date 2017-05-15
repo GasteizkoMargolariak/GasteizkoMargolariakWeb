@@ -50,6 +50,16 @@
 		//Return the db connection
 		return $con;
 	}
+	function getProtocol(){
+		if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+			$protocol = 'https://';
+		}
+		else {
+			$protocol = 'http://';
+		}
+		return $protocol;
+	}
+
 	
 	/****************************************************
 	* This function selects the language the page will  *
@@ -305,8 +315,15 @@
 		mysqli_query($con, 'UPDATE settings SET value = value + 1 WHERE name = "version";');
 	}
 	
+	/****************************************************
+        * Shows an ad at random. It does that one in three  *
+        * times, and only one per session (inserts a cookie *
+        * to know if the ad has been shown. A sponsor has   *
+        * more chances of having his ad popping the more it *
+	* contributes with Gasteizko Margolariak.           *
+        ****************************************************/
 	function ad($con, $lang, $lng){
-	$id = -1;
+		$id = -1;
 		//If the user hasn't still see an add on this session
 		if (isset($_SESSION['ad']) == false){
 			//25% chance of seeing an add
@@ -334,12 +351,12 @@
 				$q = mysqli_query($con, "SELECT name_$lang AS name, text_$lang AS text, image, address_$lang AS address, link, lat, lon FROM sponsor WHERE id = $id;");
 				$r = mysqli_fetch_array($q);
 				echo("<div id='ad' class='section'>\n");
+				echo("<h3 class='section_title'><a target='_blank' href='$r[link]'>$r[name]</a></h3>\n");
+				echo("<div class='entry'>\n");
 				echo("<div id='ad_details'>\n");
 				echo($lng['ad_title']);
 				echo("<img class='pointer' src='/img/misc/slid-close.png' onClick='closeAd();' />\n");
 				echo("</div>\n");
-				echo("<h3><a target='_blank' href='$r[link]'>$r[name]</a></h3>\n");
-				echo("<div class='entry'>\n");
 				if (strlen($r['image']) > 0){
 					echo("<div id='ad_image_container'>\n");
 					echo("<img src='/img/spo/miniature/$r[image]'/>\n");
@@ -349,6 +366,10 @@
 				if(strlen($r["address"]) > 0){
 					echo("<br/><br/><a target='_blank' href='https://www.google.es/maps/@$r[lat],$r[lon],14z'><img id='ad_pinpoint' src='/img/misc/pinpoint.png'\>$r[address]</a>\n");
 				}
+				echo("<br/><br/><br class='mobile'/><br class='mobile'/>");
+				echo("<div id='ad_policy'>\n");
+				echo("<a target='_blank' href='$proto$http_host/ayuda/#section_ads'>" . $lng['help_ad_title'] . "</a>\n");
+				echo("</div>\n");
 				echo("</div>\n");
 				echo("</div>\n");
 				echo("<script type='text/javascript'>showAd();</script>\n");

@@ -13,11 +13,6 @@ span.status_yellow{
 	color:			#ff8800;
 }
 
-div#entry_header{
-	display:	table-row;
-	padding:	0;
-}
-
 div#entry_header div.header_text{
 	display:		table-cell;
 	vertical-align:	top;
@@ -54,6 +49,15 @@ div#entry_header div.header_text p{
 div#section_prices table#prices{
 	border-collapse:	collapse;
 }
+
+div#section_prices table#prices td, th{
+  border:	0.1em solid black;
+}
+
+div#section_prices table#prices table td, th{
+  border: 0;
+}
+
 
 div#section_prices table#prices input[type='text']{
 	max-width:	10em;

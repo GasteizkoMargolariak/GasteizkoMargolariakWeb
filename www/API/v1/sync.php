@@ -151,7 +151,7 @@
 				$tables = [ 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'people' ];
 				break;
 			case SEC_ALL:
-				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
+				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'people', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
 				break;
 			default:
 				//'Bad request' staus code
@@ -202,7 +202,7 @@
 				$q = mysqli_query($con, "SELECT id, permalink, date, city, title_es, title_en, title_eu, text_es, text_eu, text_en, after_es, after_en, after_eu, price, inscription, max_people, album FROM activity WHERE visible = 1;");
 				break;
 			case "activity_comment":
-				$q = mysqli_query($con, "SELECT activity_comment.id AS id, activity, text, dtime, CONCAT(user.username, user) AS user, lang FROM activity_comment, user WHERE activity_comment.user = user.id AND approved = 1;");
+				$q = mysqli_query($con, "SELECT id, activity, text, dtime, username, lang FROM activity_comment WHERE approved = 1;");
 				break;
 			case "album":
 				$q = mysqli_query($con, "SELECT id, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, open FROM album;");
@@ -214,7 +214,10 @@
 				$q = mysqli_query($con, "SELECT post.id AS id, permalink, title_es, title_en, title_eu, text_es, text_en, text_eu, comments, username, dtime FROM post, user WHERE user.id = user AND visible = 1;");
 				break;
 			case "post_comment":
-				$q = mysqli_query($con, "SELECT post_comment.id AS id, post, text, dtime, CONCAT(user.username, user) AS user, lang FROM post_comment, user WHERE post_comment.user = user.id AND approved = 1;");
+				$q = mysqli_query($con, "SELECT post_comment.id AS id, post, text, dtime, username, lang FROM post_comment WHERE approved = 1;");
+				break;
+			case "photo_comment":
+				$q = mysqli_query($con, "SELECT photo_comment.id AS id, post, text, dtime, username, lang FROM photo_comment WHERE approved = 1;");
 				break;
 			case "sponsor":
 				$q = mysqli_query($con, "SELECT id, name_es, name_en, name_eu, text_es, text_en, text_eu, image, address_es, address_en, address_eu, link, lat, lon FROM sponsor;");
@@ -226,7 +229,7 @@
 			//Other cases: 
 			default:
 				//If the table is a public one and has not been listed above, all of its fields are public.
-				if (in_array($table, ['activity_image', 'activity_itinerary', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'post_image', 'post_tag'])){
+				if (in_array($table, ['activity_image', 'activity_itinerary', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'people', 'post_image', 'post_tag'])){
 					$q = mysqli_query($con, "SELECT * FROM $table;");
 				}
 				//If forbidden table

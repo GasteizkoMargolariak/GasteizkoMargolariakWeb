@@ -3,6 +3,7 @@
 	$http_host = $_SERVER['HTTP_HOST'];
 	include("../functions.php");
 	$con = startdb();
+	$proto = getProtocol();
 	
 	//Language
 	$lang = selectLanguage();
@@ -16,8 +17,8 @@
 		<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title><?php echo $lng['us_title'];?></title>
-		<link rel="shortcut icon" href="<?php echo "http://$http_host/img/logo/favicon.ico";?>">
+		<title><?php echo $lng['footer_help'];?> - Gasteizko Margolariak</title>
+		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
 		<style>
 			<?php 
@@ -39,22 +40,22 @@
 			?>
 		</script>
 		<!-- Meta tags -->
-		<link rel="canonical" href="<?php echo "http://$http_host/us/"; ?>"/>
-		<link rel="author" href="<?php echo "http://$http_host"; ?>"/>
-		<link rel="publisher" href="<?php echo "http://$http_host"; ?>"/>
+		<link rel="canonical" href="<?php echo "$proto$http_host/us/"; ?>"/>
+		<link rel="author" href="<?php echo "$proto$http_host"; ?>"/>
+		<link rel="publisher" href="<?php echo "$proto$http_host"; ?>"/>
 		<meta name="description" content="<?php echo $lng['us_description'];?>"/>
-		<meta property="og:title" content="<?php echo $lng['us_title'];?>"/>
-		<meta property="og:url" content="<?php echo "http://$http_host"; ?>"/>
+		<meta property="og:title" content="<?php echo $lng['us_title'];?> - Gasteizko Margolariak"/>
+		<meta property="og:url" content="<?php echo "$proto$http_host"; ?>"/>
 		<meta property="og:description" content="<?php echo $lng['us_description'];?>"/>
-		<meta property="og:image" content="<?php echo "http://$http_host/img/logo/logo.png";?>"/>
+		<meta property="og:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
 		<meta property="og:site_name" content="<?php echo $lng['us_title'];?>"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:locale" content="<?php echo $lang; ?>"/>
 		<meta name="twitter:card" content="summary"/>
-		<meta name="twitter:title" content="<?php echo $lng['us_title'];?>"/>
+		<meta name="twitter:title" content="<?php echo $lng['us_title'];?> - Gasteizko Margolariak"/>
 		<meta name="twitter:description" content="<?php echo $lng['us_description'];?>"/>
-		<meta name="twitter:image" content="<?php echo "http://$http_host/img/logo/logo.png";?>"/>
-		<meta name="twitter:url" content="<?php echo"http://$http_host"; ?>"/>
+		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>
+		<meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
 		<meta name="robots" content="index follow"/>
 	</head>
 	<body>
@@ -122,7 +123,7 @@
 			<div class="content_row">
 				<div class="content_cell">
 					<div class="section" id="section_privacy">
-						<h3><?php echo $lng['help_privacy_title']; ?></h3>
+						<h3 class="section_title"><?php echo $lng['help_privacy_title']; ?></h3>
 						<div class="entry">
 							<?php echo $lng['help_privacy']; ?>
 						</div>
@@ -133,6 +134,16 @@
 						<h3 class='section_title'><?php echo $lng['help_cookie_title']; ?></h3>
 						<div class="entry">
 							<?php echo $lng['help_cookie']; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content_row">
+				<div class="content_cell">
+					<div class="section" id="section_ads">
+						<h3 class="section_title"><?php echo $lng['help_ad_title']; ?></h3>
+						<div class="entry">
+							<?php echo $lng['help_ad']; ?>
 						</div>
 					</div>
 				</div>

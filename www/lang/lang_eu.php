@@ -47,6 +47,9 @@
 	$lng['index_no_photos'] = 'Ez dago argazkirik';
 	$lng['index_see_all_photos'] = 'Joan galerira';
 	$lng['index_read_more'] = 'Gehiago irakurri';
+	$lng['index_us'] = 'Gasteizko Margolariak';
+	$lng['index_us_content'] = 'Somos una Cuadrilla de Blusas y Neskas de Vitoria-Gasteiz. Participamos en las fiestas de la ciudad, animando, organizando actividades, para nuestros miembros y para el p&uacute;blico en general.<br/><br/>Pero eso no es todo: Permanecemos activos durante el resto del a&ntilde;o, organizando actividades, tanto dentro como fuera de la ciudad: Competiciones, excursiones, eventos solidarios...';
+	$lng['index_us_more'] = 'M&aacute;s sobre nosotros';
 	$lng['index_'] = '';
 	
 	//header.php
@@ -85,7 +88,6 @@
 	$lng['lablanca_past_title'] = 'Aurreko urteen kartelak';
 	$lng['lablanca_past_link'] = 'Andre Zuria Jaiak ';
 	$lng['lablanca_'] = '';
-	$lng['lablanca_'] = '';
 	
 	// /actividades/index.php
 	$lng['activities_title'] = 'Ekitaldeak - Gasteizko Margolariak';
@@ -96,6 +98,7 @@
 	$lng['activities_album'] = 'Argazki albuma';
 	$lng['activities_archive'] = 'Artxiboa';
 	$lng['activities_date'] = 'Data';
+	$lng['activities_city'] = 'Hiria';
 	$lng['activities_price'] = 'Prezioa';
 	$lng['activities_price_0'] = 'Doan';
 	$lng['activities_maxpeople'] = 'Plazak';
@@ -139,6 +142,8 @@
 	// /nosotros/index.php
 	$lng['us_title'] = 'Gu - Gasteizko Margolariak';
 	$lng['us_description'] = 'Asociaci&oacute;n Cultural Gasteizko Margolariak';
+	$lng['us_introduction'] = 'Quienes somos';
+	$lng['us_introduction_content'] = 'Somos una Cuadrilla de Blusas y Neskas de Vitoria-Gasteiz. Participamos en las fiestas de la ciudad, animando, organizando actividades, para nuestros miembros y para el p&uacute;blico en general.<br/><br/>Pero eso no es todo: Permanecemos activos durante el resto del a&ntilde;o, organizando actividades, tanto dentro como fuera de la ciudad: Competiciones, excursiones, eventos solidarios...';
 	$lng['us_association'] = 'Asoziazioia';
 	$lng['us_association_content'] = 'La Asociaci&oacute;n Cultural Gasteizko Margolariak nace en el a&ntilde;o 2013 con la idea de estimular la participaci&oacute;n ciudadana y fortalecer la cultura y las tradiciones de Vitoria-Gasteiz.<br/><br/>En nuestro nombre se refleja un barrio en el que las calles nos recuerdan a grandes pintores: el barrio de San Mart&iacute;n. Estamos representados en los barrios, y creemos que son la esencia de esta ciudad.';
 	$lng['us_cuadrilla'] = 'Koadrilla';
@@ -146,7 +151,6 @@
 	$lng['us_activities'] = 'Edin dugula';
 	$lng['us_activities_content'] = 'Excursiones, partidos, causas ben&eacute;ficas... No solo se nos ve en fiestas.<br/><br/>Creemos que, como Cuadrilla de Blusas y Neskas, existimos por y para la ciudad, y por eso organizamos actividades durante todo el a&ntilde;o, para todo aquel que quiera acompa&ntilde;arnos<br/><br/>Si quieres saber lo que hacemos, te sugerimos que eches un vistazo a nuestra <a href="/galeria/">galer&iacute;a</a>. Y si quieres conocernos, apuntate a la siguiente <a href="/actividades/">actividad</a>!';
 	$lng['us_transparency'] = 'Gardentasuna';
-	//$lng['us_transparency_content'] = '¿Te preocupa saber d&oacute;nde va tu dinero? En Gasteizko Margolariak queremos que est&eacute;s tranquilo.<br/><br/>Muchas de nuestras actividades son gratuitas. Otras, como las fiestas de La Blanca, tienen una cuota de inscripci&oacute;n. Gasteizko Margolariak no es una empresa, es una Asociaci&oacute;n cultural, y como tal, no tenemos beneficios.<br/><br/>Queremos ser transparentes, y por eso ponemos a tu disposici&oacute;n nuestras cuentas de manera online, para que sepas que cada euro se reinvierte en ti.';
 	$lng['us_transparency_content'] = '¿Te preocupa saber d&oacute;nde va tu dinero? En Gasteizko Margolariak queremos que est&eacute;s tranquilo.<br/><br/>Muchas de nuestras actividades son gratuitas. Otras, como las fiestas de La Blanca, tienen una cuota de inscripci&oacute;n. Gasteizko Margolariak no es una empresa, es una Asociaci&oacute;n cultural, y como tal, no tenemos beneficios.<br/><br/>Queremos ser transparentes, y por eso, empezanod en 2016, pondremos a tu disposici&oacute;n nuestras cuentas de manera online, para que sepas que cada euro se reinvierte en t&iacute;.';
 	$lng['us_'] = '';
 	
@@ -211,6 +215,8 @@
 	$lng['help_privacy'] = 'Navegar por internet hoy en d&iacute; se ha vuelto algo complicado, en lo que aprivacidad se refiere: practicamente cada p&aacute;gina que visitamos intenta obtener todos los datos posibles sobre nosotros para utilizarlos en marketing, data mining...<br/> <br/>En Gasteizko Margolariak queremos construir un sitio limpio y seguro, en el que nuestros visitantes puedan estar a gusto.<br/><br/> Por eso, queremos explicarte toda la informaci&oacute;n que recogemos sobre t&iacute; y lo que hacemos con ello.<br/><ul><li><span style="font-weight:bold;">Direcci&oacute; IP</span>: Cuando nos visitas, almacenamos tu direcci&oacute;n IP, junto con la hora de conexi&oacute;. Esto no nos permite identificarte como persona, pero nos es muy &uacute;til para saber cuantas personas distintas nos visitan.</li><li><span style="font-weight:bold;">Fotograf&iacute;as y comentarios</span>: Cuanquier visitante puede subir fotograf&iacute;as a esta web o comentar en la mayor&iacute;a de entradas. Para hacerlo, solo requerimos un nombre, y no tenemos ningun problema en que uses pseud&oacute;nimos o nombres falsos. Cuando comentes o subas im&aacute;genes tambi&eacute;n registramos tu direcci&oacute;n IP.</li><li><span style="font-weight:bold;">Datos de los socios</span>: Independientemente de los datos recogidos por este sitio web, en Gasteizko Margolariak mantenemos una base de datos sobre las personas que alguna vez han participado en alguna actividad con nosotros. Si es tu caso, y quieres que los eliminemos, no tiene m&aacute;s que escribirnos a <a target="_blank" href="mailto:gasteizkomargolariak@gmail.com">gasteizkomargolariak@gmail.com</a>. Sin rencores.';
 	$lng['help_cookie_title'] = 'Cookie politika';
 	$lng['help_cookie'] = '¡Cookies! Est&aacute;n por todas partes. Sabemos que nadie suele leerse estos avisos sobre ellas, as&iacute; que ya que estas leyendo este, vamos a intentar hacerlo f&aacute;cil.<br/><br/>Una cookie es un peque&ntilde;o archivo de texto que puede quedar guardado en tu ordenador cuando visitas una web. Estos archivos son benignos, en el sentido de que no afectan al funcionamiento de tu ordenador, pero pueden ser utiles para los desarrolladores de p&aacute;ginas web para diversas cosas, como recordar tus preferencias entre visitas (como en nuestro caso) o identificarte y trazar tus movimientos por Internet (no es nuestro caso).<br/><br/>Aprovechando que aqu&iacute; utilizamos verdaderamente pocas, te contamos para que.<br/><ul><li><span style="font-weight:bold;">Idioma</span>: Utilizamos una cookie para recordar el idioma en el que quieres ver la p&aacute;gina. Si la estas viendo en castellano, el &uacute;nico texto que contendr&aacute; sera &quot;es&quot;. Bastante inofensivo, ¿verdad?</li><li><span style="font-weight:bold;">Aviso de cookies</span>: Ir&oacute;nicamente, tenemos que usar una cookie para evitar que el aviso sobre cookies que estamos obligados a mostrarte cuando nos visitas por primera vez te moleste solo esa primera vez. Esta es mas simple aun que la anterior, y es una cookie vacia, sin ningun tipo de texto.</li><li><span style="font-weight:bold;">Cookies de Google</span>: Esto tiene m&aacute;s miga. Durante las fiestas de Vitoria, esta p&aacute;gina muestra mapas de Google. Es posible (y casi seguro) que estos mapas inserten cookies propias sobre las que no tenemos ning&uacute;n control. Sorry.</li></ul>';
+	$lng['help_ad_title'] = 'Pol^iacute;tica de anuncios';
+	$lng['help_ad'] = 'TODO';
 	
 	//Ads
 	$lng['ad_title'] = 'Publizitatea';
