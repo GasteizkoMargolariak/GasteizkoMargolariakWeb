@@ -63,7 +63,7 @@
 	}
 	
 	//Get location
-	$q = mysqli_query($con, "SELECT lat, lon, dtime FROM location WHERE action = 'report' AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
+	$q = mysqli_query($con, "SELECT lat, lon, dtime FROM location WHERE action <> 'F' AND lat IS NOT null AND lon IS NOT null AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
 	if (mysqli_num_rows($q) > 0){
 		$r = mysqli_fetch_array($q);
 		switch ($format){

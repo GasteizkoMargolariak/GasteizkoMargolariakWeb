@@ -142,7 +142,7 @@
 				$tables = [ 'post', 'post_comment', 'post_image', 'post_tag' ];
 				break;
 			case SEC_ACTIVITIES:
-				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'activity_itinerary', 'location', 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
+				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'activity_itinerary', 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
 				break;
 			case SEC_GALLERY:
 				$tables = [ 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
