@@ -3,6 +3,8 @@
 	include("../functions.php");
 	$con = startdb();
 	$proto = getProtocol();
+	$http_host = $_SERVER['HTTP_HOST'];
+	$server = "$proto" . "$http_host";
 	
 	//Language
 	$lang = selectLanguage();
@@ -53,6 +55,7 @@
 					echo $lng['lablanca_no_title'];
 				}
 			?>
+			 - Gasteizko Margolariak
 		</title>
 		<link rel="shortcut icon" href="<?php echo "$proto$http_host/img/logo/favicon.ico";?>">
 		<!-- CSS files -->
@@ -89,7 +92,7 @@
 				else{
 					echo $lng['lablanca_no_title'];
 				}
-			?>"
+			?> - Gasteizko Margolariak"
 		/>
 		<meta property="og:url" content="<?php echo "$proto$http_host"; ?>"/>
 		<meta property="og:description" content="<?php echo $lng['lablanca_description'];?>"/>
@@ -106,7 +109,7 @@
 				else{
 					echo $lng['lablanca_no_title'];
 				}
-			?>"
+			?> - Gasteizko Margolariak"
 		/>
 		<meta name="twitter:description" content="<?php echo $lng['lablanca_description'];?>"/>
 		<meta name="twitter:image" content="<?php echo "$proto$http_host/img/logo/logo.png";?>"/>

@@ -1,11 +1,10 @@
-Gasteizko Margolariak Web
-===
+# Gasteizko Margolariak Web #
 
-Source code of the <a href="http://margolariak.com/">Gasteizko Margolariak</a> Web Portal.
+Source code of the [Gasteizko Margolariak](https://margolariak.com/) Web Portal.
 
 Website designed to work over Apache+MySQL+PHP.
 
-###Public page###
+### Public page ###
 
 The public page is available for anyone to visit, is respectfull with the privacy of the user, lightweight, and it includes:
 
@@ -18,12 +17,12 @@ The public page is available for anyone to visit, is respectfull with the privac
 * Real time location of Gasteizko Margolariak.
 * Information and the History of Gasteizko Margolariak.
 * Custom-made, non intrusive, privacy-awatre advertisment of collaborators.
-* An API to sync the <a href="https://github.com/GasteizkoMargolariak/GasteizkoMargolariakApp">App</a>.
+* An API to sync apps.
 * A respectfull statistics counter.
 * Vanity URLs.
 
 
-###Private page###
+### Private pag e###
 
 The private page includes a private area for the directives of Gasteizko Margolariak. It is designed to be served on a different port and is password protected.
 
@@ -44,6 +43,14 @@ In the future, more functionalities will be added:
 * Drafts.
 * Many more.
 
-###About this project###
+
+### About this project ###
 
 This projets includes the source for both the public and private page, as well as the files required to build the database. Apache configuration is left as an exercice to the reader.
+
+
+### On other devices ###
+
+* Got an iPhone? [We are working on it!](https://github.com/GasteizkoMargolariak/GasteizkoMargolariakIOSApp) 
+* Android? [Got you covered!](https://github.com/GasteizkoMargolariak/GasteizkoMargolariakApp)
+
