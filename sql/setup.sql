@@ -333,11 +333,11 @@ CREATE TABLE festival_offer (
 DROP TABLE IF EXISTS location;
 CREATE TABLE location (
 	id		INT			AUTO_INCREMENT 	PRIMARY KEY,
-	action	VARCHAR(40)	NOT NULL,
+	action	VARCHAR(1)	NOT NULL,
 	dtime	TIMESTAMP	NOT NULL		DEFAULT now(),
-	lat		DOUBLE		NOT NULL,
-	lon		DOUBLE		NOT NULL,
-	manual	BOOLEAN		NOT NULL		DEFAULT 0,
+	lat		DOUBLE,
+	lon		DOUBLE,
+	start	INT,
 	user	INT			NOT NULL		REFERENCES user.id
 );
 
