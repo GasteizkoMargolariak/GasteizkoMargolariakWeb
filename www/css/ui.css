@@ -567,3 +567,13 @@ div#ad div.entry a img#ad_pinpoint{
 	vertical-align:	middle;
 	max-height:		0.8em;
 }
+
+div#ad div#ad_policy{
+	text-align:	right;
+	margin:		0;
+	padding:	1.5em 1em 0.5em 0.5em;
+	font-size:	85%;
+	position:	absolute;
+	bottom:		1em;
+	right:		1em;
+}

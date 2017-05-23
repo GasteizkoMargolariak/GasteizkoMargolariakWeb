@@ -323,7 +323,7 @@
 	* contributes with Gasteizko Margolariak.           *
         ****************************************************/
 	function ad($con, $lang, $lng){
-	$id = -1;
+		$id = -1;
 		//If the user hasn't still see an add on this session
 		if (isset($_SESSION['ad']) == false){
 			//25% chance of seeing an add
@@ -366,6 +366,10 @@
 				if(strlen($r["address"]) > 0){
 					echo("<br/><br/><a target='_blank' href='https://www.google.es/maps/@$r[lat],$r[lon],14z'><img id='ad_pinpoint' src='/img/misc/pinpoint.png'\>$r[address]</a>\n");
 				}
+				echo("<br/><br/><br class='mobile'/><br class='mobile'/>");
+				echo("<div id='ad_policy'>\n");
+				echo("<a target='_blank' href='$proto$http_host/ayuda/#section_ads'>" . $lng['help_ad_title'] . "</a>\n");
+				echo("</div>\n");
 				echo("</div>\n");
 				echo("</div>\n");
 				echo("<script type='text/javascript'>showAd();</script>\n");
@@ -431,10 +435,25 @@
 		$bot_kw[20] = 'commerce';
 		$bot_kw[21] = 'html';
 		$bot_kw[22] = 'fetch';
-		
+		$bot_kw[23] = 'google';
+		$bot_kw[24] = 'facebook';
+		$bot_kw[25] = 'whatsapp';
+		$bot_kw[26] = 'pinterest';
+		$bot_kw[27] = 'scrapy';
+		$bot_kw[28] = 'libwww';
+		$bot_kw[29] = 'java standard library';
+		$bot_kw[30] = 'default browser';
+		$bot_kw[31] = 'twingly recon';
+		$bot_kw[32] = 'siteexplorer';
+		$bot_kw[33] = 'yandex';
+		$bot_kw[34] = 'wotbox';
+		$bot_kw[35] = 'apache synapse';
+		$bot_kw[36] = 'catexplorador';
+		$bot_kw[37] = 'internet archive';
+
 		$i = 0;
 		while ($i < sizeof($bot_kw)) {
-			if (strpos(strtolower($uagent), $bot_kw[$i]) !== false){
+			if (strpos(strtolower($uagent), $bot_kw[$i]) !== false || strpos(strtolower($browser), $bot_kw[$i]) !== false){
 				mysqli_close($con);
 				return;
 			}
@@ -458,10 +477,53 @@
 		}
 		
 		if (is_array($ad_static)){
-			foreach ($ad_static as &$sponsor) {
+			foreach ($ad_static as $sponsor) {
 				mysqli_query($con, "UPDATE sponsor SET print_static = print_static + 1 WHERE id = $sponsor;");
 			}
 		}
+	}
+
+	function recalculateStats($day = null){
+		$con = startdb('rw');
+
+		// Visit count
+		$s = "SELECT date(dtime) AS day, count(stat_visit.id) AS visit FROM stat_view, stat_visit where stat_visit.id = stat_view.visit";
+		if (day != null){
+			$s = $s . " AND date(dtime) = str_to_date('$day', '%Y-%m-%d')";
+		}
+		$s = $s . " GROUP BY date(dtime);";
+		$q = mysqli_query($con, $s);
+		while ($r = mysqli_fetch-array($q)){
+			$q_check = mysqli_query("SELECT date FROM stat_daily_visit WHERE day = str_to_date('$day', '%Y-%m-%d')");
+			if (mysqli_num_rows($q_check) > 0){
+				// Update
+				mysqli_query($con, "UPDATE stat_daily_visit SET visit = $r[visit] WHERE day = str_to_date('$day', '%Y-%m-%d')");
+			}
+			else{
+				// Insert
+				mysqli_query($con, "INSERT INTO stat_daily_visit (day, visit) VALUES (str_to_date('$day', '%Y-%m-%d'), $r[visit])");
+			}
+		}
+
+		// Visit count by os and browser.
+		$s = "SELECT date(dtime) AS day, os, browser, count(stat_visit.id) AS visit FROM stat_view, stat_visit where stat_visit.id = stat_view.visit";
+		if (day != null){
+			$s = $s . " AND date(dtime) = str_to_date('$day', '%Y-%m-%d')";
+		}
+		$s = $s . " GROUP BY date(dtime), os, browser;";
+		$q = mysqli_query($con, $s);
+		while ($r = mysqli_fetch-array($q)){
+			$q_check = mysqli_query("SELECT date FROM stat_daily_visit_browser WHERE day = str_to_date('$day', '%Y-%m-%d') AND os = $r[os] AND browser = $r[browser]");
+			if (mysqli_num_rows($q_check) > 0){
+				// Update
+				mysqli_query($con, "UPDATE stat_daily_visit_browser SET visit = $r[visit] WHERE day = str_to_date('$day', '%Y-%m-%d') AND os = $r[os] AND browser = $r[browser]");
+			}
+			else{
+				// Insert
+				mysqli_query($con, "INSERT INTO stat_daily_visit_browser (day, os, browser, visit) VALUES (str_to_date('$day', '%Y-%m-%d'), $r[os], $[browser], $r[visit])");
+			}
+		}
+		
 	}
 ?>
 	
