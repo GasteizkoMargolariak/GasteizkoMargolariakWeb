@@ -1,0 +1,75 @@
+div.translation{
+	display:		inline-block;
+	margin:			0;
+	padding:		1em 1em 2em 1em;
+	width:			45%;
+	vertical-align:	top;
+}
+
+div.translation h3{
+	margin-bottom:	2em;
+}
+
+div#original span, p{
+	color:		#333333;
+	font-style:	italic;
+	margin:		1em;
+}
+
+div#translation input, textarea{
+	margin:		1em;
+	width:		100%;
+}
+
+table#buttons{
+	width:	100%;
+}
+
+table#buttons td{
+	padding:	0.3em;
+	width:		33%;
+}
+
+table#buttons td input{
+	height:	2.5em;
+	width:	100%;
+}
+
+table#buttons td input#next{
+	border:				0.2em solid #ff5555;
+	background-color:	#671212;
+}
+
+table#buttons td input#save{
+	border:				0.2em solid #00ff78;
+	background-color:	#126745;
+}
+
+div#w_error{
+	position:	fixed;
+	top:		20%;
+	bottom:		20%;
+	left:		10%;
+	right:		10%;
+	display:	none;
+	text-align:	center;
+	height:		60%;
+	opacity:	0;
+	-webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+div#w_error div.entry{
+	height:	80%;
+}
+
+div#w_error div.entry table{
+	height:	80%;
+	width:	100%;
+	margin:	auto;
+}
+
+div#w_error input{
+	height:		4em;
+}

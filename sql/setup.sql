@@ -470,6 +470,19 @@ CREATE TABLE transact(
 	category		INT				NOT NULL	REFERENCES transac_category.id
 );
 
+DROP TABLE IF EXISTS translation;
+CREATE TABLE translation(
+	id				INT				AUTO_INCREMENT PRIMARY KEY,
+	dtime			TIMESTAMP		NOT NULL	DEFAULT now(),
+	username		VARCHAR(255)	NOT NULL	DEFAULT 'unknown',
+	tab				VARCHAR(255)	NOT NULL,
+	field			VARCHAR(255)	NOT NULL,
+	eid				INT				NOT NULL,
+	lang			VARCHAR(2)		NOT NULL,
+	text			VARCHAR(9000)	NOT NULL,
+	applied			DATETIME
+);
+
 #Set up two users for database. File dbusers.sql contains:
 /*
 GRANT SELECT ON gm.* TO 'XXXX'@'XXXX' IDENTIFIED BY 'XXXX';
