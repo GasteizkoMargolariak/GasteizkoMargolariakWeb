@@ -5,16 +5,77 @@
 	$proto = getProtocol();
 	$con = startdb();
 	$server = "$proto$http_host";
-	
+
 	//Language
 	$lang = 'es';
 	include("../lang/lang_es.php");
-	
+
 	$cur_section = 'Traducciones';
-	
+
 	$l = strtolower(mysqli_real_escape_string($con, $_GET['l'])); // language
 	if ($l != 'en' && $l != 'eu'){
-		// TODO Regular page
+?>
+		<!DOCTYPE html>
+			<html>
+				<head>
+					<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+					<meta charset="utf-8"/>
+					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+					<title>Traducciones - Gasteizko Margolariak</title>
+					<link rel="shortcut icon" href="<?=$server?>/img/logo/favicon.ico">
+					<!-- CSS files -->
+					<style>
+<?php
+							include("../css/ui.css"); 
+							include("../css/traducir.css");
+?>
+					</style>
+					<!-- CSS for mobile version -->
+					<style media="(max-width : 990px)">
+<?php
+							include("../css/m/ui.css"); 
+							include("../css/m/traducir.css");
+?>
+					</style>
+					<!-- Script files -->
+					<script type="text/javascript">
+<?php
+						include("../script/ui.js");
+?>
+					</script>
+					<!-- Meta tags -->
+					<link rel="canonical" href="<?=$server?>/traducir/"/>
+					<link rel="author" href="<?=server?>"/>
+					<link rel="publisher" href="<?=server?>"/>
+					<meta name="description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
+					<meta property="og:title" content="Traducciones - Gasteizko Margolariak"/>
+					<meta property="og:url" content="<?=$server?>/traducir/"/>
+					<meta property="og:description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
+					<meta property="og:image" content="<?=$server?>/img/logo/logo.png"/>
+					<meta property="og:site_name" content="Gasteizko Margolariak"/>
+					<meta property="og:type" content="website"/>
+					<meta property="og:locale" content="es"/>
+					<meta name="twitter:card" content="summary"/>
+					<meta name="twitter:title" content="Traducciones - Gasteizko Margolariak"/>
+					<meta name="twitter:description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
+					<meta name="twitter:image" content="<?=$server?>/img/logo/logo.png"/>
+					<meta name="twitter:url" content="<?$server?>/traducir/"/>
+					<meta name="robots" content="noindex nofollow"/>
+				</head>
+				<body>
+<?php				include("../header.php"); ?>
+					<div id="content">
+						<div class='section' id='w_init'>
+							<h3 class='section_title'>Traducciones</h3>
+							<div class='entry'>
+								<a class='lang' href='<?=$server?>/traducir/eu/'>Traducir al euskera</a>
+								<a class='lang' href='<?=$server?>/traducir/en/'>Traducir al ingl&eacute;s</a>
+							</div>
+						</div>
+					</div>
+				</body>
+			</html>
+<?php
 	}
 	else{
 		$q_string="
@@ -193,27 +254,29 @@
 				else{
 					c = encodeURI(document.getElementById('t_translation').value);
 				}
-				var url = "load.php?t=" + t + "&f=" + f + "&i=" + i + "&c=" + c + "&l=" + l + "&n=" + n;
+				var url = "<?=$server?>/traducir/load.php?t=" + t + "&f=" + f + "&i=" + i + "&c=" + c + "&l=" + l + "&n=" + n;
+				alert(url);
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
+					// I won't notify  400 status code. I dont' want to be anoying.
+					if (this.readyState == 4 && (this.status == 200 || this.status == 400)) {
 						next();
 					}
 				};
 				xhttp.open("GET", url, true);
 				xhttp.send();
 			}
-			
+
 			function next(){
 				idx = idx + 1;
 				prepare();
 			}
-			
+
 		</script>
 		<!-- Meta tags -->
 		<link rel="canonical" href="<?=$server?>/traducir/"/>
-		<link rel="author" href="<?=server?>"/>
-		<link rel="publisher" href="<?=server?>"/>
+		<link rel="author" href="<?=$server?>"/>
+		<link rel="publisher" href="<?=$server?>"/>
 		<meta name="description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
 		<meta property="og:title" content="Traducciones - Gasteizko Margolariak"/>
 		<meta property="og:url" content="<?=$server?>/traducir/"/>
@@ -226,7 +289,7 @@
 		<meta name="twitter:title" content="Traducciones - Gasteizko Margolariak"/>
 		<meta name="twitter:description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
 		<meta name="twitter:image" content="<?=$server?>/img/logo/logo.png"/>
-		<meta name="twitter:url" content="<?$server?>/traducir/"/>
+		<meta name="twitter:url" content="<?=$server?>/traducir/"/>
 		<meta name="robots" content="noindex nofollow"/>
 	</head>
 	<body onLoad='prepare();'>
