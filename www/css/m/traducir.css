@@ -1,0 +1,14 @@
+div.translation{
+	display:		block;
+	width:			100%;
+}
+
+div#translation input,textarea{
+	width:			90%;
+}
+
+table#buttons td input{
+	height:	3.5em;
+	width:	100%;
+}
+
