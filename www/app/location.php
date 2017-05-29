@@ -3,7 +3,8 @@
 	$con = startdb();
 		
 	//Get user entry
-	$q = mysqli_query($con, "SELECT lat, lon, dtime, username, manual, action FROM location, user WHERE action = 'report' AND user.id = location.user AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
+	// DEBUG 1=0. Disabled.
+	$q = mysqli_query($con, "SELECT lat, lon, dtime, username, manual, action FROM location, user WHERE 0=1 AND action = 'report' AND user.id = location.user AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
 	if (mysqli_num_rows($q) > 0){
 		$r = mysqli_fetch_array($q);
 		echo("<reporting>1</reporting>\n");

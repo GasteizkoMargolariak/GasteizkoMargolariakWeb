@@ -1,29 +1,29 @@
 <?php
 	// Gasteizko Margolariak API v1 //
-		
+
 	//List of available data formatting
 	define('FOR_JSON', 'json');
-	
+
 	//Default info format
 	define('DEF_FORMAT', FOR_JSON);
-	
+
 	//Posible notification target
 	define('TARGET_ALL', 'all');
 	define('TARGET_GM', 'gm');
-	
+
 	//Default target
 	define('DEF_TARGET', TARGET_ALL);
-		
+
 	//$_GET valid parameters
 	define('GET_CLIENT', 'client');
 	define('GET_USER', 'user');
 	define('GET_TARGET', 'target');
 	define('GET_FORMAT', 'json');
-	
+
 	//Error messages
 	define('ERR_TARGET', '-TARGET:');
 	define('ERR_FORMAT', '-FORMAT:');
-	
+
 	/****************************************************
 	* This function is called from almost everywhere at *
 	* the beggining of the page. It initializes the     *
@@ -120,8 +120,8 @@
 		http_response_code(400);
 		$error = $error . ERR_FORMAT . mysqli_real_escape_string($con, $_GET[GET_FORMAT]);
 	}
-	
-	
+
+
 	//If there has not been an error, procede
 	if (strlen($error) == 0){
 		echo(show_notifications($con, $target, $format));

@@ -3,7 +3,8 @@
 	$con = startdb();
 		
 	//Get user entry
-	$q = mysqli_query($con, "SELECT id, action, title_es, title_en, title_eu, text_es, text_en, text_eu FROM notification WHERE dtime > NOW() - INTERVAL duration MINUTE ORDER BY dtime DESC ;");
+	// 1=0 Old API is now disabled
+	$q = mysqli_query($con, "SELECT id, action, title_es, title_en, title_eu, text_es, text_en, text_eu FROM notification WHERE 1 = 0 AND dtime > NOW() - INTERVAL duration MINUTE ORDER BY dtime DESC ;");
 	while ($r = mysqli_fetch_array($q)){
 		echo("<notification>\n");
 		echo("\t<id>$r[id]</id>\n");
