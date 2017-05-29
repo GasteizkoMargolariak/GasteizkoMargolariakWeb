@@ -82,7 +82,7 @@
 					<meta itemprop='foundingDate' content='03-02-2013'/>
 					<meta itemprop='telephone' content='+34637140371'/>
 					<meta itemprop='url' content='<?=$server ?>'/>
-				</div>o
+				</div>
 
 				<?php
 					//Header
@@ -92,7 +92,7 @@
 						echo $r['description'];
 						echo "</div>\n";
 					}
-				
+
 					//Photos of the album
 					$q_photo = mysqli_query($con, "SELECT id, file, permalink, title_$lang AS title, description_$lang AS description, photo.dtime AS dtime, uploaded, width, height, size, user, username FROM photo, photo_album WHERE photo_album.photo = id AND album = $r[id] ORDER BY photo.dtime DESC;");
 					/* TODO AND approved = 1*/

@@ -46,9 +46,9 @@
 									<td class='arrow'>
 										<img id='viewer_arrow_left' class='viewer_arrow pointer' alt=' ' src='<?=$server?>/img/misc/slid-left.png' onClick='scrollPhoto(-1);'/>
 									</td>
-									<td id='image' style='background-image:url(<?=$server?>/img/galeria/preview/<?=$r['file']?>);'>
-										<!-- <div id='photo_viewer_image_container' style='background-image:url(<?=$server?>/img/galeria/preview/<?=$r['file']?>);'> -->
-											<!-- <img id='photo_viewer_image' src='/img/galeria/preview/<?=$r['file']?>'/> -->
+									<td id='image'>
+										<div id='photo_viewer_image_container'>
+											<img id='photo_viewer_image' src='/img/galeria/preview/<?=$r['file']?>'/>
 										</div>
 									</td>
 									<td class='arrow'>
