@@ -55,6 +55,7 @@
 	}
 
 	$con = startdb('rw');
+	$error = "";
 
 	//Get fields
 	$user = mysqli_real_escape_string($con, $_GET[GET_USER]);
@@ -64,11 +65,13 @@
 	$action = mysqli_real_escape_string($con, $_GET[GET_ACTION]);
 
 	//Validate user
-	$q = mysqli_query($con, "SELECT id FROM user WHERE username = '$user' AND md5(concat(password, md5(salt))) = '$pass';");
+	$q = mysqli_query($con, "SELECT id FROM user WHERE lower(username) = lower('$user') AND password = '$pass';");
 	if (mysqli_num_rows($q) == 0){
 		error_log(":SECURITY: Reporting location with wrong credentials (IP $_SERVER[REMOTE_ADDR])");
 		http_response_code(403); // Forbidden
-		$error = $error . ERR_TARGET . mysqli_real_escape_string($con, $_GET[GET_TARGET]);
+		$error = $error . ERR_USER . mysqli_real_escape_string($con, $_GET[GET_USER]);
+		error_log($error);
+		exit(-1);
 	}
 	// Get id
 	$r = mysqli_fetch_array($q);
@@ -78,25 +81,35 @@
 	if (!in_array($action, $actions)){
 		http_response_code(400); // Bad request
 		$error = $error . ERR_ACTION . $action;
+		error_log($error);
+        exit(-2);
 	}
 	if (is_numeric($lat) == false || is_numeric($lon) == false){
 		http_response_code(400); // Bad request
 		$error = $error . ERR_LOCATION . '($lat, $lon)';
+		error_log($error);
+        exit(-3);
 	}
 	if (strlen($lat) == 0 xor strlen($lon) == 0){
 		// Only one coordinate.
 		http_response_code(400); // Bad request
 		$error = $error . ERR_LOCATION . '($lat, $lon)';
+		error_log($error);
+        exit(-4);
 	}
 	if (strlen($lat) != 0 && ($lat < -90.0 || $lat > 90.0)){
 		// Invalid latitude
 		http_response_code(400); // Bad request
 		$error = $error . ERR_LOCATION . '(Lat: $lat)';
+		error_log($error);
+        exit(-5);
 	}
 	if (strlen($lon) != 0 && ($lon < -180.0 || $lon > 180.0)){
 		// Invalid longitude
 		http_response_code(400); // Bad request
 		$error = $error . ERR_LOCATION . '(Lon: $lat)';
+		error_log($error);
+        exit(-6);
 	}
 
 	// Discern action
@@ -107,7 +120,7 @@
 			break;
 		case ACTION_REFRESH:
 			// Look for start node.
-			$q = mysqli_query($con, "SELECT id, start FROM location WHERE user = $uid AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
+			$q = mysqli_query($con, "SELECT id, start, action FROM location WHERE user = $uid AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
 			if (mysqli_num_rows($q) == 0){
 				// No recent reports. Start anew.
 				mysqli_query($con, "INSERT INTO location (lat, lon, action, user) VALUES ($lat, $lon, 'S', $uid);");
@@ -120,8 +133,8 @@
 				}
 				else{
 					// Continue track.
-					$s = $r['start'];
-					mysqli_query($con, "INSERT INTO location (lat, lon, action, user, start) VALUES ($lat, $lon, 'S', $uid, $s);");
+					$s = $r['id'];
+					mysqli_query($con, "INSERT INTO location (lat, lon, action, user, start) VALUES ($lat, $lon, 'R', $uid, $s);");
 				}
 			}
 			break;
