@@ -1,6 +1,6 @@
 <?php
-	include("../functions.php");
-	$con = startdb('rw');
+	//include("../functions.php");
+	//$con = startdb('rw');
 
 	// $_GET valid parameters
 	define('GET_USER', 'user');
@@ -22,7 +22,7 @@
 	define('ACTION_BLOG', 'blog');
 	define('ACTION_ACTIVITIES', 'actividades');
 	define('ACTION_GALLERY', 'galeria');
-	define('ACTION_LOCALIZACION', 'localizacion');
+	define('ACTION_LOCALIZATION', 'localizacion');
 	define('ACTION_LABLANCA', 'lablanca');
 	define('ACTION_SCHEDULE', 'programa');
 	define('ACTION_GM_SCHEDULE', 'gprograma');
@@ -76,8 +76,10 @@
 		mysqli_query($con, 'SET NAMES utf8;');
 
 		//Return the db connection
-			return $con;
+		return $con;
 	}
+
+	$con = startdb();
 
 	// Get fields
 	$user = mysqli_real_escape_string($con, $_GET[GET_USER]);
@@ -95,35 +97,47 @@
 	$gm = mysqli_real_escape_string($con, $_GET[GET_GM]);
 
 	// Error control
-	$error = '';
+	$error = "";
 
-	// TODO: Validate user/pass
-	$q = mysqli_query($con, "SELECT id FROM user WHERE id = $user AND md5(concat(password, md5(salt))) = '$pass'");
+	// Validate user/pass
+	$q = mysqli_query($con, "SELECT id FROM user WHERE lower(username) = lower('$user') AND password = '$pass'");
 	if (mysqli_num_rows($q) == 0){
 		error_log(":SECURITY: Reporting location with wrong credentials (IP $_SERVER[REMOTE_ADDR])");
 		http_response_code(403); // Forbidden
-		$error = $error . ERR_TARGET . mysqli_real_escape_string($con, $_GET[GET_TARGET]);
+		$error = $error . ERR_USER . mysqli_real_escape_string($con, $_GET[GET_USER]);
+		error_log($error);
+		exit(-1);
 	}
+	$r = mysqli_fetch_array($q);
+	$uid = $r['id'];
 
 	//Validate fields
 	if (strlen($title_es) == 0){
 		http_response_code(400); // Bad request
 		$error = $error . ERR_TITLE . $title_es;
+		error_log($error);
+        exit(-2);
 	}
 
 	if (strlen($text_es) == 0){
 		http_response_code(400); // Bad request
 		$error = $error . ERR_TEXT . $text_es;
+		error_log($error);
+        exit(-3);
 	}
 
 	if (is_numeric($duration) == false || $duration < 1 && $duration > 48 * 60){
 		http_response_code(400); // Bad request
 		$error = $error . ERR_DURATION . $duration;
+		error_log($error);
+        exit(-4);
 	}
 
-	if (!in_array($action, $actions){
+	if (!in_array($action, $actions)){
 		http_response_code(400); // Bad request
 		$error = $error . ERR_ACTION . $action;
+		error_log($error);
+        exit(-5);
 	}
 
 	//Handle translations
@@ -142,9 +156,13 @@
 
 	//Insert
 	if (strlen($error) == 0){
-		mysqli_query($con, "INSERT INTO notification (user, title_es, title_en, title_eu, text_es, text_en, text_eu, action, duration) VALUES ($user, '$title_es', '$title_en', '$title_eu', '$text_es', '$text_en', '$text_eu', '$action', $duration);");
-		http_response_code(204) // No content;
+		error_log("INSERT INTO notification (user, title_es, title_en, title_eu, text_es, text_en, text_eu, action, duration) VALUES ($uid, '$title_es', '$title_en', '$title_eu', '$text_es', '$text_en', '$text_eu', '$action', $duration);");
+		mysqli_query($con, "INSERT INTO notification (user, title_es, title_en, title_eu, text_es, text_en, text_eu, action, duration) VALUES ($uid, '$title_es', '$title_en', '$title_eu', '$text_es', '$text_en', '$text_eu', '$action', $duration);");
+		http_response_code(204); // No content;
+		exit(0);
+	}
 	else{
 		error_log($error);
+		exit(-6);
 	}
 ?>
