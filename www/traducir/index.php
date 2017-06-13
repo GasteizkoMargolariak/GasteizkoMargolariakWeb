@@ -178,9 +178,9 @@
 				table[<?=$i?>] = '<?=$r['tab']?>';
 				field[<?=$i?>] = '<?=$r['field']?>';
 				id[<?=$i?>] = '<?=$r['id']?>';
-				es[<?=$i?>] = '<?=$r['es']?>';
-				en[<?=$i?>] = '<?=$r['en']?>';
-				eu[<?=$i?>] = '<?=$r['eu']?>';
+				es[<?=$i?>] = '<?=str_replace("'", "´", $r['es'])?>';
+				en[<?=$i?>] = '<?=str_replace("'", "´", $r['en'])?>';
+				eu[<?=$i?>] = '<?=str_replace("'", "´", $r['eu'])?>';
 <?php
 				$i = $i + 1;
 			}
@@ -255,7 +255,6 @@
 					c = encodeURI(document.getElementById('t_translation').value);
 				}
 				var url = "<?=$server?>/traducir/load.php?t=" + t + "&f=" + f + "&i=" + i + "&c=" + c + "&l=" + l + "&n=" + n;
-				alert(url);
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					// I won't notify  400 status code. I dont' want to be anoying.
