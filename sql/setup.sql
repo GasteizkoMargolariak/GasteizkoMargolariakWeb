@@ -135,6 +135,7 @@ CREATE TABLE stat_view (
 	entry	VARCHAR(100)	NOT NULL,
 	dtime	TIMESTAMP		NOT NULL	DEFAULT now()
 );
+CREATE INDEX visit_dtime ON stat_view(visit, dtime);
 
 DROP TABLE IF EXISTS sync;
 CREATE TABLE sync (
