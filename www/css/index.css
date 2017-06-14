@@ -33,9 +33,11 @@ div#festivals div#festivals_summary img{
 	vertical-align:	top;
 	wfloat:			left;
 	margin-right:	2em;
+	border: 0.1em solid black;
+	margin:	0.5em;
 }
 
-div#festivals #festivals_summary_text{
+div#festivals span#festivals_summary_text{
 	display:	inline-block;
 }
 
