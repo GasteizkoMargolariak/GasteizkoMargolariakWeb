@@ -215,7 +215,7 @@
 					document.getElementById('t_translation').innerText = '';
 					document.getElementById('t_translation').value = '';
 					document.getElementById('t_translation').style.display = 'inline-block';
-					document.getElementById('type').value = 'i';
+					document.getElementById('type').value = 't';
 				}
 			}
 			
