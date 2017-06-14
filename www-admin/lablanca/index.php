@@ -31,13 +31,27 @@
 		<?php include('../toolbar.php'); ?>
 		<div id='content'>
 			<div class='section' id='section_header'>
-				<h4>Paso 1: Cabecera de la p&aacute;gina de fiestas</h4>
+				<h3 class='section_title'>Paso 1: Cabecera de la p&aacute;gina de fiestas</h3>
 				<div class='entry status' id='status_header'>
 					...calculando...
 				</div>
 				<div class='entry' id='entry_header'>
-					<div class='header_text'>
-						Texto castellano:
+					<div id="lang_tabs">
+						<table>
+								<tr>
+									<td class="pointer lang_tabs_active" id="lang_tab_es" onclick="showLanguage('es');">
+										Castellano
+									</td>
+									<td class="pointer" id="lang_tab_eu" onclick="showLanguage('eu');">
+										Euskera
+									</td>
+									<td class="pointer" id="lang_tab_en" onclick="showLanguage('en');">
+										Ingl&eacute;s
+									</td>
+								</tr>
+						</table>
+					</div>
+					<div id="content_lang_es" class="festival_add_language">
 						<?php
 							$q = mysqli_query($con, "SELECT * FROM festival WHERE year = $year;");
 							$r = mysqli_fetch_array($q);
@@ -47,8 +61,7 @@
 							CKEDITOR.replace('text_es');
 						</script>
 					</div>
-					<div class='header_text'>
-						Texto ingl&eacute;s:
+					<div id="content_lang_en" class="festival_add_language" style="display:none;">
 						<?php
 							echo "<textarea id='text_en' onChange='updateField(\"festival\", \"text_en\", this.value, $r[id]);calculate(\"header\");'>$r[text_en]</textarea>\n";
 						?>
@@ -56,8 +69,7 @@
 							CKEDITOR.replace('text_en');
 						</script>
 					</div>
-					<div class='header_text'>
-						Texto euskera:
+					<div id="content_lang_eu" class="festival_add_language" style="display:none;">
 						<?php
 							echo "<textarea id='text_eu' onChange='updateField(\"festival\", \"text_eu\", this.value, $r[id]);calculate(\"header\");'>$r[text_eu]</textarea>\n";
 						?>
@@ -84,8 +96,9 @@
 					</div>
 				</div>
 			</div>
+			<br/><br/>
 			<div class='section' id='section_prices'>
-				<h4>Paso 2: Seleccionar precios:</h4>
+				<h3 class="section_title">Paso 2: Seleccionar precios:</h4>
 				<div class='entry status' id='status_prices'>
 					...calculando...
 				</div>
@@ -99,7 +112,7 @@
 						else{
 							echo "<h4>D&iacute;as sueltos:</h4>";
 							echo "<table id='prices'><tr><th>Fecha</th>";
-							echo "<th>Nombre<br/>castellano</th><th>Nombre<br/>ingl&eacute;s</th><th>Nombre<br/>euskera</th>";
+							echo "<th>Nombres</th>";
 							echo "<th>Precio</th></tr>\n";
 							$dates = ["25 Jul", "5 Ago", "6 Ago", "7 Ago", "8 Ago", "9 Ago"];
 							$i = 0;
@@ -117,11 +130,13 @@
 								else{
 									$eu = $r['name_eu'];
 								}
-								echo "</td>\n";
-								echo "<td><input type='text' value='$r[name_es]' onchange='updateField(\"festival_day\", \"name_es\", this.value, $r[id]);'/></td>\n";
-								echo "<td><input type='text' value='$en' onchange='updateField(\"festival_day\", \"name_en\", this.value, $r[id]);'/></td>\n";
-								echo "<td><input type='text' value='$eu' onchange='updateField(\"festival_day\", \"name_eu\", this.value, $r[id]);'/></td>\n";
-								echo "<td><input type='number' value='$r[price]' onchange='updateField(\"festival_day\", \"price\", this.value, $r[id], \"number\", false);'/>&euro;</td></tr>";
+								echo "</td><td>\n";
+								echo("<table>\n");
+								echo("<tr><td>Castellano:</td><td><input type='text' value='$r[name_es]' onchange='updateField(\"festival_day\", \"name_es\", this.value, $r[id]);'/></td></tr>\n");
+								echo("<tr><td>Euskera:</td><td><input type='text' value='$r[name_en]' onchange='updateField(\"festival_day\", \"name_en\", this.value, $r[id]);'/></td></tr>\n");
+								echo("<tr><td>Ingl&eacute;s:</td><td><input type='text' value='$r[name_eu]' onchange='updateField(\"festival_day\", \"name_eu\", this.value, $r[id]);'/></td></tr>\n");
+								echo("</table>\n");
+								echo "</td>\n<td>\n<input type='number' value='$r[price]' onchange='updateField(\"festival_day\", \"price\", this.value, $r[id], \"number\", false);'/>&euro;</td></tr>";
 								$i = $i + 1;
 							}
 							echo "</table>\n";
@@ -132,14 +147,14 @@
 					?>
 				</div>
 			</div>
-		
+			<br/><br/>
 			<div class='section' id='section_schedule'>
-				<h4>Paso 3: Establecer programa:</h4>
+				<h3 class='section_title'>Paso 3: Establecer programa:</h4>
 				<div class='entry status' id='status_schedule'>
 					...calculando...
 				</div>
 				<div class='entry entry_schedule' id='entry_schedule_25'>
-					<h4><img src='/img/misc/slid-right.png' onClick='expandSchedule(25);'/>25 de julio</h4>
+					<h3><img src='/img/misc/slid-right.png' onClick='expandSchedule(25);'/>25 de julio</h4>
 					<div id='list_schedule_25' class='list_schedule'>
 					</div>
 					Nuevo: 
@@ -203,6 +218,7 @@
 					</table>
 				</div>
 			</div>
+			<br/><br/>
 		</div>
 		<div id='screen_cover'></div>
 		<div id='form_new_offer' class='section'>
@@ -239,6 +255,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</body>
 </html>
 <?php } ?>

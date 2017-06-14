@@ -159,7 +159,7 @@
 								if (mysqli_num_rows($q_it) > 0){
 									echo "<div id='activity_itinerary'><h3 class='entry_title'>Itinerario</h3>\n";
 									echo "<table id='activity_itinerary'>\n";
-									echo "<tr class='th'><th>$lng[activities_when]</th><th>$lng[activities_what]</th><th>$lng[activities_where]</th></tr>\n";
+									echo "<tr class='th'><th>$lng[activities_when]</th><th>$lng[activities_what]</th></tr>\n";
 									while ($r_it = mysqli_fetch_array($q_it)){
 										echo "<tr>\n";
 										echo "<div class='hidden' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'>\n";
@@ -176,14 +176,14 @@
 											echo "<td>$r_it[start] - $r_it[end]</td>";
 										}
 										else{
-											echo "<td>$r_it[start]</td>";
+											echo "<td class='time'>$r_it[start]</td>";
 										}
-										echo "<td><h5>$r_it[name]</h5><p class='description'>$r_it[description]</p></td>\n";
+										echo "<td><h5>$r_it[name]</h5><p class='description'>$r_it[description]</p><br/>\n";
 										if ($r_it['place_name'] == $r_it['place_address']){
-											echo "<td>$r_it[place_name]</td>\n";
+											echo "$r_it[place_name]</td>\n";
 										}
 										else{
-											echo "<td>$r_it[place_name]<span class='address'>($r_it[place_address])</span></td>\n";
+											echo "$r_it[place_name]<span class='address'>($r_it[place_address])</span></td>\n";
 										}
 										echo "</tr>\n";
 									}

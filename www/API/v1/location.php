@@ -60,10 +60,12 @@
 		//Bad request
 		http_response_code(400);
 		$error = $error . ERR_FORMAT . mysqli_real_escape_string($con, $_GET[GET_FORMAT]);
+		error_log($error);
+		exit(-1);
 	}
 	
 	//Get location
-	$q = mysqli_query($con, "SELECT lat, lon, dtime FROM location WHERE action = 'report' AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
+	$q = mysqli_query($con, "SELECT lat, lon, dtime FROM location WHERE action <> 'F' AND lat IS NOT null AND lon IS NOT null AND dtime > NOW() - INTERVAL 30 MINUTE ORDER BY dtime DESC LIMIT 1;");
 	if (mysqli_num_rows($q) > 0){
 		$r = mysqli_fetch_array($q);
 		switch ($format){
@@ -72,11 +74,14 @@
 				break;
 			default:
 				http_response_code(400);
-			$error = $error . ERR_FORMAT . mysqli_real_escape_string($con, $_GET[GET_FORMAT]);
+				$error = $error . ERR_FORMAT . mysqli_real_escape_string($con, $_GET[GET_FORMAT]);
+				error_log($error);
+				exit(-2);
 		}
 	}
 	else{
 		//No content
 		http_response_code(204);
+		exit(0);
 	}
 ?>

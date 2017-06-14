@@ -142,7 +142,7 @@
 				$tables = [ 'post', 'post_comment', 'post_image', 'post_tag' ];
 				break;
 			case SEC_ACTIVITIES:
-				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'activity_itinerary', 'location', 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
+				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'activity_itinerary', 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
 				break;
 			case SEC_GALLERY:
 				$tables = [ 'album', 'photo', 'photo_album', 'photo_comment', 'place' ];
@@ -151,7 +151,7 @@
 				$tables = [ 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'place', 'people' ];
 				break;
 			case SEC_ALL:
-				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
+				$tables = [ 'activity', 'activity_itinerary', 'activity_comment', 'activity_image', 'activity_tag', 'album', 'photo', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'people', 'post', 'post_comment', 'post_image', 'post_tag', 'settings', 'sponsor' ];
 				break;
 			default:
 				//'Bad request' staus code
@@ -229,7 +229,7 @@
 			//Other cases: 
 			default:
 				//If the table is a public one and has not been listed above, all of its fields are public.
-				if (in_array($table, ['activity_image', 'activity_itinerary', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'post_image', 'post_tag'])){
+				if (in_array($table, ['activity_image', 'activity_itinerary', 'activity_tag', 'festival', 'festival_day', 'festival_event', 'festival_event_image', 'festival_offer', 'photo_album', 'place', 'people', 'post_image', 'post_tag'])){
 					$q = mysqli_query($con, "SELECT * FROM $table;");
 				}
 				//If forbidden table

@@ -23,7 +23,7 @@ div#photo_viewer div#viewer_table div.viewer_row div#cell_image{
 	text-align:	center;
 	position:	initial;
 	bottom:		initial;
-	top:		initial; /*Viewer is 10%*/
+	top:		initial;
 	left:		initial;
 	right:		initial;
 	height:		50%;
@@ -38,10 +38,11 @@ div#photo_viewer div#viewer_table div.viewer_row div#cell_details{
 
 div#photo_viewer_image_container{
 	height:				100%;
+	padding-top:	0;
 }
 
 img#photo_viewer_image{
-	max-height:		95%; /*The viewer is 85%*/
+	max-height:		95%;
 }
 
 div#photo_viewer div#viewer_controls{
@@ -69,4 +70,9 @@ div#photo_viewer_details{
 div#file_box span#select_mobile{
 	font-weight:	bold;
 	font-size:		130%;
+}
+
+div#cell_comments{
+	width:	initial !important;
+	margin: 0 1em 0.5em 1em;
 }

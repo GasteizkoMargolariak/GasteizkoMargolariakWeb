@@ -333,11 +333,11 @@ CREATE TABLE festival_offer (
 DROP TABLE IF EXISTS location;
 CREATE TABLE location (
 	id		INT			AUTO_INCREMENT 	PRIMARY KEY,
-	action	VARCHAR(40)	NOT NULL,
+	action	VARCHAR(1)	NOT NULL,
 	dtime	TIMESTAMP	NOT NULL		DEFAULT now(),
-	lat		DOUBLE		NOT NULL,
-	lon		DOUBLE		NOT NULL,
-	manual	BOOLEAN		NOT NULL		DEFAULT 0,
+	lat		DOUBLE,
+	lon		DOUBLE,
+	start	INT,
 	user	INT			NOT NULL		REFERENCES user.id
 );
 
@@ -468,6 +468,19 @@ CREATE TABLE transact(
 	user			INT				NOT NULL	REFERENCES user.id,
 	concept			VARCHAR(1024),
 	category		INT				NOT NULL	REFERENCES transac_category.id
+);
+
+DROP TABLE IF EXISTS translation;
+CREATE TABLE translation(
+	id				INT				AUTO_INCREMENT PRIMARY KEY,
+	dtime			TIMESTAMP		NOT NULL	DEFAULT now(),
+	username		VARCHAR(255)	NOT NULL	DEFAULT 'unknown',
+	tab				VARCHAR(255)	NOT NULL,
+	field			VARCHAR(255)	NOT NULL,
+	eid				INT				NOT NULL,
+	lang			VARCHAR(2)		NOT NULL,
+	text			VARCHAR(9000)	NOT NULL,
+	applied			DATETIME
 );
 
 #Set up two users for database. File dbusers.sql contains:

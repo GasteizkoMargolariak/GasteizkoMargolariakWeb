@@ -113,6 +113,16 @@ div#activity_itinerary table#activity_itinerary td{
 	padding:	0.2em 0.5em 0.2em 0.5em;
 }
 
+div#activity_itinerary table#activity_itinerary td.time{
+	vertical-align: top;
+	border-right:	0.25em dotted #33333377;	
+	color:    #275573;
+  font-weight:  bold;
+  font-size:  1em;
+  margin:   1em 1em 0.3em 0em;
+}
+
+
 div#activity_itinerary table#activity_itinerary td h5{
 	margin:	0;
 }
