@@ -1,183 +1,183 @@
 div#gallery_entry_contribute{
-	text-align:	left;
-	margin:		3em 1em 1em 1em;
+    text-align:    left;
+    margin:        3em 1em 1em 1em;
 }
 
 div#album_list{
-	text-align:	center;
+    text-align:    center;
 }
 
 div#album_list p{
-	text-align:	left;
+    text-align:    left;
 }
 
 div.album_list{
-	max-width:		16.8em;
-	display:		inline-block;
-	vertical-align:	top;
+    max-width:        16.8em;
+    display:        inline-block;
+    vertical-align:    top;
 }
 
 table.album_thumbnails td{
-	background-color:	#000000;
-	width:				8em;
-	height:				8em;
-	text-align:			center;
-	vertical-align:		center;
+    background-color:    #000000;
+    width:                8em;
+    height:                8em;
+    text-align:            center;
+    vertical-align:        center;
 }
 
 table.album_thumbnails p{
-	text-align:	left;
+    text-align:    left;
 }
 
 table.album_thumbnails img{
-	max-width:	7.8em;
-	max-height:	7.8em;
-	vertical-align:	center;
+    max-width:    7.8em;
+    max-height:    7.8em;
+    vertical-align:    center;
 }
 
 /* /galeria/album.php */
 
 div#album{
-	text-align:	center;
+    text-align:    center;
 }
 
 div#album h3#album_title{
-	text-align:	left;
+    text-align:    left;
 }
 
 div#album div#album_header{
-	margin:		2em;
-	padding:	2em;
-	text-align:	left;
+    margin:        2em;
+    padding:    2em;
+    text-align:    left;
 }
 
 div.photo{
-	display:		inline-block;
-	vertical-align:	top;
-	width:			10.7em;
-	padding-left:	auto;
-	padding-right:	auto;
-	text-align:		left;
+    display:        inline-block;
+    vertical-align:    top;
+    width:            10.7em;
+    padding-left:    auto;
+    padding-right:    auto;
+    text-align:        left;
 }
 
 div.photo hr{
-	margin-bottom:	0.1;
+    margin-bottom:    0.1;
 }
 
 div.photo h4{
-	text-align:		center;
-	margin-top:		0;
-	margin-bottom:	0.2em;
+    text-align:        center;
+    margin-top:        0;
+    margin-bottom:    0.2em;
 }
 
 div.photo span.photo_description{
-	font-style:	italic;
-	font-size:	90%;
+    font-style:    italic;
+    font-size:    90%;
 }
 
 div.photo span.comment_counter{
-	display:	block;
-	margin:		0.3em 0.5em 0.2em 0.2em;
-	font-size:	80%;
-	text-align:	right;
+    display:    block;
+    margin:        0.3em 0.5em 0.2em 0.2em;
+    font-size:    80%;
+    text-align:    right;
 }
 
 div.photo span.comment_counter img{
-	margin-left:	0.4em;
-	max-height:		0.75em;
-	max-height:		0.75em;
-	vertical-align:	middle;
+    margin-left:    0.4em;
+    max-height:        0.75em;
+    max-height:        0.75em;
+    vertical-align:    middle;
 }
 
 div.photo div.photo_container{
-	background-color:	#000000;
-	border-radius:		0.2em;
-	width:				10.5em;
-	height:				10.5em;
-	display:			table-cell;
-	text-align:			center;
-	vertical-align:		middle;
+    background-color:    #000000;
+    border-radius:        0.2em;
+    width:                10.5em;
+    height:                10.5em;
+    display:            table-cell;
+    text-align:            center;
+    vertical-align:        middle;
 }
 
 div.photo img{
-	max-width:	10em;
-	max-height:	10em;
+    max-width:    10em;
+    max-height:    10em;
 }
 
 div#screen_cover{
-	position:			fixed;
-	top:				0;
-	left:				0;
-	background-color:	black;
-	display:			none;
-	width:				100%;
-	height:				100%;
-	opacity:			0;
-	transition:			all .9s ease-in-out;
-	z-index:			1000;
+    position:            fixed;
+    top:                0;
+    left:                0;
+    background-color:    black;
+    display:            none;
+    width:                100%;
+    height:                100%;
+    opacity:            0;
+    transition:            all .9s ease-in-out;
+    z-index:            1000;
 }
 
 div#photo_viewer{
-	position:			fixed;
-	display:			none;
-	top:					1em;
-	left:				4em;
-	right:				4em;
-	bottom:				1em;
-	opacity:			0;
-	transition:			all .6s ease-in-out;
-	z-index:			1001;
-	min-height:			10em;
-	
+    position:            fixed;
+    display:            none;
+    top:                    1em;
+    left:                4em;
+    right:                4em;
+    bottom:                1em;
+    opacity:            0;
+    transition:            all .6s ease-in-out;
+    z-index:            1001;
+    min-height:            10em;
+    
 }
 
 /* /galeria/load_photo.php */
 
 div#photo_viewer div#viewer_container{
-	position:	absolute;
-	overflow-y:	auto;
-	top:			4.5em;
-	left:			0;
-	right:		0;
-	bottom:		1em;
-	margin:		-2em 0 0 0;
-	padding:	2em 0 0 0;
+    position:    absolute;
+    overflow-y:    auto;
+    top:            4.5em;
+    left:            0;
+    right:        0;
+    bottom:        1em;
+    margin:        -2em 0 0 0;
+    padding:    2em 0 0 0;
 }
 
 div#photo_viewer h3.section_title div#viewer_close_container{
-	height:			1.5em;
-	float:			right;
-	margin-top:		-0.3em;
-	margin-right:	-0.4em;
+    height:            1.5em;
+    float:            right;
+    margin-top:        -0.3em;
+    margin-right:    -0.4em;
 }
 
 div#photo_viewer h3.section_title div#viewer_close_container img#viewer_close{
-	height:	100%;
+    height:    100%;
 }
 
 div#photo_viewer div#viewer_table{
-	display:	table;
-	width:		100%;
+    display:    table;
+    width:        100%;
 }
 
 div#photo_viewer div#viewer_table div.viewer_row{
-	display:	table-row;
-	width:		100%;
+    display:    table-row;
+    width:        100%;
 }
 
 div#photo_viewer div#viewer_table div.viewer_row div.viewer_cell{
-	display:		table-cell;
-	vertical-align:	top;
+    display:        table-cell;
+    vertical-align:    top;
 }
 
 div#photo_viewer div#viewer_table div.viewer_row div#cell_image{
-	text-align:	center;
-	padding:	0 1em 0.5em 1em;
-	
+    text-align:    center;
+    padding:    0 1em 0.5em 1em;
+    
 }
 
 div#photo_viewer div#viewer_table div.viewer_row div#cell_image td.arrow{
-	width:	5%;
+    width:    5%;
 }
 
 div#photo_viewer div#viewer_table div.viewer_row div#cell_image td#image{
@@ -186,203 +186,203 @@ div#photo_viewer div#viewer_table div.viewer_row div#cell_image td#image{
 
 
 div#photo_viewer div#viewer_table div.viewer_row div#cell_comments{
-	width:		40%;
+    width:        40%;
 }
 
 div#photo_viewer_image_container{
-	width:				100%;
-	position:			relative;
-	display:			inline-block;
-	max-width:			100%;
-	overflow:			hidden;
-	text-align:			center;
-	vertical-align:		center;
+    width:                100%;
+    position:            relative;
+    display:            inline-block;
+    max-width:            100%;
+    overflow:            hidden;
+    text-align:            center;
+    vertical-align:        center;
 }
 
 img#photo_viewer_image{
-	border-radius:	0.5em;
-	border:     0.3em solid #112244;
-	box-shadow:		0 0 0.5em #112244;
- 	max-width:		95%;
-	top:			10%;
-	bottom:			10%;
-	max-height:		80%;
+    border-radius:    0.5em;
+    border:     0.3em solid #112244;
+    box-shadow:        0 0 0.5em #112244;
+     max-width:        95%;
+    top:            10%;
+    bottom:            10%;
+    max-height:        80%;
 }
 
 div#photo_viewer div#viewer_controls{
-	width:		100%;
-	text-align:	center;
-	bottom:		10%;
+    width:        100%;
+    text-align:    center;
+    bottom:        10%;
 }
 
 div#photo_viewer div#viewer_controls img{
-	max-height:	3em;
-	max-width:	3em;
-	transition:	all .3s ease-in-out;
+    max-height:    3em;
+    max-width:    3em;
+    transition:    all .3s ease-in-out;
 }
 
 div#photo_viewer img.viewer_arrow{
-	height:		3em;
-	width:		3em;
-	opacity:	0.4;
+    height:        3em;
+    width:        3em;
+    opacity:    0.4;
 }
 
 div#photo_viewer img.viewer_arrow:hover{
-    -webkit-filter:	drop-shadow(0 0 0.3em #775599);
-    filter:			drop-shadow(0 0 0.3em #775599);
-    -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#759')";
-    filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#759')";
-	opacity:		0.8;
+    -webkit-filter:    drop-shadow(0 0 0.3em #775599);
+    filter:            drop-shadow(0 0 0.3em #775599);
+    -ms-filter:        "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#759')";
+    filter:            "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#759')";
+    opacity:        0.8;
 }
 
 
 div#photo_viewer img#viewer_arrow_left{
-	left:	0%;
+    left:    0%;
 }
 
 div#photo_viewer img#viewer_arrow_right{
-    right:	0%;
+    right:    0%;
 }
 
 div#photo_data{
-	position:	relative;
-	height:		100%;
+    position:    relative;
+    height:        100%;
 }
 
 div#photo_data h4{
-	margin:	0.1em;
+    margin:    0.1em;
 }
 
 div#photo_data span#photo_description{
-	display:	block;
-	margin:		0.4em 0.4em 0.4em 1em;
+    display:    block;
+    margin:        0.4em 0.4em 0.4em 1em;
 }
 
 div#photo_data span#photo_date{
-	display:	block;
-	margin:		0.3em;
-	width:		90%;
-	text-align:	right;
-	font-size:	80%;
-	font-style:	italic;
+    display:    block;
+    margin:        0.3em;
+    width:        90%;
+    text-align:    right;
+    font-size:    80%;
+    font-style:    italic;
 }
 div#photo_data span#photo_user{
-	display:	block;
-	margin:		0.3em;
-	width:		90%;
-	text-align:	right;
-	font-size:	80%;
-	font-style:	italic;
+    display:    block;
+    margin:        0.3em;
+    width:        90%;
+    text-align:    right;
+    font-size:    80%;
+    font-style:    italic;
 }
 
 div.photo_viewer_comment{
-	border:		0.1em solid rgba(50, 50, 50, 0.2);
-	margin:		0;
-	padding:	0.3em;
+    border:        0.1em solid rgba(50, 50, 50, 0.2);
+    margin:        0;
+    padding:    0.3em;
 }
 
 div.photo_viewer_user{
-	font-size:		90%;
-	font-weight:	bold;
+    font-size:        90%;
+    font-weight:    bold;
 }
 
 div.photo_viewer_user_unregistered{
-	color:	#333333;
+    color:    #333333;
 }
 
 div.photo_viewer_user_registered{
-	vertical-align:	middle;
-	color:			#aa2266;
+    vertical-align:    middle;
+    color:            #aa2266;
 }
 
 div.photo_viewer_user_registered img{
-	width:	2em;
-	height:	2em;
-	vertical-align:	middle;
+    width:    2em;
+    height:    2em;
+    vertical-align:    middle;
 }
 
 span.photo_viewer_comment_date{
-	display:	block;
-	margin:		0;
-	padding:	0;
-	font-size:	70%;
-	color:		#555555;
-	text-align:	right;
+    display:    block;
+    margin:        0;
+    padding:    0;
+    font-size:    70%;
+    color:        #555555;
+    text-align:    right;
 }
 
 div#photo_viewer_new_comment_header{
-	background-color:	#0000ff;
-	color:				#ffffff;
-	font-weight:		bold;
-	font-size:			80%;
-	margin:				0.1em 0 0 0;
-	padding:			0;
+    background-color:    #0000ff;
+    color:                #ffffff;
+    font-weight:        bold;
+    font-size:            80%;
+    margin:                0.1em 0 0 0;
+    padding:            0;
 }
 
 /* /galeria/upload/ */
 
 div.form_photo{
-	display:		inline-block;
-	vertical-align:	top;
-	width:			15em;
-	text-align:		center;
-	margin:			1.5em;
-	padding:		1em;
+    display:        inline-block;
+    vertical-align:    top;
+    width:            15em;
+    text-align:        center;
+    margin:            1.5em;
+    padding:        1em;
 }
 
 div.form_photo img{
-	max-width:		90%;
-	max-height:		9em;
-	margin-left:	auto;
-	margin-right:	auto;
-	border:			0.3em solid #000010;
+    max-width:        90%;
+    max-height:        9em;
+    margin-left:    auto;
+    margin-right:    auto;
+    border:            0.3em solid #000010;
 }
 
 div.form_photo input, textarea{
-	width:		90%;
+    width:        90%;
 }
 
 div#file_box{
-	text-align:		center;
+    text-align:        center;
 }
 
 div#file_box span#drag{
-	font-size:		150%;
-	font-weight:	bold;
+    font-size:        150%;
+    font-weight:    bold;
 }
 
 div#file_box input#file_selector{
-	display:	block;
-	width:		0;
-	height:		0;
-	opacity:	0;
-	background-color:	#ff0000;
+    display:    block;
+    width:        0;
+    height:        0;
+    opacity:    0;
+    background-color:    #ff0000;
 }
 
 div#photo_upload_preview{
-	text-align:	center;
+    text-align:    center;
 }
 
 div#photo_upload_preview table{
-	margin:	auto;
+    margin:    auto;
 }
 
 div#photo_upload_preview table td{
-	vertical-align:	bottom;
-	max-width:		15em;
-	text-align:		left;
-	height:			100%;
-	padding:		1em;
+    vertical-align:    bottom;
+    max-width:        15em;
+    text-align:        left;
+    height:            100%;
+    padding:        1em;
 }
 
 div#photo_upload_preview table td select{
-	width:	100%;
+    width:    100%;
 }
 
 div#photo_upload_preview table td input{
-	width:	100%;
+    width:    100%;
 }
 
 div#photo_upload_preview input#photo_submit{
-	display:	none;
+    display:    none;
 }

@@ -1,59 +1,59 @@
 /* /actividades/add/index.php */
 
 input[type="text"]{
-	width:	100%;
+    width:    100%;
 }
 
 textarea{
-	width:		100%;
-	height:		20em;
+    width:        100%;
+    height:        20em;
 }
 
 div.tab_content_hidden{
-	display:	none;
+    display:    none;
 }
 
 div#activity_images input[name="city"]{
-        width:  	100%;
-	max-width:	15em;
+        width:      100%;
+    max-width:    15em;
 }
 
 div#activity_images input[name="day"]{
-	width:	2em;
+    width:    2em;
 }
 
 div#activity_images input[name="month"]{
-	width:	2em;
+    width:    2em;
 }
 
 div#activity_images input[name="year"]{
-	width:	4em;
+    width:    4em;
 }
 
 div#activity_images input[name="hour"]{
-	width:	2em;
+    width:    2em;
 }
 
 div#activity_images input[name="minute"]{
-	width:	2em;
+    width:    2em;
 }
 
 div#activity_images input[name="price"]{
-	width:	4em;
+    width:    4em;
 }
 
 div#activity_images input[name="people"]{
-	width:	4em;
+    width:    4em;
 }
 
 div.image_upload_container{
-	margin:	0.5em 0 0.5em 1em;
+    margin:    0.5em 0 0.5em 1em;
 }
 
 img.image_upload_preview{
-	max-width:		8em;
-	max-height:		4em;
-	vertical-align:	middle;
+    max-width:        8em;
+    max-height:        4em;
+    vertical-align:    middle;
 }
 
 /* Buttons */
@@ -70,118 +70,118 @@ div#button_container input{
 /* Translate page */
 
 div#translation_instructions{
-	text-align:	center;
+    text-align:    center;
 }
 
 div#translation_instructions ul{
-	display:	inline-block;
-	text-align:	left;
+    display:    inline-block;
+    text-align:    left;
 }
 
 div#translation_instructions ul li{
-	margin-top: 0.5em;
+    margin-top: 0.5em;
 }
 
 table#table_translate_languages td.translate_language{
-	min-width:			30%;
-	border-collapse:	collapse;
-	border:				none;
-	vertical-align:		top;
+    min-width:            30%;
+    border-collapse:    collapse;
+    border:                none;
+    vertical-align:        top;
 }
 
 table#table_translate_itinerary{
-	border-collapse:	collapse;
+    border-collapse:    collapse;
 }
 
 table#table_translate_itinerary td{
-	border:	1px solid #000000;
+    border:    1px solid #000000;
 }
 
 div.translate_row_title{
-	height:	3em;
+    height:    3em;
 }
 
 div.translate_row_description{
-	height:		28em;
-	overflow: 	auto;
+    height:        28em;
+    overflow:     auto;
 }
 
 div.translate_row_description p{
-	font-size:	80%;
+    font-size:    80%;
 }
 
 div.translate_row_description textarea{
-	width:	100%;
-	height:	80%;
-    resize:	none;
+    width:    100%;
+    height:    80%;
+    resize:    none;
 }
 
 div.translate_row_after{
-	height:		28em;
-	overflow: 	auto;
+    height:        28em;
+    overflow:     auto;
 }
 
 div.translate_row_after p{
-	font-size:	80%;
+    font-size:    80%;
 }
 
 div.translate_row_after textarea{
-	width:	100%;
-	height:	80%;
-	resize:	none;
+    width:    100%;
+    height:    80%;
+    resize:    none;
 }
 
 div.translate_row_itinerary table{
-	font-size:	80%;
-	width:		100%;
+    font-size:    80%;
+    width:        100%;
 }
 
 div.translate_row_itinerary table tr{
-	height:		5em;
-	max-height:	5em;
-	min-height:	5em;
+    height:        5em;
+    max-height:    5em;
+    min-height:    5em;
 }
 
 div.translate_row_itinerary table tr{
-	overflow:	auto;
+    overflow:    auto;
 }
 
 div.translate_row_itinerary table td textarea{
-	width:		100%;
-	min-width:	10em;
-	height:		100%;
-	resize:		none;
+    width:        100%;
+    min-width:    10em;
+    height:        100%;
+    resize:        none;
 }
 
 /* /actividades/add/itinerary.php */
 table#itinerary{
-	margin:			1em;
-	border-collapse:	collapse; 
-	border:			0.1em solid #000000;
+    margin:            1em;
+    border-collapse:    collapse; 
+    border:            0.1em solid #000000;
 }
 
 table#itinerary tr.itinerary_row{
-	vertical-align:	top;
-	border-top:		0.5em solid #333333;
-	display:		none;
+    vertical-align:    top;
+    border-top:        0.5em solid #333333;
+    display:        none;
 }
 
 table#itinerary tr#itinerary_row_0{
-	display:	table-row;
-	border-top:	0.1em solid #000000;
+    display:    table-row;
+    border-top:    0.1em solid #000000;
 }
 
 table#itinerary tr.itinerary_row td.itinerary_cell{
-	border:		0.1em solid #000000;
-	padding:	0.5em;
+    border:        0.1em solid #000000;
+    padding:    0.5em;
 }
 
 table#itinerary tr.itinerary_row td.itinerary_cell_content{
-        width:	100%;
+        width:    100%;
 }
 
 table#itinerary tr.itinerary_row td.itinerary_cell h4{
-	margin:	0.3em;
+    margin:    0.3em;
 }
 
 table#itinerary tr.itinerary_row td.time{
@@ -190,119 +190,119 @@ table#itinerary tr.itinerary_row td.time{
 
 
 table#itinerary tr.itinerary_row td.time input{
-	width:	3em;
+    width:    3em;
 }
 
 table#itinerary tr.itinerary_row td.time select{
-	max-width:	10em;
+    max-width:    10em;
 }
 
 table#itinerary tr.itinerary_row td.time span{
-	font-size:			85%;
-	color:				#6040a8;
-	text-shadow:		0 0 0.5em #7799ff;
-	text-decoration:	none;
-	transition:			all .3s ease-in-out;
+    font-size:            85%;
+    color:                #6040a8;
+    text-shadow:        0 0 0.5em #7799ff;
+    text-decoration:    none;
+    transition:            all .3s ease-in-out;
 }
 
 table#itinerary tr.itinerary_row td.time span:hover{
-	color:				#301075;
-	text-shadow:		0 0 0.4em #ffffff;
-	text-decoration:	underline;
+    color:                #301075;
+    text-shadow:        0 0 0.4em #ffffff;
+    text-decoration:    underline;
 }
 
 table#itinerary tr.itinerary_row td.text textarea{
-	min-width:	15em;
-	height:		7em;
-	resize:		none;
+    min-width:    15em;
+    height:        7em;
+    resize:        none;
 }
 
 input#save_itinerary{
-	width:	30%;
-	margin:	1em 30% 1em 30%;
+    width:    30%;
+    margin:    1em 30% 1em 30%;
 }
 
 /* Activity list */
 
 table#activity_list{
-	border-collapse:	collapse;
-	margin:				0.5em;
+    border-collapse:    collapse;
+    margin:                0.5em;
 }
 
 table#activity_list td, th{
-	border: 	1px solid black;
-	padding:	0.5em;
+    border:     1px solid black;
+    padding:    0.5em;
 }
 
 table#activity_list th{
-	background-color:	#66aaff;
+    background-color:    #66aaff;
 }
 
 table#activity_list td.activity_column_title{
-	width:	10%;
+    width:    10%;
 }
 
 table#activity_list td.activity_column_text{
-	width:	25%;
+    width:    25%;
 }
 
 table#activity_list td.activity_column_text ul{
-	margin:		0;
+    margin:        0;
 }
 
 table#activity_list td.activity_column_text li{
-	margin:		0.5em 0.1em 0 0.2em;
-	font-size:	80%;
-	font-style:	italic;
+    margin:        0.5em 0.1em 0 0.2em;
+    font-size:    80%;
+    font-style:    italic;
 }
 
 table#activity_list td.activity_column_text img{
-	max-width:	5em;
-	max-height:	2em;
-	border:		0.1em solid black;
-	margin:		0.05em;
+    max-width:    5em;
+    max-height:    2em;
+    border:        0.1em solid black;
+    margin:        0.05em;
 }
 
 table#activity_list td.activity_column_details{
-	font-size:	80%;
-	width:		10%;
-	text-align:	center;
+    font-size:    80%;
+    width:        10%;
+    text-align:    center;
 }
 
 table#activity_list td.activity_column_translations{
-	width:		10%;
-	text-align:	center;
+    width:        10%;
+    text-align:    center;
 }
 
 table#activity_list td.activity_column_action{
-	width:		10%;
-	text-align:	center;
+    width:        10%;
+    text-align:    center;
 }
 
 table#activity_list td.activity_column_action input{
-	margin: 	0.05em;
-	padding:	0.06em;
-	font-size:	70%
+    margin:     0.05em;
+    padding:    0.06em;
+    font-size:    70%
 }
 
 table#activity_list form{
-	margin:	0;
+    margin:    0;
 }
 
 table#activity_list td.activity_column_action input[type="button"], input[type="submit"]{
-	width:			90%;
-	margin-top:		0.2em;
-	margin-bottom:	0.2em;
+    width:            90%;
+    margin-top:        0.2em;
+    margin-bottom:    0.2em;
 }
 
 div#translate_controls{
-	width:			50%;
-	margin-left:	auto;
-	margin-right:	auto;
-	text-align:		center;
+    width:            50%;
+    margin-left:    auto;
+    margin-right:    auto;
+    text-align:        center;
 }
 
 div#translate_controls input{
-	width:		100%;
-	margin-top:	1em;
+    width:        100%;
+    margin-top:    1em;
 }
