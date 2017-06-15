@@ -433,9 +433,9 @@
 		$bot_kw[18] = 'fake';
 		$bot_kw[19] = 'library';
 		$bot_kw[20] = 'commerce';
-		$bot_kw[21] = 'html';
+		$bot_kw[21] = 'htmlbot';
 		$bot_kw[22] = 'fetch';
-		$bot_kw[23] = 'google';
+		$bot_kw[23] = 'googleb';
 		$bot_kw[24] = 'facebook';
 		$bot_kw[25] = 'whatsapp';
 		$bot_kw[26] = 'pinterest';
@@ -458,6 +458,10 @@
 				return;
 			}
 			$i ++;
+		}
+		if (strlen($os) == 0 || strlen($browser) == 0){ // Certain chinese hosting provider makes a lot of requests...
+			mysqli_close($con);
+			return;
 		}
 		
 		//Look for a visit with the same IP in the last 30 mins.

@@ -2,13 +2,14 @@
 	<table>
 		<tr>
 			<td>
-				<img src="/img/misc/logo.png"/><span style='font-weight:normal;font-style:italic;font-size:90%;'><?php echo $_SESSION['name']; ?></span>
+				<img src="<?=$server?>/img/misc/logo.png"/>
+				<span style='font-weight:normal;font-style:italic;font-size:90%;'><?=$_SESSION['name']?></span>
 			</td>
 			<td>
-				<a href="/" class="pointer toolbar_section">Inicio</a>
+				<a href="<?=$server?>/" class="pointer toolbar_section">Inicio</a>
 			</td>
 			<td class="pointer toolbar_section" onClick="showToolbar('blog', this);">
-				Blog
+				<span class="pointer">Blog</span>
 			</td>
 			<td class="pointer toolbar_section" onClick="showToolbar('actividades', this);">
 				<span class="pointer">Actividades</span>
@@ -35,10 +36,10 @@
 	<table>
 		<tr>
 			<td>
-				<a href="http://<?php echo $http_host; ?>/blog/add/">Nuevo post</a>
+				<a href="<?=$server?>/blog/add/">Nuevo post</a>
 			</td>
 			<td>
-				<a href="http://<?php echo $http_host; ?>/blog/">Gestionar posts</a>
+				<a href="<?=$server?>/blog/">Gestionar posts</a>
 			</td>
 		</tr>
 	</table>
@@ -47,10 +48,10 @@
 	<table>
 		<tr>
 			<td>
-				<a href="http://<?php echo $http_host; ?>/actividades/add/">Nueva actividad</a>
+				<a href="<?=$server?>/actividades/add/">Nueva actividad</a>
 			</td>
 			<td>
-				<a href="http://<?php echo $http_host; ?>/actividades/">Gestionar actividades</a>
+				<a href="<?=$server?>/actividades/">Gestionar actividades</a>
 			</td>
 		</tr>
 	</table>
@@ -59,19 +60,19 @@
 	<table>
 		<tr>
 			<td>
-				<a href="//">Crear album</a>
+				<a href="<?=$server?>/galeria/add/">Crear album</a>
 			</td>
 			<td>
-				<a href="//">Gestionar albums</a>
+				<a href="<?=$server?>/galeria/">Gestionar albums</a>
 			</td>
 			<td>
-				<a href="//">Subir fotos</a>
+				<a href="<?=$server?>/galeria/upload/">Subir fotos</a>
 			</td>
 			<td>
-				<a href="//">Moderar comentarios</a>
+				<a href="<?=$server?>/galeria/moderate/">Moderar comentarios</a>
 			</td>
 			<td>
-				<a href="//">Traducir galer&iacute;a</a>
+				<a href="<?=$server?>/galeria/translate/">Traducir galer&iacute;a</a>
 			</td>
 		</tr>
 	</table>
@@ -80,10 +81,13 @@
 	<table>
 		<tr>
 			<td>
-				<a href="//">Gestionar precios</a>
+				<a href='<?=$server?>/lablanca/'>Preparar las fiestas</a>
 			</td>
 			<td>
-				<a href="//">Gestionar programa</a>
+				<a href='<?=$server?>/lablanca/prices.php'>Gestionar precios</a>
+			</td>
+			<td>
+				<a href='<?=$server?>/lablanca/schedule.php'>Gestionar programa</a>
 			</td>
 		</tr>
 	</table>
@@ -92,13 +96,10 @@
 	<table>
 		<tr>
 			<td>
-				<a href="//">Consultar</a>
+				<a href='<?=$server?>/miembros/'>Consultar y buscar</a>
 			</td>
 			<td>
-				<a href="//">A&ntilde;adir miembro</a>
-			</td>
-			<td>
-				<a href="//">A&ntilde;adir miembros en lote</a>
+				<a href='<?=$server?>/miembros/add/'>A&ntilde;adir miembros</a>
 			</td>
 		</tr>
 	</table>
@@ -107,13 +108,13 @@
 	<table>
 		<tr>
 			<td>
-				<a href="//">Web</a>
+				<a href='<?=$server?>/estadisticas/web/'>Estadisticas Web</a>
 			</td>
 			<td>
-				<a href="//">Apps</a>
+				<a href='<?=$server?>/estadisticas/app/'>Estadisticas Apps</a>
 			</td>
 			<td>
-				<a href="//">Miembros</a>
+				<a href='<?=$server?>/estadisticas/miembros/'>Estadisticas miembros</a>
 			</td>
 		</tr>
 	</table>
@@ -122,13 +123,13 @@
 	<table>
 		<tr>
 			<td>
-				<a href="//">Cambiar ajustes</a>
+				<a href='<?=$server?>/settings/'Ajustes</a>
 			</td>
 			<td>
-				<a href="//">Gestionar usuarios</a>
+				<a href='<?=$server?>/usuarios/'>Gestionar usuarios</a>
 			</td>
 			<td>
-				<a href="//">Salir</a>
+				<a href='<?=$server?>/salir/'>Salir</a>
 			</td>
 		</tr>
 	</table>
