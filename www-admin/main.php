@@ -1,7 +1,7 @@
 <?php
-	$http_host = $_SERVER['HTTP_HOST'];
-	$default_host = substr($http_host, 0, strpos($http_host, ':'));
 	include("functions.php");
+	$server = getProtocol() . $_SERVER['HTTP_HOST'];
+	$default_host = substr($server, 0, strpos($http_host, ':'));
 	$con = startdb();
 	if (!checkSession($con)){
 		header("Location: /index.php");
@@ -33,8 +33,8 @@
 							<h3 class='section_title'>Blog</h3>
 							<div class='entry'>
 								<ul>
-									<li><a href='/blog/add/'>Nuevo post</a></li>
-									<li><a href='/blog/'>Gestionar posts</a></li>
+									<li><a href='<?=$server?>/blog/add/'>Nuevo post</a></li>
+									<li><a href='<?=$server?>/blog/'>Gestionar posts</a></li>
 								</ul>
 							</div>
 						</div>
@@ -44,8 +44,8 @@
 							<h3 class='section_title'>Actividades</h3>
 							<div class='entry'>
 								<ul>
-									<li><a href='/actividades/add/'>Nueva actividad</a></li>
-									<li><a href='/actividades/'>Gestionar actividades</a></li>
+									<li><a href='<?=$server?>/actividades/add/'>Nueva actividad</a></li>
+									<li><a href='<?=$server?>/actividades/'>Gestionar actividades</a></li>
 								</ul>
 							</div>
 						</div>
@@ -57,11 +57,11 @@
 							<h3 class='section_title'>Galeria</h3>
 							<div class='entry'>
 								<ul>
-									<li><a href='/galeria/add/'>Crear album</a></li>
-									<li><a href='/galeria/'>Gestionar albums</a></li>
-									<li><a href='/galeria/upload/'>Subir fotos</a></li>
-									<li><a href='/galeria/moderate/'>Moderar comentarios</a></li>
-									<li><a href='/galeria/translate/'>Traducir galeria</a></li>
+									<li><a href='<?=$server?>/galeria/add/'>Crear album</a></li>
+									<li><a href='<?=$server?>/galeria/'>Gestionar albums</a></li>
+									<li><a href='<?=$server?>/galeria/upload/'>Subir fotos</a></li>
+									<li><a href='<?=$server?>/galeria/moderate/'>Moderar comentarios</a></li>
+									<li><a href='<?=$server?>/galeria/translate/'>Traducir galeria</a></li>
 								</ul>
 							</div>
 						</div>
@@ -71,9 +71,9 @@
 							<h3 class='section_title'>Fiestas</h3>
 							<div class='entry'>
 								<ul>
-									<li><a href='/lablanca/'>Preparar las fiestas</a></li>
-									<li><a href='/lablanca/prices.php'>Gestionar precios</a></li>
-									<li><a href='/lablanca/schedule.php'>Gestionar programa</a></li>
+									<li><a href='<?=$server?>/lablanca/'>Preparar las fiestas</a></li>
+									<li><a href='<?=$server?>/lablanca/prices.php'>Gestionar precios</a></li>
+									<li><a href='<?=$server?>/lablanca/schedule.php'>Gestionar programa</a></li>
 								</ul>
 							</div>
 						</div>
@@ -85,9 +85,8 @@
 							<h3 class='section_title'>Miembros</h3>
 							<div class='entry'>
 								<ul>
-									<li><a href='/miembros/'>Consultar y buscar</a></li>
-									<li><a href='/miembros/add/'>Anadir miembros</a></li>
-									<li><a href='/miembros/editable.php'>Gestionar lista</a></li>
+									<li><a href='<?=$server?>/miembros/'>Consultar y buscar</a></li>
+									<li><a href='<?=$server?>/miembros/add/'>A&ntilde;adir miembros</a></li>
 								</ul>
 							</div>
 						</div>
@@ -97,9 +96,9 @@
 							<h3 class='section_title'>Estadisticas</h3>
 							<div class='entry'>
 								<ul>
-									<li><a href='/estadisticas/web.php'>Estadisticas Web</a></li>
-									<li><a href='/estadisticas/app.php'>Estadisticas Apps</a></li>
-									<li><a href='/estadisticas/miembros'>Estadisticas miembros</a></li>
+									<li><a href='<?=$server?>/estadisticas/web/'>Estadisticas Web</a></li>
+									<li><a href='<?=$server?>/estadisticas/app/'>Estadisticas Apps</a></li>
+									<li><a href='<?=$server?>/estadisticas/miembros/'>Estadisticas miembros</a></li>
 								</ul>
 							</div>
 						</div>
@@ -111,9 +110,9 @@
 							<h3 class='section_title'>Ajustes</h3>
 							<div class='entry'>
 								<ul>
-									<li><a href=''>Cambiar ajustes</a></li>
-									<li><a href=''>Gestionar usuarios</a></li>
-									<li><a href=''>Salir</a></li>
+									<li><a href='<?=$server?>/settings/'Ajustes</a></li>
+									<li><a href='<?=$server?>/users/'>Gestionar usuarios</a></li>
+									<li><a href='<?=$server?>/salir/'>Salir</a></li>
 								</ul>
 							</div>
 						</div>

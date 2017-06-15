@@ -2,6 +2,18 @@
 
 	$IMG_SIZE_PREVIEW = 600;
 	$IMG_SIZE_MINIATURE = 200;
+	
+	
+	function getProtocol(){
+		if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+				$protocol = 'https://';
+		}
+		else {
+				$protocol = 'http://';
+		}
+		return $protocol;
+	}
+
 
 	/****************************************************
 	* This function is called from almost everywhere at *
