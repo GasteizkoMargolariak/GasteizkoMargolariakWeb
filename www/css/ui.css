@@ -374,20 +374,21 @@ div#cookie_popup{
     transition:                    bottom .5s ease-in-out;
 }
 
-div#cookie_popup span.button a{
+span.button a{
     font-weight:    bold;
     font-size:        100%;
     border:            0.2em solid #133442;
     border-radius:    0.2em;
     padding:        0.2em;
     color:            #dddddd;
+	background-color:    #124567;
 }
 
-div#cookie_popup span#button_ok a{
+span#button_ok a{
     background-color:    #338833;
 }
 
-div#cookie_popup span#button_more a{
+span#button_more a{
     background-color:    #883333;
 }
 
