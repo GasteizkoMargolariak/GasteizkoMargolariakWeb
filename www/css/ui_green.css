@@ -20,7 +20,7 @@
 * Hide elements intended for mobile.      *
 ******************************************/
 .mobile{
-	display:	none;
+    display:    none;
 }
 
 /******************************************
@@ -29,9 +29,9 @@
 
 /* Glogal font */
 @font-face{
-	font-family:	font;
-	font-family:	font;
-	src:			url('/font/texgyreadventor-regular.otf')
+    font-family:    font;
+    font-family:    font;
+    src:            url('/font/texgyreadventor-regular.otf')
 }
 
 
@@ -42,23 +42,23 @@
 
 /* Links */
 a{
-	color:				#64a;
-	text-shadow:		0 0 0.5em #7799ff;
-	text-decoration:	none;
-	transition:			all .2s ease-in-out;
+    color:                #64a;
+    text-shadow:        0 0 0.5em #7799ff;
+    text-decoration:    none;
+    transition:            all .2s ease-in-out;
 }
 
 a:hover{
-	color:				#317;
-	text-shadow:		0 0 0.4em #ffffff;
-	text-decoration:	underline;
+    color:                #317;
+    text-shadow:        0 0 0.4em #ffffff;
+    text-decoration:    underline;
 }
 
 /* Body */
 body{
-	font-family:		font;
-	margin:				0;
-	background-color:	#bfa;
+    font-family:        font;
+    margin:                0;
+    background-color:    #bfa;
 }
 
 
@@ -69,26 +69,26 @@ body{
 
 /* Icon for slider sections */
 img.slid{
-	height:			1.2em;
-	width:			1.2em;
-	cursor:			pointer;
-	vertical-align:	middle;
-	transition:		opacity 0.5s ease-in-out;
+    height:            1.2em;
+    width:            1.2em;
+    cursor:            pointer;
+    vertical-align:    middle;
+    transition:        opacity 0.5s ease-in-out;
 }
 
 /* Elements that should have the cursor as pointer */
 .pointer{
-	cursor:	pointer;
+    cursor:    pointer;
 }
 
 /* Elemnts not to be displayed */
 .hidden{
-	display:	none;
+    display:    none;
 }
 
 /* Elements with an italic font */
 .italic{
-	font-style:	italic;
+    font-style:    italic;
 }
 
 
@@ -99,86 +99,86 @@ img.slid{
 
 /* Header top container */
 div#header{
-	margin:				-1em auto 2.5em auto;
-	padding:			1em	0 0 0;
-	width:				95%;
-	max-width:			80em;
-	background-color:	#aaa;
-	border-radius:		0 0 0.3em 0.3em;
-	border:				1px solid #333;
-	box-shadow:			0 0 2em #ded;
+    margin:                -1em auto 2.5em auto;
+    padding:            1em    0 0 0;
+    width:                95%;
+    max-width:            80em;
+    background-color:    #aaa;
+    border-radius:        0 0 0.3em 0.3em;
+    border:                1px solid #333;
+    box-shadow:            0 0 2em #ded;
 }
 
 div#header div#header_content{
-	margin:		0;
-	width:		100%;
+    margin:        0;
+    width:        100%;
 }
 
 /* Main image of the header, contains the logo */
 div#header img{
-	display:		inline-block;
-	width:			10%;
-	max-width:		15em;
-	margin:			0.5em;
-	margin-left:	-1em;
-	margin-bottom:	-1.8em;
-/* 	padding:		1%; */
-	vertical-align:	middle;
-	-webkit-filter:	drop-shadow(0 0 0.4em #ded);
-/*     filter:			url(#drop-shadow); */
-	filter:			drop-shadow(0 0 0.4em #ded);
-    -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#ded')";
-    filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#ded')";
+    display:        inline-block;
+    width:            10%;
+    max-width:        15em;
+    margin:            0.5em;
+    margin-left:    -1em;
+    margin-bottom:    -1.8em;
+/*     padding:        1%; */
+    vertical-align:    middle;
+    -webkit-filter:    drop-shadow(0 0 0.4em #ded);
+/*     filter:            url(#drop-shadow); */
+    filter:            drop-shadow(0 0 0.4em #ded);
+    -ms-filter:        "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#ded')";
+    filter:            "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#ded')";
 }
 
 /* Section of the header containing links to sections */
 div#header_menu{
-	display:			inline-block;
-	vertical-align:		middle;
-	width:				90%;
-	margin-top:			-1em;
-	margin-left:		-4%;
-	background-color:	#cfc;
-	border-radius:		0.5em;
-	border:				0.2em solid #9a9;
+    display:            inline-block;
+    vertical-align:        middle;
+    width:                90%;
+    margin-top:            -1em;
+    margin-left:        -4%;
+    background-color:    #cfc;
+    border-radius:        0.5em;
+    border:                0.2em solid #9a9;
 }
 
 /* Table with the links to the sections */
 div#header_menu table{
-	display:			table;
-	margin:				auto 0 auto 0;
- 	width:				100%;
-	border-collapse:	collapse;
-    border-spacing:		0;
+    display:            table;
+    margin:                auto 0 auto 0;
+     width:                100%;
+    border-collapse:    collapse;
+    border-spacing:        0;
 }
 
 div#header_menu table tbody{
-	width:	100%;
+    width:    100%;
 }
 div#header_menu table tbody tr{
-	width:	100%;
+    width:    100%;
 }
 
 /* Containers of the section links */
 div#header_menu table td{
-	width:			12%;
-	text-align:		center;
-	transition:		all .3s ease-in-out;
-	white-space:	nowrap;
+    width:            12%;
+    text-align:        center;
+    transition:        all .3s ease-in-out;
+    white-space:    nowrap;
 }
 
 div#header_menu table td:hover{
-	background-color:	#8a8;
+    background-color:    #8a8;
 }
 
 /* Actual links in the header */
 div#header_menu table a{
-	display:		inline-block;
-	font-weight:	bold;
-	font-size:		115%;
-	width:			100%;
-	padding-top:	0.8em;
-	padding-bottom:	0.8em;
+    display:        inline-block;
+    font-weight:    bold;
+    font-size:        115%;
+    width:            100%;
+    padding-top:    0.8em;
+    padding-bottom:    0.8em;
 }
 
 
@@ -189,77 +189,77 @@ div#header_menu table a{
 
 /* Footer top container */
 div#footer{
-	width:		100%;
-	display:	inline-block;
+    width:        100%;
+    display:    inline-block;
 }
 
 /* Table containing the footer elemnts */
 div#footer div#footer_table{
-	width:		100%;
-	display:	table;
+    width:        100%;
+    display:    table;
 }
 
 div#footer div#footer_table div.tr{
-	width:		100%;
-	display:	table-row;
+    width:        100%;
+    display:    table-row;
 }
 
 /* Each main section of the footer */
 div#footer div#footer_table div.td{
-	display:		table-cell;
-	width:			33%;
-	text-align:		center;
-	vertical-align:	top;
+    display:        table-cell;
+    width:            33%;
+    text-align:        center;
+    vertical-align:    top;
 }
 
 div#footer div#footer_table div#footer_center{
-	padding-top:	1em;
+    padding-top:    1em;
 }
 
 /* Images for language selection */
 img.lang{
-	height:			1em;
-	margin:			0.5em;
-	border-radius:	0.2em;
-	border:			0.15em solid #333;
-	cursor:			pointer;
-	box-shadow:		0 0 0.7em #ded;
-	transition:		all .3s ease-in-out;
+    height:            1em;
+    margin:            0.5em;
+    border-radius:    0.2em;
+    border:            0.15em solid #333;
+    cursor:            pointer;
+    box-shadow:        0 0 0.7em #ded;
+    transition:        all .3s ease-in-out;
 }
 
 img.lang:hover{
-	box-shadow:		0 0 1em #111;
+    box-shadow:        0 0 1em #111;
 }
 
 /* Mobile app link image in the footer */
 img.app{
-	height:			3em;
-/* 	margin:			0.5em; */
-	border-radius:	0.4em;
-	border:			0.15em solid #333;
-	cursor:			pointer;
-	box-shadow:		0 0 0.5em #ded;
-	transition:		all .3s ease-in-out;
+    height:            3em;
+/*     margin:            0.5em; */
+    border-radius:    0.4em;
+    border:            0.15em solid #333;
+    cursor:            pointer;
+    box-shadow:        0 0 0.5em #ded;
+    transition:        all .3s ease-in-out;
 }
 
 img.app:hover{
-	box-shadow:	0 0 0.8em #ded;
+    box-shadow:    0 0 0.8em #ded;
 }
 
 /* Each of the social links in the footer */
 img.footer_social_icon{
-	height:			2.2em;
-	margin:			0.12em;
-	transition:		all .3s ease-in-out;
-	-webkit-filter:	drop-shadow(0 0 0.2em #ded);
-    filter:			drop-shadow(0 0 0.2em #ded);
-    -ms-filter:		"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#ded')";
-    filter:			"progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#ded')";
+    height:            2.2em;
+    margin:            0.12em;
+    transition:        all .3s ease-in-out;
+    -webkit-filter:    drop-shadow(0 0 0.2em #ded);
+    filter:            drop-shadow(0 0 0.2em #ded);
+    -ms-filter:        "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#ded')";
+    filter:            "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#ded')";
 }
 
 img.footer_social_icon:hover{
-	-webkit-filter:	drop-shadow(0 0 0.6em #111);
-	filter:			drop-shadow(0 0 0.6em #111);
+    -webkit-filter:    drop-shadow(0 0 0.6em #111);
+    filter:            drop-shadow(0 0 0.6em #111);
 }
 
 /******************************************
@@ -270,64 +270,64 @@ img.footer_social_icon:hover{
 
 /* Content */
 div#content{
-	margin:		auto;
-	width:		90%;
-	max-width:	80em;
-	min-width:	60em;
+    margin:        auto;
+    width:        90%;
+    max-width:    80em;
+    min-width:    60em;
 }
 
 /* Sections */
 div.section{
-	background-color:	#9a9;
-	border-radius:		0 0 0.6em 0.6em;
-	padding:			0.3em 0.3em 0.5em 0.3em;
-	border:				0.1em solid #333;
-	border-top:			0.3em solid #333;
-	box-shadow:			0 0 0.3em #ded;
+    background-color:    #9a9;
+    border-radius:        0 0 0.6em 0.6em;
+    padding:            0.3em 0.3em 0.5em 0.3em;
+    border:                0.1em solid #333;
+    border-top:            0.3em solid #333;
+    box-shadow:            0 0 0.3em #ded;
 }
 
 /* Title for each section */
 div.section .section_title{
-	font-size:	130%;
-	font-style:	bold;
-	margin-top:	0.5em;
-	
+    font-size:    130%;
+    font-style:    bold;
+    margin-top:    0.5em;
+    
 }
 
 /* Entries */
 div.entry{
-	background-color:	#ded;
-	padding:			0.2em;
-	margin:				0.4em;
-	border:				0.1em solid #333;
-	box-shadow:			inset 0 0 0.2em #ded;
-	transition:			all .3s ease-in-out;
+    background-color:    #ded;
+    padding:            0.2em;
+    margin:                0.4em;
+    border:                0.1em solid #333;
+    box-shadow:            inset 0 0 0.2em #ded;
+    transition:            all .3s ease-in-out;
 }
 
 /* Comments */
 div.comment{
-	margin:	0.5em 1em 0.5em 1em;
+    margin:    0.5em 1em 0.5em 1em;
 }
 
 div.comment span.comment_user{
-	font-weight:	bold;
+    font-weight:    bold;
 }
 
 div.comment span.comment_date{
-	font-style:	italic;
-	font-size:	80%;
+    font-style:    italic;
+    font-size:    80%;
 }
 
 div.comment span.comment_date::before {
-	content:	" - ";
-	font-size:	80%;
+    content:    " - ";
+    font-size:    80%;
 }
 
 div.comment span.comment_date::before {
-	content:	" - ";
-	font-size:	80%;
+    content:    " - ";
+    font-size:    80%;
 }
 
 div.comment p.comment_text{
-	margin:	0.5em 1em 0.5em 0.5em;
+    margin:    0.5em 1em 0.5em 0.5em;
 }
