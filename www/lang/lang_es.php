@@ -69,6 +69,7 @@
     $lng['footer_help'] = 'Ayuda';
     $lng['footer_privacy'] = 'Privacidad';
     $lng['footer_app_google'] = 'App en Google Play';
+		$lng['footer_app_apple'] = 'App en App Store';
     $lng['cookie_message'] = '¡Utilizamos cookies! ¡Y nos obligan a cont&aacute;rtelo!<br/>Pero pocas, y de las buenas.';
     $lng['cookie_ok'] = 'Pues muy bien';
     $lng['cookie_more'] = 'Cu&eacute;ntame m&aacute;s';
