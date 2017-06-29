@@ -69,6 +69,7 @@
     $lng['footer_help'] = 'Laguntza';
     $lng['footer_privacy'] = 'Pribatutasuna';
     $lng['footer_app_google'] = 'App Google Play-an';
+		$lng['footer_app_apple'] = 'App App Store-an';
     $lng['cookie_message'] = 'Cookiek erabili ditugu!';
     $lng['cookie_ok'] = 'Oso ondo';
     $lng['cookie_more'] = 'Esan dit gehiago!';
