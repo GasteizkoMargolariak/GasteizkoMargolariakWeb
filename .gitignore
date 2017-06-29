@@ -17,6 +17,7 @@ pending/
 utils-local/
 copy
 remotecopy
+remoteadmin
 www-admin/redirect_s.php
 
 #SQL data
