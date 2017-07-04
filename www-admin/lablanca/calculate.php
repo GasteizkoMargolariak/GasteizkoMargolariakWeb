@@ -1,5 +1,6 @@
 <?php
 	$http_host = $_SERVER['HTTP_HOST'];
+	$server = "https://$http_host";
 	$default_host = substr($http_host, 0, strpos($http_host, ':'));
 	include("../functions.php");
 	$con = startdb();
@@ -9,12 +10,12 @@
 	else{
 		//Get year
 		$year = date("Y");
-		
+
 		//Get data to calculate
 		$section = mysqli_real_escape_string($con, $_GET['section']);
-		
+
 		switch ($section){
-		
+
 			//Calculate header section. Only the progress window is requires
 			case 'header':
 				echo "<h4>Paso 1: Cabecera de la p&aacute;gina de fiestas</h4>\n";
@@ -135,36 +136,106 @@
 				}
 				echo "<input type='button' value='A&ntilde;adir nuevo' onClick='newOffer();'/>\n";
 				break;
-			case 'schedule':
-				$day = $_GET('day');
-				switch($day){
-					case '25':
-						$q = mysqli_query($con, "SELECT * FROM festival_event WHERE gm = 1 AND start > str_to_date('$year-07-25 08:00:00', '%Y-%m-%d %T') AND start < str_to_date('$year-07-26 07:59:59', '%Y-%m-%d %T');");
-						break;
-					case '5':
-					
-						break;
-					case '6':
-					
-						break;
-					case '7':
-					
-						break;
-					case '8':
-					
-						break;
-					case '9':
-					
-						break;
-					default:
-						exit(-1);
-				}
-				//Load schedule tables
-				echo "<table>\n";
-				echo "<tr>\n";
-				echo "<th></th>";
-				echo "<tr/>\n";
-				echo "</table>\n";
+      case 'schedule':
+        echo("<table>\n");
+        $q_day = mysqli_query($con, "SELECT DISTINCT date(date_sub(start, INTERVAL 6 HOUR)) AS day FROM festival_event WHERE gm = 1 AND year(start) = $year;");
+        while ($r_day = mysqli_fetch_array($q_day)){
+          $q = mysqli_query($con, "SELECT festival_event.id AS id, title_es, title_en, title_eu, description_es, description_en, description_eu, start, end, place, place.name_es AS placename, place.address_es AS address FROM festival_event, place WHERE place = place.id AND date(date_sub(start, INTERVAL 6 HOUR)) = str_to_date('$r_day[day]', '%Y-%m-%d') AND gm = 1");
+					while ($r = mysqli_fetch_array($q)){
+						$id = $r['id'];
+						$title_es = $r['title_es'];
+						$title_en = $r['title_en'];
+						if ($title_en == $title_es){
+							$title_en = "";
+						}
+						$title_eu = $r['title_eu'];
+						if ($title_eu == $title_es){
+							$title_eu = "";
+						}
+						$description_es = $r['description_es'];
+						$description_en = $r['description_en'];
+						if ($description_en == $description_es){
+							$description_en = "";
+						}
+						$description_eu = $r['description_eu'];
+						if ($description_eu == $description_es){
+              $description_eu = "";
+            }
+						$placeid = $r['place'];
+						$place = $r['placename'];
+						$address = $r['address'];
+						$month = substr($r_day['day'], 5, 2);
+						$day = substr($r_day['day'], 8, 2);
+						$start_h = substr($r['start'], 11, 2);
+						$start_m = substr($r['start'], 14, 2);
+						$end = $r['end'];
+						$end_h = "";
+						$end_m = "";
+						if (strlen($end) > 0){
+							$end_h = substr($r['start'], 11, 2);
+							$end_m = substr($r['start'], 14, 2);
+						}
+?>
+						<tr>
+							<td>
+								<input type="text" value="<?=$day?>" placeholder="d" class="short"/> de 
+								<select>
+									<option value="07"
+<?php
+										if ($month == "07"){
+											echo("selected");
+										}
+?>
+									>julio</option>
+									<option value="08"
+<?php
+										if ($month == "08"){
+											echo("selected");
+										}
+?>
+									>agosto</option>
+								</select><br/>
+								Empieza:
+								<input type="text" placeholder="HH" value="<?=$start_h?>" class="short"/>:<input type="text" placeholder="MM" value="<?=$start_m?>" class="short"/><br/>
+								Termina:
+								<input type="text" placeholder="HH" value="<?=$end_h?>" class="short" class="short"/>:<input type="text" placeholder="MM" value="<?=$end_m?>" class="short"/>
+							</td>
+							<td class="name">
+								Nombre:<br/>
+								<input type="text" value="<?=$title_es?>" placeholder="Castellano"/><br/>
+								<input type="text" value="<?=$title_en?>" placeholder="Ingl&eacute;s"/><br/>
+								<input type="text" value="<?=$title_eu?>" placeholder="Euskera"/>
+							</td>
+							<td class="description">
+								Description:<br/>
+            	  <input type="text" value="<?=$description_es?>" placeholder="Castellano"/><br/>
+	              <input type="text" value="<?=$description_en?>" placeholder="Ingl&eacute;s"/><br/>
+  	            <input type="text" value="<?=$description_eu?>" placeholder="Euskera"/>
+    	        </td>
+							<td class="details">
+								Lugar:<br/>
+								<select>
+									<option value='-2'>SELECCIONA...</option>
+									<option value='-1'>A&Ntilde;ADIR NUEVO...</option>
+<?php
+										$q_p = mysqli_query($con, "SELECT * FROM place;");
+										while ($r_p = mysqli_fetch_array($q_p)){
+											if ($r_p['id'] == $placeid){
+												echo("<option value='$r_p[id]' selected='selected'>$r_p[name_es] ($r_p[address_es])</option>\n");
+											}
+											else{
+												echo("<option value='$r_p[id]'>$r_p[name_es] ($r_p[address_es])</option>\n");
+											}
+										}
+?>
+								</select><hr/>
+								<input type="button" value="Borrar evento"/>
+							</td>
+						</tr>
+<?php
+					}
+        }
+				echo("</table>\n");
 				break;
 		}
 	}

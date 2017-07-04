@@ -165,6 +165,51 @@ div#form_new_offer div#controls input{
 	margin:	2em 4em 2em 4em;
 }
 
+div#section_schedule div#status_schedule table{
+	width:            100%;
+  margin:           auto;
+  border-collapse:  collapse;
+}
+
+div#section_schedule div#status_schedule table tr{
+	width: 100%;
+}
+
+div#section_schedule div#status_schedule table tr td{
+	padding: 0.3em;
+	border: 0.1em solid black;
+  text-align: center;
+}
+
+div#section_schedule div#status_schedule table tr td.time{
+	width: 25%;
+}
+
+div#section_schedule div#status_schedule table tr td.name{
+	width: 20%;
+}
+
+div#section_schedule div#status_schedule table tr td.description{
+	width: 45%;
+}
+
+div#section_schedule div#status_schedule table tr td.details{
+  width: 20%;
+}
+
+div#section_schedule div#status_schedule table tr td.details select{
+	width: 100%;
+}
+
+div#section_schedule div#status_schedule table tr td input{
+	width: 100%;
+}
+
+div#section_schedule div#status_schedule table tr td input[type='text'].short, input[type='number'].short{
+	width: 2.5em;
+	margin: 0em;
+}
+
 div.entry_schedule table.new_event{
 	width:						80%;
 	margin:						auto;

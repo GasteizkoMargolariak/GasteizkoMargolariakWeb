@@ -97,7 +97,7 @@ function calculate(section){
 				// Get page
 				if(XMLHttpRequest)
 					var x = new XMLHttpRequest();
-				else 
+				else
 					var x = new ActiveXObject("Microsoft.XMLHTTP");
 				x.open("GET", "/lablanca/calculate.php?section=header", true);
 				x.send();
@@ -143,6 +143,21 @@ function calculate(section){
 			break;
 		case 'schedule':
 			console.log('Recalculating schedule...');
+				setTimeout(function(){
+				// Get page
+				if(XMLHttpRequest)
+					var x = new XMLHttpRequest();
+				else
+					var x = new ActiveXObject("Microsoft.XMLHTTP");
+				x.open("GET", "/lablanca/calculate.php?section=schedule", true);
+				x.send();
+				x.onreadystatechange = function(){
+				if(x.readyState == 4){
+					if(x.status == 200)
+						document.getElementById('status_schedule').innerHTML = x.responseText;
+					}
+				}
+			}, 500);
 			break;
 	}
 }

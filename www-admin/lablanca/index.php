@@ -1,5 +1,6 @@
 <?php
 	$http_host = $_SERVER['HTTP_HOST'];
+	$server = "https://$http_host";
 	$default_host = substr($http_host, 0, strpos($http_host, ':'));
 	include("../functions.php");
 	$con = startdb();
@@ -154,10 +155,10 @@
 					...calculando...
 				</div>
 				<div class='entry entry_schedule' id='entry_schedule_25'>
-					<h3><img src='/img/misc/slid-right.png' onClick='expandSchedule(25);'/>25 de julio</h4>
+					<h3><img src='<?=$server?>>/img/misc/slid-right.png' onClick='expandSchedule(25);'/>25 de julio</h4>
 					<div id='list_schedule_25' class='list_schedule'>
 					</div>
-					Nuevo: 
+					Nuevo:
 					<table class='new_event'>
 						<tr class='title'>
 							<th>Castellano</th>
