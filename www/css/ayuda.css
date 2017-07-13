@@ -1,36 +1,36 @@
 div#content{
-	display:	table;
+    display:    table;
 }
 
 div#content div.content_row{
-	display:	table-row;
+    display:    table-row;
 }
 
 div#content div.content_row div.content_cell{
-	padding:	2em;
-	width:		50%;
-	display:	table-cell;
+    padding:    2em;
+    width:        50%;
+    display:    table-cell;
 }
 
 div#content div.content_row div.content_cell div.section{
-	width:	100%;
+    width:    100%;
 }
 
 div.section div.entry{
-	min-height:	16em;
+    min-height:    16em;
 }
 
 div.section div.entry table#association{
-	width:	100%;
+    width:    100%;
 }
 
 div.section div.entry table#association td{
-	padding:		0.4em 0.1em 0.4em 0.1em;
-	vertical-align:	top;
+    padding:        0.4em 0.1em 0.4em 0.1em;
+    vertical-align:    top;
 }
 
 div.section div.entry table#association td.name{
-	font-weight:	bold;
-	text-align:		right;
-	width:			35%;
+    font-weight:    bold;
+    text-align:        right;
+    width:            35%;
 }

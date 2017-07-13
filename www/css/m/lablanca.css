@@ -1,32 +1,38 @@
 div#content_table{
-	display:	block;
+    display:    block;
 }
 
 div#content_table div.content_tr{
-	display:	inline;
-	
+    display:    inline;
+    
 }
 
 div#content_table div.content_tr div.content_td{
-	padding:		0;
-	width:			100%;
-	display:		block;
-	margin-bottom:	2em;
+    padding:        0;
+    width:            100%;
+    display:        block;
+    margin-bottom:    2em;
 }
 
 div#content_table div.content_tr div#content_td_schedule{
-	width:		100%;
+    width:        100%;
 }
 
 div#content_table div.content_tr div#content_td_prices{
-	width:		100%;
+    width:        100%;
+}
+
+div#festivals_image_top_container div#festivals_image_container img#festivals_image{
+    border-radius:    0.5em;
+    max-width:        initial;
+    max-height:        15em;
 }
 
 div#schedule{
-	display:		block;
-	margin-right:	0em;
+    display:        block;
+    margin-right:    0em;
 }
 
 div#prices{
-	display:		block;
+    display:        block;
 }
