@@ -1,3 +1,16 @@
+div#shortcouts_container{
+    width: 95%;
+    margin: auto auto 2em auto;
+}
+
+div#shortcouts_container div#shortcouts{
+    width: 100%;
+}
+
+div#shortcouts_container div#shortcouts li{
+    margin: 0.3em auto 0.3em auto;
+}
+
 div#content{
     display:    block;
 }
