@@ -391,7 +391,8 @@
                     }
                     echo "<div class='td'><div id='upcoming_text'>\n";
                     echo "<h3 class='entry_title'><a itemprop='url' href='$proto$http_host/actividades/$r_activity[permalink]'>$r_activity[title]</a></h3>\n";
-                    echo "<p>". cutText($r_activity['text'], 250, "$lng[index_read_more]", "$http_host/actividades/$r_activity[permalink]") . "</p>\n";
+                    echo "<p class='mobile'>". cutText($r_activity['text'], 250, "$lng[index_read_more]", "$http_host/actividades/$r_activity[permalink]") . "</p>\n";
+                    echo "<p class='desktop'>". cutText($r_activity['text'], 450, "$lng[index_read_more]", "$http_host/actividades/$r_activity[permalink]") . "</p>\n";
                     echo "</div></div>\n";
                     echo "<div class='td'><div id='upcoming_details'>\n";
                     echo "<table>\n";
@@ -470,7 +471,8 @@
                                             echo "<a href='$proto$http_host/blog/$r_post[permalink]'><img src='$proto$http_host/img/blog/miniature/$r_post_image[image]'/></a>\n";
                                         }
                                         echo "<h3 class='entry_title'><a itemprop='url' href='$proto$http_host/blog/$r_post[permalink]'>$r_post[title]</a></h3>\n";
-                                        echo "<p>". cutText($r_post['text'], 100, "$lng[index_read_more]", "$proto$http_host/blog/$r_post[permalink]") . "</p>\n";
+                                        echo "<p class='mobile'>". cutText($r_post['text'], 100, "$lng[index_read_more]", "$proto$http_host/blog/$r_post[permalink]") . "</p>\n";
+                                        echo "<p class='desktop'>". cutText($r_post['text'], 150, "$lng[index_read_more]", "$proto$http_host/blog/$r_post[permalink]") . "</p>\n";
                                         echo "<span>" . formatDate($r_post['dtime'], $lang, false) . "</span>\n";
                                         echo "</div>\n";
                                     }
@@ -549,7 +551,8 @@
                             //echo "<div class='activity_text'>\n";
                             //echo "<p>". cutText($r_activity['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</p>\n";
                             if ($r_activity['after'] == ''){
-                                echo "<td class='latest_activity_text'>" . cutText($r_activity['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</td>\n";
+                                echo "<td class='mobile latest_activity_text'>" . cutText($r_activity['text'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</td>\n";
+                                echo "<td class='desktop latest_activity_text'>" . cutText($r_activity['text'], 400, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</td>\n";
                             }
                             else{
                                 echo "<td class='latest_activity_text'>" . cutText($r_activity['after'], 300, "$lng[index_read_more]", "$proto$http_host/actividades/$r_activity[permalink]") . "</td>\n";
