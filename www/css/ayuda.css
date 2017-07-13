@@ -12,12 +12,29 @@ div#content div.content_row div.content_cell{
     display:    table-cell;
 }
 
+div#shortcouts_container{
+    width: 100%;
+    text-align: center;
+}
+
+div#shortcouts_container div#shortcouts{
+    width: 70%;
+    margin: auto;
+}
+
+div#shortcouts_container div#shortcouts
+
+
 div#content div.content_row div.content_cell div.section{
     width:    100%;
 }
 
-div.section div.entry{
-    min-height:    16em;
+div#content div.section div.entry{
+	padding: 1.5em;
+}
+
+div#content div.section div.entry ul li{
+	margin-top: 1em;
 }
 
 div.section div.entry table#association{
