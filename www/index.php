@@ -489,17 +489,15 @@
                 }
 ?>
                 <div class='section' itemscope itemtype='http://schema.org/Organization'>
-                    <meta itemprop='url' content='<?php echo("$server"); ?>'/>
+                    <meta itemprop='url' content='<?=$server?>'/>
                     <h3 class='section_title' itemprop='name'><?=$lng['index_us']?></h3>
                     <div class='entry' id='us'>
                         <p itemprop='description'><?=$lng['index_us_content']?></p>
-                        <div>
-                            <img itemprop='logo' src='<?=$server?>/img/logo/GasteizkoMargolariak.png'/>
-                        </div>
+                    </div> <!-- .entry -->
+                    <a class='go_to_section' href='<?=$server?>/nosotros/'><?=$lng['index_us_more']?></a>
+                    </br>
                 </div> <!-- .section -->
-                <a class='go_to_section' href='<?=$server?>/nosotros/'><?=$lng['index_us_more']?></a>
-                <br/>
-            </div>
+								<br/>
             <div id='content_table'>
                 <div class='content_row'>
                     <div class='content_cell' id='cell_posts'>
@@ -569,8 +567,10 @@
                                 if (mysqli_num_rows($q_photos) == 0){
 ?>
                                     <div class='entry'><?=$lng['index_no_photos']?></div>
+<?php
                                 }
                                 else{
+?>
                                     <div class='entry'>
                                         <table id='table_photos'>
                                             <tr>

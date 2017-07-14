@@ -180,13 +180,13 @@ div#us p{
 }
 
 div#us div{
-    position:    absolute;
     top:        4em;
     right:        3em;
     text-align:    center;
 }
 
 div#us div img{
+    position: absolute;
     opacity:    0.4;
     max-height:    100px;
     max-width:    100px;
