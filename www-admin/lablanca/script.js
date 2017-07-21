@@ -36,7 +36,7 @@ function saveNewOffer(year){
     var text_eu = document.getElementById('new_offer_text_eu').value;
     var days = document.getElementById('new_offer_days').value;
     var price = document.getElementById('new_offer_price').value;
-    
+
     //Validate values
     if (name_es.length == 0){
         alert("Debes introducir el nombre, al menos en castellano.");
@@ -58,7 +58,7 @@ function saveNewOffer(year){
         document.getElementById('new_offer_days').focus();
         return;
     }
-    
+
     // Encode required values
     name_es = encodeURI(name_es);
     name_en = encodeURI(name_en);
@@ -66,11 +66,11 @@ function saveNewOffer(year){
     text_es = encodeURI(text_es);
     text_en = encodeURI(text_en);
     text_eu = encodeURI(text_eu);
-    
+
     // Get page
     if(XMLHttpRequest)
         var x = new XMLHttpRequest();
-    else 
+    else
         var x = new ActiveXObject("Microsoft.XMLHTTP");
     x.open("POST", "/lablanca/insertoffer.php", true);
     var params = "year=" + year + "&name_es=" + name_es + "&name_en=" + name_en + "&name_eu=" + name_eu + "&text_es=" + text_es + "&text_en=" + text_en + "&text_eu=" + text_eu + "&price=" + price + "&days=" + days;
@@ -114,7 +114,7 @@ function calculate(section){
                 // Get page
                 if(XMLHttpRequest)
                     var x = new XMLHttpRequest();
-                else 
+                else
                     var x = new ActiveXObject("Microsoft.XMLHTTP");
                 x.open("GET", "/lablanca/calculate.php?section=pricesprogress", true);
                 x.send();
@@ -129,7 +129,7 @@ function calculate(section){
                 // Get page
                 if(XMLHttpRequest)
                     var x = new XMLHttpRequest();
-                else 
+                else
                     var x = new ActiveXObject("Microsoft.XMLHTTP");
                 x.open("GET", "/lablanca/calculate.php?section=pricesoffers", true);
                 x.send();
@@ -147,50 +147,11 @@ function calculate(section){
     }
 }
 
-function uploadHeaderImage(event, id){
-    var selectedFile = event.target.files[0];
-    
-    //Set image on page
-    var reader = new FileReader();
-    var imgtag = document.getElementById("header_img");
-    reader.onload = function(event) {
-        imgtag.src = event.target.result;
-        
-        //Upload image;
-        var formData = new FormData();
-        var file = document.getElementById('header_img_selector').files[0];
-        formData.append('img', selectedFile, selectedFile.name);
-        //for(var pair of formData.entries()) {
-        //    console.log(pair[0]+ ', '+ pair[1]); 
-        //}
-        //console.log("FD" + formData);
-        
-        // Get page
-        if(XMLHttpRequest)
-            var x = new XMLHttpRequest();
-        else 
-            var x = new ActiveXObject("Microsoft.XMLHTTP");
-        x.open("POST", "/lablanca/uploadimage.php?type=header&id=" + id, true);
-        x.onload = function(){
-        if(x.readyState == 4){
-            if(x.status == 200)
-                console.log("TRUE")
-                return true;
-            }
-            else{
-                console.log("FASLE");
-            }
-        }
-        x.send(formData);
-    };
-    reader.readAsDataURL(selectedFile);
-}
-
 function updateField(table, field, value, id, type = 'text', canBeNull = true){
     // Get page
     if(XMLHttpRequest)
         var x = new XMLHttpRequest();
-    else 
+    else
         var x = new ActiveXObject("Microsoft.XMLHTTP");
     x.open("POST", "/lablanca/execute.php", true);
     var params = "action=update&table=" + table + "&field=" + field + "&value=" + encodeURI(value) + "&id=" + id + "&type=" + type;
@@ -208,7 +169,7 @@ function deleteOffer(id){
     // Get page
     if(XMLHttpRequest)
         var x = new XMLHttpRequest();
-    else 
+    else
         var x = new ActiveXObject("Microsoft.XMLHTTP");
     x.open("POST", "/lablanca/execute.php", true);
     var params = "action=delete&table=festival_offer&id=" + id;

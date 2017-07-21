@@ -234,7 +234,7 @@
     
     function login($con, $user, $pass){
         session_start();
-        $q = mysqli_query($con,"SELECT id, md5(salt) AS s, username FROM user WHERE (lower(username) = lower('$user') OR lower(email) = lower('$user')) AND password = md5('$pass');");
+        $q = mysqli_query($con,"SELECT id, salt, username AS username, sha1(salt) AS s FROM user WHERE (lower(username) = lower('$user') OR lower(email) = lower('$user')) AND password = sha1(concat('$pass', sha1(salt)));");
         if (mysqli_num_rows($q) == 1){
             $r = mysqli_fetch_array($q);
             $_SESSION['id'] = $r['id'];
@@ -250,7 +250,7 @@
     
     function checkSession($con){
         session_start(['cookie_lifetime' => 1800,]);
-        $qr = mysqli_query($con, "SELECT id FROM user WHERE id = '$_SESSION[id]' AND md5(salt) = '$_SESSION[salt]';");
+        $qr = mysqli_query($con, "SELECT id FROM user WHERE id = '$_SESSION[id]' AND sha1(salt) = '$_SESSION[salt]';");
         //error_log("SELECT id FROM user WHERE id = '$_SESSION[id]' AND md5(salt) = '$_SESSION[salt]';");
         if (mysqli_num_rows($qr) == 1)
             return true;
