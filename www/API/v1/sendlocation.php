@@ -65,7 +65,7 @@
     $action = mysqli_real_escape_string($con, $_GET[GET_ACTION]);
 
     //Validate user
-    $q = mysqli_query($con, "SELECT id FROM user WHERE lower(username) = lower('$user') AND password = '$pass';");
+    $q = mysqli_query($con, "SELECT id FROM user WHERE (lower(username) = lower('$user') OR lower(email) = lower('$user')) AND password = sha1(concat('$pass', sha1(salt)))");
     if (mysqli_num_rows($q) == 0){
         error_log(":SECURITY: Reporting location with wrong credentials (IP $_SERVER[REMOTE_ADDR])");
         http_response_code(403); // Forbidden
