@@ -4,7 +4,7 @@
     include("functions.php");
     $proto = getProtocol();
     $con = startdb();
-    $server = "$server";
+    $server = "$proto$http_host";
 
     //Language
     $lang = selectLanguage();
@@ -84,24 +84,50 @@
                 if ($festivals == 1){
 ?>
                     <div class='section' id='festivals' itemscope itemtype='http://schema.org/Event'>
+                        <div class='hidden' itemprop='organizer performer' itemscope itemtype='http://schema.org/Organization'>
+                            <meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>
+                            <meta itemprop='name' content='Gasteizko Margolariak'/>
+                            <meta itemprop='logo' content='<?=$server?>/img/logo/logo.png'/>
+                            <meta itemprop='foundingDate' content='2013-02-03'/>
+                            <meta itemprop='telephone' content='+34637140371'/>
+                        </div> <!-- .hidden -->
+
                         <meta itemprop='inLanguage' content='<?=$lang?>'/>
                         <meta itemprop='name' content='<?=$lng['index_festivals_header']?> <?=$year?>'/>
                         <meta itemprop='description' content='<?=$lng['index_festivals_header']?> <?=$year?>'/>
                         <meta itemprop='startDate' content='<?=$year?>-08-04'/>
                         <meta itemprop='endDate' content='<?=$year?>-08-09'/>
-                        <meta itemprop='url' content='<?=$proto?><?=$http_host?>/lablanca/'/>
-                        <span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'><meta itemprop='address' itemprop='name' content='Vitoria-Gasteiz'/></span>
+                        <meta itemprop='url' content='<?=$server?>/lablanca/'/>
+                        <span class='hidden' itemprop='location' itemscope itemtype='http://schema.org/Place'>
+                            <meta itemprop='name' content='Vitoria-Gasteiz'/>
+                            <meta itemprop='address' content='Vitoria-Gasteiz'/>
+                        </span>
                         <h3 class='section_title'><?=$lng['index_festivals_header']?> <?=$year?></h3>
                         <div class='entry' id='festivals_summary'>
 <?php
-                            //Summary
+                            // Offers (for metadata)
+                            $q_offer = mysqli_query($con, "SELECT name_$lang AS name, description_$lang AS description, price FROM festival_offer WHERE year = $year");
+                            while($r_offer = mysqli_fetch_array($q_offer)){
+?>
+                                <span class='hidden' itemprop='offers' itemscope itemtype='http://schema.org/Offer'>
+                                    <meta itemprop='name' content='<?=$r_offer['name']?>'/>
+                                    <meta itemprop='description' content='<?=$r_offer['description']?>'/>
+                                    <meta itemprop='price' content='<?=$r_offer['price']?>'/>
+                                    <meta itemprop='priceCurrency' content='EUR'/>
+                                    <meta itemprop='url' content='<?=$server?>/lablanca/'/>
+                                    <meta itemprop='availability' content='Sold Out'/>
+                                    <meta itemprop='validfrom' content='<?=$year?>-07-25'/>
+                                </span>
+<?php
+                            }
+                            // Summary
                             $q_festivals = mysqli_query($con, "SELECT text_$lang AS text, summary_$lang AS summary, img FROM festival WHERE year = $year;");
                             if(mysqli_num_rows($q_festivals)){
                                 $r_festivals = mysqli_fetch_array($q_festivals);
                                 if ($r_festivals['img'] != ''){
 ?>
-                                    <meta itemprop='image' content='<?=$server?>/img/fiestas/<?=$r_festivals['img']?>'/>
-                                    <img id='festivals_image' alt='<?=$lng['index_festivals_header'] . ' ' . $year?>' src='<?=$server?>/img/fiestas/<?=$r_festivals['img']?>'/>
+                                    <meta itemprop='image' content='<?=$server?>/img/fiestas/view/<?=$r_festivals['img']?>'/>
+                                    <img id='festivals_image' alt='<?=$lng['index_festivals_header'] . ' ' . $year?>' src='<?=$server?>/img/fiestas/preview/<?=$r_festivals['img']?>'/>
 <?php
                                 }
                                 if ($r_festivals['summary'] != ''){
@@ -167,7 +193,7 @@
                                                         <tr>
                                                             <td>
                                                                 <a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>+Gasteizko+Margolariak)&z=14&ll=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>'>
-                                                                    <img alt='<?=$r_sch_curr['title']?>'' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
+                                                                    <img alt='<?=$r_sch_curr['title']?>'' src='<?server?>/img/misc/pinpoint.png'/>
                                                                 </a>
                                                             </td>
                                                             <td>
@@ -224,7 +250,7 @@
                                                         <tr>
                                                             <td>
                                                                 <a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>'>
-                                                                    <img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
+                                                                    <img alt=' ' src='<?=server?>/img/misc/pinpoint.png'/>
                                                                 </a>
                                                             </td>
                                                             <td>
@@ -286,7 +312,7 @@
                                                         <tr>
                                                             <td>
                                                                 <a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_curr[lat]?>,<?=$r_sch_curr[lon]?>'>
-                                                                    <img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
+                                                                    <img alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
                                                                 </a>
                                                             </td>
                                                             <td>
@@ -334,7 +360,7 @@
                                                         <tr>
                                                             <td>
                                                                 <a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>+(My+Point)&z=14&ll=<?=$r_sch_next[lat]?>,<?=$r_sch_next[lon]?>'>
-                                                                    <img alt=' ' src='<?=$proto?><?=$http_host?>/img/misc/pinpoint.png'/>
+                                                                    <img alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
                                                                 </a>
                                                             </td>
                                                             <td>
@@ -362,7 +388,7 @@
                                 </div> <!-- festivals_schedule_cell -->
                             </div> <!-- festivals_schedule_row -->
                         </div> <!-- festivals_schedule_table -->
-                        <a class='go_to_section' href='<?=$proto?><?=$http_host?>/lablanca/'><?=$lng['index_festivals_link']?></a>
+                        <a class='go_to_section' href='<?=server?>/lablanca/'><?=$lng['index_festivals_link']?></a>
                         <br/>
                     </div> <!-- festivals - section-->
 <?php
@@ -385,7 +411,7 @@
                                 <meta itemprop='address' itemprop='name' content='=<?=$r_activity[city]?>'/>
                             </span>
                             <meta itemprop='url' content='<?=$server?>/actividades/<?=$r_activity['permalink']?>'/>
-                            <div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>
+                            <div class='hidden' itemprop='organizer performer' itemscope itemtype='http://schema.org/Organization'>
                                 <meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>
                                 <meta itemprop='name' content='Gasteizko Margolariak'/>
                                 <meta itemprop='logo' content='<?=$server?>/img/logo/logo.png'/>
@@ -436,6 +462,8 @@
                                                             <?=$lng['index_upcoming_activity_free']?>
                                                             <meta itemprop='priceCurrency' content='EUR'/>
                                                             <meta itemprop='price' content='0'/>
+                                                            <meta itemprop='availability' content='Sold Out'/>
+                                                            <meta itemprop='validfrom' content='<?=$r_activity['isodate']?>'/>
                                                             <meta itemprop='url' content='<?=$server?>/actividades/<?=$r_activity['permalink']?>'/>
                                                         </td>
                                                     </tr>
@@ -458,6 +486,8 @@
                                                         <td itemprop='offers' itemscope itemtype='http://schema.org/Offer'>
                                                             <?=$r_activity['price']?> €
                                                                 <meta itemprop='priceCurrency' content='EUR'/>
+                                                                <meta itemprop='availability' content='Sold Out'/>
+                                                                <meta itemprop='validfrom' content='<?=$r_activity['isodate']?>'/>
                                                                 <meta itemprop='price' content='<?=$r_activity['price']?>'/>
                                                         </td>
 <?php
@@ -534,9 +564,8 @@
                                             if (mysqli_num_rows($q_post_image) > 0){
                                                 $r_post_image = mysqli_fetch_array($q_post_image);
 ?>
-                                                <meta itemprop='image' content='<?=$server?>/img/blog/preview/<?=$r_post_image['image']?>'/>
                                                 <a href='<?=$server?>/blog/<?=$r_post['permalink']?>'>
-                                                    <img src='<?=$server?>/img/blog/miniature/<?=$r_post_image['image']?>'/>
+                                                    <img itemprop='image' src='<?=$server?>/img/blog/miniature/<?=$r_post_image['image']?>'/>
                                                 </a>
 <?php
                                             } //if (mysqli_num_rows($q_post_image) > 0)
@@ -628,7 +657,7 @@
                                         <meta itemprop='address' itemprop='name' content='<?=$r_activity['city']?>'/>
                                         <meta itemprop='name' content='<?=$r_activity['city']?>'/>
                                     </span>
-                                    <div class='hidden' itemprop='organizer' itemscope itemtype='http://schema.org/Organization'>
+                                    <div class='hidden' itemprop='organizer performer' itemscope itemtype='http://schema.org/Organization'>
                                         <meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>
                                         <meta itemprop='name' content='Gasteizko Margolariak'/>
                                         <meta itemprop='logo' content='<?=$server?>/img/logo/logo.png'/>
@@ -636,6 +665,21 @@
                                         <meta itemprop='telephone' content='+34637140371'/>
                                         <meta itemprop='url' content='<?=$server?>'/>
                                     </div> <!-- .hidden -->
+
+
+
+                                    <span class='hidden' itemprop='offers' itemscope itemtype='http://schema.org/Offer'>
+                                        <meta itemprop='name' content='<?=$r_activity['title']?>'/>
+                                        <meta itemprop='description' content='<?=$r_activity['text']?>'/>
+                                        <meta itemprop='price' content='<?=$r_activity['price']?>'/>
+                                        <meta itemprop='priceCurrency' content='EUR'/>
+                                        <meta itemprop='url' content='<?=$server?>/actividades/<?=$r_activity['permalink']?>'/>
+                                        <meta itemprop='availability' content='Sold Out'/>
+                                        <meta itemprop='validfrom' content='<?=$r_activity['isodate']?>'/>
+                                    </span>
+
+
+
                                     <h3 class='entry_title'>
                                         <a itemprop='url' href='<?=$server?>/actividades/<?=$r_activity['permalink']?>'><?=$r_activity['title']?></a>
                                     </h3>
