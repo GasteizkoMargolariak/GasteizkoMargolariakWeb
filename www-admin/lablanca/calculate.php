@@ -9,16 +9,16 @@
     else{
         //Get year
         $year = date("Y");
-        
+
         //Get data to calculate
         $section = mysqli_real_escape_string($con, $_GET['section']);
-        
+
         switch ($section){
-        
+
             //Calculate header section. Only the progress window is requires
             case 'header':
                 echo "<h4>Paso 1: Cabecera de la p&aacute;gina de fiestas</h4>\n";
-//                 echo "<div class='entry status' id='status_header'>\n";
+                // echo "<div class='entry status' id='status_header'>\n";
                 echo "Estado:\n";
                 $q = mysqli_query($con, "SELECT * FROM festival WHERE year = $year;");
                 if (mysqli_num_rows($q) == 0){
@@ -50,7 +50,7 @@
                     echo "</li></ul>\n";
                 }
                 break;
-                
+
             //Calculate prices progress section.
             case 'pricesprogress':
                 echo "Estado:<ul><li>\n";
@@ -84,7 +84,7 @@
                 }
                 echo "</li></ul>\n";
                 break;
-        
+
             //Calculate offers window
             case 'pricesoffers':
                 echo "<h4>Ofertas:</h4>\n";
@@ -142,19 +142,14 @@
                         $q = mysqli_query($con, "SELECT * FROM festival_event WHERE gm = 1 AND start > str_to_date('$year-07-25 08:00:00', '%Y-%m-%d %T') AND start < str_to_date('$year-07-26 07:59:59', '%Y-%m-%d %T');");
                         break;
                     case '5':
-                    
                         break;
                     case '6':
-                    
                         break;
                     case '7':
-                    
                         break;
                     case '8':
-                    
                         break;
                     case '9':
-                    
                         break;
                     default:
                         exit(-1);

@@ -157,7 +157,7 @@
                     <h3><img src='/img/misc/slid-right.png' onClick='expandSchedule(25);'/>25 de julio</h4>
                     <div id='list_schedule_25' class='list_schedule'>
                     </div>
-                    Nuevo: 
+                    Nuevo:
                     <table class='new_event'>
                         <tr class='title'>
                             <th>Castellano</th>
@@ -186,7 +186,7 @@
                         <tr>
                             <td>
                                 <input type='number' value='00' id='new_event_25_start_h'/>:
-                                <input type='number' value='00' id='new_event_25_start_m'/> -- 
+                                <input type='number' value='00' id='new_event_25_start_m'/> --
                                 <input type='number' id='new_event_25_end_h'/>:
                                 <input type='number' id='new_event_25_end_m'/>
                             </td>
@@ -255,7 +255,6 @@
                 </div>
             </div>
         </div>
-        
     </body>
 </html>
 <?php } ?>
