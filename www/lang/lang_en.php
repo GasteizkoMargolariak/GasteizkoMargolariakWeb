@@ -32,7 +32,7 @@
     $lng['index_festivals_city_schedule'] = 'Programa de fiestas municipal';
     $lng['index_festivals_schedule_now'] = 'Ahora:';
     $lng['index_festivals_schedule_next'] = 'Siguiente:';
-    $lng['index_upcoming_activity'] = 'Upcoming activity';
+    $lng['index_upcoming_activity'] = 'Upcoming activities';
     $lng['index_upcoming_activity_see'] = 'See more';
     $lng['index_upcoming_activity_see_all'] = 'See all actvities';
     $lng['index_upcoming_activity_price'] = 'Price: ';

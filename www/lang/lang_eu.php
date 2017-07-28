@@ -32,7 +32,7 @@
     $lng['index_festivals_city_schedule'] = 'Jaiako programazioa';
     $lng['index_festivals_schedule_now'] = 'Orain:';
     $lng['index_festivals_schedule_next'] = 'Hurrengoa:';
-    $lng['index_upcoming_activity'] = 'Hurrengo ekitaldia';
+    $lng['index_upcoming_activity'] = 'Hurrengo ekitaldiak';
     $lng['index_upcoming_activity_see'] = 'Gehiago ikusi';
     $lng['index_upcoming_activity_see_all'] = 'Ekitalde gustiak';
     $lng['index_upcoming_activity_price'] = 'Prezioa: ';
