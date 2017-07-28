@@ -23,7 +23,7 @@
     $lng['section_help'] = 'Ayuda';
     
     // /index.php
-    $lng['index_title'] = 'Gasteizko Margolariak';
+    $lng['index_title'] = 'Gasteizko Margolariak - Cuadrilla de Blusas y Neskas';
     $lng['index_description'] = 'Cuadrilla de Blusas y Neskas Gasteizko Margolariak';
     $lng['index_festivals_header'] = 'Fiestas';
     $lng['index_festivals_link'] = 'Ir a la p&aacute;gina de fiestas';

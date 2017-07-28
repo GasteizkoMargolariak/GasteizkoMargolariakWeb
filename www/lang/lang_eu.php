@@ -23,8 +23,8 @@
     $lng['section_help'] = 'Laguntza';
     
     //index.php
-    $lng['index_title'] = 'Gasteizko Margolariak';
-    $lng['index_description'] = ' Gasteizko Margolariak';
+    $lng['index_title'] = 'Gasteizko Margolariak Blusa eta Neska Taldea';
+    $lng['index_description'] = ' Gasteizko Margolariak Blusa eta Neska Taldea';
     $lng['index_festivals_header'] = 'Jaiak';
     $lng['index_festivals_link'] = 'Joan jaiak horrialdera';
     $lng['index_festivals_location'] = 'Hemen nago!';
