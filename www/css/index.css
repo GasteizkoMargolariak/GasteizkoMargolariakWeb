@@ -146,12 +146,11 @@ div#upcoming_text{
 
 /* Contains the details of the upcoming activity */
 div#upcoming_details{
-    display:        inline-block;
-    vertical-align:    middle;
-    float:            right;
-    margin-right:    0;
-    text-align:        center;
-    padding-bottom:    2em;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 2em;
+    min-width: 24em;
 }
 
 

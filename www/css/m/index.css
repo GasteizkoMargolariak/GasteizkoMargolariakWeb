@@ -33,8 +33,10 @@ div#upcoming_text{
 
 /* Contains the details of the upcoming activity */
 div#upcoming_details{
-    display:    block;
-    float:        initial;
+    display:block;
+    float: initial;
+    width: 80%;
+    margin: 2em auto 2em auto;
 } 
 
 div#upcoming_details table{
