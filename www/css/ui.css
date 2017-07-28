@@ -176,7 +176,7 @@ div#header img{
     vertical-align:    middle;
     -webkit-filter:    drop-shadow(0 0 0.4em #dde);
     filter:            drop-shadow(0 0 0.4em #dde);
-    border:            0.1em solid #000011;
+    /*border:            0.1em solid #000011;*/
     border-radius:    100%;
     -ms-filter:        "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#dde')";
     filter:            "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#dde')";
