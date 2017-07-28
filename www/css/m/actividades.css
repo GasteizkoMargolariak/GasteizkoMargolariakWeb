@@ -1,15 +1,15 @@
 div#middle_column{
-	width:	100%;
+    width:    100%;
 }
 
 div#activity_image{
-	margin:	1em;
+    margin:    1em;
 }
 
 div#activity_image img{
-	max-width:	100%;
+    max-width:    100%;
 }
 
 table.future_data td{
-	padding:	0.3em 0.2em 0.3em 0.2em;
+    padding:    0.3em 0.2em 0.3em 0.2em;
 }

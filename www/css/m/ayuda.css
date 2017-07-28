@@ -1,14 +1,27 @@
+div#shortcouts_container{
+    width: 95%;
+    margin: auto auto 2em auto;
+}
+
+div#shortcouts_container div#shortcouts{
+    width: 100%;
+}
+
+div#shortcouts_container div#shortcouts li{
+    margin: 0.3em auto 0.3em auto;
+}
+
 div#content{
-	display:	block;
+    display:    block;
 }
 
 div#content div.content_row{
-	display:	inline;
+    display:    inline;
 }
 
 div#content div.content_row div.content_cell{
-	padding:		0;
-	width:			100%;
-	display:		block;
-	margin-bottom:	2em;
+    padding:        0;
+    width:            100%;
+    display:        block;
+    margin-bottom:    2em;
 }
