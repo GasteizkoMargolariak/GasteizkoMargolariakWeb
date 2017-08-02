@@ -20,19 +20,31 @@
             <div class='section' id='schedule'>
                 <h3 class='section_title'><?=$lng['lablanca_schedule']?></h3>
 <?php
-                $q_days = mysqli_query($con, "SELECT id, date, DATE_FORMAT(date, '%Y-%m-%d') AS isodate, name_$lang AS name FROM festival_day WHERE year(date) = $year ORDER BY date");
+                $q_days = mysqli_query($con, "SELECT DISTINCT date(DATE_SUB(start, INTERVAL 6 HOUR)) AS date, DATE_FORMAT(DATE_SUB(start, INTERVAL 6 HOUR), '%Y-%m-%d') AS isodate, (SELECT name_$lang from festival_day WHERE date = date(DATE_SUB(start, INTERVAL 6 HOUR))) AS name FROM festival_event WHERE year(start) = 2017 AND gm = 1 ORDER BY date");
+                $i=0;
                 while ($r_days = mysqli_fetch_array($q_days)){
 ?>
                     <div class='entry'>
-                        <div onClick='expandDay(<?=$r_days['id']?>);' class='day_title pointer'>
+                        <div onClick='expandDay(<?=$i?>);' class='day_title pointer'>
                             <h4>
-                                <img class='slid' src='<?=$server?>/img/misc/slid-right.png' id='slid_day_<?=$r_days['id']?>'/>
-                                <?=formatFestivalDate($r_days['date'])?> - <?=$r_days['name']?>
+                                <img class='slid' src='<?=$server?>/img/misc/slid-right.png' id='slid_day_<?=$i?>'/>
+<?php
+                                if($r_days['name'] != null){
+?>
+                                    <?=formatFestivalDate($r_days['date'])?> - <?=$r_days['name']?>
+<?php
+                                }
+                                else{
+?>
+                                    <?=formatFestivalDate($r_days['date'])?>
+<?php
+                                }
+?>
                             </h4>
                         </div>
-                        <div class='day_schedule' id='day_schedule_<?=$r_days['id']?>'>
+                        <div class='day_schedule' id='day_schedule_<?=$i?>'>
 <?php
-                            $q_sch = mysqli_query($con, "SELECT festival_event.id AS id, gm, title_$lang AS title, description_$lang AS description, host, place, date_format(start, '%H:%i') AS st, date_format(end, '%H:%i') AS end, place.name_$lang AS place, address_$lang AS address, lat, lon FROM festival_event, place WHERE place.id = festival_event.place AND gm = 1 AND start > str_to_date(addtime('$r_days[isodate] 00:00:00', '08:00:00'), '%Y-%m-%d %T') AND start < str_to_date(addtime('$r_days[isodate] 00:00:00', '32:00:00'), '%Y-%m-%d %T') ORDER BY start;");
+                            $q_sch = mysqli_query($con, "SELECT festival_event.id AS id, gm, title_$lang AS title, description_$lang AS description, host, place, date_format(start, '%H:%i') AS st, date_format(end, '%H:%i') AS end, place.name_$lang AS place, address_$lang AS address, lat, lon FROM festival_event, place WHERE place.id = festival_event.place AND gm = 1 AND date(DATE_SUB(start, INTERVAL 6 HOUR)) = str_to_date('$r_days[date]', '%Y-%m-%d') ORDER BY start");
                             if (mysqli_num_rows($q_sch) > 0){
                                 echo("<table class='schedule'>\n");
                                 while ($r_sch = mysqli_fetch_array($q_sch)){
@@ -75,6 +87,7 @@
                         </div>
                     </div>
 <?php
+                    $i ++;
                 } // while ($r_days = mysqli_fetch_array($q_days))
 ?>
             </div>
