@@ -14,18 +14,22 @@ Thumbs.db
 #Utility folders
 3rdparty/
 pending/
-utils/
+utils-local/
 copy
 remotecopy
+remoteadmin
+www-admin/redirect_s.php
 
 #SQL data
 sql/dbusers.sql
 sql/rows-test.sql
 sql/rows.sql
+sql/*201*
 
 #Passwords file
 www/.htpasswd
 www-admin/.htpasswd
+www/.htaccess_local
 
 #Photos and unnecessary images
 www/img/actividades/script

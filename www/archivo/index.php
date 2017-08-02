@@ -1,3 +1,3 @@
 < 
-	header("Location: /archivo" . $_GET['file']);
+    header("Location: /archivo" . $_GET['file']);
 ??php>

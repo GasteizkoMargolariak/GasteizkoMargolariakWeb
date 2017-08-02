@@ -1,0 +1,6 @@
+for file in *.jpg;do
+	convert "$file" -resize 800x800  "view/$file"
+	convert "$file" -resize 600x600  "preview/$file"
+	convert "$file" -resize 340x340  "miniature/$file"
+	convert "$file" -resize 180x180  "thumb/$file"
+done
