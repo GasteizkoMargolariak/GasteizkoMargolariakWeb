@@ -34,7 +34,7 @@ div#header_m img#mobile_logo{
     filter:            drop-shadow(0 0 0.2em #336);
     -ms-filter:        "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#444')";
     filter:            "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#444')";
-    border:            0.05em solid #000011;
+    /*border:            0.05em solid #000011;*/
     border-radius:    100%;
 }
 
