@@ -168,15 +168,27 @@ CREATE OR REPLACE TRIGGER version_u_festival_day AFTER UPDATE ON festival_day FO
   END//
 CREATE OR REPLACE TRIGGER version_i_festival_event AFTER INSERT ON festival_event FOR EACH ROW
   BEGIN
-    CALL version_up('festival_event');
+    IF NEW.gm = 0 THEN
+      CALL version_up('festival_event_city');
+    ELSE
+      CALL version_up('festival_event_gm');
+    END IF;
   END//
 CREATE OR REPLACE TRIGGER version_d_festival_event AFTER DELETE ON festival_event FOR EACH ROW
   BEGIN
-    CALL version_up('festival_event');
+    IF OLD.gm = 0 THEN
+      CALL version_up('festival_event_city');
+    ELSE
+      CALL version_up('festival_event_gm');
+    END IF;
   END//
 CREATE OR REPLACE TRIGGER version_u_festival_event AFTER UPDATE ON festival_event FOR EACH ROW
   BEGIN
-    CALL version_up('festival_event');
+    IF NEW.gm = 0 THEN
+      CALL version_up('festival_event_city');
+    ELSE
+      CALL version_up('festival_event_gm');
+    END IF;
   END//
 CREATE OR REPLACE TRIGGER version_i_festival_event_image AFTER INSERT ON festival_event_image FOR EACH ROW
   BEGIN
