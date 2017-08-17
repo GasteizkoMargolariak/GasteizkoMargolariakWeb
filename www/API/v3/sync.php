@@ -1,0 +1,356 @@
+ <?php
+    // Gasteizko Margolariak API v1 //
+
+    //Database section identifiers
+    define('SEC_ALL', 'all');
+    define('SEC_BLOG', 'blog');
+    define('SEC_ACTIVITIES', 'activities');
+    define('SEC_GALLERY', 'gallery');
+    define('SEC_LABLANCA', 'lablanca');
+
+    define('TAB_ACTIVITY', 'activity');
+    define('TAB_ACTIVITY_COMMENT', 'activity_comment');
+    define('TAB_ACTIVITY_IMAGE', 'activity_image');
+    define('TAB_ACTIVITY_ITINERARY', 'activity_itinerary');
+    define('TAB_ACTIVITY_TAG', 'activity_tag');
+    define('TAB_ALBUM', 'album');
+    define('TAB_FESTIVAL', 'festival');
+    define('TAB_FESTIVAL_DAY', 'festival_day');
+    define('TAB_FESTIVAL_EVENT_CITY', 'festival_event_city');
+    define('TAB_FESTIVAL_EVENT_GM', 'festival_event_gm');
+    define('TAB_FESTIVAL_OFFER', 'festival_offer');
+    define('TAB_PEOPLE', 'people');
+    define('TAB_PHOTO', 'photo');
+    define('TAB_PHOTO_ALBUM', 'photo_album');
+    define('TAB_PHOTO_COMMENT', 'photo_comment');
+    define('TAB_PLACE', 'place');
+    define('TAB_POST', 'post');
+    define('TAB_POST_COMMENT', 'post_comment');
+    define('TAB_POST_IMAGE', 'post_image');
+    define('TAB_POST_TAG', 'post_tag');
+    define('TAB_ROUTE', 'route');
+    define('TAB_ROUTE_POINT', 'route_point');
+    define('TAB_SETTINGS', 'settings');
+    define('TAB_SPONSOR', 'sponsor');
+    
+    //Posible actions
+    define('ACTION_SYNC', 'sync');
+    define('ACTION_VERSION', 'version');
+    
+    //Default action
+    define('DEF_ACTION', ACTION_SYNC);
+    
+    //Output keys
+    define('KEY_VERSION', 'version');
+    define('KEY_DATA', 'data');
+    
+    //$_GET valid parameters
+    define('GET_CLIENT', 'client');
+    define('GET_USER', 'user');
+    define('GET_FOREGROUND', 'foreground');
+    
+    //Error messages
+    define('ERR_CLIENT', 'CLIENT');
+
+    //List of all tables to sync, sorted by priority.
+    $tab_list = [TAB_SETTINGS, TAB_PLACE, TAB_ROUTE_POINT, TAB_ROUTE, TAB_PEOPLE, TAB_FESTIVAL_EVENT_GM, TAB_FESTIVAL, TAB_FESTIVAL_DAY, TAB_FESTIVAL_OFFER, TAB_FESTIVAL_EVENT_CITY, TAB_ACTIVITY, TAB_ACTIVITY_IMAGE, TAB_ACTIVITY_ITINERARY, TAB_SPONSOR, TAB_ALBUM, TAB_PHOTO, TAB_PHOTO_ALBUM, TAB_POST, TAB_POST_IMAGE, TAB_PHOTO_COMMENT, TAB_POST_COMMENT, TAB_ACTIVITY_COMMENT, TAB_ACTIVITY_TAG, TAB_POST_TAG];
+    
+    /****************************************************
+     * This function is called from almost everywhere at *
+     * the beggining of the page. It initializes the     *
+     * session variables, connect to the db, enabling    *
+     * the variable $con for futher use everywhere in    *
+     * the php code, and populates the arrays $user      *
+     * and $permission, with info about the user.        *
+     *                                                   *
+     * @return: (db connection): The connection handler. *
+     *****************************************************/
+    function startdb(){
+        //Include the db configuration file. It's somehow like this
+        /*
+        <?php
+            $host = 'XXXX';
+            $db_name = 'XXXX';
+            $username_ro = 'XXXX';
+            $username_rw = 'XXXX';
+            $pass_ro = 'XXXX';
+            $pass_rw = 'XXXX';
+        ?>
+        */
+        include('../../.htpasswd');
+
+        //Connect to to database
+        $con = mysqli_connect($host, $username_rw, $pass_rw, $db_name);
+
+        //Set encoding options
+        mysqli_set_charset($con, 'utf-8');
+        header('Content-Type: text/html; charset=utf8');
+        mysqli_query($con, 'SET NAMES utf8;');
+
+        //Return the db connection
+        return $con;
+    }
+    /*****************************************************
+     * Selects the value of a parameter from the list of *
+     * GET arguments. It also sanitizes it to prevent    *
+     * SQL injections.                                   *
+     *                                                   *
+     * @params:                                          *
+     *    get: (string array) Contains the GET           *
+     *         parameters.                               *
+     *    param: (string) Name of the parameter.         *
+     * @return: (string): Value of the parameter or an   *
+     *          empty string if it was not passed.       *
+     *****************************************************/
+    function extract_param($con, $get, $param){
+        if(isset($_GET[$param])){
+            return mysqli_real_escape_string($con, $_GET[$param]);
+        }
+        else{
+            return "";
+        }
+    }
+
+    /*****************************************************
+     * Gets information about the API call and the       *
+     * assocciated client. If some mandatory parameter   *
+     * is not provided, a error log entry is registered  *
+     *                                                   *
+     * @params:                                          *
+     *    get: (string array) Contains the GET           *
+     *         parameters.                               *
+     * @return: (string array): Array with the keys      *
+     *           'client', 'user', 'foreground', 'ip',   *
+     *           'os', 'browser', 'uagent' and 'error'.  *
+     *           'error' will contain the key of a       *
+     *           mandatory value if it has not been      *
+     *           provided, or will be empty if there     *
+     *           were no problem.                        *
+     *****************************************************/
+    function get_user_info($con, $get){
+        $info = array();
+        $error = "";
+        $info["client"] = extract_param($con, $get, GET_CLIENT);
+        if(strlen($info["client"]) == 0) {
+            error_log("SYNC ERROR: Trying to sync with no client name.");
+            $error = ERR_CLIENT;
+        }
+        $info["user"] = extract_param($con, $get, GET_USER);
+        $info["foregronud"] = (int) extract_param($con, $get, GET_FOREGROUND);
+        if($info["foreground"] != 1){
+            $info["foreground"] = 0;
+        }
+        $info["ip"] = get_user_ip();
+        $browser_data = get_browser(null, true);
+        $info["os"] = $browser_data['platform'];
+        $info["browser"] = $browser_data['browser'];
+        $info["uagent"] = $browser_data['browser_name_pattern'];
+        $info["error"] = $error;
+    }
+
+    /*****************************************************
+     * Reads the version of the tables reported by the   *
+     * user as GET parameters.                           *
+     *                                                   *
+     * @params:                                          *
+     *    get: (string array) Contains the GET           *
+     *         parameters.                               *
+     * @return: (int array): Array with the version of   *
+     *           the tables in the user app, keyed with  *
+     *           the table names.                        *
+     *****************************************************/
+    function get_user_versions($con, $get){
+        global $tab_list;
+        
+        $versions = array();
+        foreach($tab_list as $tab){
+            $versions[$tab] = intval(extract_param($con, $get, $tab));
+        }
+        return $versions;
+    }
+
+    /*****************************************************
+     * Reads the version of the tables reported by the   *
+     * user as GET parameters.                           *
+     *                                                   *
+     * @params:                                          *
+     *    con: (MySQL server connection) RO mode enough. *
+     *         parameters.                               *
+     * @return: (int array): Array with the version of   *
+     *           the tables in the server, keyed with    *
+     *           the table names.                        *
+     *****************************************************/
+    function get_server_versions($con){
+        $versions = array();
+        $q = mysqli_query($con, "SELECT section, version FROM version;");
+        while($r = mysqli_fetch_array($q)){
+            $versions[$r['section']] = $r['version'];
+        }
+        return $versions;
+    }
+
+    /*****************************************************
+     * Select the tables that need to be synced.         *
+     *                                                   *
+     * @params:                                          *
+     *    user: (int array) Versions of tables in the    *
+     *          user app.                                *
+     *    server: (int array) Versions of tables in the  *
+     *            server.                                *
+     * @return: (string array): Array with the names of  *
+     *           the tables that need to be synced.      *
+     *****************************************************/
+    function select_tables($user, $server){
+        global $tab_list;
+        $tables = array();
+        foreach($tab_list as $table){
+            if ($user[$table] < $server[$table]){
+                array_push($tables, $table);
+            }
+        }
+    }
+
+    /****************************************************
+     * Echoes the contents of a table from the database. *
+     * Inaccessible or sensitive tables or fields are    *
+     * not printed.                                      *
+     *                                                   *
+     * @params:                                          *
+     *    con: (MySQL server connection) RO mode enough. *
+     *    table (string): The name of the table.         *
+     * @return: (Assoc Array): Data in the table.        *
+     ****************************************************/
+    function get_table($con, $table){
+        $table = strtolower($table);
+        switch ($table){
+            case TAB_ACTIVITY:
+                $q = mysqli_query($con, "SELECT id, permalink, date, city, title_es, title_en, title_eu, text_es, text_eu, text_en, after_es, after_en, after_eu, price, inscription, max_people, album FROM activity WHERE visible = 1;");
+                break;
+            case TAB_ACTIVITY_COMMENT:
+                $q = mysqli_query($con, "SELECT id, activity, text, dtime, username, lang FROM activity_comment WHERE approved = 1;");
+                break;
+            case TAB_ALBUM:
+                $q = mysqli_query($con, "SELECT id, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, open FROM album;");
+                break;
+            case TAB_PHOTO:
+                $q = mysqli_query($con, "SELECT photo.id AS id, file, permalink, title_es, title_en, title_eu, description_es, description_en, description_eu, uploaded, place, width, height, size, CONCAT(photo.username, user) AS username FROM photo, user WHERE user.id = photo.user AND approved = 1;");
+                break;
+            case TAB_POST:
+                $q = mysqli_query($con, "SELECT post.id AS id, permalink, title_es, title_en, title_eu, text_es, text_en, text_eu, comments, username, dtime FROM post, user WHERE user.id = user AND visible = 1;");
+                break;
+            case TAB_POST_COMMENT:
+                $q = mysqli_query($con, "SELECT post_comment.id AS id, post, text, dtime, username, lang FROM post_comment WHERE approved = 1;");
+                break;
+            case TAB_PHOTO_COMMENT:
+                $q = mysqli_query($con, "SELECT photo_comment.id AS id, post, text, dtime, username, lang FROM photo_comment WHERE approved = 1;");
+                break;
+            case TAB_SPONSOR:
+                $q = mysqli_query($con, "SELECT id, name_es, name_en, name_eu, text_es, text_en, text_eu, image, address_es, address_en, address_eu, link, lat, lon FROM sponsor;");
+                break;
+            case TAB_SETTINGS:
+                $q = mysqli_query($con, "SELECT name, value FROM settings;");
+                break;
+
+            //Other cases:
+            default:
+                $q = mysqli_query($con, "SELECT * FROM $table;");
+        }
+
+        //If no rows, return
+        if (mysqli_num_rows($q) == 0){
+            return "";
+        }
+
+        //Create result array
+        $str = "";
+        $str = $str. "\"$table\":[";
+        while($r = mysqli_fetch_assoc($q)) {
+            $str = $str . json_encode($r) . ",";
+        }
+        $str = rtrim($str,',');
+        $str = $str . "]";
+        return $str;
+    }
+
+    /*****************************************************
+     * Prints out required tables.                       *
+     *                                                   *
+     * @return: (String): Client IP address.             *
+     *****************************************************/
+    function sync($con, $tables){
+        $str = "";
+        if(sizeof($tables) > 0){
+            $str = "{" . get_table('version');
+            foreach($tables as $table){
+                $str = $str . get_table($con, $table) . ",";
+            }
+            $str = rtrim($str,',');
+            $str = $str . "}";
+            echo($str);
+            return true;
+        }
+        return false;
+    }
+
+    /*****************************************************
+     * Gets the IP address of the client.                *
+     *                                                   *
+     * @return: (String): Client IP address.             *
+     *****************************************************/
+    function get_user_ip(){
+        $client  = @$_SERVER['HTTP_CLIENT_IP'];
+        $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+        $remote  = $_SERVER['REMOTE_ADDR'];
+        if(filter_var($client, FILTER_VALIDATE_IP)){
+            $ip = $client;
+        }
+        elseif(filter_var($forward, FILTER_VALIDATE_IP)){
+            $ip = $forward;
+        }
+        else{
+            $ip = $remote;
+        }
+        return $ip;
+    }
+    
+    /****************************************************
+    * Registers the request in the database.            *
+    *                                                   *
+    * @params:                                          *
+    *    con: (MySQL server connection) RO mode enough. *
+    *    client: (string): The client identifier.       *
+    *    user: (string): A unique end user identifier.  *
+    *    action: (string): Requested action.            *
+    *    section: (string): Requested database section. *
+    *    version: (int): Version of the client db.      *
+    *    new_version: (int): Returned version.          *
+    *    foreground: (int): 1 for fg syncs, 0 for bg.   *
+    *    format: (string): Requested format.            *
+    *    error: (string): Error message to store.       *
+    ****************************************************/
+    function log_sync($con, $user, $synced){
+        // TODO: implement once the sync table has been reworked.
+        //mysqli_query($con, "INSERT INTO sync (client, user, fg, synced, ip, os, uagent) VALUES ('$client', '$user', '$action', '$section', $version, $new_version, $foreground, '$format', '$error', '$ip', '$os', '$uagent');");
+    }
+
+
+
+    // Connect to the database
+    $con = startdb('rw');
+
+    // Get info about the user
+    $user = get_user_info($con, $_GET);
+    if(strlen($user["error"]) > 0){
+        http_response_code(400);
+        exit(-1);
+    }
+
+    // Get tables to sync
+    $v_user = get_user_versions($con, $_GET);
+    $v_server = get_server_versions($con);
+    $tables = select_tables($v_user, $v_server);
+    $synced = sync($con, $tables);
+
+    //Log the sync in the database
+    log_sync($con, $user, $synced);
+?>
