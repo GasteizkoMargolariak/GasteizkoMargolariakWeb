@@ -513,6 +513,11 @@ CREATE TABLE translation(
 );
 
 
+# Create views for festival_event
+CREATE OR REPLACE VIEW festival_event_gm AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end FROM festival_event WHERE gm = 1;
+CREATE OR REPLACE VIEW festival_event_city AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end FROM festival_event WHERE gm = 0;
+
+
 # Populate table version
 DELETE FROM version;
 INSERT INTO version VALUES ('activity', 1);
@@ -523,7 +528,8 @@ INSERT INTO version VALUES ('activity_tag', 1);
 INSERT INTO version VALUES ('album', 1);
 INSERT INTO version VALUES ('festival', 1);
 INSERT INTO version VALUES ('festival_day', 1);
-INSERT INTO version VALUES ('festival_event', 1);
+INSERT INTO version VALUES ('festival_event_city', 1);
+INSERT INTO version VALUES ('festival_event_gm', 1);
 INSERT INTO version VALUES ('festival_event_image', 1);
 INSERT INTO version VALUES ('festival_offer', 1);
 INSERT INTO version VALUES ('people', 1);
@@ -535,6 +541,8 @@ INSERT INTO version VALUES ('post', 1);
 INSERT INTO version VALUES ('post_comment', 1);
 INSERT INTO version VALUES ('post_image', 1);
 INSERT INTO version VALUES ('post_tag', 1);
+INSERT INTO version VALUES ('route', 1);
+INSERT INTO version VALUES ('route_point', 1);
 INSERT INTO version VALUES ('settings', 1);
 INSERT INTO version VALUES ('sponsor', 1);
 
@@ -646,14 +654,20 @@ CREATE OR REPLACE TRIGGER version_u_festival_day AFTER UPDATE ON festival_day FO
 CREATE OR REPLACE TRIGGER version_i_festival_event AFTER INSERT ON festival_event FOR EACH ROW
   BEGIN
     CALL version_up('festival_event');
+    CALL version_up('festival_event_city');
+    CALL version_up('festival_event_gm');
   END//
 CREATE OR REPLACE TRIGGER version_d_festival_event AFTER DELETE ON festival_event FOR EACH ROW
   BEGIN
     CALL version_up('festival_event');
+    CALL version_up('festival_event_city');
+    CALL version_up('festival_event_gm');
   END//
 CREATE OR REPLACE TRIGGER version_u_festival_event AFTER UPDATE ON festival_event FOR EACH ROW
   BEGIN
     CALL version_up('festival_event');
+    CALL version_up('festival_event_city');
+    CALL version_up('festival_event_gm');
   END//
 CREATE OR REPLACE TRIGGER version_i_festival_event_image AFTER INSERT ON festival_event_image FOR EACH ROW
   BEGIN
