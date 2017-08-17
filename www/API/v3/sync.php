@@ -136,15 +136,16 @@
             $error = ERR_CLIENT;
         }
         $info["user"] = extract_param($con, $get, GET_USER);
-        $info["foregronud"] = (int) extract_param($con, $get, GET_FOREGROUND);
+        $info["foreground"] = (int) extract_param($con, $get, GET_FOREGROUND);
         if($info["foreground"] != 1){
             $info["foreground"] = 0;
         }
         $info["ip"] = get_user_ip();
-        $browser_data = get_browser(null, true);
-        $info["os"] = $browser_data['platform'];
-        $info["browser"] = $browser_data['browser'];
-        $info["uagent"] = $browser_data['browser_name_pattern'];
+        //TODO
+        //$browser_data = get_browser(null, true);
+        //$info["os"] = $browser_data['platform'];
+        //$info["browser"] = $browser_data['browser'];
+        //$info["uagent"] = $browser_data['browser_name_pattern'];
         $info["error"] = $error;
     }
 
@@ -204,10 +205,11 @@
         global $tab_list;
         $tables = array();
         foreach($tab_list as $table){
-            if ($user[$table] < $server[$table]){
+            if ((int) $user[$table] < (int) $server[$table]){
                 array_push($tables, $table);
             }
         }
+        return $tables;
     }
 
     /****************************************************
