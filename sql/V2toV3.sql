@@ -35,6 +35,13 @@ ALTER TABLE festival_event MODIFY place INT;
 
 ALTER TABLE version MODIFY section VARCHAR(128);
 
+ALTER TABLE sync DROP action;
+ALTER TABLE sync DROP section;
+ALTER TABLE sync DROP version_from;
+ALTER TABLE sync DROP version_to;
+ALTER TABLE sync DROP format;
+ALTER TABLE sync ADD synced BOOLEAN NOT NULL DEFAULT 0;
+
 
 # Populate table version
 DELETE FROM version;
@@ -46,7 +53,8 @@ INSERT INTO version VALUES ('activity_tag', 1);
 INSERT INTO version VALUES ('album', 1);
 INSERT INTO version VALUES ('festival', 1);
 INSERT INTO version VALUES ('festival_day', 1);
-INSERT INTO version VALUES ('festival_event', 1);
+INSERT INTO version VALUES ('festival_event_city', 1);
+INSERT INTO version VALUES ('festival_event_gm', 1);
 INSERT INTO version VALUES ('festival_event_image', 1);
 INSERT INTO version VALUES ('festival_offer', 1);
 INSERT INTO version VALUES ('people', 1);

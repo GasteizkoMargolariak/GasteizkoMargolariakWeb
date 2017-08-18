@@ -162,20 +162,16 @@ CREATE INDEX visit_dtime ON stat_view(visit, dtime);
 
 DROP TABLE IF EXISTS sync;
 CREATE TABLE sync (
-    id                INT            NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
-    dtime            TIMESTAMP    NOT NULL    DEFAULT now(),
-    client            VARCHAR(64),
-    user            VARCHAR(64),
-    action            VARCHAR(12),
-    section            VARCHAR(32),
-    version_from    INT            NOT NULL    DEFAULT 0,
-    version_to        INT            NOT NULL    DEFAULT -1,
-    fg                INT            NOT NULL    DEFAULT 1,
-    format            VARCHAR(24),
-    error            VARCHAR(256),
-    ip                VARCHAR(128),
-    os                VARCHAR(128),
-    uagent            VARCHAR(256)
+  id      INT            NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+  dtime   TIMESTAMP      NOT NULL  DEFAULT now(),
+  client  VARCHAR(64),
+  user    VARCHAR(64),
+  fg      INT            NOT NULL  DEFAULT 0,
+  synced  BOOLEAN        NOT NULL  DEFAULT 0,
+  error   VARCHAR(256),
+  ip      VARCHAR(128),
+  os      VARCHAR(128),
+  uagent  VARCHAR(256)
 );
 
 DROP TABLE IF EXISTS stat_sync;
