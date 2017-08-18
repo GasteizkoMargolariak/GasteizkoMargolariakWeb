@@ -1,6 +1,6 @@
 div#festivals div#festivals_summary img{
     display: inline-block;
-    max-width: 40%;
+    max-width: 35%;
     max-height: 15em;
     vertical-align: top;
     border: 0.1em solid black;
@@ -173,6 +173,7 @@ div#upcoming_details table td{
 }
 
 /* Us section */
+
 div#us p{
     display:    inline-block;
     vertical-align:    top;
@@ -262,13 +263,11 @@ table#table_photos td{
 }
 
 table#table_photos img{
-    max-width:        90%;
-    max-height:        10em;
-    border:            0.1em solid #112244;
-
-/*     border:            0.1em solid #333333; */
-/*     box-shadow:        0 0 0.8em #000000; */
-/*     border-radius:    0.2em */
+    max-width: 90%;
+    max-height: 10em;
+    border: 0.1em solid #112244;
+    box-shadow: 0 0 0.8em #004488;
+    border-radius: 0.8em;
 }
 
 div#latest_activities{
@@ -293,14 +292,10 @@ table.latest_activity td.latest_activity_image{
 }
 
 div#latest_activities img{
-/*     max-width:        40%; */
-    max-height:        10em;
-    margin:            0.5em 1em 0.5em 0.5em;
-    border:            0.1em solid #112244;
-
-/*     border:            0.15em solid #333333; */
-/*     border-radius:    0.2em; */
-/*     box-shadow:        0 0 0.5em #111111; */
+    max-height: 10em;
+    max-width: 13em;
+    margin: 0.5em 1em 0.5em 0.5em;
+    border: 0.1em solid #112244;
 }
 
 div.activity_text{

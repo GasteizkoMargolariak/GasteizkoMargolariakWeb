@@ -60,8 +60,8 @@
 ?>
 <div id='cookie_popup'>
     <span id='message'><?php echo $lng['cookie_message']; ?></span><br/><br/>
-    <span class='button pointer' style="cursor:pointer" id='button_ok'><a href="#" onClick="dismissCookiePopUp('<?php echo $http_host; ?>', false);" ><?php echo $lng['cookie_ok']; ?></a></span>
-    <span class='button pointer' style="cursor:pointer" id='button_more'><a href="#" onClick="dismissCookiePopUp('<?php echo $http_host; ?>', true);" ><?php echo $lng['cookie_more']; ?></a></span>
+    <span class='button pointer' style="cursor:pointer" id='button_ok'><a onClick="dismissCookiePopUp('<?php echo $http_host; ?>', false);" ><?php echo $lng['cookie_ok']; ?></a></span>
+    <span class='button pointer' style="cursor:pointer" id='button_more'><a onClick="dismissCookiePopUp('<?php echo $http_host; ?>', true);" ><?php echo $lng['cookie_more']; ?></a></span>
 </div>
 <?php
 }
