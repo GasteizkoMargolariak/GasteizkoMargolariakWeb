@@ -96,26 +96,49 @@ CREATE TABLE place (
     lon            DOUBLE
 );
 
+DROP TABLE IF EXISTS route;
+CREATE TABLE route (
+  id       INT           AUTO_INCREMENT PRIMARY KEY,
+  name     VARCHAR(32),
+  mins     INT
+);
+
+DROP TABLE IF EXISTS route_point;
+CREATE TABLE route_point (
+  id       INT      AUTO_INCREMENT        PRIMARY KEY,
+  route    INT      NOT NULL              DEFAULT 0,
+  part     INT      NOT NULL,
+  place_o  INT      REFERENCES place.id,
+  lat_o    DOUBLE,
+  lon_o    DOUBLE,
+  place_d  INT      REFERENCES place.id,
+  lat_d    DOUBLE,
+  lon_d    DOUBLE,
+  mins     INT,
+  visible  BOOLEAN  NOT NULL              DEFAULT 1
+);
+
 DROP TABLE IF EXISTS sponsor;
 CREATE TABLE sponsor (
-    id                INT                NOT NULL    AUTO_INCREMENT  PRIMARY KEY,
-    name_es            VARCHAR(100)    NOT NULL,
-    name_en            VARCHAR(100),
-    name_eu            VARCHAR(100),
-    text_es            VARCHAR(1000),
-    text_en            VARCHAR(1000),
-    text_eu            VARCHAR(1000),
-    image            VARCHAR(100),
-    address_es        VARCHAR(200),
-    address_en        VARCHAR(200),
-    address_eu        VARCHAR(200),
-    link            VARCHAR(300),
-    lat                DOUBLE,
-    lon                DOUBLE,
-    ammount            INT,
-    print             INT                DEFAULT 0,
-    print_static    INT                DEFAULT 0,
-    click            INT                DEFAULT 0
+  id            INT             NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+  name_es       VARCHAR(100)    NOT NULL,
+  name_en       VARCHAR(100),
+  name_eu       VARCHAR(100),
+  text_es       VARCHAR(1000),
+  text_en       VARCHAR(1000),
+  text_eu       VARCHAR(1000),
+  image         VARCHAR(100),
+  local         BOOLEAN         NOT NULL  DEFAULT 1,
+  address_es    VARCHAR(200),
+  address_en    VARCHAR(200),
+  address_eu    VARCHAR(200),
+  link          VARCHAR(300),
+  lat           DOUBLE,
+  lon           DOUBLE,
+  ammount       INT,
+  print         INT             NOT NULL  DEFAULT 0,
+  print_static  INT             NOT NULL  DEFAULT 0,
+  click         INT             NOT NULL  DEFAULT 0
 );
 
 DROP TABLE IF EXISTS stat_visit;
@@ -139,20 +162,16 @@ CREATE INDEX visit_dtime ON stat_view(visit, dtime);
 
 DROP TABLE IF EXISTS sync;
 CREATE TABLE sync (
-    id                INT            NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
-    dtime            TIMESTAMP    NOT NULL    DEFAULT now(),
-    client            VARCHAR(64),
-    user            VARCHAR(64),
-    action            VARCHAR(12),
-    section            VARCHAR(32),
-    version_from    INT            NOT NULL    DEFAULT 0,
-    version_to        INT            NOT NULL    DEFAULT -1,
-    fg                INT            NOT NULL    DEFAULT 1,
-    format            VARCHAR(24),
-    error            VARCHAR(256),
-    ip                VARCHAR(128),
-    os                VARCHAR(128),
-    uagent            VARCHAR(256)
+  id      INT            NOT NULL  AUTO_INCREMENT  PRIMARY KEY,
+  dtime   TIMESTAMP      NOT NULL  DEFAULT now(),
+  client  VARCHAR(64),
+  user    VARCHAR(64),
+  fg      INT            NOT NULL  DEFAULT 0,
+  synced  BOOLEAN        NOT NULL  DEFAULT 0,
+  error   VARCHAR(256),
+  ip      VARCHAR(128),
+  os      VARCHAR(128),
+  uagent  VARCHAR(256)
 );
 
 DROP TABLE IF EXISTS stat_sync;
@@ -267,17 +286,18 @@ CREATE TABLE activity_image (
 
 DROP TABLE IF EXISTS activity_itinerary;
 CREATE TABLE activity_itinerary (
-    id                INT                AUTO_INCREMENT    PRIMARY KEY,
-    activity        INT                NOT NULL    REFERENCES activity.id,
-    name_es            VARCHAR(64)        NOT NULL,
-    name_en            VARCHAR(64),
-    name_eu            VARCHAR(64),
-    description_es    VARCHAR(1000),
-    description_en    VARCHAR(1000),
-    description_eu    VARCHAR(1000),
-    start            DATETIME        NOT NULL,
-    end                DATETIME,
-    place            INT                NOT NULL    REFERENCES place.id
+  id              INT             AUTO_INCREMENT        PRIMARY KEY,
+  activity        INT             NOT NULL              REFERENCES activity.id,
+  name_es         VARCHAR(64)     NOT NULL,
+  name_en         VARCHAR(64),
+  name_eu         VARCHAR(64),
+  description_es  VARCHAR(1000),
+  description_en  VARCHAR(1000),
+  description_eu  VARCHAR(1000),
+  start           DATETIME        NOT NULL,
+  end             DATETIME,
+  place           INT             REFERENCES place.id,
+  route           INT             REFERENCES route.id
 );
 
 DROP TABLE IF EXISTS activity_comment;
@@ -309,26 +329,28 @@ CREATE TABLE festival (
 
 DROP TABLE IF EXISTS festival_day;
 CREATE TABLE festival_day (
-    id        INT            AUTO_INCREMENT    PRIMARY KEY,
-    date    DATE        NOT NULL,
-    name_es    VARCHAR(60)    NOT NULL,
+    id         INT          AUTO_INCREMENT PRIMARY KEY,
+    date       DATE         NOT NULL,
+    name_es    VARCHAR(60)  NOT NULL,
     name_en    VARCHAR(60),
     name_eu    VARCHAR(60),
-    price    INT            NOT NULL
+    price      INT          NOT NULL,
+    people     INT          NOT NULL       DEFAULT 0,
+    max_people INT          NOT NULL       DEFAULT 0
 );
 
 DROP TABLE IF EXISTS festival_offer;
 CREATE TABLE festival_offer (
-    id                INT            AUTO_INCREMENT    PRIMARY KEY,
-    year            INT,
-    name_es            VARCHAR(60)    NOT NULL,
-    name_en            VARCHAR(60),
-    name_eu            VARCHAR(60),
-    description_es    VARCHAR(500),
-    description_en    VARCHAR(500),
-    description_eu    VARCHAR(500),
-    days            INT            NOT NULL,
-    price            INT            NOT NULL
+    id             INT           AUTO_INCREMENT PRIMARY KEY,
+    year           INT,
+    name_es        VARCHAR(60)   NOT NULL,
+    name_en        VARCHAR(60),
+    name_eu        VARCHAR(60),
+    description_es VARCHAR(500),
+    description_en VARCHAR(500),
+    description_eu VARCHAR(500),
+    days           INT           NOT NULL,
+    price          INT           NOT NULL
 );
 
 DROP TABLE IF EXISTS location;
@@ -369,18 +391,20 @@ CREATE TABLE people (
 
 DROP TABLE IF EXISTS festival_event;
 CREATE TABLE festival_event (
-    id                INT                AUTO_INCREMENT    PRIMARY KEY,
-    gm                BOOLEAN            DEFAULT 0,
-    title_es        VARCHAR(200)    NOT NULL,
-    title_en        VARCHAR(200),
-    title_eu        VARCHAR(200),
-    description_es    VARCHAR(5000),
-    description_en    VARCHAR(5000),
-    description_eu    VARCHAR(5000),
-    host            INT                REFERENCES people.id,
-    place            INT                REFERENCES place.id,
-    start            DATETIME,
-    end                DATETIME
+  id              INT             AUTO_INCREMENT         PRIMARY KEY,
+  gm              BOOLEAN         DEFAULT 0,
+  title_es        VARCHAR(200)    NOT NULL,
+  title_en        VARCHAR(200),
+  title_eu        VARCHAR(200),
+  description_es  VARCHAR(5000),
+  description_en  VARCHAR(5000),
+  description_eu  VARCHAR(5000),
+  host            INT             REFERENCES people.id,
+  sponsor         INT             REFERENCES people.id,
+  place           INT             REFERENCES place.id,
+  route           INT             REFERENCES route.id,
+  start           DATETIME        NOT NULL,
+  end             DATETIME
 );
 
 DROP TABLE IF EXISTS festival_event_image;
@@ -401,8 +425,8 @@ CREATE TABLE settings (
 
 DROP TABLE IF EXISTS version;
 CREATE TABLE version (
-    section        VARCHAR(12)    PRIMARY KEY,
-    version        INT            DEFAULT 1
+  section  VARCHAR(128)  PRIMARY KEY,
+  version  INT          NOT NULL      DEFAULT 1
 );
 
 DROP TABLE IF EXISTS member;
@@ -484,10 +508,336 @@ CREATE TABLE translation(
     applied            DATETIME
 );
 
-#Set up two users for database. File dbusers.sql contains:
-/*
-GRANT SELECT ON gm.* TO 'XXXX'@'XXXX' IDENTIFIED BY 'XXXX';
-GRANT SELECT, INSERT, DELETE, UPDATE ON gm.* TO 'XXXX'@'XXXX' IDENTIFIED BY 'XXXX';
-*/
+
+# Create views for festival_event
+CREATE OR REPLACE VIEW festival_event_gm AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end FROM festival_event WHERE gm = 1;
+CREATE OR REPLACE VIEW festival_event_city AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end FROM festival_event WHERE gm = 0;
+
+
+# Populate table version
+DELETE FROM version;
+INSERT INTO version VALUES ('activity', 1);
+INSERT INTO version VALUES ('activity_comment', 1);
+INSERT INTO version VALUES ('activity_image', 1);
+INSERT INTO version VALUES ('activity_itinerary', 1);
+INSERT INTO version VALUES ('activity_tag', 1);
+INSERT INTO version VALUES ('album', 1);
+INSERT INTO version VALUES ('festival', 1);
+INSERT INTO version VALUES ('festival_day', 1);
+INSERT INTO version VALUES ('festival_event_city', 1);
+INSERT INTO version VALUES ('festival_event_gm', 1);
+INSERT INTO version VALUES ('festival_event_image', 1);
+INSERT INTO version VALUES ('festival_offer', 1);
+INSERT INTO version VALUES ('people', 1);
+INSERT INTO version VALUES ('photo', 1);
+INSERT INTO version VALUES ('photo_album', 1);
+INSERT INTO version VALUES ('photo_comment', 1);
+INSERT INTO version VALUES ('place', 1);
+INSERT INTO version VALUES ('post', 1);
+INSERT INTO version VALUES ('post_comment', 1);
+INSERT INTO version VALUES ('post_image', 1);
+INSERT INTO version VALUES ('post_tag', 1);
+INSERT INTO version VALUES ('route', 1);
+INSERT INTO version VALUES ('route_point', 1);
+INSERT INTO version VALUES ('settings', 1);
+INSERT INTO version VALUES ('sponsor', 1);
+
+
+# Triggers to update versions
+DELIMITER //
+
+CREATE OR REPLACE PROCEDURE version_up (IN section_name VARCHAR(128))
+  BEGIN
+    UPDATE version SET version = version + 1 WHERE section = section_name;
+  END//
+
+CREATE OR REPLACE TRIGGER version_i_activity AFTER INSERT ON activity FOR EACH ROW
+  BEGIN
+    CALL version_up('activity');
+  END//
+CREATE OR REPLACE TRIGGER version_d_activity AFTER DELETE ON activity FOR EACH ROW
+  BEGIN
+    CALL version_up('activity');
+  END//
+CREATE OR REPLACE TRIGGER version_u_activity AFTER UPDATE ON activity FOR EACH ROW
+  BEGIN
+    CALL version_up('activity');
+  END//
+CREATE OR REPLACE TRIGGER version_i_activity_comment AFTER INSERT ON activity_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_d_activity_comment AFTER DELETE ON activity_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_u_activity_comment AFTER UPDATE ON activity_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_i_activity_image AFTER INSERT ON activity_image FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_image');
+  END//
+CREATE OR REPLACE TRIGGER version_d_activity_image AFTER DELETE ON activity_image FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_image');
+  END//
+CREATE OR REPLACE TRIGGER version_u_activity_image AFTER UPDATE ON activity_image FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_image');
+  END//
+CREATE OR REPLACE TRIGGER version_i_activity_itinerary AFTER INSERT ON activity_itinerary FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_itinerary');
+  END//
+CREATE OR REPLACE TRIGGER version_d_activity_itinerary AFTER DELETE ON activity_itinerary FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_itinerary');
+  END//
+CREATE OR REPLACE TRIGGER version_u_activity_itinerary AFTER UPDATE ON activity_itinerary FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_itinerary');
+  END//
+CREATE OR REPLACE TRIGGER version_i_activity_tag AFTER INSERT ON activity_tag FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_tag');
+  END//
+CREATE OR REPLACE TRIGGER version_d_activity_tag AFTER DELETE ON activity_tag FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_tag');
+  END//
+CREATE OR REPLACE TRIGGER version_u_activity_tag AFTER UPDATE ON activity_tag FOR EACH ROW
+  BEGIN
+    CALL version_up('activity_tag');
+  END//
+CREATE OR REPLACE TRIGGER version_i_album AFTER INSERT ON album FOR EACH ROW
+  BEGIN
+    CALL version_up('album');
+  END//
+CREATE OR REPLACE TRIGGER version_d_album AFTER DELETE ON album FOR EACH ROW
+  BEGIN
+    CALL version_up('album');
+  END//
+CREATE OR REPLACE TRIGGER version_u_album AFTER UPDATE ON album FOR EACH ROW
+  BEGIN
+    CALL version_up('album');
+  END//
+CREATE OR REPLACE TRIGGER version_i_festival AFTER INSERT ON festival FOR EACH ROW
+  BEGIN
+    CALL version_up('festival');
+  END//
+CREATE OR REPLACE TRIGGER version_d_festival AFTER DELETE ON festival FOR EACH ROW
+  BEGIN
+    CALL version_up('festival');
+  END//
+CREATE OR REPLACE TRIGGER version_u_festival AFTER UPDATE ON festival FOR EACH ROW
+  BEGIN
+    CALL version_up('festival');
+  END//
+CREATE OR REPLACE TRIGGER version_i_festival_day AFTER INSERT ON festival_day FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_day');
+  END//
+CREATE OR REPLACE TRIGGER version_d_festival_day AFTER DELETE ON festival_day FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_day');
+  END//
+CREATE OR REPLACE TRIGGER version_u_festival_day AFTER UPDATE ON festival_day FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_day');
+  END//
+CREATE OR REPLACE TRIGGER version_i_festival_event AFTER INSERT ON festival_event FOR EACH ROW
+  BEGIN
+    IF NEW.gm = 0 THEN
+      CALL version_up('festival_event_city');
+    ELSE
+      CALL version_up('festival_event_gm');
+    END IF;
+  END//
+CREATE OR REPLACE TRIGGER version_d_festival_event AFTER DELETE ON festival_event FOR EACH ROW
+  BEGIN
+    IF OLD.gm = 0 THEN
+      CALL version_up('festival_event_city');
+    ELSE
+      CALL version_up('festival_event_gm');
+    END IF;
+  END//
+CREATE OR REPLACE TRIGGER version_u_festival_event AFTER UPDATE ON festival_event FOR EACH ROW
+  BEGIN
+    IF NEW.gm = 0 THEN
+      CALL version_up('festival_event_city');
+    ELSE
+      CALL version_up('festival_event_gm');
+    END IF;
+  END//
+CREATE OR REPLACE TRIGGER version_i_festival_event_image AFTER INSERT ON festival_event_image FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_event_image');
+  END//
+CREATE OR REPLACE TRIGGER version_d_festival_event_image AFTER DELETE ON festival_event_image FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_event_image');
+  END//
+CREATE OR REPLACE TRIGGER version_u_festival_event_image AFTER UPDATE ON festival_event_image FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_event_image');
+  END//
+CREATE OR REPLACE TRIGGER version_i_festival_offer AFTER INSERT ON festival_offer FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_offer');
+  END//
+CREATE OR REPLACE TRIGGER version_d_festival_offer AFTER DELETE ON festival_offer FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_offer');
+  END//
+CREATE OR REPLACE TRIGGER version_u_festival_offer AFTER UPDATE ON festival_offer FOR EACH ROW
+  BEGIN
+    CALL version_up('festival_offer');
+  END//
+CREATE OR REPLACE TRIGGER version_i_people AFTER INSERT ON people FOR EACH ROW
+  BEGIN
+    CALL version_up('people');
+  END//
+CREATE OR REPLACE TRIGGER version_d_people AFTER DELETE ON people FOR EACH ROW
+  BEGIN
+    CALL version_up('people');
+  END//
+CREATE OR REPLACE TRIGGER version_u_people AFTER UPDATE ON people FOR EACH ROW
+  BEGIN
+    CALL version_up('people');
+  END//
+CREATE OR REPLACE TRIGGER version_i_photo AFTER INSERT ON photo FOR EACH ROW
+  BEGIN
+    CALL version_up('photo');
+  END//
+CREATE OR REPLACE TRIGGER version_d_photo AFTER DELETE ON photo FOR EACH ROW
+  BEGIN
+    CALL version_up('photo');
+  END//
+CREATE OR REPLACE TRIGGER version_u_photo AFTER UPDATE ON photo FOR EACH ROW
+  BEGIN
+    CALL version_up('photo');
+  END//
+CREATE OR REPLACE TRIGGER version_i_photo_album AFTER INSERT ON photo_album FOR EACH ROW
+  BEGIN
+    CALL version_up('photo_album');
+  END//
+CREATE OR REPLACE TRIGGER version_d_photo_album AFTER DELETE ON photo_album FOR EACH ROW
+  BEGIN
+    CALL version_up('photo_album');
+  END//
+CREATE OR REPLACE TRIGGER version_u_photo_album AFTER UPDATE ON photo_album FOR EACH ROW
+  BEGIN
+    CALL version_up('photo_album');
+  END//
+CREATE OR REPLACE TRIGGER version_i_photo_comment AFTER INSERT ON photo_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('photo_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_d_photo_comment AFTER DELETE ON photo_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('photo_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_u_photo_comment AFTER UPDATE ON photo_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('photo_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_i_place AFTER INSERT ON place FOR EACH ROW
+  BEGIN
+    CALL version_up('place');
+  END//
+CREATE OR REPLACE TRIGGER version_d_place AFTER DELETE ON place FOR EACH ROW
+  BEGIN
+    CALL version_up('place');
+  END//
+CREATE OR REPLACE TRIGGER version_u_place AFTER UPDATE ON place FOR EACH ROW
+  BEGIN
+    CALL version_up('place');
+  END//
+CREATE OR REPLACE TRIGGER version_i_post AFTER INSERT ON post FOR EACH ROW
+  BEGIN
+    CALL version_up('post');
+  END//
+CREATE OR REPLACE TRIGGER version_d_post AFTER DELETE ON post FOR EACH ROW
+  BEGIN
+    CALL version_up('post');
+  END//
+CREATE OR REPLACE TRIGGER version_u_post AFTER UPDATE ON post FOR EACH ROW
+  BEGIN
+    CALL version_up('post');
+  END//
+CREATE OR REPLACE TRIGGER version_i_post_comment AFTER INSERT ON post_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('post_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_d_post_comment AFTER DELETE ON post_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('post_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_u_post_comment AFTER UPDATE ON post_comment FOR EACH ROW
+  BEGIN
+    CALL version_up('post_comment');
+  END//
+CREATE OR REPLACE TRIGGER version_i_post_image AFTER INSERT ON post_image FOR EACH ROW
+  BEGIN
+    CALL version_up('post_image');
+  END//
+CREATE OR REPLACE TRIGGER version_d_post_image AFTER DELETE ON post_image FOR EACH ROW
+  BEGIN
+    CALL version_up('post_image');
+  END//
+CREATE OR REPLACE TRIGGER version_u_post_image AFTER UPDATE ON post_image FOR EACH ROW
+  BEGIN
+    CALL version_up('post_image');
+  END//
+CREATE OR REPLACE TRIGGER version_i_post_tag AFTER INSERT ON post_tag FOR EACH ROW
+  BEGIN
+    CALL version_up('post_tag');
+  END//
+CREATE OR REPLACE TRIGGER version_d_post_tag AFTER DELETE ON post_tag FOR EACH ROW
+  BEGIN
+    CALL version_up('post_tag');
+  END//
+CREATE OR REPLACE TRIGGER version_u_post_tag AFTER UPDATE ON post_tag FOR EACH ROW
+  BEGIN
+    CALL version_up('post_tag');
+  END//
+CREATE OR REPLACE TRIGGER version_i_settings AFTER INSERT ON settings FOR EACH ROW
+  BEGIN
+    CALL version_up('settings');
+  END//
+CREATE OR REPLACE TRIGGER version_d_settings AFTER DELETE ON settings FOR EACH ROW
+  BEGIN
+    CALL version_up('settings');
+  END//
+CREATE OR REPLACE TRIGGER version_u_settings AFTER UPDATE ON settings FOR EACH ROW
+  BEGIN
+    CALL version_up('settings');
+  END//
+CREATE OR REPLACE TRIGGER version_i_sponsor AFTER INSERT ON sponsor FOR EACH ROW
+  BEGIN
+    CALL version_up('sponsor');
+  END//
+CREATE OR REPLACE TRIGGER version_d_sponsor AFTER DELETE ON sponsor FOR EACH ROW
+  BEGIN
+    CALL version_up('sponsor');
+  END//
+CREATE OR REPLACE TRIGGER version_u_sponsor AFTER UPDATE ON sponsor FOR EACH ROW
+  BEGIN
+    CALL version_up('sponsor');
+  END//
+
+
+DELIMITER ;
+
+
+
+
+
+
+
+# Set up two users for database. File dbusers.sql contains:
+# GRANT SELECT ON gm.* TO 'XXXX'@'XXXX' IDENTIFIED BY 'XXXX'; GRANT SELECT, INSERT, DELETE, UPDATE ON gm.* TO 'XXXX'@'XXXX' IDENTIFIED BY 'XXXX';
 SOURCE dbusers.sql;
 
