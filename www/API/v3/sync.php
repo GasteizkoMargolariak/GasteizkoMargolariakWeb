@@ -238,7 +238,7 @@
             $str = $str . json_encode($r) . ",";
         }
         $str = rtrim($str,',');
-        $str = $str . "]";
+        $str = $str . "],";
         return $str;
 
     }
@@ -300,7 +300,7 @@
         while($r = mysqli_fetch_assoc($q)) {
             $str = $str . json_encode($r) . ",";
         }
-        $str = rtrim($str,',');
+        $str = rtrim($str,",");
         $str = $str . "]";
         return $str;
     }
@@ -320,8 +320,9 @@
             foreach($tables as $table){
                 $str = $str . get_table($con, $table) . ",";
             }
-            $str = rtrim($str,',');
+            $str = rtrim($str, ",");
             $str = $str . "}";
+            $str = str_replace(",,", ",", $str);
             echo($str);
             return true;
         }
