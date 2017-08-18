@@ -65,3 +65,8 @@ div#content_table div.content_row div#cell_posts div.section{
 div#content_table div.content_row div#cell_photos div.section{
     margin-left:    0;
 }
+
+div#latest_activities img{
+    max-width: 10em;
+}
+
