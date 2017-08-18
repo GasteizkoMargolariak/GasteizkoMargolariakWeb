@@ -21,7 +21,7 @@ CREATE TABLE route_point (
 );
 
 ALTER TABLE sponsor ADD local BOOLEAN NOT NULL DEFAULT 1;
-UPDATE sponsor SET local = 0 WHERE address_es IS NULL OR address_es = ''; 
+UPDATE sponsor SET local = 0 WHERE address_es IS NULL OR address_es = '';
 
 ALTER TABLE activity_itinerary ADD route INT
 ALTER TABLE activity_itinerary MODIFY place INT;
@@ -29,9 +29,13 @@ ALTER TABLE activity_itinerary MODIFY place INT;
 ALTER TABLE festival_day ADD people INT NOT NULL DEFAULT 0;
 ALTER TABLE festival_day ADD max_people INT NOT NULL DEFAULT 0;
 
+CREATE OR REPLACE VIEW festival_event_gm AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end, interest FROM festival_event WHERE gm = 1;
+CREATE OR REPLACE VIEW festival_event_city AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end, interest FROM festival_event WHERE gm = 0;
+
 ALTER TABLE festival_event ADD sponsor INT;
 ALTER TABLE festival_event ADD route INT;
 ALTER TABLE festival_event MODIFY place INT;
+ALTER TABLE festival_event ADD interest INT NOT NULL DEFAULT 2;
 
 ALTER TABLE version MODIFY section VARCHAR(128);
 

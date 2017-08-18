@@ -404,7 +404,8 @@ CREATE TABLE festival_event (
   place           INT             REFERENCES place.id,
   route           INT             REFERENCES route.id,
   start           DATETIME        NOT NULL,
-  end             DATETIME
+  end             DATETIME,
+  interest        INT             NOT NULL              DEFAULT 2
 );
 
 DROP TABLE IF EXISTS festival_event_image;
@@ -510,8 +511,8 @@ CREATE TABLE translation(
 
 
 # Create views for festival_event
-CREATE OR REPLACE VIEW festival_event_gm AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end FROM festival_event WHERE gm = 1;
-CREATE OR REPLACE VIEW festival_event_city AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end FROM festival_event WHERE gm = 0;
+CREATE OR REPLACE VIEW festival_event_gm AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end, interest FROM festival_event WHERE gm = 1;
+CREATE OR REPLACE VIEW festival_event_city AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end, interest FROM festival_event WHERE gm = 0;
 
 
 # Populate table version
