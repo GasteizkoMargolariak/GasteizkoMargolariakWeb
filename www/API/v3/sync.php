@@ -51,16 +51,14 @@
                  TAB_POST_IMAGE,           TAB_PHOTO_COMMENT,  TAB_POST_COMMENT,
                  TAB_ACTIVITY_COMMENT,     TAB_ACTIVITY_TAG,   TAB_POST_TAG];
 
-    /****************************************************
+    /*****************************************************
      * This function is called from almost everywhere at *
      * the beggining of the page. It initializes the     *
-     * session variables, connect to the db, enabling    *
-     * the variable $con for futher use everywhere in    *
-     * the php code, and populates the arrays $user      *
-     * and $permission, with info about the user.        *
+     * session variables and connects to the db.         *
      *                                                   *
-     * @return: (db connection): The connection handler. *
-     *****************************************************/
+     * @return: (MySQL server connection): The           *
+     *           connection handler.                     *
+     ****************************************************/
     function startdb(){
         //Include the db configuration file. It's somehow like this
         /*
@@ -92,6 +90,7 @@
      * SQL injections.                                   *
      *                                                   *
      * @params:                                          *
+     *    con: (MySQL server connection) Db connector.   *
      *    get: (string array) Contains the GET           *
      *         parameters.                               *
      *    param: (string) Name of the parameter.         *
@@ -113,6 +112,7 @@
      * is not provided, a error log entry is registered  *
      *                                                   *
      * @params:                                          *
+     *    con: (MySQL server connection) Db connector.   *
      *    get: (string array) Contains the GET           *
      *         parameters.                               *
      * @return: (string array): Array with the keys      *
@@ -150,6 +150,7 @@
      * user as GET parameters.                           *
      *                                                   *
      * @params:                                          *
+     *    con: (MySQL server connection) Db connector.   *
      *    get: (string array) Contains the GET           *
      *         parameters.                               *
      * @return: (int array): Array with the version of   *
@@ -212,7 +213,7 @@
      * Only for the tables that will be synced.          *
      *                                                   *
      * @params:                                          *
-     *    con: (MySQL server connection) RO mode enough. *
+     *    con: (MySQL server connection) Db connector.   *
      *    tables (String array): List of table.          *
      * @return: (Assoc Array): Data in the table.        *
      ****************************************************/
@@ -307,6 +308,9 @@
     /*****************************************************
      * Prints out required tables.                       *
      *                                                   *
+     * @params:                                          *
+     *    con: (MySQL server connection) Db connector.   *
+     *    tables: (String array) List of tables to sync. *
      * @return: (String): Client IP address.             *
      *****************************************************/
     function sync($con, $tables){
@@ -345,25 +349,34 @@
         return $ip;
     }
 
-    /****************************************************
-    * Registers the request in the database.            *
-    *                                                   *
-    * @params:                                          *
-    *    con: (MySQL server connection) RO mode enough. *
-    *    client: (string): The client identifier.       *
-    *    user: (string): A unique end user identifier.  *
-    *    action: (string): Requested action.            *
-    *    section: (string): Requested database section. *
-    *    version: (int): Version of the client db.      *
-    *    new_version: (int): Returned version.          *
-    *    foreground: (int): 1 for fg syncs, 0 for bg.   *
-    *    format: (string): Requested format.            *
-    *    error: (string): Error message to store.       *
-    ****************************************************/
+    /*****************************************************
+     * Registers the request in the database.            *
+     *                                                   *
+     * @params:                                          *
+     *    con: (MySQL server connection) RO mode enough. *
+     *    user: (String array): Array with, at least,    *
+     *          the keys 'client', 'user', 'foreground', *
+     *          'ip', 'os', 'browser', 'uagent', with    *
+     *          info about the calling app.              *
+     *    synced: (Int): 1 if a sync content was sent, 0 *
+     *            otherwise.                             *
+     *****************************************************/
     function log_sync($con, $user, $synced){
         mysqli_query($con, "INSERT INTO sync (client, user, fg, synced, ip, os, uagent) VALUES ('$user[client]', '$user[user]', $user[foreground], $synced, '$user[ip]', '$user[os]', '$user[uagent]');");
     }
 
+    /*****************************************************
+     * Registers a failed request in the database.       *
+     *                                                   *
+     * @params:                                          *
+     *    con: (MySQL server connection) RO mode enough. *
+     *    user: (String array): Array with, at least,    *
+     *          the keys 'client', 'user', 'foreground', *
+     *          'ip', 'os', 'browser', 'uagent', and     *
+     *          'error', with info about the calling     *
+     *           app. The 'error' key will contain an    *
+     *           error description.                      *
+     *****************************************************/
     function log_error($con, $user){
         mysqli_query($con, "INSERT INTO sync (client, user, fg, error, ip, os, uagent) VALUES ('$user[client]', '$user[user]', $user[foreground], $user[error], '$user[ip]', '$user[os]', '$user[uagent]');");
     }
