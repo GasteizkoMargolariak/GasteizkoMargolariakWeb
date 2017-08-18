@@ -1,5 +1,5 @@
  <?php
-    // Gasteizko Margolariak API v1 //
+    // Gasteizko Margolariak API v3 //
 
     //Database section identifiers
     define('SEC_ALL', 'all');
@@ -32,29 +32,25 @@
     define('TAB_ROUTE_POINT', 'route_point');
     define('TAB_SETTINGS', 'settings');
     define('TAB_SPONSOR', 'sponsor');
-    
-    //Posible actions
-    define('ACTION_SYNC', 'sync');
-    define('ACTION_VERSION', 'version');
-    
-    //Default action
-    define('DEF_ACTION', ACTION_SYNC);
-    
-    //Output keys
-    define('KEY_VERSION', 'version');
-    define('KEY_DATA', 'data');
-    
+
     //$_GET valid parameters
     define('GET_CLIENT', 'client');
     define('GET_USER', 'user');
     define('GET_FOREGROUND', 'foreground');
-    
+
     //Error messages
     define('ERR_CLIENT', 'CLIENT');
 
     //List of all tables to sync, sorted by priority.
-    $tab_list = [TAB_SETTINGS, TAB_PLACE, TAB_ROUTE_POINT, TAB_ROUTE, TAB_PEOPLE, TAB_FESTIVAL_EVENT_GM, TAB_FESTIVAL, TAB_FESTIVAL_DAY, TAB_FESTIVAL_OFFER, TAB_FESTIVAL_EVENT_CITY, TAB_ACTIVITY, TAB_ACTIVITY_IMAGE, TAB_ACTIVITY_ITINERARY, TAB_SPONSOR, TAB_ALBUM, TAB_PHOTO, TAB_PHOTO_ALBUM, TAB_POST, TAB_POST_IMAGE, TAB_PHOTO_COMMENT, TAB_POST_COMMENT, TAB_ACTIVITY_COMMENT, TAB_ACTIVITY_TAG, TAB_POST_TAG];
-    
+    $tab_list = [TAB_SETTINGS,             TAB_PLACE,          TAB_ROUTE_POINT,
+                 TAB_ROUTE,                TAB_PEOPLE,         TAB_FESTIVAL_EVENT_GM,
+                 TAB_FESTIVAL,             TAB_FESTIVAL_DAY,   TAB_FESTIVAL_OFFER,
+                 TAB_FESTIVAL_EVENT_CITY,  TAB_ACTIVITY,       TAB_ACTIVITY_IMAGE,
+                 TAB_ACTIVITY_ITINERARY,   TAB_SPONSOR,        TAB_ALBUM,
+                 TAB_PHOTO,                TAB_PHOTO_ALBUM,    TAB_POST,
+                 TAB_POST_IMAGE,           TAB_PHOTO_COMMENT,  TAB_POST_COMMENT,
+                 TAB_ACTIVITY_COMMENT,     TAB_ACTIVITY_TAG,   TAB_POST_TAG];
+
     /****************************************************
      * This function is called from almost everywhere at *
      * the beggining of the page. It initializes the     *
@@ -141,12 +137,12 @@
             $info["foreground"] = 0;
         }
         $info["ip"] = get_user_ip();
-        //TODO
-        //$browser_data = get_browser(null, true);
-        //$info["os"] = $browser_data['platform'];
-        //$info["browser"] = $browser_data['browser'];
-        //$info["uagent"] = $browser_data['browser_name_pattern'];
+        $browser_data = get_browser(null, true);
+        $info["os"] = $browser_data['platform'];
+        $info["browser"] = $browser_data['browser'];
+        $info["uagent"] = $browser_data['browser_name_pattern'];
         $info["error"] = $error;
+        return $info;
     }
 
     /*****************************************************
@@ -162,7 +158,6 @@
      *****************************************************/
     function get_user_versions($con, $get){
         global $tab_list;
-        
         $versions = array();
         foreach($tab_list as $tab){
             $versions[$tab] = intval(extract_param($con, $get, $tab));
@@ -212,8 +207,43 @@
         return $tables;
     }
 
-    /****************************************************
-     * Echoes the contents of a table from the database. *
+    /*****************************************************
+     * Formats the contents of ther 'versions' table,    *
+     * Only for the tables that will be synced.          *
+     *                                                   *
+     * @params:                                          *
+     *    con: (MySQL server connection) RO mode enough. *
+     *    tables (String array): List of table.          *
+     * @return: (Assoc Array): Data in the table.        *
+     ****************************************************/
+    function get_table_version($con, $tables){
+        // Build query, showing only tables to sync
+        $s = "SELECT * FROM version WHERE ";
+        foreach($tables as $table){
+            $s = $s . "section = '$table' OR ";
+        }
+        $s = $s . "1 = 2;";
+         $q = mysqli_query($con, $s);
+
+        //If no rows, return
+        if (mysqli_num_rows($q) == 0){
+            return "";
+        }
+
+        //Create result array
+        $str = "";
+        $str = $str. "\"version\":[";
+        while($r = mysqli_fetch_assoc($q)) {
+            $str = $str . json_encode($r) . ",";
+        }
+        $str = rtrim($str,',');
+        $str = $str . "]";
+        return $str;
+
+    }
+
+    /*****************************************************
+     * Formats the contents of a table in the database.  *
      * Inaccessible or sensitive tables or fields are    *
      * not printed.                                      *
      *                                                   *
@@ -282,7 +312,7 @@
     function sync($con, $tables){
         $str = "";
         if(sizeof($tables) > 0){
-            $str = "{" . get_table('version');
+            $str = "{" . get_table_version($con, $tables);
             foreach($tables as $table){
                 $str = $str . get_table($con, $table) . ",";
             }
@@ -314,7 +344,7 @@
         }
         return $ip;
     }
-    
+
     /****************************************************
     * Registers the request in the database.            *
     *                                                   *
@@ -331,8 +361,11 @@
     *    error: (string): Error message to store.       *
     ****************************************************/
     function log_sync($con, $user, $synced){
-        // TODO: implement once the sync table has been reworked.
-        //mysqli_query($con, "INSERT INTO sync (client, user, fg, synced, ip, os, uagent) VALUES ('$client', '$user', '$action', '$section', $version, $new_version, $foreground, '$format', '$error', '$ip', '$os', '$uagent');");
+        mysqli_query($con, "INSERT INTO sync (client, user, fg, synced, ip, os, uagent) VALUES ('$user[client]', '$user[user]', $user[foreground], $synced, '$user[ip]', '$user[os]', '$user[uagent]');");
+    }
+
+    function log_error($con, $user){
+        mysqli_query($con, "INSERT INTO sync (client, user, fg, error, ip, os, uagent) VALUES ('$user[client]', '$user[user]', $user[foreground], $user[error], '$user[ip]', '$user[os]', '$user[uagent]');");
     }
 
 
@@ -343,6 +376,7 @@
     // Get info about the user
     $user = get_user_info($con, $_GET);
     if(strlen($user["error"]) > 0){
+        log_error($con, $user);
         http_response_code(400);
         exit(-1);
     }
