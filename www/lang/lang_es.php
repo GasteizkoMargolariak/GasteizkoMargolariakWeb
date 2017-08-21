@@ -1,16 +1,16 @@
 <?php
     $lng = array();
-    
+
     //Common words
     $lng['yes'] = 'S&iacute;';
     $lng['no'] = 'No';
     $lng['months'] = ['Enero', ' Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     $lng['weekdays'] = ['Lunes', 'Martes', 'Mi&eacute;rcoles', 'Jueves', 'Viernes', 'S&aacute;bado', 'Domingo'];
-    
+
     //Search
     $lng['search_field_all'] = 'todo';
     $lng['search_field_tag'] = 'tag';
-    
+
     //Sections
     $lng['section_home'] = 'Gasteizko Margolariak';
     $lng['section_blog'] = 'Blog';
@@ -21,7 +21,7 @@
     $lng['section_press'] = 'Prensa';
     $lng['section_join'] = '&Uacute;nete';
     $lng['section_help'] = 'Ayuda';
-    
+
     // /index.php
     $lng['index_title'] = 'Gasteizko Margolariak - Cuadrilla de Blusas y Neskas';
     $lng['index_description'] = 'Cuadrilla de Blusas y Neskas Gasteizko Margolariak';
@@ -52,7 +52,7 @@
     $lng['index_us_content'] = 'Somos una Cuadrilla de Blusas y Neskas de Vitoria-Gasteiz. Participamos en las fiestas de la ciudad, animando, organizando actividades, para nuestros miembros y para el p&uacute;blico en general.<br/><br/>Pero eso no es todo: Permanecemos activos durante el resto del a&ntilde;o, organizando actividades, tanto dentro como fuera de la ciudad: Competiciones, excursiones, eventos solidarios...';
     $lng['index_us_more'] = 'M&aacute;s sobre nosotros';
     $lng['index_'] = '';
-    
+
     // /header.php
     $lng['header_home'] = 'Inicio';
     $lng['header_lablanca'] = 'La Blanca';
@@ -62,7 +62,7 @@
     $lng['header_gallery'] = 'Galer&iacute;a';
     $lng['header_press'] = 'Prensa';
     $lng['header_join'] = '&Uacute;nete';
-    
+
     // /footer.php
     $lng['footer_sponsors'] = 'Colaboradores';
     $lng['footer_follow'] = 'S&iacute;guenos';
@@ -75,7 +75,7 @@
     $lng['cookie_ok'] = 'Pues muy bien';
     $lng['cookie_more'] = 'Cu&eacute;ntame m&aacute;s';
     $lng['cookie_'] = '';
-    
+
     // /lablanca/index.php
     $lng['lablanca_no_title'] = 'Fiestas de La Virgen Blanca';
     $lng['lablanca_description'] = 'Informaci&oacute;n sobre fiestas de La Blanca';
@@ -90,7 +90,13 @@
     $lng['lablanca_past_title'] = 'Carteles de Fiestas de a&ntilde;os anteriores';
     $lng['lablanca_past_link'] = 'Fiestas de la Blanca de ';
     $lng['lablanca_'] = '';
-    
+
+    // /lablanca/programa.php
+    $lng['lablanca_schedule_year_gm'] = 'Programa Margolari #';
+    $lng['lablanca_schedule_year_city'] = 'Programa de Fiestas de Vitoria #';
+    $lng['lablanca_schedule_year_gm_description'] = 'Programa de Fiestas para los miembros de la cuadrilla Gasteizko Margolariak para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_year_city_description'] = 'Programa de Fiestas municipal para las Fiestas de La Blanca de #';
+
     // /actividades/index.php
     $lng['activities_title'] = 'Actividades - Gasteizko Margolariak';
     $lng['activities_descrption'] = 'Actividades de Gasteizko Margolariak';
@@ -108,7 +114,7 @@
     $lng['activities_see_itinerary'] = 'Ver el itinerario';
     $lng['activities_'] = '';
 
-    
+
     // /actividades/actividad.php
     $lng['activities_when'] = 'Cu&aacute;ndo';
     $lng['activities_what'] = 'Qu&eacute;';

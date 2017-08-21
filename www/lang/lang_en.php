@@ -90,7 +90,13 @@
     $lng['lablanca_past_title'] = 'Carteles de Fiestas de a&ntilde;os anteriores';
     $lng['lablanca_past_link'] = 'Fiestas de la Blanca de ';
     $lng['lablanca_'] = '';
-    
+
+    // /lablanca/programa.php
+    $lng['lablanca_schedule_year_gm'] = 'Margolari Schedule #';
+    $lng['lablanca_schedule_year_citi'] = 'Festivals Schedule #';
+    $lng['lablanca_schedule_year_gm_description'] = 'Programa de Fiestas para los miembros de la cuadrilla Gasteizko Margolariak para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_year_city_description'] = 'Programa de Fiestas municipal para las Fiestas de La Blanca de #';
+
     // /actividades/index.php
     $lng['activities_title'] = 'Activities - Gasteizko Margolariak';
     $lng['activities_description'] = 'Asociacion Cultural Recreativa Gasteizko Margolariak - Activities';

@@ -70,12 +70,12 @@
     $lng['footer_help'] = 'Laguntza';
     $lng['footer_privacy'] = 'Pribatutasuna';
     $lng['footer_app_google'] = 'App Google Play-an';
-		$lng['footer_app_apple'] = 'App App Store-an';
+    $lng['footer_app_apple'] = 'App App Store-an';
     $lng['cookie_message'] = 'Cookiek erabili ditugu!';
     $lng['cookie_ok'] = 'Oso ondo';
     $lng['cookie_more'] = 'Esan dit gehiago!';
     $lng['cookie_'] = '';
-    
+
     // /lablanca/index.php
     $lng['lablanca_no_title'] = 'Andre Zuria Jaiak';
     $lng['lablanca_description'] = 'Andre Zuria Jaiei buruz informazioa';
@@ -90,7 +90,7 @@
     $lng['lablanca_past_title'] = 'Aurreko urteen kartelak';
     $lng['lablanca_past_link'] = 'Andre Zuria Jaiak ';
     $lng['lablanca_'] = '';
-    
+
     // /actividades/index.php
     $lng['activities_title'] = 'Ekitaldeak - Gasteizko Margolariak';
     $lng['activities_descrption'] = 'Asociacion Cultural Recreativa Gasteizko Margolariak - Ekitaldeak';
@@ -108,7 +108,12 @@
     $lng['activities_see_itinerary'] = 'Programazioa ikusi';
     $lng['activities_'] = '';
 
-    
+    // /lablanca/programa.php
+    $lng['lablanca_schedule_year_gm'] = 'Programa Margolari #';
+    $lng['lablanca_schedule_year_citi'] = 'Programa de Fiestas de Vitoria #';
+    $lng['lablanca_schedule_year_gm_description'] = 'Programa de Fiestas para los miembros de la cuadrilla Gasteizko Margolariak para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_year_city_description'] = 'Programa de Fiestas municipal para las Fiestas de La Blanca de #';
+
     // /actividades/actividad.php
     $lng['activities_when'] = 'Noiz';
     $lng['activities_what'] = 'Zer';
