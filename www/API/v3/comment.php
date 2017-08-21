@@ -19,6 +19,7 @@
     define('GET_USERNAME', 'username');
     define('GET_LANG', 'lang');
 
+
     /*****************************************************
      * This function is called from almost everywhere at *
      * the beggining of the page. It initializes the     *
@@ -53,6 +54,30 @@
         return $con;
     }
 
+
+    /****************************************************
+    * This function selects the language for the        *
+    * comment if it has not been provided. It tries to  *
+    * detect the language cookie.                       *
+    *                                                   *
+    * @return: (string): Two letter language code or    *
+    * null.                                             *
+    ****************************************************/
+    function detect_language(){
+        //Try to read cookie.
+        header('Cache-control: private');
+        if (isSet($_COOKIE['lang'])){
+            $lang = $_COOKIE['lang'];
+            if ($lang == 'es' || $lang == 'en' || $lang == 'eu'){
+                return $lang;
+            }
+            else{
+                return null;
+            }
+        }
+    }
+
+
     /*****************************************************
      * Gets information about the comment from the get   *
      * paameters and the browser info.                   *
@@ -81,7 +106,12 @@
         $comment["permalink"] = strtolower(mysqli_real_escape_string($con, $get[GET_PERMALINK]));
         $comment["username"] = mysqli_real_escape_string($con, $get[GET_USERNAME]);
         $comment["text"] = mysqli_real_escape_string($con, $get[GET_TEXT]);
-        $comment["lang"] = mysqli_real_escape_string($con, $get[GET_LANG]);
+        if(isset($get[GET_LANG])){
+            $comment["lang"] = mysqli_real_escape_string($con, $get[GET_LANG]);
+        }
+        else{
+            $comment["lang"] = null;
+        }
         $comment["status"] = 204; // No content status code: No error.
 
         //Validate data
@@ -97,11 +127,12 @@
         if ($comment["target"] != TARGET_PHOTO && $comment["target"] != TARGET_POST && $comment["target"] != TARGET_ACTIVITY){
             $comment["status"] = 400; // Bad request status code.
         }
-
         if (strlen($comment["username"]) < 1){
             $comment["status"] = 400; // Bad request status code.
         }
-
+        if (strlen($comment["lang"]) == null){
+            strlen($comment["lang"]) = detect_language()
+        }
 
         //Check id and/or permalink. Several cases:
 
@@ -265,6 +296,7 @@
         }
     }
 
+
     /*****************************************************
      * Inserts the comment into the database.            *
      *                                                   *
@@ -288,8 +320,13 @@
                 $query = $query . "activity_comment (activity";
                 break;
         }
-        $query = $query . ", text, username, app, user) VALUES ($comment[id], '$comment[text]', '$comment[username]', '$comment[client]', '$comment[user]');";
-        //echo($query);
+        if ($comment["lang"] == null){
+            $lang = "'$comment[lang]'";
+        }
+        else{
+            $lang = "null";
+        }
+        $query = $query . ", text, username, app, app_user, lang) VALUES ($comment[id], '$comment[text]', '$comment[username]', '$comment[client]', '$comment[user]', $lang);";
         mysqli_query($con, $query);
     }
 
