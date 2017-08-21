@@ -70,16 +70,17 @@ CREATE TABLE post_image (
 
 DROP TABLE IF EXISTS post_comment;
 CREATE TABLE post_comment (
-    id            INT                AUTO_INCREMENT            PRIMARY KEY,
-    post        INT                NOT NULL                REFERENCES post(id),
-    text        VARCHAR(5000)    NOT NULL,
-    dtime        TIMESTAMP        NOT NULL                DEFAULT now(),
-    user        INT                REFERENCES user.id,
-    username    VARCHAR(200),
-    lang        VARCHAR(10),
-    approved    BOOLEAN            NOT NULL                DEFAULT 1,
-    visit        INT                REFERENCES stat_visit.id,
-    app            VARCHAR(24)
+  id        INT            AUTO_INCREMENT             PRIMARY KEY,
+  post      INT            NOT NULL                   REFERENCES post(id),
+  text      VARCHAR(5000)  NOT NULL,
+  dtime     TIMESTAMP      NOT NULL                   DEFAULT now(),
+  user      INT            REFERENCES user.id,
+  username  VARCHAR(200),
+  lang      VARCHAR(10),
+  approved  BOOLEAN        NOT NULL                   DEFAULT 1,
+  visit     INT            REFERENCES stat_visit.id,
+  app       VARCHAR(24),
+  app_user  VARCHAR(64)
 );
 
 DROP TABLE IF EXISTS place;
@@ -231,16 +232,17 @@ CREATE TABLE photo_album (
 
 DROP TABLE IF EXISTS photo_comment;
 CREATE TABLE photo_comment (
-    id            INT                AUTO_INCREMENT            PRIMARY KEY,
-    photo        INT                NOT NULL                REFERENCES photo(id),
-    text        VARCHAR(3000)    NOT NULL,
-    dtime        TIMESTAMP        NOT NULL                DEFAULT now(),
-    user        INT                REFERENCES user.id,
-    username    VARCHAR(200),
-    lang        VARCHAR(10),
-    approved    BOOLEAN            NOT NULL                DEFAULT 1,
-    visit        INT                REFERENCES stat_visit.id,
-    app            VARCHAR(24)
+  id        INT            AUTO_INCREMENT             PRIMARY KEY,
+  photo     INT            NOT NULL                   REFERENCES photo(id),
+  text      VARCHAR(5000)  NOT NULL,
+  dtime     TIMESTAMP      NOT NULL                   DEFAULT now(),
+  user      INT            REFERENCES user.id,
+  username  VARCHAR(200),
+  lang      VARCHAR(10),
+  approved  BOOLEAN        NOT NULL                   DEFAULT 1,
+  visit     INT            REFERENCES stat_visit.id,
+  app       VARCHAR(24),
+  app_user  VARCHAR(64)
 );
 
 DROP TABLE IF EXISTS activity;
@@ -302,16 +304,17 @@ CREATE TABLE activity_itinerary (
 
 DROP TABLE IF EXISTS activity_comment;
 CREATE TABLE activity_comment (
-    id            INT                AUTO_INCREMENT            PRIMARY KEY,
-    activity    INT                NOT NULL                REFERENCES post(id),
-    text        VARCHAR(5000)    NOT NULL,
-    dtime        TIMESTAMP        NOT NULL                DEFAULT now(),
-    user        INT                REFERENCES user.id,
-    username    VARCHAR(200),
-    lang        VARCHAR(10),
-    approved    BOOLEAN            NOT NULL                DEFAULT 1,
-    visit        INT                REFERENCES stat_visit.id,
-    app            VARCHAR(24)
+  id        INT            AUTO_INCREMENT             PRIMARY KEY,
+  activity  INT            NOT NULL                   REFERENCES post(id),
+  text      VARCHAR(5000)  NOT NULL,
+  dtime     TIMESTAMP      NOT NULL                   DEFAULT now(),
+  user      INT            REFERENCES user.id,
+  username  VARCHAR(200),
+  lang      VARCHAR(10),
+  approved  BOOLEAN        NOT NULL                   DEFAULT 1,
+  visit     INT            REFERENCES stat_visit.id,
+  app       VARCHAR(24),
+  app_user  VARCHAR(64)
 );
 
 DROP TABLE IF EXISTS festival;

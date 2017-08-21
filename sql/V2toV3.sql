@@ -46,6 +46,9 @@ ALTER TABLE sync DROP version_to;
 ALTER TABLE sync DROP format;
 ALTER TABLE sync ADD synced BOOLEAN NOT NULL DEFAULT 0;
 
+ALTER TABLE post_comment ADD app_user VARCHAR(64);
+ALTER TABLE activity_comment ADD app_user VARCHAR(64);
+ALTER TABLE photo_comment ADD app_user VARCHAR(64);
 
 # Populate table version
 DELETE FROM version;
