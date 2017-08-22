@@ -6,13 +6,26 @@
     $http_host = $_SERVER['HTTP_HOST'];
     $server = "$proto" . "$http_host";
     $gm = $_GET["gm"];
-    $year = $_GET["y"];
-    
-    if ($gm == 1){
-        $schi = "gm";
+
+    if (isset($_GET["y"]) && intval($_GET["y"]) > 2013 && intval($_GET["y"]) <= date("Y")){
+        $year = $_GET["y"];
     }
     else{
+        $year = date("Y");
+    }
+
+    if ($gm == 1 || $gm == "margolari" || $gm == "margolariak"){
+        $gm = 1;
+        $schi = "gm";
+        $url = "margolariak";
+    }
+    elseif ($gm == 0 || $gm == "municipal" || $gm == "ciudad"){
+        $gm = 0;
         $schi = "city";
+        $url = "municipal";
+    }
+    else{
+        header("Location: $server/lablanca/programa/margolariak/$year");
     }
 
     //Language
@@ -20,19 +33,6 @@
     include("../lang/lang_" . $lang . ".php");
 
     $cur_section = $lng['section_lablanca'];
-
-
-    //Get year
-    $year = $_GET["y"];
-    if (strlen($year) < 1){
-        $year = date("Y");
-        //if (is_int($_GET['year']) == false){
-        if ($_GET['year'] != ''){
-            $q_year = mysqli_query($con, "SELECT id FROM festival WHERE year = " . mysqli_real_escape_string($con, $_GET['year']));
-            if (mysqli_num_rows($q_year) > 0){
-                $year = $_GET['year'];
-            }
-        }
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <title>
-            <?=str_replace('#', $year, $lng["lablanca_schedule_" . $schi])?> - Gasteizko Margolariak
+            <?=str_replace('#', $year, $lng["lablanca_schedule_year_" . $schi])?> - Gasteizko Margolariak
         </title>
         <link rel="shortcut icon" href="<?=$server?>/img/logo/favicon.ico">
         <!-- CSS files -->
@@ -67,29 +67,29 @@
 ?>
         </script>
         <!-- Meta tags -->
-        <link rel="canonical" href="<?=$server?>/lablanca/"/>
+        <link rel="canonical" href="<?=$server?>/lablanca/programa/<?=$url?>/<?=$year?>"/>
         <link rel="author" href="<?=$server?>"/>
         <link rel="publisher" href="<?=$server?>"/>
-        <meta name="description" content="<?=str_replace('#', $year, $lng["lablanca_schedule_" . $schi . "_description"])?>"/>
-        <meta property="og:title" content="<?=str_replace('#', $year, $lng["lablanca_schedule_" . $schi])?> - Gasteizko Margolariak"/>
-        <meta property="og:url" content="<?php echo "$proto$http_host"; ?>"/>
-        <meta property="og:description" content="<?=str_replace('#', $year, $lng["lablanca_schedule_" . $schi . "_description"])?>"/>
+        <meta name="description" content="<?=str_replace('#', $year, $lng["lablanca_schedule_year_" . $schi . "_description"])?>"/>
+        <meta property="og:title" content="<?=str_replace('#', $year, $lng["lablanca_schedule_year_" . $schi])?> - Gasteizko Margolariak"/>
+        <meta property="og:url" content="<?=$server?>/lablanca/programa/<?=$url?>/<?=$year?>"/>
+        <meta property="og:description" content="<?=str_replace('#', $year, $lng["lablanca_schedule_year_" . $schi . "_description"])?>"/>
         <meta property="og:image" content="<?=$server?>/img/logo/logo.png"/>
         <meta property="og:site_name" content="Gasteizko Margolariak"/>
         <meta property="og:type" content="website"/>
         <meta property="og:locale" content="<?=$lang?>"/>
         <meta name="twitter:card" content="summary"/>
-        <meta name="twitter:title" content="<?=str_replace('#', $year, $lng["lablanca_schedule_" . $schi])?> - Gasteizko Margolariak"/>
-        <meta name="twitter:description" content="<?=str_replace('#', $year, $lng["lablanca_schedule_" . $schi . "_description"])?>"/>
+        <meta name="twitter:title" content="<?=str_replace('#', $year, $lng["lablanca_schedule_year_" . $schi])?> - Gasteizko Margolariak"/>
+        <meta name="twitter:description" content="<?=str_replace('#', $year, $lng["lablanca_schedule_year_" . $schi . "_description"])?>"/>
         <meta name="twitter:image" content="<?=$server?>/img/logo/logo.png"/>
-        <meta name="twitter:url" content="<?php echo"$proto$http_host"; ?>"/>
+        <meta name="twitter:url" content="<?=$server?>/lablanca/programa/<?=$url?>/<?=$year?>"/>
         <meta name="robots" content="index follow"/>
     </head>
     <body>
         <?php include("../header.php"); ?>
         <div id="content">
             <div class='section' id='schedule'>
-                <h3 class='section_title'><?=str_replace('#', $year, $lng["lablanca_schedule_" . $schi])?></h3>
+                <h3 class='section_title'><?=str_replace('#', $year, $lng["lablanca_schedule_year_" . $schi])?></h3>
 <?php
                 $q_days = mysqli_query($con, "SELECT DISTINCT date(DATE_SUB(start, INTERVAL 6 HOUR)) AS date, DATE_FORMAT(DATE_SUB(start, INTERVAL 6 HOUR), '%Y-%m-%d') AS isodate, (SELECT name_$lang FROM festival_day WHERE date = date(DATE_SUB(start, INTERVAL 6 HOUR))) AS name FROM festival_event_$schi WHERE year(start) = 2017 ORDER BY date");
                 $i=0;
@@ -100,7 +100,7 @@
                             <h4>
                                 <img class='slid' src='<?=$server?>/img/misc/slid-right.png' id='slid_day_<?=$i?>'/>
 <?php
-                                if($r_days['name'] != null){
+                                if($gm == 1 && $r_days['name'] != null){
 ?>
                                     <?=formatFestivalDate($r_days['date'])?> - <?=$r_days['name']?>
 <?php
@@ -138,7 +138,9 @@
                                             }
 ?>
                                             <div class='location'>
-                                                <a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>+(My+Point)&z=14&ll=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>'>
+                                                <!--<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>+(My+Point)&z=14&ll=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>'>-->
+                                                <!-- TODO Routes -->
+                                                <span class='fake_a pointer' onClick='showMapPoint(<?=$r_sch['lat']?>,<?=$r_sch['lon']?>);'>
                                                     <img alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
 <?php
                                                     //If name and address are the same, show only name
@@ -154,7 +156,7 @@
 <?php
                                                     }
 ?>
-                                                </a>
+                                                </span>
                                             </div>
                                         </td>
                                     </tr>
@@ -172,7 +174,12 @@
                 } // while ($r_days = mysqli_fetch_array($q_days))
 ?>
             </div>
-        </div>
+            <div id='map_container'>
+                <div id='map'>
+                    <!-- TODO: OSM -->
+                </div> <!-- map -->
+            </div> <!-- .map_container -->
+        </div> <!-- #content -->
 <?php
             include("../footer.php");
             $ad = ad($con, $lang, $lng);
@@ -180,7 +187,3 @@
 ?>
     </body>
 </html>
-
-<?php
-     }
-?>

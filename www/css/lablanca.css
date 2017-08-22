@@ -21,11 +21,11 @@ div#content_table div.content_tr div.content_td{
 }
 
 div#content_table div.content_tr div#content_td_schedule{
-    width:        60%;
+    width:        50%;
 }
 
 div#content_table div.content_tr div#content_td_prices{
-    width:        40%;
+    width:        50%;
 }
 
 div#content_table div.content_tr div#content_td_prices div#prices{
@@ -72,11 +72,22 @@ div#festivals_image_top_container div#festivals_image_container img#festivals_im
     max-height:        20em;
 }
 
+/* programa.php */
 div#schedule{
-    display:        inline-block;
-    vertical-align:    top;
-    margin-top:        2em;
-    margin-right:    1em;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2em;
+    margin-right: 1em;
+    text-align: center
+    width: 100%;
+}
+
+div#schedule div.button{
+    margin: 1em 0.5em 1em 0.5em;
+    padding: 0.5em;
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
 }
 
 div.day_title h4{
@@ -152,6 +163,28 @@ table.schedule div.location span.address{
     font-style:    italic;
 }
 
+div#map_container{
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width: 100%;
+    height: 100%;
+    background-color: #33333333;    
+}
+
+div#map_container div#map{
+   background-color: #ffffff;
+   width: 70%;
+   height: 50%;
+   margin: 15% 15% 25% 15%;
+}
+
+
+/* fiestas.php */
 div#prices{
     display:        inline-block;
     vertical-align:    top;

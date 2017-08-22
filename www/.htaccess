@@ -29,6 +29,9 @@ RewriteRule ^blog/([0-9]+)$ /blog/index.php?o=$1 [NC]
 RewriteRule ^blog/([0-9]+)/$ /blog/index.php?o=$1 [NC]
 
 RewriteRule ^lablanca/([0-9]+)$ /lablanca/index.php?year=$1 [NC]
+RewriteRule ^lablanca/programa[\/]?$ /lablanca/programa.php?gm=1 [NC]
+RewriteRule ^lablanca/programa/([A-Za-z]+)[\/]?$ /lablanca/programa.php?gm=$1 [NC]
+RewriteRule ^lablanca/programa/([A-Za-z]+)/([0-9]+)[\/]?$ /lablanca/programa.php?gm=$1&year=$2 [NC]
 
 RewriteRule ^archivo/([A-Z\-a-z0-9]{3,}+)$ /archivo/index.php?file=$1 [NC]
 RewriteRule ^archivo/([A-Z\-a-z0-9]{3,}+)/$ /archivo/index.php?file=$1 [NC]
