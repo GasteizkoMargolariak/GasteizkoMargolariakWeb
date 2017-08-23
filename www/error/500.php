@@ -48,7 +48,7 @@
             <table id="error_code">
                 <tr>
                     <td id="error_number">
-                        404
+                        500
                     </td>
                     <td id="error_tag">
                         <?=$lng["error_error"]?>
@@ -60,27 +60,27 @@
         </div>
         <br/><br/><br/><br/>
         <div id="error_message" class="section">
-            <h3 class='section_title'><?=$lng["error_404_title"]?></h3>
+            <h3 class='section_title'><?=$lng["error_500_title"]?></h3>
             <div class="entry">
-                <?=$lng["error_404_description"]?>
+                <?=$lng["error_500_description"]?>
                 <br/><br/>
-                <?=$lng["error_404_solution"]?>
+                <?=$lng["error_500_solution"]?>
                 <ul>
                     <li>
-                        <a href="javascript: history.go(-1);"><?=$lng["error_404_solution_0"]?></a>
+                        <a href="javascript: history.go(-1);"><?=$lng["error_500_solution_0"]?></a>
                     </li>
                     <li>
-                        <a href="<?php echo "$proto$http_host/";?>"><?=$lng["error_404_solution_1"]?></a>
+                        <a href="<?php echo "$proto$http_host/";?>"><?=$lng["error_500_solution_1"]?></a>
                     </li>
                     <li>
-                        <a target='_blank' href="https://www.youtube.com/results?search_query=cats"><?=$lng["error_404_solution_2"]?></a>
+                        <a target='_blank' href="https://www.youtube.com/results?search_query=cats"><?=$lng["error_500_solution_2"]?></a>
                     </li>
                 </ul>
             </div>
         </div>
 <?php
         include("../footer.php");
-        stats(-1, $ad_static, "error", "404");
+        stats(-1, $ad_static, "error", "500");
 ?>
     </body>
 </html>
