@@ -70,16 +70,17 @@ CREATE TABLE post_image (
 
 DROP TABLE IF EXISTS post_comment;
 CREATE TABLE post_comment (
-    id            INT                AUTO_INCREMENT            PRIMARY KEY,
-    post        INT                NOT NULL                REFERENCES post(id),
-    text        VARCHAR(5000)    NOT NULL,
-    dtime        TIMESTAMP        NOT NULL                DEFAULT now(),
-    user        INT                REFERENCES user.id,
-    username    VARCHAR(200),
-    lang        VARCHAR(10),
-    approved    BOOLEAN            NOT NULL                DEFAULT 1,
-    visit        INT                REFERENCES stat_visit.id,
-    app            VARCHAR(24)
+  id        INT            AUTO_INCREMENT             PRIMARY KEY,
+  post      INT            NOT NULL                   REFERENCES post(id),
+  text      VARCHAR(5000)  NOT NULL,
+  dtime     TIMESTAMP      NOT NULL                   DEFAULT now(),
+  user      INT            REFERENCES user.id,
+  username  VARCHAR(200),
+  lang      VARCHAR(10),
+  approved  BOOLEAN        NOT NULL                   DEFAULT 1,
+  visit     INT            REFERENCES stat_visit.id,
+  app       VARCHAR(24),
+  app_user  VARCHAR(64)
 );
 
 DROP TABLE IF EXISTS place;
@@ -231,16 +232,17 @@ CREATE TABLE photo_album (
 
 DROP TABLE IF EXISTS photo_comment;
 CREATE TABLE photo_comment (
-    id            INT                AUTO_INCREMENT            PRIMARY KEY,
-    photo        INT                NOT NULL                REFERENCES photo(id),
-    text        VARCHAR(3000)    NOT NULL,
-    dtime        TIMESTAMP        NOT NULL                DEFAULT now(),
-    user        INT                REFERENCES user.id,
-    username    VARCHAR(200),
-    lang        VARCHAR(10),
-    approved    BOOLEAN            NOT NULL                DEFAULT 1,
-    visit        INT                REFERENCES stat_visit.id,
-    app            VARCHAR(24)
+  id        INT            AUTO_INCREMENT             PRIMARY KEY,
+  photo     INT            NOT NULL                   REFERENCES photo(id),
+  text      VARCHAR(5000)  NOT NULL,
+  dtime     TIMESTAMP      NOT NULL                   DEFAULT now(),
+  user      INT            REFERENCES user.id,
+  username  VARCHAR(200),
+  lang      VARCHAR(10),
+  approved  BOOLEAN        NOT NULL                   DEFAULT 1,
+  visit     INT            REFERENCES stat_visit.id,
+  app       VARCHAR(24),
+  app_user  VARCHAR(64)
 );
 
 DROP TABLE IF EXISTS activity;
@@ -302,16 +304,17 @@ CREATE TABLE activity_itinerary (
 
 DROP TABLE IF EXISTS activity_comment;
 CREATE TABLE activity_comment (
-    id            INT                AUTO_INCREMENT            PRIMARY KEY,
-    activity    INT                NOT NULL                REFERENCES post(id),
-    text        VARCHAR(5000)    NOT NULL,
-    dtime        TIMESTAMP        NOT NULL                DEFAULT now(),
-    user        INT                REFERENCES user.id,
-    username    VARCHAR(200),
-    lang        VARCHAR(10),
-    approved    BOOLEAN            NOT NULL                DEFAULT 1,
-    visit        INT                REFERENCES stat_visit.id,
-    app            VARCHAR(24)
+  id        INT            AUTO_INCREMENT             PRIMARY KEY,
+  activity  INT            NOT NULL                   REFERENCES post(id),
+  text      VARCHAR(5000)  NOT NULL,
+  dtime     TIMESTAMP      NOT NULL                   DEFAULT now(),
+  user      INT            REFERENCES user.id,
+  username  VARCHAR(200),
+  lang      VARCHAR(10),
+  approved  BOOLEAN        NOT NULL                   DEFAULT 1,
+  visit     INT            REFERENCES stat_visit.id,
+  app       VARCHAR(24),
+  app_user  VARCHAR(64)
 );
 
 DROP TABLE IF EXISTS festival;
@@ -404,7 +407,8 @@ CREATE TABLE festival_event (
   place           INT             REFERENCES place.id,
   route           INT             REFERENCES route.id,
   start           DATETIME        NOT NULL,
-  end             DATETIME
+  end             DATETIME,
+  interest        INT             NOT NULL              DEFAULT 2
 );
 
 DROP TABLE IF EXISTS festival_event_image;
@@ -510,8 +514,8 @@ CREATE TABLE translation(
 
 
 # Create views for festival_event
-CREATE OR REPLACE VIEW festival_event_gm AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end FROM festival_event WHERE gm = 1;
-CREATE OR REPLACE VIEW festival_event_city AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end FROM festival_event WHERE gm = 0;
+CREATE OR REPLACE VIEW festival_event_gm AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end, interest FROM festival_event WHERE gm = 1;
+CREATE OR REPLACE VIEW festival_event_city AS SELECT id, title_es, title_en, title_eu, description_es, description_en, description_eu, host, sponsor, place, route, start, end, interest FROM festival_event WHERE gm = 0;
 
 
 # Populate table version
@@ -825,7 +829,9 @@ CREATE OR REPLACE TRIGGER version_d_sponsor AFTER DELETE ON sponsor FOR EACH ROW
   END//
 CREATE OR REPLACE TRIGGER version_u_sponsor AFTER UPDATE ON sponsor FOR EACH ROW
   BEGIN
-    CALL version_up('sponsor');
+    IF (NEW.print = OLD.print AND NEW.print_static = OLD.print_static AND NEW.click = OLD.click AND NEW.ammount = OLD.ammount) THEN
+      CALL version_up('sponsor');
+    END IF;
   END//
 
 
