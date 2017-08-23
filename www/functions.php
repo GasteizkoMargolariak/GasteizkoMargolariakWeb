@@ -303,25 +303,14 @@
         }
         return $cut;
     }
-    
-    /****************************************************
-    * Increases version value in table settings by one. *
-    * Helpfull for the app to know when to perform a    * 
-    * full sync. Must be called after every INSERT,     *
-    * UPDATE or DELETE query to the database.           *
-     ****************************************************/
-    function version(){
-        $con = startdb('rw');
-        mysqli_query($con, 'UPDATE settings SET value = value + 1 WHERE name = "version";');
-    }
-    
-    /****************************************************
-        * Shows an ad at random. It does that one in three  *
-        * times, and only one per session (inserts a cookie *
-        * to know if the ad has been shown. A sponsor has   *
-        * more chances of having his ad popping the more it *
-    * contributes with Gasteizko Margolariak.           *
-        ****************************************************/
+
+    /*****************************************************
+     * Shows an ad at random. It does that one in three  *
+     * times, and only one per session (inserts a cookie *
+     * to know if the ad has been shown. A sponsor has   *
+     * more chances of having his ad popping the more it *
+     * contributes with Gasteizko Margolariak.           *
+     *****************************************************/
     function ad($con, $lang, $lng){
         $id = -1;
         //If the user hasn't still see an add on this session
