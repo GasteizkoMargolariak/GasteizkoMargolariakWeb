@@ -113,6 +113,7 @@
     $lng['activities_maxpeople'] = 'Max. people';
     $lng['activities_inscription'] = 'Inscription requiered';
     $lng['activities_see_itinerary'] = 'Check out the itinerary';
+    $lng['activities_itinerary'] = 'Itinerary';
     $lng['activities_'] = '';
 
     

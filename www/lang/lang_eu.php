@@ -107,6 +107,7 @@
     $lng['activities_maxpeople'] = 'Plazak';
     $lng['activities_inscription'] = 'Izen ematea beharrezkoa';
     $lng['activities_see_itinerary'] = 'Programazioa ikusi';
+    $lng['activities_itinerary'] = 'Itinerario';
     $lng['activities_'] = '';
 
     // /lablanca/programa.php
