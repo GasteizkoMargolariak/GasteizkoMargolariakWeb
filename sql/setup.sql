@@ -829,7 +829,9 @@ CREATE OR REPLACE TRIGGER version_d_sponsor AFTER DELETE ON sponsor FOR EACH ROW
   END//
 CREATE OR REPLACE TRIGGER version_u_sponsor AFTER UPDATE ON sponsor FOR EACH ROW
   BEGIN
-    CALL version_up('sponsor');
+    IF (NEW.print = OLD.print AND NEW.print_static = OLD.print_static AND NEW.click = OLD.click AND NEW.ammount = OLD.ammount) THEN
+      CALL version_up('sponsor');
+    END IF;
   END//
 
 
