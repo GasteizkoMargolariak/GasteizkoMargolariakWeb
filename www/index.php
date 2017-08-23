@@ -388,7 +388,7 @@
                                 </div> <!-- festivals_schedule_cell -->
                             </div> <!-- festivals_schedule_row -->
                         </div> <!-- festivals_schedule_table -->
-                        <a class='go_to_section' href='<?=server?>/lablanca/'><?=$lng['index_festivals_link']?></a>
+                        <a class='go_to_section' href='<?=$server?>/lablanca/'><?=$lng["index_festivals_link"]?></a>
                         <br/>
                     </div> <!-- festivals - section-->
 <?php
@@ -552,9 +552,9 @@
 ?>
                                         <div class='entry post' itemscope itemtype='http://schema.org/BlogPosting'>
                                             <meta itemprop='inLanguage' content='<?=$lang?>'/>
-                                            <meta itemprop='datePublished dateModified' content='<?=$r_post['isodate']?>'/>
-                                            <meta itemprop='headline name' content='<?=$r_post['title']?>'/>
-                                            <meta itemprop='articleBody text' content='<?=$r_post[text]?>'/>
+                                            <meta itemprop='datePublished dateModified' content='<?=$r_post["isodate"]?>'/>
+                                            <meta itemprop='headline name' content='<?=$r_post["title"]?>'/>
+                                            <meta itemprop='articleBody text' content='<?=$r_post["text"]?>'/>
                                             <meta itemprop='mainEntityOfPage' content='<?=$server?>'/>
                                             <div class='hidden' itemprop='author publisher' itemscope itemtype='http://schema.org/Organization'>
                                                 <meta itemprop='legalName' content='Asociaci&oacute;n Cultural Recreativa Gasteizko Margolariak'/>
@@ -617,7 +617,7 @@
                                                     <td itemscope itemtype='http://schema.org/Photograph'>
                                                         <meta itemprop='datePublished' content='<?=$r_photos['isodate']?>'/>
                                                         <a href='$server/galeria/<?=$r_album['permalink']?>'>
-                                                            <meta itemprop='image' content='<?=$serve?>/img/galeria/<?=$r_photos['file']?>'/>
+                                                            <meta itemprop='image' content='<?=$server?>/img/galeria/<?=$r_photos["file"]?>'/>
                                                             <img src='<?=$server?>/img/galeria/miniature/<?=$r_photos['file']?>' alt='<?=$r_photos['title']?>' />
                                                         </a>
                                                     </td>

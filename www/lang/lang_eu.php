@@ -70,12 +70,12 @@
     $lng['footer_help'] = 'Laguntza';
     $lng['footer_privacy'] = 'Pribatutasuna';
     $lng['footer_app_google'] = 'App Google Play-an';
-		$lng['footer_app_apple'] = 'App App Store-an';
+    $lng['footer_app_apple'] = 'App App Store-an';
     $lng['cookie_message'] = 'Cookiek erabili ditugu!';
     $lng['cookie_ok'] = 'Oso ondo';
     $lng['cookie_more'] = 'Esan dit gehiago!';
     $lng['cookie_'] = '';
-    
+
     // /lablanca/index.php
     $lng['lablanca_no_title'] = 'Andre Zuria Jaiak';
     $lng['lablanca_description'] = 'Andre Zuria Jaiei buruz informazioa';
@@ -84,13 +84,14 @@
     $lng['lablanca_no_content_2'] = 'Nosotros, como cuadrilla de Blusas y Nescas, ya estamos trabajando en ello. Tan pronto como vayamos sabiendo m&aacute;s, aqu&iacute; iremos publicando nuestro programa y otra informaci&oacute;n sobre las fiestas.<br/><br/>Para ir abriendo boca, dejanos contarte algunas de las claves del plan Margolari de fiestas: <ul id="no_fiestas"><li><span class="bold">Planes que se adaptan a t&iacute;</span>: Puedes apuntarte d&iacute;as sueltos, o elegir entre las varias ofertas por varios d&iacute;as para conseguir descuentos.</li><li><span class="bold">Dormir es de cobardes</span>: Casi todos los d&iacute;as organizamos actividades desde la ma&ntilde;ana, ya sean almuerzos, actividades para el p&uacute;blico general o competiciones en los Herri Kirolak. Despu&eacute;s solemos ir a comer juntos, antes de los paseillos, y despu&eacute;s, siempre cenamos juntos. Y por la noche, hasta que el cuerpo aguante!</li><li><span class="bold">Especialistas en paseillos</span>: A la hora de hacer paseillos, no hay quien nos gane. Con nuestra furgoneta siempre abierta a la cabeza, y la txaranga El Post&iacute;n animando desde atr&aacute;s, es imposible aburrirse. Y entre paseillos tampoco descansamos, siempre estamos organizando cosas: juegos, carreras, bingos, m&uacute;sica, ida a las barracas... </li><li><span class="bold">Nos gusta comer</span>: No queremos que un Margolari pase hambre. Las comidas en Gasteizko Margolariak son en restaurante, con un buen men&uacute;, que nos den fuerzas para aguantar el resto del d&iacute;a. Las cenas las hacemos bien en la calle o bien en restaurante, pero siempre con comida buena y caliente. Los mismo que los almuerzos.</li><li><span class="bold">Y beber</span>: Sea cual sea tu veneno, lo tenemos: Ron, vodka, kalimotxo, cerveza, whiskey, agua, refrescos... Durante los paseillos (y varias veces m&aacute;s a lo largo del d&iacute;a) en la furgoneta tendr&aacute;s barra libre de todo lo que quieras.</li><li><span class="bold">Nos apuntamos a un bombardeo</span>: Carrera de Barricas, Herri Kirolak... Nunca hemos faltado a nada. Ganar, lo que es ganar, a&uacute;n lo tenemos pendiente, pero lo pasamos bien. As&iacute; que ya sabes, si quieres representar a Gasteizko Margolariak, av&iacute;sanos!</li><li><span class="bold">Por la ciudad, para la ciudad</span>: No nos gusta mirarnos el ombligo. Aunque la mayor parte de actividades que organizamos son para los miembros de Gasteizko Margolariak, hay otras que son para todo el p&uacute;blico. Hasta ahora hemos organizado talleres de Cesta Punta para txikis, Margotxef (un concurso de cocina infantil), visitas a residencias de ancianos... </li><li><span class="bold">Margolaris</span>: Todo lo dem&aacute;s no sirve de nada si en una cuadrilla no hay buen ambiente. En Gasteizko Margolariak podemos presumir de gente cercana, participativa, capaz de hacer que desde el primer d&iacute;a ya te sientas como en casa. Adem&aacute;s, los organizadores son gente cercana, que escucha y est&aacute; siempre abierta a nuevas propuestas. Por esto, quien prueba, repite.</li></ul>';
     $lng['lablanca_title'] = 'Andre Zuria Jaiak #';
     $lng['lablanca_schedule'] = 'Gure jaiako programazioa';
+    $lng['lablanca_schedules'] = 'Programas de Fiestas';
     $lng['lablanca_prices'] = 'Prezioak';
     $lng['lablanca_prices_days'] = 'Banakako egunak';
     $lng['lablanca_prices_offers'] = 'Packs';
     $lng['lablanca_past_title'] = 'Aurreko urteen kartelak';
     $lng['lablanca_past_link'] = 'Andre Zuria Jaiak ';
     $lng['lablanca_'] = '';
-    
+
     // /actividades/index.php
     $lng['activities_title'] = 'Ekitaldeak - Gasteizko Margolariak';
     $lng['activities_descrption'] = 'Asociacion Cultural Recreativa Gasteizko Margolariak - Ekitaldeak';
@@ -108,7 +109,12 @@
     $lng['activities_see_itinerary'] = 'Programazioa ikusi';
     $lng['activities_'] = '';
 
-    
+    // /lablanca/programa.php
+    $lng['lablanca_schedule_year_gm'] = 'Programa Margolari #';
+    $lng['lablanca_schedule_year_citi'] = 'Programa de Fiestas de Vitoria #';
+    $lng['lablanca_schedule_year_gm_description'] = 'Programa de Fiestas para los miembros de la cuadrilla Gasteizko Margolariak para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_year_city_description'] = 'Programa de Fiestas municipal para las Fiestas de La Blanca de #';
+
     // /actividades/actividad.php
     $lng['activities_when'] = 'Noiz';
     $lng['activities_what'] = 'Zer';

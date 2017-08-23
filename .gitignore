@@ -22,9 +22,8 @@ www-admin/redirect_s.php
 
 #SQL data
 sql/dbusers.sql
-sql/rows-test.sql
-sql/rows.sql
 sql/*201*
+sql/*row*.sql
 
 #Passwords file
 www/.htpasswd

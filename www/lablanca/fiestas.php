@@ -18,78 +18,15 @@
     <div class='content_tr'>
         <div class='content_td' id='content_td_schedule'>
             <div class='section' id='schedule'>
-                <h3 class='section_title'><?=$lng['lablanca_schedule']?></h3>
-<?php
-                $q_days = mysqli_query($con, "SELECT DISTINCT date(DATE_SUB(start, INTERVAL 6 HOUR)) AS date, DATE_FORMAT(DATE_SUB(start, INTERVAL 6 HOUR), '%Y-%m-%d') AS isodate, (SELECT name_$lang from festival_day WHERE date = date(DATE_SUB(start, INTERVAL 6 HOUR))) AS name FROM festival_event WHERE year(start) = 2017 AND gm = 1 ORDER BY date");
-                $i=0;
-                while ($r_days = mysqli_fetch_array($q_days)){
-?>
-                    <div class='entry'>
-                        <div onClick='expandDay(<?=$i?>);' class='day_title pointer'>
-                            <h4>
-                                <img class='slid' src='<?=$server?>/img/misc/slid-right.png' id='slid_day_<?=$i?>'/>
-<?php
-                                if($r_days['name'] != null){
-?>
-                                    <?=formatFestivalDate($r_days['date'])?> - <?=$r_days['name']?>
-<?php
-                                }
-                                else{
-?>
-                                    <?=formatFestivalDate($r_days['date'])?>
-<?php
-                                }
-?>
-                            </h4>
-                        </div>
-                        <div class='day_schedule' id='day_schedule_<?=$i?>'>
-<?php
-                            $q_sch = mysqli_query($con, "SELECT festival_event.id AS id, gm, title_$lang AS title, description_$lang AS description, host, place, date_format(start, '%H:%i') AS st, date_format(end, '%H:%i') AS end, place.name_$lang AS place, address_$lang AS address, lat, lon FROM festival_event, place WHERE place.id = festival_event.place AND gm = 1 AND date(DATE_SUB(start, INTERVAL 6 HOUR)) = str_to_date('$r_days[date]', '%Y-%m-%d') ORDER BY start");
-                            if (mysqli_num_rows($q_sch) > 0){
-                                echo("<table class='schedule'>\n");
-                                while ($r_sch = mysqli_fetch_array($q_sch)){
-?>
-                                    <tr>
-                                        <td>
-                                            <span class='time'><?=$r_sch['st']?></span>
-                                        </td>
-                                        <td class='timeline'>
-                                            <img class='timeline_dot' alt=' ' src='<?=$server?>/img/misc/schedule-point.png'/>
-                                        </td>
-                                        <td>
-                                            <span class='title'><?=$r_sch['title']?></span>
-<?php
-                                            if (strlen($r_sch["description"]) > 0 && $r_sch["description"] != $r_sch["title"]){
-                                                echo("<br/><div class='description'>$r_sch[description]</div>\n");
-                                            }
-?>
-                                            <div class='location'>
-                                                <a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>+(My+Point)&z=14&ll=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>'>
-                                                    <img alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
-<?php
-                                                    //If name and address are the same, show only name
-                                                    if ($r_sch['place'] == $r_sch['address']){
-                                                        echo("$r_sch[place]\n");
-                                                    }
-                                                    else{
-                                                        echo("$r_sch[place] <span class='address'>- $r_sch[address]</span>\n");
-                                                    }
-?>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-<?php
-                                }
-                                echo "</table>\n";
-                            }
-?>
-                        </div>
+                <h3 class='section_title'><?=$lng['lablanca_schedules']?></h3>
+                <div class='entry'>
+                    <div class='button'>
+                        <a href='<?=$server?>/lablanca/programa/margolariak/<?=$year?>'><?=str_replace('#', $year, $lng["lablanca_schedule_year_gm"])?></a>
                     </div>
-<?php
-                    $i ++;
-                } // while ($r_days = mysqli_fetch_array($q_days))
-?>
+                    <div class='button'>
+                        <a href='<?=$server?>/lablanca/programa/ciudad/<?=$year?>'><?=str_replace('#', $year, $lng["lablanca_schedule_year_city"])?></a>
+                    </div>
+                </div> <!-- .entry -->
             </div>
         </div>
         <div class='content_td' id='content_td_prices'>
