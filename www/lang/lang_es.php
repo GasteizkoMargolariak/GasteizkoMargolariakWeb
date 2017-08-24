@@ -229,6 +229,21 @@
     $lng['help_ad_title'] = 'Pol&iacute;tica de anuncios';
     $lng['help_ad'] = 'En esta p&aacute encontrar&aacute;s anuncios. Son un poco diferentes de los que seguramente est&eacute;s acostumbrado a ver por Internet, y esperamos que no te resulten tan molestos como suelen serlo.<br/><ul><li>No ofrecemos un espacio de publicidad que cualquier empresa puede alquilar. Nuestros anuncios son de empresas y organizaciones que conocemos, con las que trabajamos, y de cuya calidad y fiabilidad podemos responder. Los anuncios los dise&ntilde;amos uno a uno entre la empresa y nosotros. De esta forma, podemos estar seguros de de mostrar una publicidad honesta y segura.<br/></li><li>Garantizamos que al hacer click en la publicidad de este sitio, ser&aacute;s redireccionado a la p&aacute;gina oficial de la empresa anunciada. Si la empresa no tuviera una web propia, accederias a una p&aacute;gina segura con informaci&oacute; de la misma. Nosotros mismos configuramos los enlaces y comprobamos que sean v&aacute;lidos y seguros.<br/></li><li>No queremos ser pesados, as&iacute; que no te ense&ntilde;aremos m&aacute;s de un anuncio cada vez que entres en la p&aacute;gina. Si en alg&uacute;n momento quieres saber m&aacute;s sobre nuestros patrocinadores, tienes una lista al final de la p&aacute;gina.<br/></li><li>No tenemos ingresos por publicidad. No recibimos dinero cada vez que ves o haces click en un anuncio. Si ves anunciada una empresa en esta p&aacute;gina, es por que ha colaborado con nosotros de alguna manera, como ayudando a organizar alguna actividad, cediendo material... Por eso, puedes estar seguro de que est&aacute;s viendo el anuncio de una empresa que ofrece productos que conocemos y por los que apostamos.<br/></li><li>No te rastreamos. Sabemos cuantas veces se ha visto un anuncio y cuantas veces se ha hecho click sobre &eacute;l, pero no sabemos ni cu&aacute;ndo, ni qui&eacute;n. No guardamos (ni, por supuesto, enviamos a nadie) ning&uacute;n tipo de informaci&oacute;n personal relacionada con la publicidad.<br/></li></ul><br/>';
 
+    // /traducir/index.php
+    $lng['translate_title'] = 'Traducciones';
+    $lng['translate_description'] = 'Traducci&oacute;n de contenidos';
+    $lng['translate_to_en'] = 'Traducir al ingl&eacute;s';
+    $lng['translate_to_eu'] = 'Traducir al euskera';
+    $lng['translate_translating_en'] = 'Traducciones en ingl&eacute;s';
+    $lng['translate_translating_eu'] = 'Traducciones en euskera';
+    $lng['translate_original'] = 'Original (castellano)';
+    $lng['translate_translation_en'] = 'Traducci&oacute;n (ingl&eacute;s)';
+    $lng['translate_translation_eu'] = 'Traducci&oacute;n (euskera)';
+    $lng['translate_name'] = 'Tu nombre';
+    $lng['translate_skip'] = 'Saltar esta';
+    $lng['translate_save'] = 'Guardar';
+
+
     //Ads
     $lng['ad_title'] = 'Publicidad';
 

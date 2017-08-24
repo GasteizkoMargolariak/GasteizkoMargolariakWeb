@@ -4,12 +4,12 @@
     include("../functions.php");
     $con = startdb();
     $proto = getProtocol();
-	$server = "$proto$http_host";
-    
+    $server = "$proto$http_host";
+
     //Language
     $lang = selectLanguage();
     include("../lang/lang_$lang.php");
-    
+
     $cur_section = $lng['section_us'];
 ?>
 <!DOCTYPE html>
@@ -22,15 +22,15 @@
         <link rel="shortcut icon" href="<?=$server?>/img/logo/favicon.ico">
         <!-- CSS files -->
         <style>
-<?php 
-            include("../css/ui.css"); 
+<?php
+            include("../css/ui.css");
             include("../css/nosotros.css");
 ?>
         </style>
         <!-- CSS for mobile version -->
         <style media="(max-width : 990px)">
-<?php 
-            include("../css/m/ui.css"); 
+<?php
+            include("../css/m/ui.css");
             include("../css/m/nosotros.css");
 ?>
         </style>
@@ -60,8 +60,8 @@
         <meta name="robots" content="index follow"/>
     </head>
     <body>
-<?php 
-		include("../header.php");
+<?php
+        include("../header.php");
 ?>
         <div id="content">
             <div class="content_row">
@@ -101,7 +101,7 @@
                             <img src="<?=$server?>/img/nosotros/transparencia.png" alt=" "/>
                             <?=$lng["us_transparency_content"] ?>
                             <div>
-								<!-- <a class='button' href="/nosotros/transparencia/">Consulta nuestras cuentas</a> -->
+                                 <!-- <a class='button' href="/nosotros/transparencia/">Consulta nuestras cuentas</a> -->
                             </div>
                         </div>
                     </div>
