@@ -24,6 +24,9 @@ RewriteRule ^rss.xml$ /rss.php [NC]
 RewriteRule ^blog/buscar/([A-Za-z0-9]+)/([A-Za-z0-9]+)[\/]?$ /blog/buscar.php?where=$1&query=$2 [NC]
 RewriteRule ^blog/([A-Z\-a-z0-9]{3,}+)[\/]?$ /blog/post.php?perm=$1 [NC]
 
+RewriteRule ^osm/([A-Z\-a-z0-9]+)[\/]?.xml$ /osm/index.php?route=$1 [NC]
+RewriteRule ^gpx/([A-Z\-a-z0-9]+)[\/]?.gpx$ /gpx/index.php?route=$1 [NC]
+
 RewriteRule ^lablanca/([0-9]+)[\/]?$ /lablanca/index.php?year=$1 [NC]
 RewriteRule ^lablanca/programa[\/]?$ /lablanca/programa.php?gm=1 [NC]
 RewriteRule ^lablanca/programa/([A-Za-z]+)[\/]?$ /lablanca/programa.php?gm=$1 [NC]
