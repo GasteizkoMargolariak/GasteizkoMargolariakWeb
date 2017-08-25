@@ -181,14 +181,13 @@
      *           the table names.                        *
      *****************************************************/
     function get_server_versions($con){
-    
+
         global $fast_tables;
-    
+
         $versions = array();
         $q = mysqli_query($con, "SELECT section, version FROM version;");
-        
+
         while($r = mysqli_fetch_array($q)){
-            
             if (in_array($r['section'], $fast_tables)){
                 $versions[$r['section']] = "0";
             }
@@ -314,7 +313,7 @@
                 $q = mysqli_query($con, "SELECT * FROM festival_day WHERE year(date) = $year;");
                 break;
             case TAB_FESTIVAL_OFFER:
-                $q = mysqli_query($con, "SELECT * FROM festival WHERE year = $year;");
+                $q = mysqli_query($con, "SELECT * FROM festival_offer WHERE year = $year;");
                 break;
             case TAB_FESTIVAL_EVENT_CITY:
                 $q = mysqli_query($con, "SELECT * FROM festival_event_city WHERE year(start) = $year AND interest >= 1;");
