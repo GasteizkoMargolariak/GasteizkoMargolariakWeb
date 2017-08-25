@@ -66,6 +66,8 @@
             include("../script/lablanca.js");
 ?>
         </script>
+        <script src="<?=$server?>/script/OpenLayers.js"></script>
+
         <!-- Meta tags -->
         <link rel="canonical" href="<?=$server?>/lablanca/programa/<?=$url?>/<?=$year?>"/>
         <link rel="author" href="<?=$server?>"/>
@@ -115,9 +117,11 @@
                         </div>
                         <div class='day_schedule' id='day_schedule_<?=$i?>'>
 <?php
-                            $q_sch = mysqli_query($con, "SELECT festival_event_$schi.id AS id, title_$lang AS title, description_$lang AS description, host, place, date_format(start, '%H:%i') AS st, date_format(end, '%H:%i') AS end, place.name_$lang AS place, address_$lang AS address, lat, lon FROM festival_event_$schi, place WHERE place.id = festival_event_$schi.place AND date(DATE_SUB(start, INTERVAL 6 HOUR)) = str_to_date('$r_days[date]', '%Y-%m-%d') ORDER BY start");
+                            $q_sch = mysqli_query($con, "SELECT festival_event_$schi.id AS id, title_$lang AS title, description_$lang AS description, host, place, date_format(start, '%H:%i') AS st, date_format(end, '%H:%i') AS end, place.name_$lang AS place, address_$lang AS address, lat, lon, route FROM festival_event_$schi, place WHERE place.id = festival_event_$schi.place AND date(DATE_SUB(start, INTERVAL 6 HOUR)) = str_to_date('$r_days[date]', '%Y-%m-%d') ORDER BY start");
                             if (mysqli_num_rows($q_sch) > 0){
-                                echo("<table class='schedule'>\n");
+?>
+                                <table class='schedule'>
+<?php
                                 while ($r_sch = mysqli_fetch_array($q_sch)){
 ?>
                                     <tr>
@@ -139,8 +143,18 @@
 ?>
                                             <div class='location'>
                                                 <!--<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>+(My+Point)&z=14&ll=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>'>-->
-                                                <!-- TODO Routes -->
-                                                <span class='fake_a pointer' onClick='showMapPoint(<?=$r_sch['lat']?>,<?=$r_sch['lon']?>);'>
+<?php
+                                                if ($r_sch["route"] != null && strlen($r_sch["route"]) != 0){
+?>
+                                                    <span class='fake_a pointer' onClick='showMapRoute(<?=$r_sch["route"]?>, "<?=$r_sch["title"]?>", "gpx");'>
+<?php
+                                                }
+                                                else{
+?>
+                                                    <span class='fake_a pointer' onClick='showMapPoint(<?=$r_sch["lat"]?>, <?=$r_sch["lon"]?>, "<?=$r_sch["title"]?>");'>
+<?php
+                                                }
+?>
                                                     <img alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
 <?php
                                                     //If name and address are the same, show only name
@@ -175,9 +189,16 @@
 ?>
             </div>
             <div id='map_container'>
-                <div id='map'>
-                    <!-- TODO: OSM -->
-                </div> <!-- map -->
+                <div class='section'>
+                    <h3 class='section_title'>
+                        <span id='map_title'>MAP</span>
+                        <div id='map_close_container'>
+                            <img id='map_close' class='pointer' alt=' ' src='<?=$server?>/img/misc/close.png' onClick='hideMap();'/>
+                        </div>
+                    </h3>
+                    <div id='map' class='entry'>
+                    </div> <!-- map -->
+                </div> <!-- .section -->>
             </div> <!-- .map_container -->
         </div> <!-- #content -->
 <?php
