@@ -3,6 +3,8 @@
     $http_host = $_SERVER['HTTP_HOST'];
     include("../functions.php");
     $con = startdb('rw');
+    $proto = getProtocol();
+    $server = "$proto$http_host";
     
     //Get post values
     $from =mysqli_real_escape_string($con, $_POST["from"]);
@@ -55,16 +57,19 @@
     }
     
     //Prepare the page to update the comment section
-    //WARNING: If changes are done here, do the same in album.php
     $q_comment = mysqli_query($con, "SELECT id, photo, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, dtime, user, username, lang, text FROM photo_comment WHERE photo = $photo AND approved = 1 ORDER BY dtime;");
     error_log("SELECT id, photo, DATE_FORMAT(dtime, '%Y-%m-%dT%T') AS isodate, dtime, user, username, lang, text FROM photo_comment WHERE photo = $photo AND approved = 1 ORDER BY TIME;");
     while ($r_comment = mysqli_fetch_array($q_comment)){
-        echo "<div itemprop='comment' itemscope itemtype='http://schema.org/UserComments' id='comment_$r_comment[id]' class='comment'>\n";
-        //When official users are implementes, see if there is user or username
-        echo "<span itemprop='creator' class='comment_user'>$r_comment[username]</span>\n";
-        echo "<span class='comment_date date'><meta itemprop='commentTime' content='$r_comment[isodate]'/>" . formatDate($r_comment['dtime'], $lang) . "</span>\n";
-        echo "<p itemprop='commentText' class='comment_text'>$r_comment[text]</p>";
-        echo "<hr class='comment_line'/>\n";
-        echo "</div>\n";
+?>
+        <div itemprop='comment' itemscope itemtype='http://schema.org/UserComments' id='comment_<?=$r_comment["id"]?>' class='comment'>
+            <span itemprop='creator' class='comment_user'><?=$r_comment["username"]?></span>
+            <span class='comment_date date'>
+                <meta itemprop='commentTime' content='<?=$r_comment["isodate"]?>'/>
+                <?=formatDate($r_comment["dtime"], $lang)?>
+            </span>
+            <p itemprop='commentText' class='comment_text'><?$r_comment["text"]?></p>
+            <hr class='comment_line'/>
+        </div>
+<?php
     }
 ?>
