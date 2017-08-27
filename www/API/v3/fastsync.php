@@ -324,7 +324,7 @@
             case TAB_ACTIVITY_ITINERARY:
                 $q = mysqli_query($con, "SELECT * FROM activity_itinerary WHERE year(start) = $year;");
                 break;
-            case TAB_ACTIVITY_PHOTO_ALBUM:
+            case TAB_PHOTO_ALBUM:
                 $q = mysqli_query($con, "SELECT photo, album FROM photo_album, photo WHERE photo = photo.id AND year(uploaded) = $year;");
                 break;
             case TAB_POST_IMAGE:
