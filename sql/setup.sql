@@ -10,7 +10,7 @@ CREATE TABLE user (
     username    VARCHAR(64)        NOT NULL,
     email        VARCHAR(128)    NOT NULL,
     password    CHAR(128)        NOT NULL,
-    salt        CHAR(128)        NOT NULL, 
+    salt        CHAR(128)        NOT NULL,
     fname        VARCHAR(64),
     lname        VARCHAR(64),
     picture        VARCHAR(100),
@@ -101,7 +101,10 @@ DROP TABLE IF EXISTS route;
 CREATE TABLE route (
   id       INT           AUTO_INCREMENT PRIMARY KEY,
   name     VARCHAR(32),
-  mins     INT
+  mins     INT,
+  c_lat    DOUBLE        NOT NULL,
+  c_lon    DOUBLE        NOT NULL,
+  zoom     INT           DEFAULT 16
 );
 
 DROP TABLE IF EXISTS route_point;

@@ -2,7 +2,10 @@ DROP TABLE IF EXISTS route;
 CREATE TABLE route (
   id       INT           AUTO_INCREMENT  PRIMARY KEY,
   name     VARCHAR(32),
-  mins     INT
+  mins     INT,
+  c_lat    DOUBLE        NOT NULL,
+  c_lon    DOUBLE        NOT NULL,
+  zoom     INT           DEFAULT 16
 );
 
 DROP TABLE IF EXISTS route_point;
