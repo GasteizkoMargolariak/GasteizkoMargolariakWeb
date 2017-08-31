@@ -173,7 +173,6 @@
      *           false otherwise.                        *
      *****************************************************/
     function fastLogin($con){
-        error_log("PASS $_POST[pass] - " . mysqli_real_escape_string($con, $_POST["pass"]) );
         return login($con, mysqli_real_escape_string($con, $_POST["user"]), mysqli_real_escape_string($con, $_POST["pass"]));
     }
 

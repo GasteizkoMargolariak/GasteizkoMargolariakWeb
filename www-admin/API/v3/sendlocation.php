@@ -31,10 +31,6 @@
     
     $user = mysqli_real_escape_string($con, $_POST[GET_USER]);
     $pass = mysqli_real_escape_string($con, $_POST[GET_PASS]);
-    error_log("RAW_USER: " . $_POST[GET_USER]);
-    error_log("PROCESSED_USER: " . mysqli_real_escape_string($con, $_POST[GET_USER]));
-    error_log("RAW_PASS: " . $_POST[GET_PASS]);
-    error_log("PROCESSED_PASS: " . mysqli_real_escape_string($con, $_POST[GET_PASS]));
     
     $lat = mysqli_real_escape_string($con, $_GET[GET_LAT]);
     $lon = mysqli_real_escape_string($con, $_GET[GET_LON]);
