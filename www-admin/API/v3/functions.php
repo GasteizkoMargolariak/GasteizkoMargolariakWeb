@@ -145,8 +145,8 @@
      *    con: (Mysql connectrion): DB connection.       *
      *    user: (string): Username.                      *
      *    pass: (string): Password.                      *
-     * @return: (boolean): True if user pass match,      *
-     *           false otherwise.                        *
+     * @return: (int): User id, or -1 if the user and    *
+	 *          pass didn't match.                       *
      *****************************************************/
     function login($con, $user, $pass){
         session_start();
@@ -156,26 +156,13 @@
             $_SESSION['id'] = $r['id'];
             $_SESSION['salt'] = $r['s'];
             $_SESSION['name'] = $r['username'];
-            return true;
+            return $r['id'];
         }
         else{
             error_log("Invalid login. username = $user, id = $_SESSION[id]");
-            return false;
+            return -1;
         }
     }
-
-    /*****************************************************
-     * Tries to login, using parameters sent via POST.   *
-     *                                                   *
-     * @params:                                          *
-     *    con: (Mysql connectrion): DB connection.       *
-     * @return: (boolean): True if user pass match,      *
-     *           false otherwise.                        *
-     *****************************************************/
-    function fastLogin($con){
-        return login($con, mysqli_real_escape_string($con, $_POST["user"]), mysqli_real_escape_string($con, $_POST["pass"]));
-    }
-
 
     /*****************************************************
      * Finds out the IP address of the client.           *

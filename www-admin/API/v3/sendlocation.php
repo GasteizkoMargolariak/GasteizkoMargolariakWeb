@@ -1,12 +1,9 @@
 <?php
     // Gasteizko Margolariak API v3 //
-    
-    //var_dump($_POST);
-    //exit(0);
 
     // $_GET valid parameters
-    define('GET_USER', 'user');
-    define('GET_PASS', 'pass');
+    define('POST_USER', 'user');
+    define('POST_PASS', 'pass');
     define('GET_ACTION', 'action');
     define('GET_LAT', 'lat');
     define('GET_LON', 'lon');
@@ -29,15 +26,16 @@
 
     //Get fields
     
-    $user = mysqli_real_escape_string($con, $_POST[GET_USER]);
-    $pass = mysqli_real_escape_string($con, $_POST[GET_PASS]);
+    $user = mysqli_real_escape_string($con, $_POST[POST_USER]);
+    $pass = mysqli_real_escape_string($con, $_POST[POST_PASS]);
     
     $lat = mysqli_real_escape_string($con, $_GET[GET_LAT]);
     $lon = mysqli_real_escape_string($con, $_GET[GET_LON]);
     $action = mysqli_real_escape_string($con, $_GET[GET_ACTION]);
-
+    
     //Validate user
-    if (!login($con, $user, $pass)){
+	$uid = login($con, $user, $pass);
+    if ($uid == -1){
         error_log(":SECURITY: Reporting location with wrong credentials (IP $_SERVER[REMOTE_ADDR])");
         $error = $error . ERR_USER . mysqli_real_escape_string($con, $user);
         error_log($error);

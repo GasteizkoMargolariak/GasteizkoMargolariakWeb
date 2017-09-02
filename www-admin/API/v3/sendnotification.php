@@ -1,9 +1,9 @@
 <?php
     // Gasteizko Margolariak API v3 //
 
-    // $_GET valid parameters
-    define('GET_USER', 'user');
-    define('GET_PASS', 'pass');
+    // $_GET and $_POST valid parameters
+    define('POST_USER', 'user');
+    define('POST_PASS', 'pass');
     define('GET_TITLE_ES', 'title_es');
     define('GET_TITLE_EN', 'title_en');
     define('GET_TITLE_EU', 'title_eu');
@@ -17,16 +17,16 @@
     define('GET_GM', 'gm');
 
     // Valid values
-    define('ACTION_TEXT', 'mensaje');
+    define('ACTION_TEXT', 'text');
     define('ACTION_BLOG', 'blog');
-    define('ACTION_ACTIVITIES', 'actividades');
-    define('ACTION_GALLERY', 'galeria');
-    define('ACTION_LOCALIZATION', 'localizacion');
+    define('ACTION_ACTIVITIES', 'activities');
+    define('ACTION_GALLERY', 'gallery');
+    define('ACTION_LOCATION', 'location');
     define('ACTION_LABLANCA', 'lablanca');
-    define('ACTION_SCHEDULE', 'programa');
-    define('ACTION_GM_SCHEDULE', 'gprograma');
-    define('ACTION_US', 'nosotros');
-    $actions = [ACTION_TEXT, ACTION_BLOG, ACTION_ACTIVITIES, ACTION_GALLERY, ACTION_LOCALIZATION, ACTION_LABLANCA, ACTION_SCHEDULE, ACTION_GM_SCHEDULE, ACTION_US];
+    define('ACTION_SCHEDULE_CITY', 'schedule_city');
+    define('ACTION_SCHEDULE_GM', 'schedule_gm');
+    define('ACTION_US', 'us');
+    $actions = [ACTION_TEXT, ACTION_BLOG, ACTION_ACTIVITIES, ACTION_GALLERY, ACTION_LOCATION, ACTION_LABLANCA, ACTION_SCHEDULE_CITY, ACTION_SCHEDULE_GM, ACTION_US];
 
     // Default values
     define('DEF_GM', 0);
@@ -44,10 +44,11 @@
 
     include('functions.php');
 
-    $con = startdb();
+    $con = startdb('rw');
 
     // Get fields
-    $user = mysqli_real_escape_string($con, $_GET[GET_USER]);
+    $user = mysqli_real_escape_string($con, $_POST[POST_USER]);
+	$pass = mysqli_real_escape_string($con, $_POST[POST_PASS]);
     $title_es = urldecode(mysqli_real_escape_string($con, $_GET[GET_TITLE_ES]));
     $title_en = urldecode(mysqli_real_escape_string($con, $_GET[GET_TITLE_EN]));
     $title_eu = urldecode(mysqli_real_escape_string($con, $_GET[GET_TITLE_EU]));
@@ -64,9 +65,10 @@
     $error = "";
 
     // Validate user/pass
-    if (!fastLogin($con)){
+    $uid = login($con, $user, $pass);
+    if ($uid == -1){
         error_log(":SECURITY: Reporting location with wrong credentials (IP $_SERVER[REMOTE_ADDR])");
-        $error = $error . ERR_USER . mysqli_real_escape_string($con, $_POST[GET_USER]);
+        $error = $error . ERR_USER . mysqli_real_escape_string($con, $_POST[POST_USER]);
         error_log($error);
         http_response_code(403); // Forbidden
         exit(-1);
@@ -117,11 +119,13 @@
 
     //Insert
     if (strlen($error) == 0){
-        mysqli_query($con, "INSERT INTO notification (user, title_es, title_en, title_eu, text_es, text_en, text_eu, action, duration) VALUES ($uid, '$title_es', '$title_en', '$title_eu', '$text_es', '$text_en', '$text_eu', '$action', $duration);");
+        mysqli_query($con, "INSERT INTO notification (user, title_es, title_en, title_eu, text_es, text_en, text_eu, action, duration) VALUES ($_SESSION[id], '$title_es', '$title_en', '$title_eu', '$text_es', '$text_en', '$text_eu', '$action', $duration);");
+        error_log("INSERT INTO notification (user, title_es, title_en, title_eu, text_es, text_en, text_eu, action, duration) VALUES ($_SESSION[id], '$title_es', '$title_en', '$title_eu', '$text_es', '$text_en', '$text_eu', '$action', $duration);");
         http_response_code(204); // No content;
         exit(0);
     }
     else{
+		http_response_code(400); // Bad request
         error_log($error);
         exit(-6);
     }
