@@ -1,8 +1,9 @@
 <?php
+    // Gasteizko Margolariak API v3 //
 
     // $_GET valid parameters
-    define('GET_USER', 'user');
-    define('GET_PASS', 'pass');
+    define('POST_USER', 'user');
+    define('POST_PASS', 'pass');
     define('GET_ACTION', 'action');
     define('GET_LAT', 'lat');
     define('GET_LON', 'lon');
@@ -18,64 +19,29 @@
     define('ERR_ACTION', '-ACTION:');
     define('ERR_LOCATION', '-TITLE:');
 
-    /****************************************************
-    * This function is called from almost everywhere at *
-    * the beggining of the page. It initializes the     *
-    * session variables, connect to the db, enabling    *
-    * the variable $con for futher use everywhere in    *
-    * the php code, and populates the arrays $user      *
-    * and $permission, with info about the user.        *
-    *                                                   *
-    * @return: (db connection): The connection handler. *
-    ****************************************************/
-    function startdb(){
-        //Include the db configuration file. It's somehow like this
-        /*
-         <?php
-          $host = 'XXXX';
-          $db_name = 'XXXX';
-          $username_ro = 'XXXX';
-          $username_rw = 'XXXX';
-          $pass_ro = 'XXXX';
-          $pass_rw = 'XXXX';
-         ?>
-        */
-        include('../../.htpasswd');
-
-        //Connect to to database
-        $con = mysqli_connect($host, $username_rw, $pass_rw, $db_name);
-
-        //Set encoding options
-        mysqli_set_charset($con, 'utf-8');
-        header('Content-Type: text/html; charset=utf8');
-        mysqli_query($con, 'SET NAMES utf8;');
-
-        //Return the db connection
-        return $con;
-    }
+    include('functions.php');
 
     $con = startdb('rw');
     $error = "";
 
     //Get fields
-    $user = mysqli_real_escape_string($con, $_GET[GET_USER]);
-    $pass = mysqli_real_escape_string($con, $_GET[GET_PASS]);
+    
+    $user = mysqli_real_escape_string($con, $_POST[POST_USER]);
+    $pass = mysqli_real_escape_string($con, $_POST[POST_PASS]);
+    
     $lat = mysqli_real_escape_string($con, $_GET[GET_LAT]);
     $lon = mysqli_real_escape_string($con, $_GET[GET_LON]);
     $action = mysqli_real_escape_string($con, $_GET[GET_ACTION]);
-
+    
     //Validate user
-    $q = mysqli_query($con, "SELECT id FROM user WHERE (lower(username) = lower('$user') OR lower(email) = lower('$user')) AND password = sha1(concat('$pass', sha1(salt)))");
-    if (mysqli_num_rows($q) == 0){
+	$uid = login($con, $user, $pass);
+    if ($uid == -1){
         error_log(":SECURITY: Reporting location with wrong credentials (IP $_SERVER[REMOTE_ADDR])");
-        http_response_code(403); // Forbidden
-        $error = $error . ERR_USER . mysqli_real_escape_string($con, $_GET[GET_USER]);
+        $error = $error . ERR_USER . mysqli_real_escape_string($con, $user);
         error_log($error);
+        http_response_code(403); // Forbidden
         exit(-1);
     }
-    // Get id
-    $r = mysqli_fetch_array($q);
-    $uid = $r['id'];
 
     //Validate fields
     if (!in_array($action, $actions)){
