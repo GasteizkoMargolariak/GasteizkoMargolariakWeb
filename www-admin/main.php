@@ -24,7 +24,9 @@
         <script type="text/javascript" src="/script/ui.js"></script>
     </head>
     <body>
-        <?php include('toolbar.php'); ?>
+<?php
+        include('toolbar.php');
+?>
         <div id='content'>
             <div id='section_table'>
                 <div class='section_row'>
@@ -122,4 +124,6 @@
         </div>
     </body>
 </html>
-<?php } ?>
+<?php
+    }
+?>

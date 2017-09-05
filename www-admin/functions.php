@@ -2,8 +2,7 @@
 
     $IMG_SIZE_PREVIEW = 600;
     $IMG_SIZE_MINIATURE = 200;
-    
-    
+
     function getProtocol(){
         if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
                 $protocol = 'https://';
@@ -43,32 +42,32 @@
         ?>
         */
         include('.htpasswd');
-        
+
         //Connect to to database
         if ($mode == 'ro')
             $con = mysqli_connect($host, $username_ro, $pass_ro, $db_name);
         else if ($mode == 'rw')
             $con = mysqli_connect($host, $username_rw, $pass_rw, $db_name);
-            
+
         // Check connection
         if (mysqli_connect_errno()){
             error_log("Failed to connect to database: " . mysqli_connect_error());
             return -1;
         }
-        
+
         //Set encoding options
         mysqli_set_charset($con, 'utf-8');
         header('Content-Type: text/html; charset=utf8');
         mysqli_query($con, 'SET NAMES utf8;');
-        
+
         //Return the db connection
         return $con;
     }
-    
-    
+
+
     /****************************************************
     * This function turns a date string into a human    *
-    * readable string, deppending o the specified       * 
+    * readable string, deppending o the specified       *
     * language.                                         *
     * @params:                                          *
     *    strdate: (string): Date string.                *
@@ -79,7 +78,7 @@
     *    time: (boolean): Append the time at the end.   *
     * @return: (string array) List of the languages     *
     *          offered, sorted by prefference.          *
-    ****************************************************/    
+    ****************************************************/
     function formatDate($strdate, $lang, $time = true){
         $date = strtotime($strdate);
         $year = date('o', $date);
@@ -123,10 +122,11 @@
         }
         return $str;
     }
-    
+
+
     /****************************************************
     * This function turns a date string into a human    *
-    * readable string, deppending o the specified       * 
+    * readable string, deppending o the specified       *
     * language. It is designed to be used for festival  *
     * days only, since it doesnt return the weekday.    *
     * @params:                                          *
@@ -137,7 +137,7 @@
     *                          language preferences.    *
     * @return: (string array) List of the languages     *
     *          offered, sorted by prefference.          *
-    ****************************************************/    
+    ****************************************************/
     function formatFestivalDate($strdate, $lang){
         $date = strtotime($strdate);
         $month = date('n', $date);
@@ -158,10 +158,10 @@
         }
         return $str;
     }
-    
+
     /****************************************************
     * This function closes all the opened HTML tags in  *
-    * a given string.                                   * 
+    * a given string.                                   *
     *                                                   *
     * @params:                                          *
     *    html: (string): The string with HTML tags      *
@@ -184,11 +184,13 @@
             }
         }
         return $html;
-    } 
-    
+    }
+
+
+
     /****************************************************
     * Text shortener. Given a string, it trims in the   *
-    * proximity of the desired streng, ut to the next   * 
+    * proximity of the desired streng, ut to the next   *
     * white character. If indicated, it will append a   *
     * link to the full text.                            *
     *                                                   *
@@ -212,7 +214,8 @@
         }
         return $cut;
     }
-    
+
+
     /****************************************************
     * Generates a URL-valid string from a regular one.  *
     *                                                   *
@@ -231,7 +234,8 @@
         $str = str_replace(' ', '-', $str);
         return $str;
     }
-    
+
+
     function login($con, $user, $pass){
         session_start();
         $q = mysqli_query($con,"SELECT id, salt, username AS username, sha1(salt) AS s FROM user WHERE (lower(username) = lower('$user') OR lower(email) = lower('$user')) AND password = sha1(concat('$pass', sha1(salt)));");
@@ -247,7 +251,8 @@
             return false;
         }
     }
-    
+
+
     function checkSession($con){
         session_start(['cookie_lifetime' => 1800,]);
         $qr = mysqli_query($con, "SELECT id FROM user WHERE id = '$_SESSION[id]' AND sha1(salt) = '$_SESSION[salt]';");
@@ -259,11 +264,12 @@
             error_log("Invalid session. username = $_SESSION[name], id = $_SESSION[id]");
         }
     }
-    
+
+
 
     /****************************************************
     * Increases version value in table settings by one. *
-    * Helpfull for the app to know when to perform a    * 
+    * Helpfull for the app to know when to perform a    *
     * full sync. Must be called after every INSERT,     *
     * UPDATE or DELETE query to the database.           *
      ****************************************************/
@@ -272,4 +278,3 @@
         mysqli_query($con, 'UPDATE settings SET value = value + 1 WHERE name = "version";');
     }
 ?>
-    

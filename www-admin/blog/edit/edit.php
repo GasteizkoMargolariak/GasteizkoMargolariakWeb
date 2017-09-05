@@ -7,7 +7,7 @@
         exit (-1);
     }
     else{
-        
+
         //Get POST data
         $id = mysqli_real_escape_string($con, $_POST['id']);
         $title_es = mysqli_real_escape_string($con, $_POST['title_es']);
@@ -24,48 +24,43 @@
         $comments = mysqli_real_escape_string($con, $_POST['comments']);
         $visible = mysqli_real_escape_string($con, $_POST['visible']);
         $admin = mysqli_real_escape_string($con, $_POST['admin']);
-        
+
         //Check spanish title
-        if ($title_es == null)
+        if ($title_es == null){
             exit();
-        
-        //Check titles with no text
-        if (strlen($title_eu) > 0 && strlen($text_eu) < 1)
-            exit();
-        if (strlen($title_en) > 0 && strlen($text_en) < 1)
-            exit();
-        
-        //Check text with no titles
-        if (strlen($text_eu) > 0 && strlen($title_eu) < 1)
-            exit();
-        if (strlen($text_en) > 0 && strlen($title_en) < 1)
-            exit();
-        
+        }
+
         //Check booleans and assign default values if not
-        if ($comments == 'off')
+        if ($comments == 'off'){
             $comments = 0;
-        else
+           }
+        else{
             $comments = 1;
-        if ($visible == 'off')
+        }
+        if ($visible == 'off'){
             $visible = 0;
-        else
+        }
+        else{
             $visible = 1;
-        if ($admin == 'on')
+        }
+        if ($admin == 'on'){
             $admin = 1;
-        else
+        }
+        else{
             $admin = 0;
-            
+        }
+
         // If no translations, same text in all languages
         if (strlen($text_eu) == 0){
             $text_eu = $text_es;
             $title_eu = $title_es; 
         }
-        
+
         if (strlen($text_en) == 0){
             $text_en = $text_es;
             $title_en = $title_es; 
         }
-        
+
         //Get database entry
         $q = mysqli_query($con, "SELECT * FROM post WHERE id = $id;");
         if (mysqli_num_rows($q) == 0)
@@ -95,15 +90,14 @@
         if ($visible != $r['visible']){
             mysqli_query($con, "UPDATE post SET visible = $visible WHERE id = $id;");
         }
-        
+
         while ($file_idx < 4 && $img_idx < 4){
             if ($_POST["delete_image_$file_idx"] == 'yes'){
                 mysqli_query($con, "DELETE FROM pot_image WHERE post = $id AND idx = $file_idx;");
-                //TODO: Maybe images should be sorted after this
             }
-            
+
             if (file_exists($image[$file_idx]['tmp_name']) > 0){
-                
+
                 //Convert to jpg
                 $im = new imagick($image[$file_idx]['tmp_name']);
                 $im->setImageFormat('jpg');
@@ -118,15 +112,14 @@
                 $im->writeImage("../../../www/img/blog/thumb/$permalink-n$img_idx.jpg");
                 $im->clear();
                 $im->destroy();
-                
+
                 //Database
                 mysqli_query($con, "INSERT INTO post_image (post, image, idx) VALUES ($post_id, '$permalink-n$img_idx.jpg', $img_idx);");
-                
+
                 $img_idx ++;
             }
             $file_idx ++;
         }
-        
-        version();
+
     }
 ?>

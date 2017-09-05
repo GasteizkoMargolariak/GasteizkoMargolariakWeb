@@ -1,5 +1,4 @@
 <?php
-    $http_host = $_SERVER['HTTP_HOST'];
     include("../../functions.php");
     $con = startdb();
     if (!checkSession($con)){
@@ -25,7 +24,9 @@
         <script src="../../ckeditor/ckeditor.js"></script>
     </head>
     <body>
-        <?php include('../../toolbar.php'); ?>
+<?php
+        include('../../toolbar.php');
+?>
         <div id='content'>
             <div class="section">
                 <h3 class="section_title">Nuevo post</h3>

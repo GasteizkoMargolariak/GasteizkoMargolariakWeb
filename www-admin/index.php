@@ -6,7 +6,8 @@
         header("Location: /main.php");
         exit (-1);
     }
-    else{?>
+    else{
+?>
 <html>
     <head>
         <meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
@@ -30,7 +31,7 @@
                             <td><input name="user" type="text"/></td>
                         </tr>
                         <tr>
-                            <td>Contrasena:</td>
+                            <td>Contrase&ntilde;a:</td>
                             <td><input name="pass" type="password"/></td>
                         </tr>
                         <tr>
@@ -42,4 +43,6 @@
         </div>
     </body>
 </html>
-<?php } ?>
+<?php
+    }
+?>

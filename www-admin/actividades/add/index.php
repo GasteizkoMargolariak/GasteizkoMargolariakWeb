@@ -6,7 +6,8 @@
         header("Location: /index.php");
         exit (-1);
     }
-    else{?>
+     else{
+?>
 <html>
     <head>
         <meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
@@ -24,7 +25,9 @@
         <script src="../../ckeditor/ckeditor.js"></script>
     </head>
     <body>
-        <?php include('../../toolbar.php'); ?>
+<?php
+        include('../../toolbar.php');
+?>
         <div id='content'>
             <div class="section">
                 <h3 class="section_title">Nueva actividad</h3>
@@ -74,9 +77,6 @@
                         <input type="text" length="4" name="year" placeholder="yyyy"/> -
                         <input type="text" length="2" name="month" placeholder="mm"/> -
                         <input type="text" length="2" name="day" placeholder="dd"/>
-                        <!--<br/>Hora (opcional):
-                        <input type="text" length="2" name="hour" placeholder="hh"/> :
-                        <input type="text" length="2" name="minute" placeholder="mm"/>-->
                         <br/><br/>Precio (en blanco si es gratuita):
                         <input type="text" length="4" name="price" placeholder="eur"/>
                         <br/><br/><label><input type="checkbox" name="inscription" checked/>Se requiere inscripcion</label>
@@ -117,7 +117,7 @@
                         <label><input type="checkbox" name="admin"/>Publicar como Gasteizko Margolariak en lugar de mi nombre</label>
                         <br/><br/><br/><br/>
                         <div id="button_container">
-                            <input type="button" value="Previsualizar" onClick="alert(validateActivity());"/> <!--TODO-->
+                            <input type="button" value="Validar" onClick="alert(validateActivity());"/>
                             </br>
                             <input type="submit" value="Publicar"/>
                         </div>
@@ -127,4 +127,6 @@
         </div>
     </body>
 </html>
-<?php } ?>
+<?php
+    }
+?>

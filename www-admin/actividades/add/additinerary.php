@@ -14,11 +14,11 @@
         header("Location: $http_host/actividades/");
         exit (-1);
     }
-    
+
     //Get date
     $r = mysqli_fetch_array($q);
     $date = $r['date'];
-    
+
     //Initialize data arrays
     $starth = [];
     $startm = [];
@@ -31,10 +31,10 @@
     $text_es = [];
     $text_en = [];
     $text_eu = [];
-    
+
     //Loop all rows
     for ($i = 0; $i < 100; $i ++){
-    
+
         //Get post data
         $starth[$i] = mysqli_real_escape_string($con, $_POST["sh_$i"]);
         $startm[$i] = mysqli_real_escape_string($con, $_POST["sm_$i"]);
@@ -47,10 +47,10 @@
         $text_es[$i] = mysqli_real_escape_string($con, $_POST["text_es_$i"]);
         $text_en[$i] = mysqli_real_escape_string($con, $_POST["text_en_$i"]);
         $text_eu[$i] = mysqli_real_escape_string($con, $_POST["text_eu_$i"]);
-        
+
         //Check data
         $insert = true;
-        
+
         //Preconfigure query strings with known data
         $fields = "INSERT INTO activity_itinerary VALUES (activity, place, start, ";
         $values = " VALUES ($id, $place[i] ";
@@ -93,14 +93,13 @@
             $fields = $fields . "text_es, text_en, text_eu)";
             $values = $values . "'" . $text_es[$i] . "', '" . $text_en[$i] . "', '" . $text_eu[$i] . "');";
         }
-        
+
         //Insert if appropiate
         if ($insert == true){
             $query = $fields . $values;
-            mysqli_query($con, $query); //TODO further test
-            version();
+            mysqli_query($con, $query);
         }
-        
+
         //Redirect
         header("Location: $http_host/actividades/");
     }
