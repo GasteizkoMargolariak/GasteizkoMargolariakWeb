@@ -247,7 +247,7 @@
             return true;
         }
         else{
-            error_log("Invalid login. username = $_SESSION[name], id = $_SESSION[id]");
+            error_log("Invalid login. username = $user, id = $id");
             return false;
         }
     }
@@ -265,16 +265,28 @@
         }
     }
 
-
-
-    /****************************************************
-    * Increases version value in table settings by one. *
-    * Helpfull for the app to know when to perform a    *
-    * full sync. Must be called after every INSERT,     *
-    * UPDATE or DELETE query to the database.           *
-     ****************************************************/
-    function version(){
-        $con = startdb('rw');
-        mysqli_query($con, 'UPDATE settings SET value = value + 1 WHERE name = "version";');
+    function db_update($con, $s_table, $s_column, $type, $s_value, $id){
+        $table = mysqli_real_escape_string($con, $s_table);
+        $column = mysqli_real_escape_string($con, $s_column);
+        switch (strtoupper($type)){
+            case "NULL":
+                $value = "null";
+                break;
+            case "VARCHAR":
+                $value = "'" . mysqli_real_escape_string($con, $s_value) . "'";
+                break;
+            case "NUMBER":
+                $value = intval(mysqli_real_escape_string($con, $s_value));
+                break;
+            case "DATE":
+                // TODO: Format date
+                $value = mysqli_real_escape_string($con, $s_value);
+                break;
+            default:
+                return -1;
+        }
+        error_log("IVV db_update    UPDATE $table SET $column = $value WHERE id = $id;");
+        $q = mysqli_query($con, "UPDATE $table SET $column = $value WHERE id = $id;");
+        return 0;
     }
 ?>

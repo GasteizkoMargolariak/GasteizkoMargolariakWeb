@@ -1,7 +1,10 @@
 <?php
-    $http_host = $_SERVER['HTTP_HOST'];
-    $default_host = substr($http_host, 0, strpos($http_host, ':'));
     include("../functions.php");
+    $http_host = $_SERVER["HTTP_HOST"];
+    $proto = getProtocol();
+    $default_host = substr($http_host, 0, strpos($http_host, ":"));
+    $server = "$proto$http_host";
+    $default_server = "$proto$default_host";
     $con = startdb();
     if (!checkSession($con)){
         header("Location: /index.php");
@@ -11,26 +14,26 @@
 ?>
 <html>
     <head>
-        <meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <meta content='text/html; charset=windows-1252' http-equiv='content-type'/>
+        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1'>
         <title>Actividades - Administracion</title>
         <!-- CSS files -->
-        <link rel="stylesheet" type="text/css" href="/css/ui.css"/>
-        <link rel="stylesheet" type="text/css" href="/css/actividades.css"/>
+        <link rel='stylesheet' type='text/css' href='/css/ui.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/actividades.css'/>
         <!-- CSS for mobile version -->
-        <link rel="stylesheet" type="text/css" media="(max-width : 990px)" href="/css/m/ui.css"/>
-        <link rel="stylesheet" type="text/css" media="(max-width : 990px)" href="/css/m/activiadades.css"/>
+        <link rel='stylesheet' type='text/css' media='(max-width : 990px)' href='/css/m/ui.css'/>
+        <link rel='stylesheet' type='text/css' media='(max-width : 990px)' href='/css/m/activiadades.css'/>
         <!-- Script files -->
-        <script type="text/javascript" src="/script/ui.js"></script>
+        <script type='text/javascript' src='/script/ui.js'></script>
     </head>
     <body>
 <?php
-        include('../toolbar.php');
+        include("../toolbar.php");
 ?>
         <div id='content'>
-            <div class="section">
-                <h3 class="section_title">Actividades - <a href="/actividades/add/">Anadir nueva</a></h3>
-                <div class="entry">
+            <div class='section'>
+                <h3 class='section_title'>Actividades - <a href='/actividades/add/'>Anadir nueva</a></h3>
+                <div class='entry'>
                     <table id='activity_list'>
                         <tr>
                             <th>Titulo / Fecha</th>
@@ -46,9 +49,9 @@
                             <tr>
                                 <td class='activity_column_title'>
                                     <?=cutText($r['title_es'], 35, '', '')?>
-                                    <br/>$r[dat]
-                                </td>";
-                                <td class='activity_column_text'><?=str_replace('<br/>', ' ', cutText($r['text_es'], 60, '', ''))?>
+                                    <br/><?=$r["dat"]?>
+                                </td>
+                                <td class='activity_column_text'><?=str_replace('<br/>', ' ', cutText($r["text_es"], 60, "", ""))?>
 <?php
                                     //Images
                                     $q_image = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $r[id] ORDER BY idx;");
@@ -58,7 +61,7 @@
 <?php
                                         while ($r_image = mysqli_fetch_array($q_image)){
 ?>
-                                            <img src='http://$default_host/img/actividades/miniature/<?=$r_image["image"]?>'\>
+                                            <img src='<?=$default_server?>/img/actividades/miniature/<?=$r_image["image"]?>'\>
 <?php
                                         }
                                     }
@@ -66,14 +69,14 @@
                                     //Itinerary
                                     $q_itinerary = mysqli_query($con, "SELECT count(id) AS count FROM activity_itinerary WHERE activity = $r[id]");
                                     $r_itinerary = mysqli_fetch_array($q_itinerary);
-                                    if ($r_itinerary['count'] == 0){
+                                    if ($r_itinerary["count"] == 0){
 ?>
                                         <ul>
                                             <li>Sin itinerario.</li>
                                         </ul>
 <?php
                                     }
-                                    elseif ($r_itinerary['count'] == 1){
+                                    elseif ($r_itinerary["count"] == 1){
 ?>
                                         <ul>
                                             <li>1 entrada de itinerario.</li>
@@ -100,7 +103,7 @@
                                     <br/>
                                     Comentarios:
 <?php
-                                    if ($r['comments'] == 1){
+                                    if ($r["comments"] == 1){
                                         $q_comments = mysqli_query($con, "SELECT id FROM activity_comment WHERE activity = $r[id];");
 ?>
                                         S&iacute; (<?=mysqli_num_rows($q_comments)?>)
@@ -115,21 +118,21 @@
                                     <br/>
                                     Visible:
 <?php
-                                    if ($r['visible'] == 1){
+                                    if ($r["visible"] == 1){
 ?>
                                         S&iacute;
-<?php                                }
+<?php                               }
                                     else{
 ?>
                                         No
 <?php
                                     }
-?>s
+?>
                                 </td>
                                 <td class='activity_column_translations'>
                                     Euskera:
 <?php
-                                    if (strlen($r['text_eu']) == 0 || $r['text_eu'] == $r['text_es']){
+                                    if (strlen($r["text_eu"]) == 0 || $r["text_eu"] == $r["text_es"]){
 ?>
                                         No
 <?php
@@ -137,13 +140,13 @@
                                     else{
 ?>
                                         S&iacute;
-<?php                                
+<?php
                                     }
 ?>
                                     <br/>
                                     Ingl&eacute;s:
 <?php
-                                    if (strlen($r['text_en']) == 0 || $r['text_en'] == $r['text_es']){
+                                    if (strlen($r["text_en"]) == 0 || $r["text_en"] == $r["text_es"]){
 ?>
                                         No
 <?php
@@ -151,18 +154,21 @@
                                     else{
 ?>
                                         S&iacute;
-<?php                                
+<?php
                                     }
 ?>
                                 </td>
                                 <td class='activity_column_action'>
-                                    <form action='/activity/edit/edit.php?p=<?=$r[id]?>'>
+                                    <form method='get' action='/actividades/edit.php'>
+                                        <input type='hidden' name='id' value='<?=$r["id"]?>'/>
                                         <input type='submit' value='Editar / Traducir'/>
                                     </form>
                                     <input type='button' onClick='delete_activity(<?=$r["id"]?>, "<?=$r["title_es"]?>");' value='Borrar'/>
-                                    <form action='/activity/moderate/moderate.php?p<?=$r["id"]?>'>
+                                    <!-- TODO: Uncomment when activity comments are implemented.
+                                    <form action='/actividades/moderate/moderate.php?p<?=$r["id"]?>'>
                                         <input type='submit' value='Moderar comentarios'/>
                                     </form>
+                                    -->
                                 </td>
                             </tr>
 <?php
