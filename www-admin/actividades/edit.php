@@ -110,12 +110,13 @@
                     $q_r = mysqli_query($con, "SELECT id, name FROM route;");
                     while ($r_i = mysqli_fetch_array($q_i)){
 ?>
-                        <div class='itinerary'>
+                        <div class='itinerary' id='itinerary_<?=$r_i["id"]?>'>
+                            <input type='button' class='delete_itinerary' onClick='deleteItinerary(<?=$r_i["id"]?>);' value='Borrar del itinerario'/>
                             Inicio:
-                            <input type='text' class='time' length='5' value='<?=substr($r_i["start"], 11, 5)?>' placeholder='HH:MM' onchange='updateItineraryStart("<?=$server?>", <?=$r_i["id"]?>, this)'/>
+                            <input type='text' class='time' length='5' value='<?=substr($r_i["start"], 11, 5)?>' placeholder='HH:MM' onChange='updateItineraryStart("<?=$server?>", <?=$r_i["id"]?>, this)'/>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fin (opcional):
-                            <input type='text' class='time' length='5' value='<?=substr($r_i["end"], 11, 5)?>' placeholder='HH:MM' onchange='updateItineraryEnd("<?=$server?>", <?=$r_i["id"]?>, this)'/>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br class='mobile'/>Localizaci&oacute;n:
+                            <input type='text' class='time' length='5' value='<?=substr($r_i["end"], 11, 5)?>' placeholder='HH:MM' onChange='updateItineraryEnd("<?=$server?>", <?=$r_i["id"]?>, this)'/>
+                            <br/>Localizaci&oacute;n:
                             <select onChange='togglePlaceRoute(<?=$r_i["id"]?>, this);'>
                                 <option value='place' selected>Un lugar</option>
                                 <option value='route'>Recorrido (opcional)</option>

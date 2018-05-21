@@ -279,14 +279,27 @@
                 $value = intval(mysqli_real_escape_string($con, $s_value));
                 break;
             case "DATE":
-                // TODO: Format date
-                $value = mysqli_real_escape_string($con, $s_value);
+                if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) \d{2}:\d{2}:\d{2}$/",$s_value)){
+                    return -2;
+                }
+                $value = "str_to_date('$s_value', '%Y-%m-%d')";
+                break;
+            case "TIME":
+                if (!preg_match("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$",$s_value)){
+                    return -2;
+                }
+                $value = "str_to_date('$s_value', '%Y-%m-%d %H:%i:%s')";
                 break;
             default:
                 return -1;
         }
-        error_log("IVV db_update    UPDATE $table SET $column = $value WHERE id = $id;");
         $q = mysqli_query($con, "UPDATE $table SET $column = $value WHERE id = $id;");
+        return 0;
+    }
+
+    function db_delete($con, $s_table, $id){
+        $table = mysqli_real_escape_string($con, $s_table);
+        $q = mysqli_query($con, "DELETE FROM $table WHERE id = $id;");
         return 0;
     }
 ?>

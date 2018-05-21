@@ -334,6 +334,12 @@ div.itinerary{
     border-left: solid 0.4em #0078ff;
 }
 
+div.itinerary input.delete_itinerary{
+    float: right;
+    border: 0.2em solid #ff7800;
+    background-color: #674512;
+}
+
 div.itinerary input.time{
     width: 5em;
 }

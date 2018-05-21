@@ -1,7 +1,6 @@
 <?php
     include("../functions.php");
     $con = startdb("rw");
-    error_log("IVV    update_db starting now");
     if (!checkSession($con)){
         error_log("Error updating $_GET[table].$_GET[column] : Session has expired.");
         http_response_code(403); // Forbidden

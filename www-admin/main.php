@@ -112,7 +112,7 @@
                             <h3 class='section_title'>Ajustes</h3>
                             <div class='entry'>
                                 <ul>
-                                    <li><a href='<?=$server?>/settings/'Ajustes</a></li>
+                                    <li><a href='<?=$server?>/settings/'>Ajustes</a></li>
                                     <li><a href='<?=$server?>/users/'>Gestionar usuarios</a></li>
                                     <li><a href='<?=$server?>/salir/'>Salir</a></li>
                                 </ul>

@@ -14,6 +14,14 @@ function updateActivityDate(server, id, src){
     dbUpdate(server, "activity", "date", "DATE", id, src);
 }
 
+function updateItineraryStart(server, id, src){
+    // TODO: Validate date
+    // TODO: Fetch activity date
+    if (dbUpdate(server, "activity_itinerary", "start", "TIME", id, src)){
+        // TODO: Update input value
+    }
+}
+
 function dbUpdate(server, table, column, type, id, src){
     var value = src.value;
     var x = new XMLHttpRequest();
@@ -21,10 +29,35 @@ function dbUpdate(server, table, column, type, id, src){
     x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     x.onreadystatechange = function(){
         if(x.readyState == 4){
-            console.log("STATUS: " + x.status);
             if(x.status == 200){
-                // TODO; Update!
+                // TODO; Update src!
+                return true;
+            }
+            else{
+                return false;
             }
         }
     }
+}
+
+function deleteItinerary(id){
+    var value = src.value;
+    var x = new XMLHttpRequest();
+    x.open("GET", server + "/functions/db_delete.php?table=itinerary&id=" + id, true);
+    x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    x.onreadystatechange = function(){
+        if(x.readyState == 4){
+            if(x.status == 200){
+                document.getElementById("itinerary_" + id).style.display = 'none';
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+}
+
+function refreshItinerary(){
+    //TODO
 }

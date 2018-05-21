@@ -127,7 +127,7 @@
                         <table id='prices'>
                             <tr>
                                 <th>Fecha</th>
-                                <th>Nombres</th
+                                <th>Nombres</th>
                                 <th>Precio</th>
                             </tr>
 <?php

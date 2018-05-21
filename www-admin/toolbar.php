@@ -123,7 +123,7 @@
     <table>
         <tr>
             <td>
-                <a href='<?=$server?>/settings/'Ajustes</a>
+                <a href='<?=$server?>/settings/'>Ajustes</a>
             </td>
             <td>
                 <a href='<?=$server?>/usuarios/'>Gestionar usuarios</a>
