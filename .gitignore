@@ -19,17 +19,17 @@ copy
 remotecopy
 remoteadmin
 www-admin/redirect_s.php
+.project
+.settings/
+bkp/
 
 #SQL data
-sql/dbusers.sql
-sql/rows-test.sql
-sql/rows.sql
-sql/*201*
+sql/*__PRIVATE.sql
+sql/*__PRE.sql
 
 #Passwords file
-www/.htpasswd
-www-admin/.htpasswd
-www/.htaccess_local
+www/.ht*
+www-admin/.ht*
 
 #Photos and unnecessary images
 www/img/actividades/script

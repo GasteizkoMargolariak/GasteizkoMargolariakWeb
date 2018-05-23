@@ -1,0 +1,3 @@
+-- Replace 'XXXXXXXXXX' and 'YYYYYYYYYY' with your own passwords.
+GRANT SELECT, SHOW VIEW ON gm.* TO 'gm'@'localhost' IDENTIFIED BY 'XXXXXXXXXX';
+GRANT SELECT, INSERT, DELETE, UPDATE, SHOW VIEW ON gm.* TO 'gm-w'@'localhost' IDENTIFIED BY 'YYYYYYYYYY';
