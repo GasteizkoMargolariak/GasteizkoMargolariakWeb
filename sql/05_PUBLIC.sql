@@ -18,6 +18,9 @@
 --  post_comment
 --  post_image
 --  post_tag
+--  route
+--  route_point
+--  sponsor
 
 INSERT INTO `activity` VALUES ...
 INSERT INTO `activity_image` VALUES ...
