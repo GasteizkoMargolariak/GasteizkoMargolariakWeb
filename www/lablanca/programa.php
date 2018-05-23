@@ -104,12 +104,12 @@
 <?php
                                 if($gm == 1 && $r_days['name'] != null){
 ?>
-                                    <?=formatFestivalDate($r_days['date'])?> - <?=$r_days['name']?>
+                                    <?=formatFestivalDate($r_days['date'], $lang)?> - <?=$r_days['name']?>
 <?php
                                 }
                                 else{
 ?>
-                                    <?=formatFestivalDate($r_days['date'])?>
+                                    <?=formatFestivalDate($r_days['date'], $lang)?>
 <?php
                                 }
 ?>
@@ -198,7 +198,7 @@
                     </h3>
                     <div id='map' class='entry'>
                     </div> <!-- map -->
-                </div> <!-- .section -->>
+                </div> <!-- .section -->
             </div> <!-- .map_container -->
         </div> <!-- #content -->
 <?php
