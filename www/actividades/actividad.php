@@ -34,6 +34,7 @@
 <?php 
             include("../css/ui.css"); 
             include("../css/actividades.css");
+            include("../css/map.css");
 ?>
         </style>
         <!-- CSS for mobile version -->
@@ -41,6 +42,7 @@
 <?php 
             include("../css/m/ui.css"); 
             include("../css/m/actividades.css");
+            include("../css/m/map.css");
 ?>
         </style>
         <!-- Script files -->
@@ -48,8 +50,10 @@
 <?php
             include("../script/ui.js");
             include("../script/actividades.js");
+            include("../script/map.js");
 ?>
         </script>
+        <script src="<?=$server?>/script/OpenLayers/ol.js"></script>
         <!-- Meta tags -->
         <link rel="canonical" href="<?=$server?>/actividades/<?=$r["permalink"]?>"/>
         <link rel="author" href="<?=$server?>"/>
@@ -201,7 +205,7 @@
                             <br/>
                             <div class='entry'>
 <?php
-                                $q_it = mysqli_query($con, "SELECT activity_itinerary.name_$lang AS name, description_$lang AS description, place.name_$lang AS place_name, place.address_$lang AS place_address, DATE_FORMAT(start, '%H:%i') AS start, DATE_FORMAT(end, '%H:%i') AS end, DATE_FORMAT(start, '%Y-%m-%d') AS isostart, DATE_FORMAT(end, '%Y-%m-%d') AS isoend FROM activity_itinerary, place WHERE place.id = activity_itinerary.place AND activity = $r[id] ORDER BY start;");
+                                $q_it = mysqli_query($con, "SELECT activity_itinerary.name_$lang AS name, description_$lang AS description, place.name_$lang AS place_name, place.address_$lang AS place_address, place.lat, place.lon, DATE_FORMAT(start, '%H:%i') AS start, DATE_FORMAT(end, '%H:%i') AS end, DATE_FORMAT(start, '%Y-%m-%d') AS isostart, DATE_FORMAT(end, '%Y-%m-%d') AS isoend, route FROM activity_itinerary, place WHERE place.id = activity_itinerary.place AND activity = $r[id] ORDER BY start;");
                                 if (mysqli_num_rows($q_it) > 0){
 ?>
                                     <div id='activity_itinerary'>
@@ -247,15 +251,55 @@
                                                         <p class='description'><?=$r_it["description"]?></p>
                                                         <br/>
 <?php
-                                                        if ($r_it["place_name"] == $r_it["place_address"]){
+
+
+
+
+
+                                                        if ($r_it["route"] != null && strlen($r_it["route"]) != 0){
 ?>
-                                                            <?=$r_it["place_name"]?>
+                                                            <!-- TODO: Add center coordinates and zoom -->
+                                                            <span class='fake_a pointer' onClick='showMapRoute(<?=$r_it["route"]?>, "<?=$r_it["name"]?>", <?=$r_it["lat"]?>, <?=$r_it["lon"]?>);'>
+                                                                <img class='pinpoint' alt=' ' src='<?=$server?>/img/misc/pinpoint-route.png'/>
+                                                                <span class='desktop route_start'>
+                                                                    <?=$lng["activities_itinerary_start"]?>
+                                                                </span>
+<?php
+                                                                //If name and address are the same, show only name
+                                                                if ($r_it["place_name"] == $r_it["place_address"]){
+?>
+                                                                    <?=$r_it["place_name"]?>
+<?php
+                                                                }
+                                                                else{
+?>
+                                                                    <?=$r_it["place_name"]?>
+                                                                    <span class='address'>- <?=$r_it["place_address"]?></span>
+<?php
+                                                                }
+?>
+                                                            </span>
 <?php
                                                         }
                                                         else{
 ?>
-                                                            <?=$r_it["place_name"]?>
-                                                            <span class='address'>(<?=$r_it["place_address"]?>)</span>
+                                                            <span class='fake_a pointer' onClick='showMapPoint("<?=$r_it["name"]?>>", <?=$r_it["lat"]?>, <?=$r_it["lon"]?>);'>
+                                                                <img class='pinpoint'  alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
+<?php
+                                                                //If name and address are the same, show only name
+                                                                if ($r_it["place_name"] == $r_it["place_address"]){
+?>
+                                                                    <?=$r_it["place_name"]?>
+<?php
+                                                                }
+                                                                else{
+?>
+                                                                    <?=$r_it["place_name"]?>
+                                                                    <span class='address'>- <?=$r_it["place_address"]?></span>
+<?php
+                                                                }
+?>
+                                                            </span>
 <?php
                                                         }
 ?>
@@ -270,9 +314,9 @@
                                 } // if (mysqli_num_rows($q_it) > 0)
 ?>
                             </div> <!-- .entry -->
-<?php                    
+<?php
                         } //  if ($future)
-?>                    
+?>
                     </div> <!-- .section -->
                 </div> <!-- .entry -->
             </div> <!-- #middle_column -->
@@ -319,6 +363,18 @@
                     </div> <!-- .entry -->
                 </div> <!-- #archive -->
             </div> <!-- #right_column -->
+            <div id='map_container'>
+                <div class='section'>
+                    <h3 class='section_title'>
+                        <span id='map_title'>MAP</span>
+                        <div id='map_close_container'>
+                            <img id='map_close' class='pointer' alt=' ' src='<?=$server?>/img/misc/close.png' onClick='hideMap();'/>
+                        </div>
+                    </h3>
+                    <div id='map' class='entry'>
+                    </div> <!-- map -->
+                </div> <!-- .section -->
+            </div> <!-- .map_container -->
         </div> <!-- #content -->
 <?php
         include("../footer.php");

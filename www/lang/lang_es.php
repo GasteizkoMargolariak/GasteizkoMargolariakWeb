@@ -97,6 +97,7 @@
     $lng['lablanca_schedule_year_city'] = 'Programa de Fiestas de Vitoria #';
     $lng['lablanca_schedule_year_gm_description'] = 'Programa de Fiestas para los miembros de la cuadrilla Gasteizko Margolariak para las Fiestas de La Blanca de #';
     $lng['lablanca_schedule_year_city_description'] = 'Programa de Fiestas municipal para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_start'] = 'Inicio:';
 
     // /actividades/index.php
     $lng['activities_title'] = 'Actividades - Gasteizko Margolariak';
@@ -114,6 +115,7 @@
     $lng['activities_inscription'] = 'Requiere inscripci&oacute;n';
     $lng['activities_see_itinerary'] = 'Ver el itinerario';
     $lng['activities_itinerary'] = 'Itinerario';
+    $lng['activities_itinerary_start'] = 'Inicio:';
     $lng['activities_'] = '';
 
 
