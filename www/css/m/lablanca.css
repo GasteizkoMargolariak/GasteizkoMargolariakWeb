@@ -4,7 +4,6 @@ div#content_table{
 
 div#content_table div.content_tr{
     display:    inline;
-    
 }
 
 div#content_table div.content_tr div.content_td{
@@ -37,21 +36,3 @@ div#prices{
     display:        block;
 }
 
-
-/* programa.php */
-
-div#map_container div.section{
-    width: 90%;
-    height: 90%;
-    margin: 5%;
-}
-
-div#map_container div.section h3.section_title div#map_close_container{
-    height: 2em;
-    margin-top: 0;
-    margin-right: 0;
-}
-
-div#map_container div.section h3.section_title{
-    height: 2.5em;
-}
