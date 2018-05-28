@@ -1,5 +1,7 @@
+/**
+ * Populates the member table.
+ */
 function populate_table(filter){
-    console.log("Filter: " + filter);
     var table = document.getElementById("member_table");
     for (var i = 1, row; row = table.rows[i]; i++) {
         content = row.innerHTML;

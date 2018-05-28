@@ -8,9 +8,7 @@
     }
     else{
         $id = mysqli_real_escape_string($con, $_GET['p']);
-        mysqli_query($con, "DELETE FROM post_comment WHERE post = $id;");
-        mysqli_query($con, "DELETE FROM post_image WHERE post = $id;");
-        mysqli_query($con, "DELETE FROM post WHERE id = $id;");
+        mysqli_query($con, "UPDATE post SET visible = 0 WHERE id = $id;");
         version();
     }
 ?>
