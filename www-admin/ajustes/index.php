@@ -1,7 +1,7 @@
 <?php
+    include("../functions.php");
     $server = get_protocol() . $_SERVER['HTTP_HOST'];
     $default_host = substr($http_host, 0, strpos($http_host, ':'));
-    include("../functions.php");
     $con = startdb();
     if (!checkSession($con)){
         header("Location: /index.php");
@@ -29,7 +29,9 @@
         </script>
     </head>
     <body>
-        <?php include('../toolbar.php'); ?>
+<?php
+        include('../toolbar.php');
+?>
         <div id='content'>
             <div class='section'>
                 <h3 class='section_title'>Ajustes</h3>
@@ -55,4 +57,6 @@
         </div>
     </body>
 </html>
-<?php } ?>
+<?php
+    }
+?>

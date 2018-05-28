@@ -6,7 +6,8 @@
         header("Location: /index.php");
         exit (-1);
     }
-    else{ ?>
+    else{
+?>
 <html>
     <head>
         <meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
@@ -23,14 +24,18 @@
         <script type="text/javascript" src="/script/ui.js"></script>
     </head>
     <body>
-        <?php include('../../toolbar.php'); ?>
-                <div id='content'>
-                        <div class="section">
-                                <h3 class="section_title">Moderar comentarios</h3>
-                                <h4 span class="TODO">En construcci&oacute;n</h4>
-                        </div>
+<?php
+        include('../../toolbar.php');
+?>
+        <div id='content'>
+                <div class="section">
+                    <h3 class="section_title">Moderar comentarios</h3>
+                    <h4 span class="TODO">En construcci&oacute;n</h4>
                 </div>
+        </div>
     </body>
 </html>
 
-<?php } ?>
+<?php
+    }
+?>

@@ -29,6 +29,7 @@ sql/*row*.sql
 www/.htpasswd
 www-admin/.htpasswd
 www/.htaccess_local
+www-admin/.htaccess_local
 
 #Photos and unnecessary images
 www/img/actividades/script
