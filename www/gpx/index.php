@@ -23,7 +23,7 @@
     $r = mysqli_fetch_array($q);
     $route = $r["id"];
 
-    $q_point = mysqli_query($con, "SELECT id, part, lat_o, lon_o, place_o, lat_d, lon_d, place_d FROM route_point WHERE route = $route ORDER by part;");
+    $q_point = mysqli_query($con, "SELECT id, part, lat_o, lon_o, lat_d, lon_d FROM route_point WHERE route = $route ORDER by part;");
     if (mysqli_num_rows($q) == 0){
         http_response_code(404);
         exit(404);

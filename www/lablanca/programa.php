@@ -50,6 +50,7 @@
 <?php
             include("../css/ui.css");
             include("../css/lablanca.css");
+            include("../css/map.css");
 ?>
         </style>
         <!-- CSS for mobile version -->
@@ -57,6 +58,7 @@
 <?php
             include("../css/m/ui.css");
             include("../css/m/lablanca.css");
+            include("../css/m/map.css");
 ?>
         </style>
         <!-- Script files -->
@@ -64,9 +66,10 @@
 <?php
             include("../script/ui.js");
             include("../script/lablanca.js");
+            include("../script/map.js");
 ?>
         </script>
-        <script src="<?=$server?>/script/OpenLayers.js"></script>
+        <script src="<?=$server?>/script/OpenLayers/ol.js"></script>
 
         <!-- Meta tags -->
         <link rel="canonical" href="<?=$server?>/lablanca/programa/<?=$url?>/<?=$year?>"/>
@@ -104,12 +107,12 @@
 <?php
                                 if($gm == 1 && $r_days['name'] != null){
 ?>
-                                    <?=formatFestivalDate($r_days['date'])?> - <?=$r_days['name']?>
+                                    <?=formatFestivalDate($r_days['date'], $lang)?> - <?=$r_days['name']?>
 <?php
                                 }
                                 else{
 ?>
-                                    <?=formatFestivalDate($r_days['date'])?>
+                                    <?=formatFestivalDate($r_days['date'], $lang)?>
 <?php
                                 }
 ?>
@@ -142,35 +145,53 @@
                                             }
 ?>
                                             <div class='location'>
-                                                <!--<a target='_blank' href='http://maps.google.com/maps?q=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>+(My+Point)&z=14&ll=<?=$r_sch['lat']?>,<?=$r_sch['lon']?>'>-->
 <?php
                                                 if ($r_sch["route"] != null && strlen($r_sch["route"]) != 0){
 ?>
-                                                    <span class='fake_a pointer' onClick='showMapRoute(<?=$r_sch["route"]?>, "<?=$r_sch["title"]?>", "gpx");'>
+                                                    <!-- TODO: Add center coordinates and zoom -->
+                                                    <span class='fake_a pointer' onClick='showMapRoute(<?=$r_sch["route"]?>, "<?=$r_sch["title"]?>", <?=$r_sch["lat"]?>, <?=$r_sch["lon"]?>);'>
+                                                        <img class='pinpoint' alt=' ' src='<?=$server?>/img/misc/pinpoint-route.png'/>
+<?php
+                                                        //If name and address are the same, show only name
+                                                        if ($r_sch["place"] == $r_sch["address"]){
+?>
+                                                            <?=$r_sch["place"]?>
+<?php
+                                                        }
+                                                        else{
+?>
+                                                            <span class='desktop route_start'>
+                                                                <?=$lng["lablanca_schedule_start"]?>
+                                                            </span>
+                                                            <span class='address'> - <?=$r_sch["address"]?></span>
+<?php
+                                                        }
+?>
+                                                    </span>
 <?php
                                                 }
                                                 else{
 ?>
-                                                    <span class='fake_a pointer' onClick='showMapPoint(<?=$r_sch["lat"]?>, <?=$r_sch["lon"]?>, "<?=$r_sch["title"]?>");'>
+                                                    <span class='fake_a pointer' onClick='showMapPoint("<?=$r_sch["title"]?>", <?=$r_sch["lat"]?>, <?=$r_sch["lon"]?>);'>
+                                                        <img class='pinpoint' alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
+<?php
+                                                        //If name and address are the same, show only name
+                                                        if ($r_sch["place"] == $r_sch["address"]){
+?>
+                                                            <?=$r_sch["place"]?>
+<?php
+                                                        }
+                                                        else{
+?>
+                                                            <?=$r_sch["place"]?>
+                                                            <span class='address'> - <?=$r_sch["address"]?></span>
+<?php
+                                                        }
+?>
+                                                    </span>
 <?php
                                                 }
 ?>
-                                                    <img alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
-<?php
-                                                    //If name and address are the same, show only name
-                                                    if ($r_sch["place"] == $r_sch["address"]){
-?>
-                                                        <?=$r_sch["place"]?>
-<?php
-                                                    }
-                                                    else{
-?>
-                                                        <?=$r_sch["place"]?>
-                                                        <span class='address'> - <?=$r_sch["address"]?></span>
-<?php
-                                                    }
-?>
-                                                </span>
                                             </div>
                                         </td>
                                     </tr>
@@ -198,7 +219,7 @@
                     </h3>
                     <div id='map' class='entry'>
                     </div> <!-- map -->
-                </div> <!-- .section -->>
+                </div> <!-- .section -->
             </div> <!-- .map_container -->
         </div> <!-- #content -->
 <?php
