@@ -1,16 +1,16 @@
 <?php
     $lng = array();
-    
+
     //Common words
     $lng['yes'] = 'S&iacute;';
     $lng['no'] = 'No';
     $lng['months'] = ['Enero', ' Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     $lng['weekdays'] = ['Lunes', 'Martes', 'Mi&eacute;rcoles', 'Jueves', 'Viernes', 'S&aacute;bado', 'Domingo'];
-    
+
     //Search
     $lng['search_field_all'] = 'todo';
     $lng['search_field_tag'] = 'tag';
-    
+
     //Sections
     $lng['section_home'] = 'Gasteizko Margolariak';
     $lng['section_blog'] = 'Blog';
@@ -21,7 +21,7 @@
     $lng['section_press'] = 'Prensa';
     $lng['section_join'] = '&Uacute;nete';
     $lng['section_help'] = 'Ayuda';
-    
+
     // /index.php
     $lng['index_title'] = 'Gasteizko Margolariak - Cuadrilla de Blusas y Neskas';
     $lng['index_description'] = 'Cuadrilla de Blusas y Neskas Gasteizko Margolariak';
@@ -52,7 +52,7 @@
     $lng['index_us_content'] = 'Somos una Cuadrilla de Blusas y Neskas de Vitoria-Gasteiz. Participamos en las fiestas de la ciudad, animando, organizando actividades, para nuestros miembros y para el p&uacute;blico en general.<br/><br/>Pero eso no es todo: Permanecemos activos durante el resto del a&ntilde;o, organizando actividades, tanto dentro como fuera de la ciudad: Competiciones, excursiones, eventos solidarios...';
     $lng['index_us_more'] = 'M&aacute;s sobre nosotros';
     $lng['index_'] = '';
-    
+
     // /header.php
     $lng['header_home'] = 'Inicio';
     $lng['header_lablanca'] = 'La Blanca';
@@ -62,7 +62,7 @@
     $lng['header_gallery'] = 'Galer&iacute;a';
     $lng['header_press'] = 'Prensa';
     $lng['header_join'] = '&Uacute;nete';
-    
+
     // /footer.php
     $lng['footer_sponsors'] = 'Colaboradores';
     $lng['footer_follow'] = 'S&iacute;guenos';
@@ -75,7 +75,7 @@
     $lng['cookie_ok'] = 'Pues muy bien';
     $lng['cookie_more'] = 'Cu&eacute;ntame m&aacute;s';
     $lng['cookie_'] = '';
-    
+
     // /lablanca/index.php
     $lng['lablanca_no_title'] = 'Fiestas de La Virgen Blanca';
     $lng['lablanca_description'] = 'Informaci&oacute;n sobre fiestas de La Blanca';
@@ -84,13 +84,21 @@
     $lng['lablanca_no_content_2'] = 'Nosotros, como cuadrilla de Blusas y Nescas, ya estamos trabajando en ello. Tan pronto como vayamos sabiendo m&aacute;s, aqu&iacute; iremos publicando nuestro programa y otra informaci&oacute;n sobre las fiestas.<br/><br/>Para ir abriendo boca, dejanos contarte algunas de las claves del plan Margolari de fiestas: <ul id="no_fiestas"><li><span class="bold">Planes que se adaptan a t&iacute;</span>: Puedes apuntarte d&iacute;as sueltos, o elegir entre las varias ofertas por varios d&iacute;as para conseguir descuentos.</li><li><span class="bold">Dormir es de cobardes</span>: Casi todos los d&iacute;as organizamos actividades desde la ma&ntilde;ana, ya sean almuerzos, actividades para el p&uacute;blico general o competiciones en los Herri Kirolak. Despu&eacute;s solemos ir a comer juntos, antes de los paseillos, y despu&eacute;s, siempre cenamos juntos. Y por la noche, hasta que el cuerpo aguante!</li><li><span class="bold">Especialistas en paseillos</span>: A la hora de hacer paseillos, no hay quien nos gane. Con nuestra furgoneta siempre abierta a la cabeza, y la txaranga El Post&iacute;n animando desde atr&aacute;s, es imposible aburrirse. Y entre paseillos tampoco descansamos, siempre estamos organizando cosas: juegos, carreras, bingos, m&uacute;sica, ida a las barracas... </li><li><span class="bold">Nos gusta comer</span>: No queremos que un Margolari pase hambre. Las comidas en Gasteizko Margolariak son en restaurante, con un buen men&uacute;, que nos den fuerzas para aguantar el resto del d&iacute;a. Las cenas las hacemos bien en la calle o bien en restaurante, pero siempre con comida buena y caliente. Los mismo que los almuerzos.</li><li><span class="bold">Y beber</span>: Sea cual sea tu veneno, lo tenemos: Ron, vodka, kalimotxo, cerveza, whiskey, agua, refrescos... Durante los paseillos (y varias veces m&aacute;s a lo largo del d&iacute;a) en la furgoneta tendr&aacute;s barra libre de todo lo que quieras.</li><li><span class="bold">Nos apuntamos a un bombardeo</span>: Carrera de Barricas, Herri Kirolak... Nunca hemos faltado a nada. Ganar, lo que es ganar, a&uacute;n lo tenemos pendiente, pero lo pasamos bien. As&iacute; que ya sabes, si quieres representar a Gasteizko Margolariak, av&iacute;sanos!</li><li><span class="bold">Por la ciudad, para la ciudad</span>: No nos gusta mirarnos el ombligo. Aunque la mayor parte de actividades que organizamos son para los miembros de Gasteizko Margolariak, hay otras que son para todo el p&uacute;blico. Hasta ahora hemos organizado talleres de Cesta Punta para txikis, Margotxef (un concurso de cocina infantil), visitas a residencias de ancianos... </li><li><span class="bold">Margolaris</span>: Todo lo dem&aacute;s no sirve de nada si en una cuadrilla no hay buen ambiente. En Gasteizko Margolariak podemos presumir de gente cercana, participativa, capaz de hacer que desde el primer d&iacute;a ya te sientas como en casa. Adem&aacute;s, los organizadores son gente cercana, que escucha y est&aacute; siempre abierta a nuevas propuestas. Por esto, quien prueba, repite.</li></ul>';
     $lng['lablanca_title'] = 'Fiestas de La Blanca #';
     $lng['lablanca_schedule'] = 'Nuestro programa de fiestas';
+    $lng['lablanca_schedules'] = 'Programas de Fiestas';
     $lng['lablanca_prices'] = 'Tarifas';
     $lng['lablanca_prices_days'] = 'D&iacute;as sueltos';
     $lng['lablanca_prices_offers'] = 'Packs';
     $lng['lablanca_past_title'] = 'Carteles de Fiestas de a&ntilde;os anteriores';
     $lng['lablanca_past_link'] = 'Fiestas de la Blanca de ';
     $lng['lablanca_'] = '';
-    
+
+    // /lablanca/programa.php
+    $lng['lablanca_schedule_year_gm'] = 'Programa Margolari #';
+    $lng['lablanca_schedule_year_city'] = 'Programa de Fiestas de Vitoria #';
+    $lng['lablanca_schedule_year_gm_description'] = 'Programa de Fiestas para los miembros de la cuadrilla Gasteizko Margolariak para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_year_city_description'] = 'Programa de Fiestas municipal para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_start'] = 'Inicio:';
+
     // /actividades/index.php
     $lng['activities_title'] = 'Actividades - Gasteizko Margolariak';
     $lng['activities_descrption'] = 'Actividades de Gasteizko Margolariak';
@@ -106,9 +114,11 @@
     $lng['activities_maxpeople'] = 'Plazas';
     $lng['activities_inscription'] = 'Requiere inscripci&oacute;n';
     $lng['activities_see_itinerary'] = 'Ver el itinerario';
+    $lng['activities_itinerary'] = 'Itinerario';
+    $lng['activities_itinerary_start'] = 'Inicio:';
     $lng['activities_'] = '';
 
-    
+
     // /actividades/actividad.php
     $lng['activities_when'] = 'Cu&aacute;ndo';
     $lng['activities_what'] = 'Qu&eacute;';
@@ -220,10 +230,25 @@
     $lng['help_cookie'] = '¡Cookies! Est&aacute;n por todas partes. Sabemos que nadie suele leerse estos avisos sobre ellas, as&iacute; que ya que estas leyendo este, vamos a intentar hacerlo f&aacute;cil.<br/><br/>Una cookie es un peque&ntilde;o archivo de texto que puede quedar guardado en tu ordenador cuando visitas una web. Estos archivos son benignos, en el sentido de que no afectan al funcionamiento de tu ordenador, pero pueden ser utiles para los desarrolladores de p&aacute;ginas web para diversas cosas, como recordar tus preferencias entre visitas (como en nuestro caso) o identificarte y trazar tus movimientos por Internet (no es nuestro caso).<br/><br/>Aprovechando que aqu&iacute; utilizamos verdaderamente pocas, te contamos para qu&eacute;.<br/><ul><li><span style="font-weight:bold;">Idioma</span>: Utilizamos una cookie para recordar el idioma en el que quieres ver la p&aacute;gina. Si la estas viendo en castellano, el &uacute;nico texto que contendr&aacute; sera &quot;es&quot;. Bastante inofensivo, ¿verdad?</li><li><span style="font-weight:bold;">Aviso de cookies</span>: Ir&oacute;nicamente, tenemos que usar una cookie para evitar que el aviso sobre cookies que estamos obligados a mostrarte cuando nos visitas por primera vez te moleste solo esa primera vez. Esta es m&aacute;s simple a&uacute;n que la anterior: es una cookie vac&iacute;a, sin ning&uacute;n tipo de texto.</li><li><span style="font-weight:bold;">Cookies de Google</span>: Esto tiene m&aacute;s miga. Durante las fiestas de Vitoria, esta p&aacute;gina muestra mapas de Google. Es posible (y casi seguro) que estos mapas inserten cookies propias sobre las que no tenemos ning&uacute;n control. Sorry.</li></ul>';
     $lng['help_ad_title'] = 'Pol&iacute;tica de anuncios';
     $lng['help_ad'] = 'En esta p&aacute encontrar&aacute;s anuncios. Son un poco diferentes de los que seguramente est&eacute;s acostumbrado a ver por Internet, y esperamos que no te resulten tan molestos como suelen serlo.<br/><ul><li>No ofrecemos un espacio de publicidad que cualquier empresa puede alquilar. Nuestros anuncios son de empresas y organizaciones que conocemos, con las que trabajamos, y de cuya calidad y fiabilidad podemos responder. Los anuncios los dise&ntilde;amos uno a uno entre la empresa y nosotros. De esta forma, podemos estar seguros de de mostrar una publicidad honesta y segura.<br/></li><li>Garantizamos que al hacer click en la publicidad de este sitio, ser&aacute;s redireccionado a la p&aacute;gina oficial de la empresa anunciada. Si la empresa no tuviera una web propia, accederias a una p&aacute;gina segura con informaci&oacute; de la misma. Nosotros mismos configuramos los enlaces y comprobamos que sean v&aacute;lidos y seguros.<br/></li><li>No queremos ser pesados, as&iacute; que no te ense&ntilde;aremos m&aacute;s de un anuncio cada vez que entres en la p&aacute;gina. Si en alg&uacute;n momento quieres saber m&aacute;s sobre nuestros patrocinadores, tienes una lista al final de la p&aacute;gina.<br/></li><li>No tenemos ingresos por publicidad. No recibimos dinero cada vez que ves o haces click en un anuncio. Si ves anunciada una empresa en esta p&aacute;gina, es por que ha colaborado con nosotros de alguna manera, como ayudando a organizar alguna actividad, cediendo material... Por eso, puedes estar seguro de que est&aacute;s viendo el anuncio de una empresa que ofrece productos que conocemos y por los que apostamos.<br/></li><li>No te rastreamos. Sabemos cuantas veces se ha visto un anuncio y cuantas veces se ha hecho click sobre &eacute;l, pero no sabemos ni cu&aacute;ndo, ni qui&eacute;n. No guardamos (ni, por supuesto, enviamos a nadie) ning&uacute;n tipo de informaci&oacute;n personal relacionada con la publicidad.<br/></li></ul><br/>';
-    
+
+    // /traducir/index.php
+    $lng['translate_title'] = 'Traducciones';
+    $lng['translate_description'] = 'Traducci&oacute;n de contenidos';
+    $lng['translate_to_en'] = 'Traducir al ingl&eacute;s';
+    $lng['translate_to_eu'] = 'Traducir al euskera';
+    $lng['translate_translating_en'] = 'Traducciones en ingl&eacute;s';
+    $lng['translate_translating_eu'] = 'Traducciones en euskera';
+    $lng['translate_original'] = 'Original (castellano)';
+    $lng['translate_translation_en'] = 'Traducci&oacute;n (ingl&eacute;s)';
+    $lng['translate_translation_eu'] = 'Traducci&oacute;n (euskera)';
+    $lng['translate_name'] = 'Tu nombre';
+    $lng['translate_skip'] = 'Saltar esta';
+    $lng['translate_save'] = 'Guardar';
+
+
     //Ads
     $lng['ad_title'] = 'Publicidad';
-    
+
     // /error/
     $lng['error_title'] = 'Error';
     $lng['error_error'] = 'ERROR';
@@ -234,5 +259,17 @@
     $lng['error_404_solution_0'] = 'Volver a la p&aacute;gina anterior';
     $lng['error_404_solution_1'] = 'Ir a la p&aacute; principal';
     $lng['error_404_solution_2'] = 'Ver v&iacute;deos de gatitos en Youtube';
-    
+    $lng['error_403_title'] = 'Prohibido';
+    $lng['error_403_description'] = 'Est&aacute;s intentando ver algo que no debes. No somos muy de prohibir, as&iacute;i que lo m&aacute;s probable es que sea algo momentaneo.';
+    $lng['error_403_solution'] = 'Prueba una soluci&oacute;n:';
+    $lng['error_403_solution_0'] = 'Volver a la p&aacute;gina anterior';
+    $lng['error_403_solution_1'] = 'Ir a la p&aacute; principal';
+    $lng['error_403_solution_2'] = 'Ver v&iacute;deos de gatitos en Youtube';
+    $lng['error_500_title'] = 'Error del servidor';
+    $lng['error_500_description'] = 'La hemos liado parda. El fallo est&aacute; en nuestro lado, pero no te preocupes, ahor&aacute; mismo el inform&aacute;tico estar&aacute; sudando tinta gorda para arreglarlo.';
+    $lng['error_500_solution'] = 'Prueba una soluci&oacute;n:';
+    $lng['error_500_solution_0'] = 'Volver a la p&aacute;gina anterior';
+    $lng['error_500_solution_1'] = 'Ir a la p&aacute; principal';
+    $lng['error_500_solution_2'] = 'Ver v&iacute;deos de gatitos en Youtube';
+
 ?>

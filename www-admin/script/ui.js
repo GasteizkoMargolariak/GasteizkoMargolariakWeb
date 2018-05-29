@@ -1,3 +1,9 @@
+/**
+ * Shows one of the toolbars.
+ * 
+ * @param toolbar Toolbar ID.
+ * @param from Element clicked to open the toolbar. It will be highlighted.
+ */
 function showToolbar(toolbar, from){
     if(document.getElementById('toolbar_' + toolbar).style.display == 'block'){
         document.getElementById('toolbar_' + toolbar).style.display = 'none';
@@ -17,6 +23,11 @@ function showToolbar(toolbar, from){
 }
 
 
+/**
+ * Shows a language tab.
+ * 
+ * @param lang Two letter language code. 'es', 'en' or 'eu'.
+ */
 function showLanguage(lang){
     switch (lang){
         case 'es':
@@ -28,20 +39,20 @@ function showLanguage(lang){
             document.getElementById('lang_tab_en').classList.remove("lang_tabs_active");
             break;
         case 'eu':
-                        document.getElementById('content_lang_es').style.display = 'none';
-                        document.getElementById('content_lang_eu').style.display = 'block';
-                        document.getElementById('content_lang_en').style.display = 'none';
-                        document.getElementById('lang_tab_es').classList.remove("lang_tabs_active");
-                        document.getElementById('lang_tab_eu').classList.add("lang_tabs_active");
-                        document.getElementById('lang_tab_en').classList.remove("lang_tabs_active");
-                        break;
+            document.getElementById('content_lang_es').style.display = 'none';
+            document.getElementById('content_lang_eu').style.display = 'block';
+            document.getElementById('content_lang_en').style.display = 'none';
+            document.getElementById('lang_tab_es').classList.remove("lang_tabs_active");
+            document.getElementById('lang_tab_eu').classList.add("lang_tabs_active");
+            document.getElementById('lang_tab_en').classList.remove("lang_tabs_active");
+            break;
         case 'en':
-                        document.getElementById('content_lang_es').style.display = 'none';
-                        document.getElementById('content_lang_eu').style.display = 'none';
-                        document.getElementById('content_lang_en').style.display = 'block';
-                        document.getElementById('lang_tab_es').classList.remove("lang_tabs_active");
-                        document.getElementById('lang_tab_eu').classList.remove("lang_tabs_active");
-                        document.getElementById('lang_tab_en').classList.add("lang_tabs_active");
+            document.getElementById('content_lang_es').style.display = 'none';
+            document.getElementById('content_lang_eu').style.display = 'none';
+            document.getElementById('content_lang_en').style.display = 'block';
+            document.getElementById('lang_tab_es').classList.remove("lang_tabs_active");
+            document.getElementById('lang_tab_eu').classList.remove("lang_tabs_active");
+            document.getElementById('lang_tab_en').classList.add("lang_tabs_active");
     }
 }
 

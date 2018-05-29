@@ -6,7 +6,8 @@
         header("Location: /index.php");
         exit (-1);
     }
-    else{?>
+    else{
+?>
 <html>
     <head>
         <meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
@@ -27,66 +28,85 @@
             <div class='section'>
                 <h3>Lista de actividades</h3>
                 <div class='entry'>
-                    <?php
-                        $q = mysqli_query($con, "SELECT id, title_es, title_eu, title_en, text_es, text_en, text_eu, DATE_FORMAT(date, '%b %d, %Y') AS dat FROM activity ORDER BY date;");
-                        echo "<table class='translation_table'><tr><th>Nombre</th><th>Fecha</th><th>Ingles</th><th>Euskera</th></tr>\n";
+<?php
+                    $q = mysqli_query($con, "SELECT id, title_es, title_eu, title_en, text_es, text_en, text_eu, DATE_FORMAT(date, '%b %d, %Y') AS dat FROM activity ORDER BY date;");
+?>
+                    <table class='translation_table'>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Ingles</th>
+                            <th>Euskera</th>
+                        </tr>
+<?php
                         while ($r = mysqli_fetch_array($q)){
-                            echo "<tr><td><a href='http://$http_host/actividades/translate/translate.php?id=$r[id]'>$r[title_es]</a></td>";
-                            echo("<td>$r[dat]</td>");
-                            $total = 2; //Title and text are mandatory
-                            $translated_en = 0;
-                            $translated_eu = 0;
-                            
-                            //Calculate field number
-                            if ($r['title_en'] != $r['title_es']){
-                                $translated_en ++;
-                            }
-                            if ($r['title_eu'] != $r['title_es']){
-                                $translated_eu ++;
-                            }
-                            if ($r['text_en'] != $r['text_es']){
-                                $translated_en ++;
-                            }
-                            if ($r['text_eu'] != $r['text_es']){
-                                $translated_eu ++;
-                            }
-                            if (strlen($r['after_es']) > 0){
-                                $total ++;
-                                if ($r['after_en'] != $r['after_es']){
+?>
+                            <tr>
+                                <td>
+                                    <a href='/actividades/translate/translate.php?id=<?=$r["id"]?>'><?=$r["title_es"]?></a>
+                                </td>
+                                <td><?=$r["dat"]</td>
+<?php
+                                $total = 2; //Title and text are mandatory
+                                $translated_en = 0;
+                                $translated_eu = 0;
+
+                                //Calculate field number
+                                if ($r['title_en'] != $r['title_es']){
                                     $translated_en ++;
                                 }
-                                if ($r['after_eu'] != $r['after_es']){
+                                if ($r['title_eu'] != $r['title_es']){
                                     $translated_eu ++;
                                 }
-                            }
-                            $q_i = mysqli_query($con, "SELECT * FROM activity_itinerary WHERE activity = $r[id]");
-                            while ($r_i = mysqli_fetch_array($q_i)){
-                                $total ++;
-                                if ($r_i['title_en'] != $r_i['title_es']){
+                                if ($r['text_en'] != $r['text_es']){
                                     $translated_en ++;
                                 }
-                                if ($r_i['title_eu'] != $r_i['title_es']){
+                                if ($r['text_eu'] != $r['text_es']){
                                     $translated_eu ++;
                                 }
-                                if (strlen($r_i['description_es']) > 0){
+                                if (strlen($r['after_es']) > 0){
                                     $total ++;
-                                    if ($r_i['description_en'] != $r_i['description_es']){
+                                    if ($r['after_en'] != $r['after_es']){
                                         $translated_en ++;
                                     }
-                                    if ($r_i['description_eu'] != $r_i['description_es']){
+                                    if ($r['after_eu'] != $r['after_es']){
                                         $translated_eu ++;
                                     }
                                 }
-                            }
-                            
-                            //Calculate percents
-                            echo "<td>" . intval($translated_en * 100 / $total) . "%</td><td>" . intval($translated_eu * 100 / $total) . "%</td></tr>\n";
+                                $q_i = mysqli_query($con, "SELECT * FROM activity_itinerary WHERE activity = $r[id]");
+                                while ($r_i = mysqli_fetch_array($q_i)){
+                                    $total ++;
+                                    if ($r_i['title_en'] != $r_i['title_es']){
+                                        $translated_en ++;
+                                    }
+                                    if ($r_i['title_eu'] != $r_i['title_es']){
+                                        $translated_eu ++;
+                                    }
+                                    if (strlen($r_i['description_es']) > 0){
+                                        $total ++;
+                                        if ($r_i['description_en'] != $r_i['description_es']){
+                                            $translated_en ++;
+                                        }
+                                        if ($r_i['description_eu'] != $r_i['description_es']){
+                                            $translated_eu ++;
+                                        }
+                                    }
+                                }
+                                
+                                //Calculate percents
+?>
+                                <td><?=intval($translated_en * 100 / $total)?>%</td>
+                                <td><?=intval($translated_eu * 100 / $total)?>%</td>
+                            </tr>
+<?php
                         }
-                        echo "</table>\n";
-                    ?>
+?>
+                        </table>
                 </div>
             </div>
         </div>
     </body>
 </html>
-<?php } ?>
+<?php
+    }
+?>

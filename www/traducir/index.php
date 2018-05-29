@@ -21,13 +21,13 @@
                     <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
                     <meta charset="utf-8"/>
                     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-                    <title>Traducciones - Gasteizko Margolariak</title>
+                    <title><?=$lng["translation_title"]?> - Gasteizko Margolariak</title>
                     <link rel="shortcut icon" href="<?=$server?>/img/logo/favicon.ico">
                     <!-- CSS files -->
                     <style>
 <?php
-                            include("../css/ui.css"); 
-                            include("../css/traducir.css");
+                        include("../css/ui.css"); 
+                        include("../css/traducir.css");
 ?>
                     </style>
                     <!-- CSS for mobile version -->
@@ -44,32 +44,32 @@
 ?>
                     </script>
                     <!-- Meta tags -->
-                    <link rel="canonical" href="<?=$server?>/traducir/"/>
-                    <link rel="author" href="<?=server?>"/>
-                    <link rel="publisher" href="<?=server?>"/>
-                    <meta name="description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
-                    <meta property="og:title" content="Traducciones - Gasteizko Margolariak"/>
-                    <meta property="og:url" content="<?=$server?>/traducir/"/>
-                    <meta property="og:description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
-                    <meta property="og:image" content="<?=$server?>/img/logo/logo.png"/>
-                    <meta property="og:site_name" content="Gasteizko Margolariak"/>
-                    <meta property="og:type" content="website"/>
-                    <meta property="og:locale" content="es"/>
-                    <meta name="twitter:card" content="summary"/>
-                    <meta name="twitter:title" content="Traducciones - Gasteizko Margolariak"/>
-                    <meta name="twitter:description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
-                    <meta name="twitter:image" content="<?=$server?>/img/logo/logo.png"/>
-                    <meta name="twitter:url" content="<?$server?>/traducir/"/>
-                    <meta name="robots" content="noindex nofollow"/>
+                    <link rel='canonical' href='<?=$server?>/traducir/'/>
+                    <link rel='author' href='<?=server?>'/>
+                    <link rel='publisher' href='<?=server?>'/>
+                    <meta name='description' content='Traduccion de contenidos de la web de Gasteizko Margolariak'/>
+                    <meta property='og:title' content='<?=$lng["translation_title"]?> - Gasteizko Margolariak'/>
+                    <meta property='og:url' content='<?=$server?>/traducir/'/>
+                    <meta property='og:description' content='<?=$lng["translation_description"]?>'/>
+                    <meta property='og:image' content='<?=$server?>/img/logo/logo.png'/>
+                    <meta property='og:site_name' content='Gasteizko Margolariak'/>
+                    <meta property='og:type' content='website'/>
+                    <meta property='og:locale' content='<?=$lang?>'/>
+                    <meta name='twitter:card' content='summary'/>
+                    <meta name='twitter:title' content='<?=$lng["translation_title"]?> - Gasteizko Margolariak'/>
+                    <meta name='twitter:description' content='<?=$lng["translation_description"]?>'/>
+                    <meta name='twitter:image' content='<?=$server?>/img/logo/logo.png'/>
+                    <meta name='twitter:url' content='<?$server?>/traducir/'/>
+                    <meta name='robots' content='noindex nofollow'/>
                 </head>
                 <body>
 <?php                include("../header.php"); ?>
                     <div id="content">
                         <div class='section' id='w_init'>
-                            <h3 class='section_title'>Traducciones</h3>
+                            <h3 class='section_title'><?=$lng["translation_title"]?></h3>
                             <div class='entry'>
-                                <a class='lang' href='<?=$server?>/traducir/eu/'>Traducir al euskera</a>
-                                <a class='lang' href='<?=$server?>/traducir/en/'>Traducir al ingl&eacute;s</a>
+                                <a class='lang' href='<?=$server?>/traducir/eu/'<?=$lng["translation_to_eu"]?></a>
+                                <a class='lang' href='<?=$server?>/traducir/en/'<?=$lng["translation_to_en"]?></a>
                             </div>
                         </div>
                     </div>
@@ -137,23 +137,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-        <title>Traducciones - Gasteizko Margolariak</title>
-        <link rel="shortcut icon" href="<?=$server?>/img/logo/favicon.ico">
+        <meta content='text/html; charset=utf-8' http-equiv='content-type'/>
+        <meta charset='utf-8'/>
+        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1'>
+        <title><?=$lng["translation_title"]?> - Gasteizko Margolariak</title>
+        <link rel='shortcut icon' href='<?=$server?>/img/logo/favicon.ico'>
         <!-- CSS files -->
         <style>
 <?php 
-                include("../css/ui.css"); 
-                include("../css/traducir.css");
+            include("../css/ui.css"); 
+            include("../css/traducir.css");
 ?>
         </style>
         <!-- CSS for mobile version -->
         <style media="(max-width : 990px)">
 <?php
-                include("../css/m/ui.css"); 
-                include("../css/m/traducir.css");
+            include("../css/m/ui.css"); 
+            include("../css/m/traducir.css");
 ?>
         </style>
         <!-- Script files -->
@@ -273,55 +273,41 @@
 
         </script>
         <!-- Meta tags -->
-        <link rel="canonical" href="<?=$server?>/traducir/"/>
-        <link rel="author" href="<?=$server?>"/>
-        <link rel="publisher" href="<?=$server?>"/>
-        <meta name="description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
-        <meta property="og:title" content="Traducciones - Gasteizko Margolariak"/>
-        <meta property="og:url" content="<?=$server?>/traducir/"/>
-        <meta property="og:description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
-        <meta property="og:image" content="<?=$server?>/img/logo/logo.png"/>
-        <meta property="og:site_name" content="Gasteizko Margolariak"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:locale" content="es"/>
-        <meta name="twitter:card" content="summary"/>
-        <meta name="twitter:title" content="Traducciones - Gasteizko Margolariak"/>
-        <meta name="twitter:description" content="Traduccion de contenidos de la web de Gasteizko Margolariak"/>
-        <meta name="twitter:image" content="<?=$server?>/img/logo/logo.png"/>
-        <meta name="twitter:url" content="<?=$server?>/traducir/"/>
-        <meta name="robots" content="noindex nofollow"/>
+        <link rel='canonical' href='<?=$server?>/traducir/'/>
+        <link rel='author' href='<?=$server?>'/>
+        <link rel='publisher' href='<?=$server?>'/>
+        <meta name='description' content='<?=$lng["translation_description"]?>'/>
+        <meta property='og:title' content='<?=$lng["translation_title"]?> - Gasteizko Margolariak'/>
+        <meta property='og:url' content='<?=$server?>/traducir/'/>
+        <meta property='og:description' content='<?=$lng["translation_description"]?>'/>
+        <meta property='og:image' content='<?=$server?>/img/logo/logo.png'/>
+        <meta property='og:site_name' content='Gasteizko Margolariak'/>
+        <meta property='og:type' content='website'/>
+        <meta property='og:locale' content='<?=$lang?>'/>
+        <meta name='twitter:card' content='summary'/>
+        <meta name='twitter:title' content='<?=$lng["translation_title"]?> - Gasteizko Margolariak'/>
+        <meta name='twitter:description' content='<?=$lng["translation_description"]?>'/>
+        <meta name='twitter:image' content='<?=$server?>/img/logo/logo.png'/>
+        <meta name='twitter:url' content='<?=$server?>/traducir/'/>
+        <meta name='robots' content='noindex nofollow'/>
     </head>
     <body onLoad='prepare();'>
-<?php     include("../header.php"); ?>
+<?php
+		include("../header.php");
+?>
         <div id="content">
             <div class='section'>
                 <h3 class='section_title'>Traducciones en 
-<?php
-                    if ($l == 'en'){
-                        echo("ingl&eacute;s");
-                    }
-                    else{
-                        echo("euskera");
-                    }
-?>
+					<?=$lng["translation_translating_$l"]?>
                 </h3>
                 <div class='entry' id='w_target'>
                     <div class='translation' id='original'>
-                        <h3 class='entry_title'>Original (Castellano)</h3>
+                        <h3 class='entry_title'><?=$lng["translation_original"]?></h3>
                         <span id='i_original'></span>
                         <p id='t_original'></p>
                     </div>
                     <div class='translation' id='translation'>
-                        <h3 class='entry_title'>Traducci&oacute;n (
-<?php
-                            if ($l == 'en'){
-                                echo("Ingl&eacute;s");
-                            }
-                            else{
-                                echo("Euskera");
-                            }
-?>
-                        )</h3>
+                        <h3 class='entry_title'><?=$lng["translation_translation_$l"]?></h3>
                         <input type='text' id='i_translation'/>
                         <textarea id='t_translation'></textarea>
                     </div>
@@ -332,13 +318,13 @@
                     <table id='buttons'>
                         <tr>
                             <td>
-                                <input type='text' id='name' placeholder='Tu nombre...'/>
+                                <input type='text' id='name' placeholder='<?=$lng["translation_name"]?>'/>
                             </td>
                             <td>
-                                <input type='button' id='next' value='Saltar esta' onClick='next();'/>
+                                <input type='button' id='next' value='<?=$lng["translation_skip"]?>' onClick='next();'/>
                             </td>
                             <td>
-                                <input type='button' id='save' value='Guardar' onClick='save();'/>
+                                <input type='button' id='save' value='<?=$lng["translation_save"]?>' onClick='save();'/>
                             </td>
                         </tr>
                     </table>

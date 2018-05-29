@@ -4,7 +4,6 @@ div#content_table{
 
 div#content_table div.content_tr{
     display:    inline;
-    
 }
 
 div#content_table div.content_tr div.content_td{
@@ -36,3 +35,4 @@ div#schedule{
 div#prices{
     display:        block;
 }
+

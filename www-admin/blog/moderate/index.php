@@ -1,11 +1,15 @@
 <?php
-    $http_host = $_SERVER['HTTP_HOST'];
     include("../../functions.php");
     $con = startdb();
     if (!checkSession($con)){
         header("Location: /index.php");
         exit (-1);
     }
+    if (!checkSession($con)){
+        header("Location: /index.php");
+        exit (-1);
+    }
+    else{
 ?>
 
 <html>
@@ -24,12 +28,17 @@
         <script type="text/javascript" src="/script/ui.js"></script>
     </head>
     <body>
-    <?php include('../../toolbar.php'); ?>
-                <div id='content'>
-                        <div class="section">
-                                <h3 class="section_title">Moderar comentarios</h3>
+<?php
+        include('../../toolbar.php');
+?>
+        <div id='content'>
+            <div class="section">
+                <h3 class="section_title">Moderar comentarios</h3>
                 <h4 span class="TODO">En construcci&oacute;n</h4>
             </div>
         </div>
     </body>
 </html>
+<?php
+    }
+?>

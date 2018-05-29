@@ -145,10 +145,10 @@ img.slid{
 
 /* Content */
 div#content{
-    margin:        3em auto auto auto;
-    width:        90%;
-    max-width:    80em;
-    min-width:    60em;
+    margin: 3em auto auto auto;
+    width: 90%;
+    max-width: 80em;
+    min-width: 60em;
 }
 
 /* Sections */
@@ -211,14 +211,14 @@ div#toolbar img{
 }
 
 div#toolbar table{
-    width:                90%;
-    height:                100%;
-    margin-left:        auto;
-    margin-right:        auto;
-    border-spacing:        0;
-    border-collapse:    collapse;
-    margin:                0;
-    table-layout:        fixed;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0;
+    table-layout: fixed;
 }
 
 div#toolbar td{

@@ -1,3 +1,6 @@
+/**
+ * Opens a form to add a new offer.
+ */
 function newOffer(){
     document.getElementById('screen_cover').style.display = 'block';
     document.getElementById('form_new_offer').style.display = 'block';
@@ -5,12 +8,20 @@ function newOffer(){
     document.getElementById('form_new_offer').style.opacity = '1';
 }
 
+
+/**
+ * Cancels a offer that is being edited, and it is not yet saved.
+ */
 function cancelNewOffer(){
     if (confirm("Oferta no agregada. Descartar cambios?")){
         closeNewOffer();
     }
 }
 
+
+/**
+ * Closes the new offer form.
+ */
 function closeNewOffer(){
     document.getElementById('new_offer_title_es').value = '';
     document.getElementById('new_offer_title_en').value = '';
@@ -26,6 +37,11 @@ function closeNewOffer(){
     document.getElementById('form_new_offer').style.opacity = '0';
 }
 
+
+/**
+ * Validates and saves a new offer.
+ * @param year Year for the offer.
+ */
 function saveNewOffer(year){
     //Get values
     var name_es = document.getElementById('new_offer_title_es').value;
@@ -85,6 +101,12 @@ function saveNewOffer(year){
     x.send(params);
 }
 
+
+/**
+ * Recalculates the status header for a section.
+ * 
+ * @param section 'all', 'header', 'prices', 'schedule'.
+ */
 function calculate(section){
     switch (section){
         case 'all':
@@ -147,6 +169,16 @@ function calculate(section){
     }
 }
 
+/**
+ * Updates an entry in the database.
+ * 
+ * @param table Name of the table
+ * @param field Name of the column
+ * @param value New value
+ * @param id Identifier of the entry
+ * @param type Type of the value
+ * @param canBeNull Indicates nullable values.
+ */
 function updateField(table, field, value, id, type = 'text', canBeNull = true){
     // Get page
     if(XMLHttpRequest)
@@ -165,6 +197,12 @@ function updateField(table, field, value, id, type = 'text', canBeNull = true){
     x.send(params);
 }
 
+
+/**
+ * Deletes an offer from the database.
+ * 
+ * @param id Offer ID.
+ */
 function deleteOffer(id){
     // Get page
     if(XMLHttpRequest)

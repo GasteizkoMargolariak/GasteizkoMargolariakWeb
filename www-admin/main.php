@@ -24,7 +24,9 @@
         <script type="text/javascript" src="/script/ui.js"></script>
     </head>
     <body>
-        <?php include('toolbar.php'); ?>
+<?php
+        include('toolbar.php');
+?>
         <div id='content'>
             <div id='section_table'>
                 <div class='section_row'>
@@ -110,7 +112,7 @@
                             <h3 class='section_title'>Ajustes</h3>
                             <div class='entry'>
                                 <ul>
-                                    <li><a href='<?=$server?>/settings/'Ajustes</a></li>
+                                    <li><a href='<?=$server?>/settings/'>Ajustes</a></li>
                                     <li><a href='<?=$server?>/users/'>Gestionar usuarios</a></li>
                                     <li><a href='<?=$server?>/salir/'>Salir</a></li>
                                 </ul>
@@ -122,4 +124,6 @@
         </div>
     </body>
 </html>
-<?php } ?>
+<?php
+    }
+?>
