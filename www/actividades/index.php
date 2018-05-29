@@ -92,7 +92,7 @@
                             </div>
                             <div id='upcoming_text'>
                                 <h3 class='entry_title'>
-                                    <a itemprop='url' href=<?=$server?>/actividades/<?=$r_activity["permalink"]?>'><?=$r_activity["title"]?></a>
+                                    <a itemprop='url' href='<?=$server?>/actividades/<?=$r_activity["permalink"]?>'><?=$r_activity["title"]?></a>
                                     <span class='title_date'> - <?=formatDate($r_activity["date"], $lang, false)?></span>
                                 </h3>
                                 <table class='future_details'>

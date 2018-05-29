@@ -37,7 +37,6 @@ div.list_year{
 ul.activity_list{
     margin-top:        0em;
     margin-bottom:    0em;
-    /*     display:        none; */
     max-height:        0em;
     overflow-y:        hidden;
     transition:    max-height 0.6s ease-in-out;
