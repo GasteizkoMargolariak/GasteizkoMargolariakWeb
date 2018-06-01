@@ -1,15 +1,25 @@
 <?php
-    // Gasteizko Margolariak API v3 //
+    /**
+     * Gasteizko Margolariak API v3 - Comment
+     *
+     * Used to post comments from apps.
+     * This file is to be called directly from a URL request.
+     *
+     * https://margolariak.com/API/v3/help/
+     *
+     * @since 1.0.0
+     */
 
-    //Posible comment target
+
+    // Valid comment target
     define('TARGET_PHOTO', 'photo');
     define('TARGET_POST', 'post');
     define('TARGET_ACTIVITY', 'activity');
 
-    //Default target
+    // Default target
     define('DEF_TARGET', TARGET_ALL);
 
-    //$_GET valid parameters
+    // $_GET valid parameters
     define('GET_CLIENT', 'client');
     define('GET_USER', 'user');
     define('GET_TARGET', 'target');
@@ -20,14 +30,15 @@
     define('GET_LANG', 'lang');
 
 
-    /*****************************************************
-     * This function is called from almost everywhere at *
-     * the beggining of the page. It initializes the     *
-     * session variables and connects to the db.         *
-     *                                                   *
-     * @return: (MySQL server connection): The           *
-     *           connection handler.                     *
-     ****************************************************/
+    /**
+     * Initializes the MySQL database connection.
+     * 
+     * Called at the beggining of the script. It connects to the database using the
+     * parameters in the .htpasswd file. It also sets database and page encodings.
+     * 
+     * @since 1.0.0
+     * @return object Database connection.
+     */
     function startdb(){
         //Include the db configuration file. It's somehow like this
         /*
@@ -55,14 +66,16 @@
     }
 
 
-    /****************************************************
-    * This function selects the language for the        *
-    * comment if it has not been provided. It tries to  *
-    * detect the language cookie.                       *
-    *                                                   *
-    * @return: (string): Two letter language code or    *
-    * null.                                             *
-    ****************************************************/
+    /**
+     * Detects client language.
+     *
+     * Tries to detect the client language by detecting language cookie. It is
+     * not to be used from external apps, only from the site. Only detects
+     * spanish, basque or english.
+     * 
+     * @since 3.0.0
+     * @return string Two letter language code ('es', 'en' 'eu') or null.
+     */
     function detect_language(){
         //Try to read cookie.
         header('Cache-control: private');
@@ -78,23 +91,34 @@
     }
 
 
-    /*****************************************************
-     * Gets information about the comment from the get   *
-     * paameters and the browser info.                   *
-     *                                                   *
-     * @params:                                          *
-     *    con: (MySQL server connection) Db connector.   *
-     *    get: (string array) Contains the GET           *
-     *         parameters.                               *
-     * @return: (string array): Array with the keys      *
-     *           'client', 'user', 'target', 'id',       *
-     *           'permalink', 'username', 'text', 'lang' *
-     *           and 'status'. 'status' will contain a   *
-     *           4XX status code if some parameter is    *
-     *           missing, invalid, or the comment can't  *
-     *           be posted.                              *
-     *****************************************************/
-    function get_comment_info($con, $get){
+    /**
+     * Gets information about the comment.
+     *
+     * Gets all the information about the comment and the client from the
+     * request parameters and the browser info and packs it into an array.
+     * It also validates the data and check the permissions for posting the
+     * comment.
+     * 
+     * @since 3.0.0
+     * @param object $con Open database connection.
+     * @param array $get Optional. Array with the request parameters. Default
+     *                   is $_GET.
+     * @return array {
+     *     @type string client Client identifier. Empty if not provided.
+     *     @type string user User identifier. Empty if not provided.
+     *     @type string target The kind of content that the comment is meant
+     *                         to. 'photo', 'post' or 'activity'.
+     *     @type int id Photo, post, or activity ID.
+     *     @type string permalink Optional. Photo, post, or activity permalink.
+     *     @type string username Poster username.
+     *     @type string text Comment text.
+     *     @type string lang Two letter language code.
+     *     @type string status Request status to be returned based on comment 
+     *                  content. 204 (all good), 400 (bad data) or 403 (good
+     *                  data, but comments in the content are closed).
+     * }
+     */
+    function get_comment_info($con, $get = $_GET){
 
         $comment = array();
 
@@ -259,14 +283,12 @@
 
         //9th case: Comment for activity, id and no permalink.
         elseif ($comment["target"] == TARGET_ACTIVITY && strlen($comment["id"]) >= 1 && strlen($comment["permalink"]) < 1){
-        
             //Check if activity exists...
             $q = mysqli_query($con, "SELECT id, comments FROM activity WHERE visible = 1 AND id = $comment[id];");
             if (mysqli_num_rows($q) == 0){
                 $comment["status"] = 400; // Bad request status code.
             }
             else{
-            
                 //... and if it does, check if can be commented.
                 $r = mysqli_fetch_array($q);
                 $item_id = $r['id'];
@@ -275,17 +297,15 @@
                 }
             }
         }
-        
+
         //10th case: Comment for activity, permalink and id.
         elseif ($comment["target"] == TARGET_ACTIVITY && strlen($comment["id"]) >= 1 && strlen($comment["permalink"]) >= 1){
-        
             //Check if activity exists...
             $q = mysqli_query($con, "SELECT id, comments FROM activity WHERE visible = 1 AND permalink = '$comment[permalink]' AND id = $comment[id] ;");
             if (mysqli_num_rows($q) == 0){
                 $comment["status"] = 400; // Bad request status code.
             }
             else{
-            
                 //... and if it does, check if can be commented.
                 $r = mysqli_fetch_array($q);
                 $item_id = $r['id'];
@@ -297,16 +317,16 @@
     }
 
 
-    /*****************************************************
-     * Inserts the comment into the database.            *
-     *                                                   *
-     * @params:                                          *
-     *    con: (MySQL server connection) Db connector.   *
-     *    comment: (string array)  Array with the keys   *
-     *             'client', 'user', 'target', 'id',     *
-     *             'permalink', 'username', 'text',      *
-     *             'lang' and 'status'.                  *
-     *****************************************************/
+    /**
+     * Inserts the comment into the database.
+     * 
+     * Inserts the comment in the database. The table will be post_comment,
+     * photo_comment or activity_comment.
+     *
+     * @since 3.0.0
+     * @param object $con Open database connection.
+     * @param array $comment As returned by {@see get_comment_info($con, $get)}.
+     */
     function insert_comment($con, $comment){
         $query = "INSERT INTO ";
         switch ($comment["target"]){
@@ -330,14 +350,21 @@
         mysqli_query($con, $query);
     }
 
+
+    // SCRIPT START
+
+
     //Connect to the database
     $con = startdb('rw');
+    // Get all the info
     $comment = get_comment_info($con, $_GET);
-    if ($comment["status"] >= 400){ // 4XX or 5XX are errors.
-        http_response_code($comment["status"]);
+    // Set return status
+    http_response_code($comment["status"]);
+    // Save comment or exit badly.
+    if ($comment["status"] == 204){ // 4XX or 5XX are errors.
+        insert_comment($con, $comment);
+    }
+    else{
         exit(-1);
     }
-    insert_comment($con, $comment);
-    http_response_code(204);
-
 ?>
