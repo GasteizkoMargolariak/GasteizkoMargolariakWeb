@@ -132,15 +132,14 @@
      * 
      * @since 3.0.0
      * @param object $con Open database connection.
-     * @param array $get Optional. Array with the request parameters. Default
-     *                   is $_GET.
+     * @param array $get Array with the request parameters.
      * @return array {
      *     @type string client Client identifier. Empty if not provided.
      *     @type string user User identifier. Empty if not provided.
      *     @type int foreground 1 if the sync is being made in the app
      *                          foreground, 0 otherwise.
      *     @type string ip Client IP.
-     *     @type string os Client operating system identifier. Empty if not 
+     *     @type string os Client operating system identifier. Empty if not
      *                     found.
      *     @type string browser Client browser identifier. Empty if not found.
      *     @type string uagent Client user agent. Empty if not found.
@@ -148,7 +147,7 @@
      *                        specified, empty otherwise.
      * }
      */
-    function get_user_info($con, $get = $_GET){
+    function get_user_info($con, $get){
         $info = array();
         $error = "";
         $info["client"] = extract_param($con, GET_CLIENT);
@@ -181,13 +180,12 @@
      * @since 3.0.0
      * @global array $tab_list Array with the names of the tables to sync.
      * @param object $con Open database connection.
-     * @param array $get Optional. Array with the request parameters. Default
-     *                   is $_GET.
+     * @param array $get Array with the request parameters.
      * @return array Integer array with the version of the tables reported in
      *               the request, keyed with the table names. If no table
      *               version was specified, the array will be empty.
      */
-    function get_user_versions($con, $get = $_GET){
+    function get_user_versions($con, $get){
         global $tab_list;
         $versions = array();
         foreach($tab_list as $tab){
