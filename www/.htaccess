@@ -48,8 +48,8 @@ RewriteRule ^traducir/en[\/]?$ /traducir/index.php?l=en [NC]
 
 #API redirections
 #TODO: This changes the url in the browser
-RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)$ /API/V$1/help/$2.php [NC,QSA,L]
-RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)/$ /API/V$1/help/$2.php [L,NC]
+#RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)$ /API/V$1/help/$2.php [NC,QSA,L]
+#RewriteRule ^API/V([{0-9}]+)/help/([A-Z\-a-z0-9{3,}]+)/$ /API/V$1/help/$2.php [L,NC]
 
 #Force https TODO
 RewriteCond %{HTTPS} !=on
