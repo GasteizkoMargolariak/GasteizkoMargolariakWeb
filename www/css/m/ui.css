@@ -212,29 +212,3 @@ div#ad div.entry div#ad_image_container{
 div#ad div.entry a{
     font-size:        100%;
 }
-
-/******************************************
-* Styles for the annoying cookie popup.   *
-******************************************/
-div#cookie_popup{
-    font-size:                    80%;
-    color:                        #dddddd;
-    text-align:                    center;
-    position:                    fixed;
-    background-color:            #4c9ed8;
-    border:                        0.5em solid #265774;
-    padding:                    1em 4em 1em 4em;
-    left:                        0em;
-    right:                        0em;
-    bottom:                        0em;
-    -ms-transform:                rotate(0deg); /* IE 9 */
-    -ms-transform-origin:        0% 0%; /* IE 9 */
-    -webkit-transform:            rotate(00deg); /* Chrome, Safari, Opera */
-    -webkit-transform-origin:    0% 0%; /* Chrome, Safari, Opera */
-    -moz-transform:                rotate(00deg); 
-    -moz-transform-origin:        0% 0%; /* Chrome, Safari, Opera */
-    transform:                    rotate(00deg);
-    transform-origin:            0% 0%;
-    box-shadow:                    0 0 3em #265774;
-    transition:                    bottom .5s ease-in-out;
-}

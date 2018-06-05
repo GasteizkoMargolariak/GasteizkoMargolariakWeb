@@ -64,19 +64,3 @@
         </div> <!-- .tr -->
     </div> <!-- #footer_table -->
 </div> <!-- footer -->
-<?php
-
-if (isSet($_COOKIE["cookie"]) == false){
-?>
-    <div id='cookie_popup'>
-        <span id='message'><?=$lng["cookie_message"]?></span><br/><br/>
-        <span class='button pointer' style="cursor:pointer" id='button_ok'>
-            <a onClick="dismissCookiePopUp('<?=$server?>', false);" ><?=$lng["cookie_ok"]?></a>
-        </span>
-        <span class='button pointer' style="cursor:pointer" id='button_more'>
-            <a onClick="dismissCookiePopUp('<?=$server?>', true);" ><?=$lng["cookie_more"]?></a>
-        </span>
-    </div>
-<?php
-}
-?>

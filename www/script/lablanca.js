@@ -1,7 +1,7 @@
-function expand(year){
-    console.log('Expanding ' + year);
-}
-
+/**
+ * Expands a day in the Festival Schedule page.
+ * @param id Day identifier, as it is in the DOM.
+ */
 function expandDay(id){
     if (document.getElementById('day_schedule_' + id).style.maxHeight != '' && document.getElementById('day_schedule_' + id).style.maxHeight != '0em'){
         document.getElementById('day_schedule_' + id).style.maxHeight = '0em';

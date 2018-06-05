@@ -5,13 +5,13 @@
     $con = startdb();
     $proto = getProtocol();
     $server = "$proto$http_host";
-    
+
     //Language
     $lang = selectLanguage();
     include("../lang/lang_$lang.php");
-    
+
     $cur_section = $lng["section_activities"];
-    
+
     // Get current activity id. Redirect if inexistent or invisible
     $perm = mysqli_real_escape_string($con, $_GET["perm"]);
     $q = mysqli_query($con, "SELECT id, permalink, title_$lang AS title, text_$lang AS text, after_$lang AS after, price, inscription, people, max_people, user, date, DATE_FORMAT(date, '%Y-%m-%d %T') AS cdate, DATE_FORMAT(date, '%Y-%m-%d') AS isodate, DATE_FORMAT(date,'%b %d, %Y') as fdate, dtime, comments, city FROM activity WHERE permalink = '$perm' AND visible = 1;");
@@ -21,6 +21,14 @@
     }
     $r = mysqli_fetch_array($q);
     $id = $r["id"];
+
+    //Check if it's a past activity or upcoming activity.
+    $c_date = new Datetime();
+    $a_date = date_create_from_format('Y-m-d H:i:s', $r["cdate"]);
+    $future = false;
+    if (date_format($a_date, 'U') > date_format($c_date, 'U')){
+        $future = true;
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,7 +42,9 @@
 <?php 
             include("../css/ui.css"); 
             include("../css/actividades.css");
-            include("../css/map.css");
+            if ($future){
+                include("../css/map.css");
+            }
 ?>
         </style>
         <!-- CSS for mobile version -->
@@ -42,7 +52,9 @@
 <?php 
             include("../css/m/ui.css"); 
             include("../css/m/actividades.css");
-            include("../css/m/map.css");
+            if ($future){
+                include("../css/m/map.css");
+            }
 ?>
         </style>
         <!-- Script files -->
@@ -50,26 +62,34 @@
 <?php
             include("../script/ui.js");
             include("../script/actividades.js");
-            include("../script/map.js");
+            if ($future){
+                include("../script/map.js");
+            }
 ?>
         </script>
-        <script src="<?=$server?>/script/OpenLayers/ol.js"></script>
-        <!-- Meta tags -->
-        <link rel="canonical" href="<?=$server?>/actividades/<?=$r["permalink"]?>"/>
-        <link rel="author" href="<?=$server?>"/>
-        <link rel="publisher" href="<?=$server?>"/>
-        <meta name="description" content="<?=strip_tags($r["text"])?>"/>
-        <meta property="og:title" content="<?=$r["title"]?> - Gasteizko Margolariak"/>
-        <meta property="og:url" content="<?=$server?>/actividades/<?=$r["permalink"]?>"/>
-        <meta property="og:description" content="<?=strip_tags($r["text"])?>?>"/>
 <?php
-        $q_i = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $id ORDER BY idx;");
-        if (mysqli_num_rows($q_i) == 0){
+        if ($future){
+?>
+            <script src="<?=$server?>/script/OpenLayers/ol.js"></script>
+<?php
+        }
+?>
+        <!-- Meta tags -->
+        <link rel='canonical' href='<?=$server?>/actividades/<?=$r["permalink"]?>'/>
+        <link rel='author' href='<?=$server?>'/>
+        <link rel='publisher' href='<?=$server?>'/>
+        <meta name='description' content='<?=strip_tags($r["text"])?>'/>
+        <meta property='og:title' content='<?=$r["title"]?> - Gasteizko Margolariak'/>
+        <meta property='og:url' content='<?=$server?>/actividades/<?=$r["permalink"]?>'/>
+        <meta property='og:description' content='<?=strip_tags($r["text"])?>?>'/>
+<?php
+        $q_img = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $id ORDER BY idx;");
+        if (mysqli_num_rows($q_img) == 0){
             $img = "$server/img/logo/cover.png";
         }
         else{
-            $r_i = mysqli_fetch_array($q_i);
-            $img = "$server/img/actividades/preview/" . $r_i["image"];
+            $r_img = mysqli_fetch_array($q_img);
+            $img = "$server/img/actividades/preview/" . $r_img["image"];
         }
 ?>
         <meta property="og:image" content="<?=$img?>"/>
@@ -77,9 +97,8 @@
         <meta property="og:type" content="article"/>
         <meta property="og:locale" content="<?=$lang?>"/>
         <meta property="article:section" content=""/>
-        <!--     TODO: Review time format     -->
-        <meta property="article:published-time" content="<?=$r["dtime"]?>"/>
-        <meta property="article:modified-time" content="<?=$r["dtime"]?>"/>
+        <meta property="article:published-time" content="<?=$r["isodate"]?>"/>
+        <meta property="article:modified-time" content="<?=$r["isodate"]?>"/>
         <meta property="article:author" content="Gasteizko Margolariak"/>
 <?php
         $res_tag = mysqli_query($con, "SELECT tag FROM activity_tag WHERE activity = $id;");
@@ -101,15 +120,6 @@
         include("../header.php");
 ?>
         <div id="content">
-<?php
-            //Check if it's a past activity or upcoming activity.
-            $c_date = new Datetime();
-            $a_date = date_create_from_format('Y-m-d H:i:s', $r["cdate"]);
-            $future = false;
-            if (date_format($a_date, 'U') > date_format($c_date, 'U')){
-                $future = true;
-            }
-?>
             <div id="middle_column">
                 <div class="section">
                     <h3 class='section_title' id="activity_title"><?=$r["title"]?> - <?=formatDate($r["date"], $lang, false)?></h3>
@@ -131,9 +141,9 @@
 <?php
                         if (mysqli_num_rows($q_i) > 0){
 ?>
-                            <meta itemprop='image' content='</=$server?>/img/actividades/<?=$r_i["image"]?>'/>
+                            <meta itemprop='image' content='<?=$server?>/img/actividades/<?=$r_img["image"]?>'/>
                             <div id='activity_image'>
-                                <img src='<?=$server?>/img/actividades/preview/<?=$r_i["image"]?>'/>
+                                <img src='<?=$server?>/img/actividades/preview/<?=$r_img["image"]?>'/>
                             </div>
 <?php
                         }
@@ -199,155 +209,150 @@
                                 </table> <!-- activity_details -->
                             </div> <!-- activity_details -->
 <?php
-                        
+                        } // if ($future)
 ?>
-                            </div> <!-- .entry -->
-                            <br/>
-                            <div class='entry'>
+                    </div> <!-- .entry -->
+                    <br/>
 <?php
-                                $q_it = mysqli_query($con, "SELECT activity_itinerary.name_$lang AS name, description_$lang AS description, place.name_$lang AS place_name, place.address_$lang AS place_address, place.lat, place.lon, DATE_FORMAT(start, '%H:%i') AS start, DATE_FORMAT(end, '%H:%i') AS end, DATE_FORMAT(start, '%Y-%m-%d') AS isostart, DATE_FORMAT(end, '%Y-%m-%d') AS isoend, route FROM activity_itinerary, place WHERE place.id = activity_itinerary.place AND activity = $r[id] ORDER BY start;");
-                                if (mysqli_num_rows($q_it) > 0){
+                    if ($future) {
 ?>
-                                    <div id='activity_itinerary'>
-                                        <!-- TODO: Routes -->
-                                        <h3 class='entry_title'><?=$lng["activity_itinerary"]?></h3>
-                                        <table id='activity_itinerary'>
-                                            <tr class='th'>
-                                                <th><?=$lng["activities_when"]?></th>
-                                                <th><?=$lng["activities_what"]?></th>
-                                            </tr>
+                        <div class='entry'>
 <?php
-                                            while ($r_it = mysqli_fetch_array($q_it)){
+                            $q_iti = mysqli_query($con, "SELECT activity_itinerary.name_$lang AS name, description_$lang AS description, place.name_$lang AS place_name, place.address_$lang AS place_address, place.lat, place.lon, DATE_FORMAT(start, '%H:%i') AS start, DATE_FORMAT(end, '%H:%i') AS end, DATE_FORMAT(start, '%Y-%m-%d') AS isostart, DATE_FORMAT(end, '%Y-%m-%d') AS isoend, route FROM activity_itinerary, place WHERE place.id = activity_itinerary.place AND activity = $r[id] ORDER BY start;");
+                            if (mysqli_num_rows($q_iti) > 0){
 ?>
-                                                <tr>
-                                                    <div class='hidden' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'>
-                                                        <meta itemprop='inLanguage' content='<?=$lang?>'/>
-                                                        <meta itemprop='name' content='<?=$r_it["name"]?>'/>
-                                                        <meta itemprop='description' content='<?=$r_it["description"]?>'/>
-                                                        <meta itemprop='startDate' content='<?=$r_it["isostart"]?>'/>
-                                                        <meta itemprop='location' content='<?=$r_it["place_name"]?>'/>
+                                <div id='activity_itinerary'>
+                                    <h3 class='entry_title'><?=$lng["activity_itinerary"]?></h3>
+                                    <table id='activity_itinerary'>
+                                        <tr class='th'>
+                                            <th><?=$lng["activities_when"]?></th>
+                                            <th><?=$lng["activities_what"]?></th>
+                                        </tr>
 <?php
-                                                        if (strlen($r_it["end"]) > 0){
+                                        while ($r_iti = mysqli_fetch_array($q_iti)){
 ?>
-                                                            <meta itemprop='endDate' content='<?=$r_it["place_end"]?>'/>
+                                            <tr>
+                                                <div class='hidden' itemprop='subEvent' itemscope itemtype='http://schema.org/Event'>
+                                                    <meta itemprop='inLanguage' content='<?=$lang?>'/>
+                                                    <meta itemprop='name' content='<?=$r_iti["name"]?>'/>
+                                                    <meta itemprop='description' content='<?=$r_iti["description"]?>'/>
+                                                    <meta itemprop='startDate' content='<?=$r_iti["isostart"]?>'/>
+                                                    <meta itemprop='location' content='<?=$r_iti["place_name"]?>'/>
 <?php
-                                                        }
+                                                    if (strlen($r_iti["end"]) > 0){
 ?>
-                                                    </div>
+                                                        <meta itemprop='endDate' content='<?=$r_iti["place_end"]?>'/>
 <?php
-                                                    if (strlen($r_it["end"]) > 0){
+                                                    }
 ?>
-                                                        <td><?=$r_it["start"]?> - <?=$r_it["end"]?></td>
+                                                </div>
+<?php
+                                                if (strlen($r_iti["end"]) > 0){
+?>
+                                                    <td><?=$r_iti["start"]?> - <?=$r_iti["end"]?></td>
+<?php
+                                                }
+                                                else{
+?>
+                                                    <td class='time'><?=$r_iti["start"]?></td>
+<?php
+                                                }
+?>
+                                                <td>
+                                                    <h5><?=$r_iti["name"]?></h5>
+                                                    <p class='description'><?=$r_iti["description"]?></p>
+                                                    <br/>
+<?php
+                                                    if ($r_iti["route"] != null && strlen($r_iti["route"]) != 0){
+?>
+                                                        <span class='fake_a pointer' onClick='showMapRoute(<?=$r_iti["route"]?>, "<?=$r_iti["name"]?>", <?=$r_iti["lat"]?>, <?=$r_iti["lon"]?>);'>
+                                                            <img class='pinpoint' alt=' ' src='<?=$server?>/img/misc/pinpoint-route.png'/>
+                                                            <span class='desktop route_start'>
+                                                                <?=$lng["activities_itinerary_start"]?>
+                                                            </span>
+<?php
+                                                            //If name and address are the same, show only name
+                                                            if ($r_iti["place_name"] == $r_iti["place_address"]){
+?>
+                                                                <?=$r_iti["place_name"]?>
+<?php
+                                                            }
+                                                            else{
+?>
+                                                                <?=$r_iti["place_name"]?>
+                                                                <span class='address'>- <?=$r_iti["place_address"]?></span>
+<?php
+                                                            }
+?>
+                                                        </span>
 <?php
                                                     }
                                                     else{
 ?>
-                                                        <td class='time'><?=$r_it["start"]?></td>
+                                                        <span class='fake_a pointer' onClick='showMapPoint("<?=$r_iti["name"]?>>", <?=$r_iti["lat"]?>, <?=$r_iti["lon"]?>);'>
+                                                            <img class='pinpoint'  alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
+<?php
+                                                            //If name and address are the same, show only name
+                                                            if ($r_iti["place_name"] == $r_iti["place_address"]){
+?>
+                                                                <?=$r_iti["place_name"]?>
+<?php
+                                                            }
+                                                            else{
+?>
+                                                                <?=$r_iti["place_name"]?>
+                                                                <span class='address'>- <?=$r_iti["place_address"]?></span>
+<?php
+                                                            }
+?>
+                                                        </span>
 <?php
                                                     }
 ?>
-                                                    <td>
-                                                        <h5><?=$r_it["name"]?></h5>
-                                                        <p class='description'><?=$r_it["description"]?></p>
-                                                        <br/>
+                                                </td>
+                                            </tr>
 <?php
-
-
-
-
-
-                                                        if ($r_it["route"] != null && strlen($r_it["route"]) != 0){
+                                        } // while ($r_iti = mysqli_fetch_array($q_it))
 ?>
-                                                            <!-- TODO: Add center coordinates and zoom -->
-                                                            <span class='fake_a pointer' onClick='showMapRoute(<?=$r_it["route"]?>, "<?=$r_it["name"]?>", <?=$r_it["lat"]?>, <?=$r_it["lon"]?>);'>
-                                                                <img class='pinpoint' alt=' ' src='<?=$server?>/img/misc/pinpoint-route.png'/>
-                                                                <span class='desktop route_start'>
-                                                                    <?=$lng["activities_itinerary_start"]?>
-                                                                </span>
+                                    </table> <!-- #activity_itinerary -->
+                                </div> <!-- #activity_itinerary -->
 <?php
-                                                                //If name and address are the same, show only name
-                                                                if ($r_it["place_name"] == $r_it["place_address"]){
+                            } // if (mysqli_num_rows($q_it) > 0)
 ?>
-                                                                    <?=$r_it["place_name"]?>
+                        </div> <!-- .entry -->
 <?php
-                                                                }
-                                                                else{
+                    } //  if ($future)
 ?>
-                                                                    <?=$r_it["place_name"]?>
-                                                                    <span class='address'>- <?=$r_it["place_address"]?></span>
-<?php
-                                                                }
-?>
-                                                            </span>
-<?php
-                                                        }
-                                                        else{
-?>
-                                                            <span class='fake_a pointer' onClick='showMapPoint("<?=$r_it["name"]?>>", <?=$r_it["lat"]?>, <?=$r_it["lon"]?>);'>
-                                                                <img class='pinpoint'  alt=' ' src='<?=$server?>/img/misc/pinpoint.png'/>
-<?php
-                                                                //If name and address are the same, show only name
-                                                                if ($r_it["place_name"] == $r_it["place_address"]){
-?>
-                                                                    <?=$r_it["place_name"]?>
-<?php
-                                                                }
-                                                                else{
-?>
-                                                                    <?=$r_it["place_name"]?>
-                                                                    <span class='address'>- <?=$r_it["place_address"]?></span>
-<?php
-                                                                }
-?>
-                                                            </span>
-<?php
-                                                        }
-?>
-                                                    </td>
-                                                </tr>
-<?php
-                                            } // while ($r_it = mysqli_fetch_array($q_it))
-?>
-                                        </table> <!-- #activity_itinerary -->
-                                    </div> <!-- #activity_itinerary -->
-<?php
-                                } // if (mysqli_num_rows($q_it) > 0)
-?>
-                            </div> <!-- .entry -->
-<?php
-                        } //  if ($future)
-?>
-                    </div> <!-- .section -->
-                </div> <!-- .entry -->
+                </div> <!-- .section -->
             </div> <!-- #middle_column -->
             <div id="right_column">
                 <div id="archive" class="section desktop">
                     <h3 class="section_title"><?=$lng["activities_archive"] ?></h3>
                     <div class='entry'>
 <?php
-                        $res_year = mysqli_query($con, "SELECT year(date) AS year FROM activity WHERE visible = 1 GROUP BY year(date) ORDER BY year DESC;");
-                        while($row_year = mysqli_fetch_array($res_year)){
+                        $q_year = mysqli_query($con, "SELECT year(date) AS year FROM activity WHERE visible = 1 GROUP BY year(date) ORDER BY year DESC;");
+                        while($r_year = mysqli_fetch_array($q_year)){
 ?>
-                            <div class='year pointer' onClick='toggleElement("year_<?=$row_year["year"]?>");'>
-                                <img class='slid' id='slid_year_<?=$row_year["year"]?>' src='<?=$server?>/img/misc/slid-right.png' alt='<?=$row_year["year"]?>'/>
-                                <span class='fake_a'><?=$row_year["year"]?></span>
+                            <div class='year pointer' onClick='toggleElement("year_<?=$r_year["year"]?>");'>
+                                <img class='slid' id='slid_year_<?=$r_year["year"]?>' src='<?=$server?>/img/misc/slid-right.png' alt='<?=$r_year["year"]?>'/>
+                                <span class='fake_a'><?=$r_year["year"]?></span>
                             </div>
-                            <div class='list_year pointer' id='list_year_<?=$row_year["year"]?>'>
+                            <div class='list_year pointer' id='list_year_<?=$r_year["year"]?>'>
 <?php
-                                $res_month = mysqli_query($con, "SELECT month(date) AS month FROM activity WHERE visible = 1 AND year(date) = $row_year[year] GROUP BY month(date) ORDER BY month DESC;");
-                                while($row_month = mysqli_fetch_array($res_month)){
-?>                                
-                                    <div class='month pointer' onClick='toggleElement("month_<?=$row_year["year"]?>_<?=$row_month["month"]?>");'>
-                                        <img class='slid' id='slid_month_<?=$row_year["year"]?>_<?=$row_month["month"]?>' src='<?=$server?>/img/misc/slid-right.png' alt='<?=$row_year["year"]?>_<?=$row_month["month"]?>'/>
-                                        <span class='fake_a'><?=$lng["months"][$row_month["month"] - 1]?></span>
+                                $q_month = mysqli_query($con, "SELECT month(date) AS month FROM activity WHERE visible = 1 AND year(date) = $r_year[year] GROUP BY month(date) ORDER BY month DESC;");
+                                while($r_month = mysqli_fetch_array($q_month)){
+?>
+                                    <div class='month pointer' onClick='toggleElement("month_<?=$r_year["year"]?>_<?=$r_month["month"]?>");'>
+                                        <img class='slid' id='slid_month_<?=$r_year["year"]?>_<?=$r_month["month"]?>' src='<?=$server?>/img/misc/slid-right.png' alt='<?=$r_year["year"]?>_<?=$r_month["month"]?>'/>
+                                        <span class='fake_a'><?=$lng["months"][$r_month["month"] - 1]?></span>
                                     </div>
-                                    <ul id='list_month_<?=$row_year["year"]?>_<?=$row_month["month"]?>' class='activity_list'>
+                                    <ul id='list_month_<?=$r_year["year"]?>_<?=$r_month["month"]?>' class='activity_list'>
 <?php
-                                    $res_title = mysqli_query($con, "SELECT id, permalink, title_$lang AS title FROM activity WHERE visible = 1 AND year(date) = $row_year[year] AND month(date) = '$row_month[month]' ORDER BY date DESC;");
-                                    while($row_title = mysqli_fetch_array($res_title)){
+                                    $q_title = mysqli_query($con, "SELECT id, permalink, title_$lang AS title FROM activity WHERE visible = 1 AND year(date) = $r_year[year] AND month(date) = '$r_month[month]' ORDER BY date DESC;");
+                                    while($r_title = mysqli_fetch_array($q_title)){
 ?>
                                         <li>
-                                            <a href='<?=$server?>/actividades/<?=$row_title["permalink"]?>'><?=$row_title["title"]?></a>
+                                            <a href='<?=$server?>/actividades/<?=$r_title["permalink"]?>'><?=$r_title["title"]?></a>
                                         </li>
 <?php
                                     }
@@ -356,25 +361,31 @@
 <?php
                                 }
 ?>
-                            </div> <!-- #list_year_<?=$row_year["year"]?> -->
+                            </div> <!-- #list_year_<?=$r_year["year"]?> -->
 <?php
                         }
 ?>
                     </div> <!-- .entry -->
                 </div> <!-- #archive -->
             </div> <!-- #right_column -->
-            <div id='map_container'>
-                <div class='section'>
-                    <h3 class='section_title'>
-                        <span id='map_title'>MAP</span>
-                        <div id='map_close_container'>
-                            <img id='map_close' class='pointer' alt=' ' src='<?=$server?>/img/misc/close.png' onClick='hideMap();'/>
-                        </div>
-                    </h3>
-                    <div id='map' class='entry'>
-                    </div> <!-- map -->
-                </div> <!-- .section -->
-            </div> <!-- .map_container -->
+<?php
+            if ($future){
+?>
+                <div id='map_container'>
+                    <div class='section'>
+                        <h3 class='section_title'>
+                            <span id='map_title'>MAP</span>
+                            <div id='map_close_container'>
+                                <img id='map_close' class='pointer' alt=' ' src='<?=$server?>/img/misc/close.png' onClick='hideMap();'/>
+                            </div>
+                        </h3>
+                        <div id='map' class='entry'>
+                        </div> <!-- map -->
+                    </div> <!-- .section -->
+                </div> <!-- .map_container -->
+<?php
+            } // if ($future)
+?>
         </div> <!-- #content -->
 <?php
         include("../footer.php");
