@@ -69,14 +69,13 @@
      * request parameter keyed 'target'
      * 
      * @since 3.0.0
-     * @param array $get Optional. Array with the request parameters. Default
-     *                   is $_GET.
+     * @param array $get Array with the request parameters.
      * @return string 'all' or 'gm' if it was passed as the 'target' GET
      *                parameter. 'gm' if there was no 'target' parameter or
      *                null if some invalid value was passed as the 'target'
      *                parameter.
      */
-    function get_target($get = $_GET){
+    function get_target($get){
         $target = $get[GET_TARGET];
         if (strlen($target) < 1){
             return DEF_TARGET;
