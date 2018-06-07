@@ -40,7 +40,7 @@
             $pass_rw = 'XXXX';
         ?>
         */
-        include('../../../www/.htpasswd');
+        include('../../.htpasswd');
 
         //Connect to to database
         if ($mode == 'ro')
@@ -146,7 +146,7 @@
      *    user: (string): Username.                      *
      *    pass: (string): Password.                      *
      * @return: (int): User id, or -1 if the user and    *
-	 *          pass didn't match.                       *
+     *          pass didn't match.                       *
      *****************************************************/
     function login($con, $user, $pass){
         session_start();
