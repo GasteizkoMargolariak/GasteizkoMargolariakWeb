@@ -1,5 +1,15 @@
 <?php
-    // Gasteizko Margolariak API v3 //
+    /**
+     * Gasteizko Margolariak API v3 - Location
+     *
+     * Used to get notifications.
+     * This file is to be called directly from a URL request.
+     *
+     * https://margolariak.com/API/v3/help/
+     *
+     * @since 1.0.0
+     */
+
 
     //Posible notification target
     define('TARGET_ALL', 'all');
@@ -14,13 +24,16 @@
     //Error messages
     define('ERR_TARGET', '-TARGET:');
 
-    /*****************************************************
-     * Initializes the session variables and connects to * 
-     * the db.                                           *
-     *                                                   *
-     * @return: (MySQL server connection): The           *
-     *           connection handler.                     *
-     *****************************************************/
+
+    /**
+     * Initializes the MySQL database connection.
+     * 
+     * Called at the beggining of the script. It connects to the database using the
+     * parameters in the .htpasswd file. It also sets database and page encodings.
+     * 
+     * @since 1.0.0
+     * @return object Database connection.
+     */
     function startdb(){
         //Include the db configuration file. It's somehow like this
         /*
@@ -47,19 +60,21 @@
         return $con;
     }
 
-    /*****************************************************
-     * Discerns the type of notificatios to look for     *
-     * using the parameter 'target' from the list of get *
-     * arguments. Valid values are 'all'or 'gm'. The     *
-     * default is 'all'.                                 *
-     *                                                   *
-     * @params:                                          *
-     *    get: (String array) List of GET parameters.    *
-     * @return: (String): 'all' if it was passed as GET  *
-     *          parameter, 'gm' if it was passed or if   *
-     *          the parameter was not passed, or null if *
-     *          some other value was passed.             *
-     *****************************************************/
+
+    /**
+     * Discerns the type of notifications requested.
+     *
+     * Determines which notificatios the request is looking for: public
+     * notification or members-only notifications. To do so, it looks for a
+     * request parameter keyed 'target'
+     * 
+     * @since 3.0.0
+     * @param array $get Array with the request parameters.
+     * @return string 'all' or 'gm' if it was passed as the 'target' GET
+     *                parameter. 'gm' if there was no 'target' parameter or
+     *                null if some invalid value was passed as the 'target'
+     *                parameter.
+     */
     function get_target($get){
         $target = $get[GET_TARGET];
         if (strlen($target) < 1){
@@ -75,18 +90,19 @@
         }
     }
 
-    /*****************************************************
-     * Retrieves the notificatios that are still on time *
-     * to be delivered.                                  *
-     *                                                   *
-     * @params:                                          *
-     *    con: (MySQL server connection) Db connector.   *
-     *    target: (String) 'gm' or 'all'.                *
-     * @return: (String): The list of notifications to   *
-     *          be sent to the app, in JSON format, or   *
-     *          null if there are none.                  *
-     *****************************************************/
-    function select_notifications($con, $target){
+
+    /**
+     * Retrieves the notifications
+     *
+     * Retrieves the notificatios for the selected target that are still on
+     * time to be delivered and formats them as a JSON object.
+     * 
+     * @since 3.0.0
+     * @param object $con Open database connection.
+     * @param string $target Optional. 'gm' or 'all'. Default is 'all'.
+     * @return string JSON object with the fetched notifications.
+     */
+    function select_notifications($con, $target = TARGET_ALL){
         if ($target == TARGET_GM){
             $query = "SELECT id, title_es, title_en, title_eu, text_es, text_en, text_eu, dtime, internal AS gm, duration, action, 0 AS seen FROM notification WHERE internal = 1 AND dtime > NOW() - INTERVAL duration MINUTE ORDER BY dtime DESC";
         }
@@ -106,16 +122,22 @@
         }
     }
 
-    /*****************************************************
-     * Prints the notifications.                         *
-     *                                                   *
-     * @params:                                          *
-     *    notifications: (String) Notification list, in  *
-     *                   JSON format.                    *
-     *****************************************************/
+
+    /**
+     * Prints the notifications. 
+     * 
+     * @since 3.0.0
+     * @param string $notifications JSON object with the notifications,
+     *                              as generated by 
+     *                              {@see select_notifications($con, $target)}
+     */
     function print_notifications($notifications){
-        print($notifications);
+        echo($notifications);
     }
+
+
+    // SCRIPT START
+
 
     // Connect to the database
     $con = startdb('rw');
@@ -137,5 +159,4 @@
     else{
         print_notifications($notifications);
     }
-
 ?>

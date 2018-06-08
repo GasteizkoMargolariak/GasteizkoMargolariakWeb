@@ -1,0 +1,35 @@
+table#main{
+    width: 60%;
+    border: 0px;
+    display: block;
+    margin: auto 20% auto 20%;
+    border-spacing: 2em;
+    border-collapse: separate;
+}
+
+table#main tr td{
+    text-align: center;
+    width: 50%;
+    height: 8em;
+    padding: 0.5em;
+}
+
+table#main tr td h3{
+    font-size: 150%;
+}
+
+table#main tr td h3 img{
+    vertical-align: middle;
+    height: 2em;
+}
+
+table#main tr td a{
+    display: block;
+    background-color: #3355ff;
+    border: 0.1em solid #001166;
+    border-radius: 1.2em;
+    margin: 0.6em;
+    padding: 0.6em;
+    font-size: 120%;
+    color: #ffffff;
+}
