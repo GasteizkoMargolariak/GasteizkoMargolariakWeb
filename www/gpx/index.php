@@ -43,40 +43,12 @@
     while ($r_point = mysqli_fetch_array($q_point)){
 
         // Origin point
-        if ((strlen($r_point["lat_o"]) == 0 || strlen($r_point["lon_o"]) == 0) && strlen($r_point["place_o"]) != 0){
-            $q_place = mysqli_query($con, "SELECT lat, lon FROM place WHERE id = $r_point[place_o];");
-            if (mysqli_num_rows($q_place) == 0){
-                http_response_code(501);
-                exit(501);
-            }
-            else{
-                $r_place = mysqli_fetch_array($q_place);
-                $lat_o = $r_place["lat"];
-                $lon_o = $r_place["lon"];
-            }
-        }
-        else{
-            $lat_o = $r_point["lat_o"];
-            $lon_o = $r_point["lon_o"];
-        }
+        $lat_o = $r_point["lat_o"];
+        $lon_o = $r_point["lon_o"];
 
         // Destination point
-        if ((strlen($r_point["lat_d"]) == 0 || strlen($r_point["lon_d"]) == 0) && strlen($r_point["place_d"]) != 0){
-            $q_place = mysqli_query($con, "SELECT lat, lon FROM place WHERE id = $r_point[place_d];");
-            if (mysqli_num_rows($q_place) == 0){
-                http_response_code(501);
-                exit(501);
-            }
-            else{
-                $r_place = mysqli_fetch_array($q_place);
-                $lat_d = $r_place["lat"];
-                $lon_d = $r_place["lon"];
-            }
-        }
-        else{
-            $lat_d = $r_point["lat_d"];
-            $lon_d = $r_point["lon_d"];
-        }
+        $lat_d = $r_point["lat_d"];
+        $lon_d = $r_point["lon_d"];
 
         $points[$t_points] = "$r_point[id]$route$r_point[part]0";
         $points[$t_points + 1] = "$r_point[id]$route$r_point[part]1";

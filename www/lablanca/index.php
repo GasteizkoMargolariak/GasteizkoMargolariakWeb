@@ -5,13 +5,13 @@
     $proto = getProtocol();
     $http_host = $_SERVER["HTTP_HOST"];
     $server = "$proto$http_host";
-    
+
     //Language
     $lang = selectLanguage();
     include("../lang/lang_$lang.php");
-    
+
     $cur_section = $lng["section_lablanca"];
-    
+
     //Is festivals enabled in settings?
     $q = mysqli_query($con, "SELECT value FROM settings WHERE name = 'festivals';");
     if (mysqli_num_rows($q) == 0)
@@ -25,17 +25,17 @@
             $is_festivals = false;
         }
     }
-    
+
     //Get year
     $year = date("Y");
-    if ($_GET["year"] != ''){ 
+    if ($_GET["year"] != ''){
         $q_year = mysqli_query($con, "SELECT id FROM festival WHERE year = " . mysqli_real_escape_string($con, $_GET["year"]));
         if (mysqli_num_rows($q_year) > 0){
             $year = $_GET["year"];
             $is_festivals = true;
         }
     }
-    
+
 
 ?>
 <!DOCTYPE html>
@@ -62,14 +62,14 @@
         <link rel='shortcut icon' href='<?=$server?>/img/logo/favicon.ico'>
         <!-- CSS files -->
         <style>
-<?php 
+<?php
             include("../css/ui.css"); 
             include("../css/lablanca.css");
 ?>
         </style>
         <!-- CSS for mobile version -->
         <style media="(max-width : 990px)">
-<?php 
+<?php
             include("../css/m/ui.css"); 
             include("../css/m/lablanca.css");
 ?>
@@ -82,9 +82,9 @@
 ?>
         </script>
         <!-- Meta tags -->
-        <link rel="canonical" href="<?=$server?>/lablanca/"/>
-        <link rel="author" href="<?=$server?>"/>
-        <link rel="publisher" href="<?=$server?>"/>
+        <link rel='canonical' href='<?=$server?>/lablanca/'/>
+        <link rel='author' href="<?=$server?>'/>
+        <link rel='publisher' href="<?=$server?>'/>
         <meta name='description' content='<?=$lng["lablanca_description"]?>'/>
 <?php
         if ($is_festivals){
@@ -108,26 +108,26 @@
 <?php
         if ($is_festivals){
 ?>
-            <meta property="twitter:title" content='<?=str_replace('#', $year, $lng["lablanca_title"])?> - Gasteizko Margolariak'/>
+            <meta property='twitter:title' content='<?=str_replace('#', $year, $lng["lablanca_title"])?> - Gasteizko Margolariak'/>
 <?php
         }
         else{
 ?>
-            <meta property="twitter:title" content='<?=str_replace('#', $year, $lng["lablanca_no_title"])?> - Gasteizko Margolariak'/>
+            <meta property='twitter:title' content='<?=str_replace('#', $year, $lng["lablanca_no_title"])?> - Gasteizko Margolariak'/>
 <?php
         }
 ?>
-        <meta name="twitter:description" content="<?=$lng["lablanca_description"]?>"/>
-        <meta name="twitter:image" content="<?=$server?>/img/logo/logo.png";?>"/>
-        <meta name="twitter:url" content="<?=$server?>"/>
-        <meta name="robots" content="index follow"/>
+        <meta name='twitter:description' content='<?=$lng["lablanca_description"]?>'/>
+        <meta name='twitter:image' content='<?=$server?>/img/logo/logo.png'/>
+        <meta name='twitter:url' content='<?=$server?>'/>
+        <meta name='robots' content='index follow'/>
     </head>
     <body>
 <?php
     include("../header.php");
 ?>
-    <div id="content">
-<?php                
+    <div id='content'>
+<?php
         //Include file
         if ($is_festivals){
             include("fiestas.php");
@@ -173,7 +173,7 @@
     </div> <!-- #content -->
 <?php
     include("../footer.php");
-    $ad = ad($con, $lang, $lng); 
+    $ad = ad($con, $lang, $lng);
     stats($ad, $ad_static, "fiestas", "");
 ?>
     </body>

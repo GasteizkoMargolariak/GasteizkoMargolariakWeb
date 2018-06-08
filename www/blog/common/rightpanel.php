@@ -16,7 +16,7 @@
                     while($r_month = mysqli_fetch_array($q_month)){
 ?>
                         <div class='month pointer' onClick='toggleElement("month_<?=$r_year["year"]?>_<?=$r_month["month"]?>");'>
-                            <img class='slid' id='slid_month_<?=$r_year["year"]?>_<?=$r_month["month"]?>' src='<?=$server?>?/img/misc/slid-right.png' alt='<?=$r_month["month"]?>'/>
+                            <img class='slid' id='slid_month_<?=$r_year["year"]?>_<?=$r_month["month"]?>' src='<?=$server?>/img/misc/slid-right.png' alt='<?=$r_month["month"]?>'/>
                             <span class='fake_a'><?=$lng["months"][$r_month["month"] - 1]?></span>
                         </div>
                         <ul id='list_month_<?=$r_year["year"]?>_<?=$r_month["month"]?>' class='post_list'>

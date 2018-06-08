@@ -22,15 +22,15 @@
         <link rel="shortcut icon" href="<?php echo "$server/img/logo/favicon.ico";?>">
         <!-- CSS files -->
         <style>
-<?php 
-            include("../css/ui.css"); 
+<?php
+            include("../css/ui.css");
             include("../css/actividades.css");
 ?>
         </style>
         <!-- CSS for mobile version -->
         <style media="(max-width : 990px)">
-<?php 
-            include("../css/m/ui.css"); 
+<?php
+            include("../css/m/ui.css");
             include("../css/m/actividades.css");
 ?>
         </style>
@@ -42,29 +42,29 @@
 ?>
         </script>
         <!-- Meta tags -->
-        <link rel="canonical" href="<?=$server?>/actividades/"/>
-        <link rel="author" href="<?=$server?>"/>
-        <link rel="publisher" href="<?=$server?>"/>
-        <meta name="description" content="<?=$lng["activities_description"]?>"/>
-        <meta property="og:title" content="<?=$lng["activities_title"]?> - Gasteizko Margolariak"/>
-        <meta property="og:url" content="<?=$server?>/activities/"/>
-        <meta property="og:description" content="<?=$lng["activities_description"]?>"/>
-        <meta property="og:image" content="<?=$server?>/img/logo/logo.png"/>
-        <meta property="og:site_name" content="<?=$lng["index_title"]?>"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:locale" content="<?=$lang?>"/>
-        <meta name="twitter:card" content="summary"/>
-        <meta name="twitter:title" content="<?=$lng["activities_title"]?> - Gasteizko Margolariak"/>
-        <meta name="twitter:description" content="<?=$lng["activities_description"]?>"/>
-        <meta name="twitter:image" content="<?=$server?>/img/logo/logo.png"/>
-        <meta name="twitter:url" content="<?=$server?>"/>
-        <meta name="robots" content="index follow"/>
+        <link rel='canonical' href='<?=$server?>/actividades/'/>
+        <link rel='author' href='<?=$server?>'/>
+        <link rel='publisher' href='<?=$server?>'/>
+        <meta name='description' content='<?=$lng["activities_description"]?>'/>
+        <meta property='og:title' content='<?=$lng["activities_title"]?> - Gasteizko Margolariak'/>
+        <meta property='og:url' content='<?=$server?>/activities/'/>
+        <meta property='og:description' content='<?=$lng["activities_description"]?>'/>
+        <meta property='og:image' content='<?=$server?>/img/logo/logo.png'/>
+        <meta property='og:site_name' content='<?=$lng["index_title"]?>'/>
+        <meta property='og:type' content='website'/>
+        <meta property='og:locale' content='<?=$lang?>'/>
+        <meta name='twitter:card' content='summary'/>
+        <meta name='twitter:title' content='<?=$lng["activities_title"]?> - Gasteizko Margolariak'/>
+        <meta name='twitter:description' content='<?=$lng["activities_description"]?>'/>
+        <meta name='twitter:image' content='<?=$server?>/img/logo/logo.png'/>
+        <meta name='twitter:url' content='<?=$server?>'/>
+        <meta name='robots' content='index follow'/>
     </head>
     <body>
 <?php
         include("../header.php")
 ?>
-        <div id="content">
+        <div id='content'>
 
             <div class='section'>
                 <h3 class='section_title'><?=$lng["activities_upcoming"]?></h3>
@@ -92,7 +92,7 @@
                             </div>
                             <div id='upcoming_text'>
                                 <h3 class='entry_title'>
-                                    <a itemprop='url' href=<?=$server?>/actividades/<?=$r_activity["permalink"]?>'><?=$r_activity["title"]?></a>
+                                    <a itemprop='url' href='<?=$server?>/actividades/<?=$r_activity["permalink"]?>'><?=$r_activity["title"]?></a>
                                     <span class='title_date'> - <?=formatDate($r_activity["date"], $lang, false)?></span>
                                 </h3>
                                 <table class='future_details'>
@@ -102,7 +102,7 @@
                                         $q_activity_image = mysqli_query($con, "SELECT image FROM activity_image WHERE activity = $r_activity[id] ORDER BY idx LIMIT 1;");
                                         if (mysqli_num_rows($q_activity_image) > 0){
                                             $r_activity_image = mysqli_fetch_array($q_activity_image);
-?>                                            
+?>
                                             <td>
                                                 <div id='upcoming_image'>
                                                     <a href='<?=$server?>/actividades/<?=$r_activity["permalink"]?>'>
@@ -244,7 +244,7 @@
                             }
                             $i ++;
 ?>
-                            <div class='<?=$past_class?>' id='past_activity_details_$r_past[id]'>
+                            <div class='<?=$past_class?>' id='past_activity_details_<?=$r_past["id"]?>'>
                                 <table class='past_activity'>
                                     <tr>
 <?php

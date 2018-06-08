@@ -5,13 +5,13 @@
     $con = startdb();
     $proto = getProtocol();
     $server = "$server";
-    
+
     //Language
     $lang = selectLanguage();
     include("../lang/lang_$lang.php");
-    
+
     $cur_section = $lng["section_blog"];
-    
+
     //Search terms
     $search_field = mysqli_real_escape_string($con, $_GET["where"]);
     $search_term = strtolower(mysqli_real_escape_string($con, $_GET["query"]));
@@ -19,7 +19,7 @@
         header("Location: $server/blog/");
         exit(-1);
     }
-    
+
     //Get matches
     switch ($search_field){
         case $lng["search_field_all"]:
@@ -43,15 +43,15 @@
         <link rel="shortcut icon" href="<?=$server?>/img/logo/favicon.ico">
         <!-- CSS files -->
         <style>
-<?php 
-            include("../css/ui.css"); 
+<?php
+            include("../css/ui.css");
             include("../css/blog.css");
 ?>
         </style>
         <!-- CSS for mobile version -->
         <style media="(max-width : 990px)">
-<?php 
-            include("../css/m/ui.css"); 
+<?php
+            include("../css/m/ui.css");
             include("../css/m/blog.css");
 ?>
         </style>
@@ -63,36 +63,36 @@
             ?>
         </script>
         <!-- Meta tags -->
-        <link rel="canonical" href="<?=$server?>/blog"/>
-        <link rel="author" href="<?=$server?>"/>
-        <link rel="publisher" href="<?=$server?>"/>
-        <meta name="description" content="<?=$lng["blog_descrption"]?>"/>
-        <meta property="og:title" content="<?=$lng["blog_title"]?> - Gasteizko Margolariak"/>
-        <meta property="og:url" content="<?=$server?>/blog"/>
-        <meta property="og:description" content="<?=$lng["blog_description"]?>"/>
-        <meta property="og:image" content="<?=$server?>/img/logo/logo.png"/>
-        <meta property="og:site_name" content="<?=$lng["index_title"]?>"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:locale" content="<?=$lang?>"/>
-        <meta name="twitter:card" content="summary"/>
-        <meta name="twitter:title" content="<?=$lng["blog_title"]?> - Gasteizko Margolariak"/>
-        <meta name="twitter:description" content="<?=$lng["blog_description"]?>"/>
-        <meta name="twitter:image" content="<?=$server?>/img/logo/logo.png"/>
-        <meta name="twitter:url" content="<?=$server?>"/>
-        <meta name="robots" content="no-index no-follow"/>
+        <link rel='canonical' href='<?=$server?>/blog'/>
+        <link rel='author' href='<?=$server?>'/>
+        <link rel='publisher' href='<?=$server?>'/>
+        <meta name='description' content='<?=$lng["blog_descrption"]?>'/>
+        <meta property='og:title' content='<?=$lng["blog_title"]?> - Gasteizko Margolariak'/>
+        <meta property='og:url' content='<?=$server?>/blog'/>
+        <meta property='og:description' content='<?=$lng["blog_description"]?>'/>
+        <meta property='og:image' content='<?=$server?>/img/logo/logo.png'/>
+        <meta property='og:site_name' content='<?=$lng["index_title"]?>'/>
+        <meta property='og:type' content='website'/>
+        <meta property='og:locale' content='<?=$lang?>'/>
+        <meta name='twitter:card' content='summary'/>
+        <meta name='twitter:title' content='<?=$lng["blog_title"]?> - Gasteizko Margolariak'/>
+        <meta name='twitter:description' content='<?=$lng["blog_description"]?>'/>
+        <meta name='twitter:image' content='<?=$server?>/img/logo/logo.png'/>
+        <meta name='twitter:url' content='<?=$server?>'/>
+        <meta name='robots' content='no-index no-follow'/>
     </head>
     <body>
 <?php
         include("../header.php");
 ?>
-        <div id="content">
-<?=
+        <div id='content'>
+<?php
             include("common/leftpanel.php");
 ?>
-            <div id="middle_column">
-                <div class="section">
-                    <h3 class="section_title"><?=$lng["blog_search"])?></h3>
-                    <div class="entry">
+            <div id='middle_column'>
+                <div class='section'>
+                    <h3 class='section_title'><?=$lng["blog_search"]?></h3>
+                    <div class='entry'>
 <?php
                         if (mysqli_num_rows($q) == 1){
 ?>

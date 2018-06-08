@@ -1,7 +1,10 @@
 <?php
+    include("../functions.php");
+    $proto = getProtocol();
     $http_host = $_SERVER['HTTP_HOST'];
     $default_host = substr($http_host, 0, strpos($http_host, ':'));
-    include("../functions.php");
+    $server = $proto . $http_host;
+    $server_default = $proto . $default_host;
     $con = startdb();
     if (!checkSession($con)){
         header("Location: /index.php");
@@ -13,22 +16,24 @@
 ?>
 <html>
     <head>
-        <meta content="text/html; charset=windows-1252" http-equiv="content-type"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <meta content='text/html; charset=windows-1252' http-equiv='content-type'/>
+        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1'>
         <title>Preparar las fiestas de <?php echo $year; ?> - Administracion</title>
         <!-- CSS files -->
-        <link rel="stylesheet" type="text/css" href="/css/ui.css"/>
-        <link rel="stylesheet" type="text/css" href="/css/lablanca.css"/>
+        <link rel='stylesheet' type='text/css' href='/css/ui.css'/>
+        <link rel='stylesheet' type='text/css' href='/css/lablanca.css'/>
         <!-- CSS for mobile version -->
-        <link rel="stylesheet" type="text/css" media="(max-width : 990px)" href="/css/m/ui.css"/>
-        <link rel="stylesheet" type="text/css" media="(max-width : 990px)" href="/css/m/lablanca.css"/>
+        <link rel='stylesheet' type='text/css' media='(max-width : 990px)' href='/css/m/ui.css'/>
+        <link rel='stylesheet' type='text/css' media='(max-width : 990px)' href='/css/m/lablanca.css'/>
         <!-- Script files -->
-        <script type="text/javascript" src="script.js"></script>
-        <script type="text/javascript" src="/script/ui.js"></script>
-        <script src="../ckeditor/ckeditor.js"></script>
+        <script type='text/javascript' src='script.js'></script>
+        <script type='text/javascript' src='/script/ui.js'></script>
+        <script src='../ckeditor/ckeditor.js'></script>
     </head>
     <body onLoad='calculate("all");'>
-        <?php include('../toolbar.php'); ?>
+<?php
+        include('../toolbar.php');
+?>
         <div id='content'>
             <div class='section' id='section_header'>
                 <h3 class='section_title'>Paso 1: Cabecera de la p&aacute;gina de fiestas</h3>
@@ -36,7 +41,7 @@
                     ...calculando...
                 </div>
                 <div class='entry' id='entry_header'>
-                    <div id="lang_tabs">
+                    <div id='lang_tabs''>
                         <table>
                                 <tr>
                                     <td class="pointer lang_tabs_active" id="lang_tab_es" onclick="showLanguage('es');">
@@ -52,47 +57,52 @@
                         </table>
                     </div>
                     <div id="content_lang_es" class="festival_add_language">
-                        <?php
-                            $q = mysqli_query($con, "SELECT * FROM festival WHERE year = $year;");
-                            $r = mysqli_fetch_array($q);
-                            echo "<textarea id='text_es' onChange='updateField(\"festival\", \"text_es\", this.value, $r[id], \"text\", false);calculate(\"header\");'>$r[text_es]</textarea>\n";
-                        ?>
+<?php
+                        $q = mysqli_query($con, "SELECT * FROM festival WHERE year = $year;");
+                        $r = mysqli_fetch_array($q);
+?>
+                        <textarea id='text_es' onChange='updateField("festival", "text_es", this.value, <?=$r["id"]?>, "text", false);calculate("header");'><?=$r["text_es"]?></textarea>
                         <script>
                             CKEDITOR.replace('text_es');
                         </script>
                     </div>
                     <div id="content_lang_en" class="festival_add_language" style="display:none;">
-                        <?php
-                            echo "<textarea id='text_en' onChange='updateField(\"festival\", \"text_en\", this.value, $r[id]);calculate(\"header\");'>$r[text_en]</textarea>\n";
-                        ?>
+                        <textarea id='text_en' onChange='updateField("festival", "text_en", this.value, <?=$r["id"]?>);calculate("header");'><?=$r["text_en"]?></textarea>
                         <script>
                             CKEDITOR.replace('text_en');
                         </script>
                     </div>
                     <div id="content_lang_eu" class="festival_add_language" style="display:none;">
-                        <?php
-                            echo "<textarea id='text_eu' onChange='updateField(\"festival\", \"text_eu\", this.value, $r[id]);calculate(\"header\");'>$r[text_eu]</textarea>\n";
-                        ?>
+                        <textarea id='text_eu' onChange='updateField("festival", "text_eu", this.value, <?=$r["id"]?>);calculate("header");'><?=$r["text_eu"]?></textarea>
                         <script>
                             CKEDITOR.replace('text_eu');
                         </script>
                     </div>
                     <div id='header_image'>
                         Cartel:<br/>
-                        <?php
-                            if (mysqli_num_rows($q) > 0){
-                                if (strlen($r['img']) == 0){
-                                    echo "<img id='header_img' src='/img/lablanca/header-null.png'/><br/>\n";
-                                }
-                                else{
-                                    echo "<img id='header_img' src='http://$default_host/img/fiestas/miniature/$r[img]'/><br/>\n";
-                                }
+<?php
+                        if (mysqli_num_rows($q) > 0){
+                            if (strlen($r['img']) == 0){
+?>
+                                <img id='header_img' src='/img/lablanca/header-null.png'/>
+                                <br/>
+<?php
                             }
                             else{
-                                echo "<img id='header_img' src='http://$default_host/img/fiestas/miniature/$r[img]'/><br/>\n";
+?>
+                                <img id='header_img' src='<?=$server_default?>/img/fiestas/miniature/<?=$r["img"]?>'/>
+                                <br/>
+<?php
                             }
-                            echo "<input type='file' id='header_img_selector' onChange='uploadHeaderImage(event, $r[id]);calculate(\"header\");'/>\n";
-                        ?>
+                        }
+                        else{
+?>
+                            <img id='header_img' src='<?=$server_default?>/img/fiestas/miniature/<?=$r["img"]?>'/>
+                            <br/>
+<?php
+                        }
+?>
+                        <input type='file' id='header_img_selector' onChange='uploadHeaderImage(event, <?=$r["id"]?>);calculate("header");'/>
                     </div>
                 </div>
             </div>
@@ -103,21 +113,27 @@
                     ...calculando...
                 </div>
                 <div class='entry' id='entry_prices'>
-                    <?php
-                        $q = mysqli_query($con, "SELECT * FROM festival_day WHERE year(date) = '$year' AND price > 0;");
-                        if (mysqli_num_rows($q) != 6){
-                            echo "<input type='button' value='A&ntilde;adir precios'/>\n"; //TODO onclick
-                            echo "<input type='button' value='Utilzar precios del a&ntilde;o pasado'/>\n"; //TODO onclick
-                        }
-                        else{
-                            echo "<h4>D&iacute;as sueltos:</h4>";
-                            echo "<table id='prices'><tr><th>Fecha</th>";
-                            echo "<th>Nombres</th>";
-                            echo "<th>Precio</th></tr>\n";
+<?php
+                    $q = mysqli_query($con, "SELECT * FROM festival_day WHERE year(date) = '$year' AND price > 0;");
+                    if (mysqli_num_rows($q) != 6){
+?>
+                        <input type='button' value='A&ntilde;adir precios'/> <!-- TODO onclick -->
+                        <input type='button' value='Utilzar precios del a&ntilde;o pasado'/> <!-- TODO onclick -->
+<?php
+                    }
+                    else{
+?>
+                        <h4>D&iacute;as sueltos:</h4>
+                        <table id='prices'>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Nombres</th>
+                                <th>Precio</th>
+                            </tr>
+<?php
                             $dates = ["25 Jul", "5 Ago", "6 Ago", "7 Ago", "8 Ago", "9 Ago"];
                             $i = 0;
                             while ($r = mysqli_fetch_array($q)){
-                                echo "<tr><td>" . $dates[$i];
                                 if ($r['name_en'] == $r['name_es']){
                                     $en = '';
                                 }
@@ -130,21 +146,44 @@
                                 else{
                                     $eu = $r['name_eu'];
                                 }
-                                echo "</td><td>\n";
-                                echo("<table>\n");
-                                echo("<tr><td>Castellano:</td><td><input type='text' value='$r[name_es]' onchange='updateField(\"festival_day\", \"name_es\", this.value, $r[id]);'/></td></tr>\n");
-                                echo("<tr><td>Euskera:</td><td><input type='text' value='$r[name_en]' onchange='updateField(\"festival_day\", \"name_en\", this.value, $r[id]);'/></td></tr>\n");
-                                echo("<tr><td>Ingl&eacute;s:</td><td><input type='text' value='$r[name_eu]' onchange='updateField(\"festival_day\", \"name_eu\", this.value, $r[id]);'/></td></tr>\n");
-                                echo("</table>\n");
-                                echo "</td>\n<td>\n<input type='number' value='$r[price]' onchange='updateField(\"festival_day\", \"price\", this.value, $r[id], \"number\", false);'/>&euro;</td></tr>";
+?>
+                                <tr>
+                                    <td><?=$dates[$i]?></td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>Castellano:</td>
+                                                <td>
+                                                    <input type='text' value='<?=$r["name_es"]?>' onchange='updateField("festival_day", "name_es", this.value, <?=$r["id"]?>);'/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Euskera:</td>
+                                                <td>
+                                                    <input type='text' value='<?=$r["name_en"]?>' onchange='updateField("festival_day", "name_en", this.value, <?=$r["id"]?>);'/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ingl&eacute;s:</td>
+                                                <td>
+                                                    <input type='text' value='<?=$r["name_eu"]?>' onchange='updateField("festival_day", "name_eu", this.value, <?=$r["id"]?>);'/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <input type='number' value='<?=$r["price"]?>' onchange='updateField("festival_day", "price", this.value, <?=$r["id"]?>, "number", false);'/>&euro;
+                                    </td>
+                                </tr>
+<?php
                                 $i = $i + 1;
                             }
-                            echo "</table>\n";
-                            echo "<div id='prices_offers'>\n";
-                            echo "...calculando...\n";
-                            echo "</div>\n";
-                        }
-                    ?>
+?>
+                        </table>
+                        <div id='prices_offers'>...calculando...</div>
+<?php
+                    }
+?>
                 </div>
             </div>
             <br/><br/>
@@ -194,24 +233,28 @@
                                 <select id='new_event_25_host' class='new_event_host'>
                                     <option value='-2' selected='selected'>SELECCIONA...</option>
                                     <option value='-1'>A&Ntilde;ADIR NUEVO...</option>
-                                    <?php
-                                        $q = mysqli_query($con, "SELECT * FROM people;");
-                                        while ($r = mysqli_fetch_array($q)){
-                                            echo "<option value='$r[id]'>$r[name_es]</option>\n";
-                                        }
-                                    ?>
+<?php
+                                    $q = mysqli_query($con, "SELECT * FROM people;");
+                                    while ($r = mysqli_fetch_array($q)){
+?>
+                                        <option value='<?=$r["id"]?>'><?=$r["name_es"]?></option>
+<?php
+                                    }
+?>
                                 </select>
                             </td>
                             <td>
                                 <select id='new_event_25_host' class='new_event_host'>
                                     <option value='-2' selected='selected'>SELECCIONA...</option>
                                     <option value='-1'>A&Ntilde;ADIR NUEVO...</option>
-                                    <?php
-                                        $q = mysqli_query($con, "SELECT * FROM place;");
-                                        while ($r = mysqli_fetch_array($q)){
-                                            echo "<option value='$r[id]'>$r[name_es] ($r[address_es])</option>\n";
-                                        }
-                                    ?>
+<?php
+                                    $q = mysqli_query($con, "SELECT * FROM place;");
+                                    while ($r = mysqli_fetch_array($q)){
+?>
+                                        <option value='<?=$r["id"]?>'><?=$r["name_es"]?> (<?=$r["address_es"]?>)</option>
+<?php
+                                    }
+?>
                                 </select>
                             </td>
                         </tr>
@@ -226,7 +269,11 @@
             <div class='entry'>
                 <table>
                     <tr>
-                        <th>Castellano</th><th>Ingl&eacute;s</th><th>Euskera</th><th>D&iacute;as</th><th>Precio</th>
+                        <th>Castellano</th>
+                        <th>Ingl&eacute;s</th>
+                        <th>Euskera</th>
+                        <th>D&iacute;as</th>
+                        <th>Precio</th>
                     </tr>
                     <tr>
                         <td>
@@ -250,11 +297,13 @@
                     </tr>
                 </table>
                 <div id='controls'>
-                    <input type='button' value='Guardar' onClick='saveNewOffer(<?php echo $year;?>);'/>
+                    <input type='button' value='Guardar' onClick='saveNewOffer(<?p=$year?>);'/>
                     <input type='button' value='Cancelar' onClick='cancelNewOffer();'/>
                 </div>
             </div>
         </div>
     </body>
 </html>
-<?php } ?>
+<?php
+    }
+?>
