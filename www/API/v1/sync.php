@@ -298,7 +298,6 @@
         $browser = $browser_data['browser'];
         $uagent = $browser_data['browser_name_pattern'];
         mysqli_query($con, "INSERT INTO sync (client, user, action, section, version_from, version_to, fg, format, error, ip, os, uagent) VALUES ('$client', '$user', '$action', '$section', $version, $new_version, $foreground, '$format', '$error', '$ip', '$os', '$uagent');");
-        error_log("INSERT INTO sync (client, user, action, section, version_from, version_to, fg, format, error, ip, os, uagent) VALUES ('$client', '$user', '$action', '$section', $version, $new_version, $foreground, '$format', '$error', '$ip', '$os', '$uagent');");
     }
     
     //Connect to the database
