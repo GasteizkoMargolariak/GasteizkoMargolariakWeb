@@ -772,9 +772,6 @@
                         <h3 class='section_title'><?=$lng["index_festivals_header"]?></h3>
                         <div class='entry'>
                             <span class='desktop'>
-                                <?=cutText($lng["lablanca_no_content"] . '<br/>' . $lng["lablanca_no_content_2"], 300, $lng["index_read_more"], "$server/lablanca/")?>
-                            </span>
-                            <span class='desktop'>
                                 <?=cutText($lng["lablanca_no_content"] . '<br/>' . $lng["lablanca_no_content_2"], 200, $lng["index_read_more"], "$server/lablanca/")?>
                             </span>
                         </div> <!-- .entry -->

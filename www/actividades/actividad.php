@@ -39,8 +39,8 @@
         <link rel="shortcut icon" href="<?=$server?>/img/logo/favicon.ico">
         <!-- CSS files -->
         <style>
-<?php 
-            include("../css/ui.css"); 
+<?php
+            include("../css/ui.css");
             include("../css/actividades.css");
             if ($future){
                 include("../css/map.css");
@@ -49,8 +49,8 @@
         </style>
         <!-- CSS for mobile version -->
         <style media="(max-width : 990px)">
-<?php 
-            include("../css/m/ui.css"); 
+<?php
+            include("../css/m/ui.css");
             include("../css/m/actividades.css");
             if ($future){
                 include("../css/m/map.css");
@@ -139,7 +139,7 @@
                             <meta itemprop='url' content='<?=$server?>'/>
                         </div>
 <?php
-                        if (mysqli_num_rows($q_i) > 0){
+                        if (mysqli_num_rows($q_img) > 0){
 ?>
                             <meta itemprop='image' content='<?=$server?>/img/actividades/<?=$r_img["image"]?>'/>
                             <div id='activity_image'>
