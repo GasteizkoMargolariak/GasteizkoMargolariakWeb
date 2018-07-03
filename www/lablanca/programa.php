@@ -96,7 +96,7 @@
             <div class='section' id='schedule'>
                 <h3 class='section_title'><?=str_replace('#', $year, $lng["lablanca_schedule_year_" . $schi])?></h3>
 <?php
-                $q_days = mysqli_query($con, "SELECT DISTINCT date(DATE_SUB(start, INTERVAL 6 HOUR)) AS date, DATE_FORMAT(DATE_SUB(start, INTERVAL 6 HOUR), '%Y-%m-%d') AS isodate, (SELECT name_$lang FROM festival_day WHERE date = date(DATE_SUB(start, INTERVAL 6 HOUR))) AS name FROM festival_event_$schi WHERE year(start) = 2017 ORDER BY date");
+                $q_days = mysqli_query($con, "SELECT DISTINCT date(DATE_SUB(start, INTERVAL 6 HOUR)) AS date, DATE_FORMAT(DATE_SUB(start, INTERVAL 6 HOUR), '%Y-%m-%d') AS isodate, (SELECT name_$lang FROM festival_day WHERE date = date(DATE_SUB(start, INTERVAL 6 HOUR))) AS name FROM festival_event_$schi WHERE year(start) = 2018 ORDER BY date");
                 $i=0;
                 while ($r_days = mysqli_fetch_array($q_days)){
 ?>
