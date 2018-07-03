@@ -373,9 +373,17 @@
             $str = rtrim($str, ",");
             $str = $str . "}";
             $str = str_replace(",,", ",", $str);
-            echo($str);
+            if (strlen($str > 0)){
+                log_sync($con, $user, $synced);
+                echo($str);
+                http_response_code(200);
+            }
+            else{
+                http_response_code(204);
+            }
             return true;
         }
+        http_response_code(204);
         return false;
     }
 
@@ -472,7 +480,4 @@
     $v_server = get_server_versions($con);
     $tables = select_tables($v_user, $v_server);
     $synced = sync($con, $tables);
-
-    //Log the sync in the database
-    log_sync($con, $user, $synced);
 ?>
