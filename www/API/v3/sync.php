@@ -373,7 +373,7 @@
             $str = rtrim($str, ",");
             $str = $str . "}";
             $str = str_replace(",,", ",", $str);
-            if (strlen($str > 0)){
+            if (strlen($str) > 0){
                 log_sync($con, $user, $synced);
                 echo($str);
                 http_response_code(200);
