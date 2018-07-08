@@ -1,16 +1,16 @@
 <?php
-    $http_host = $_SERVER['HTTP_HOST'];
+    $http_host = $_SERVER["HTTP_HOST"];
     include("../functions.php");
-    $con = startdb('rw');
-    
+    $con = startdb("rw");
+
     //Language
     $lang = selectLanguage();
-    include("../lang/lang_" . $lang . ".php");
-    
+    include("../lang/lang_$lang.php");
+
     //Get post data
     $username = mysqli_real_escape_string($con, $_POST["username"]);
     $album = mysqli_real_escape_string($con, $_POST["album"]);
-        
+
     //Get the data form the photos
     $total = 0;
     $files = [];
@@ -21,33 +21,30 @@
         $img = $_POST["file_$total"];
         error_log("FILE: " . $img);
         //The next line wont work
-        if (strpos($img, 'data:image/jpeg;base64,') < 10){
-            $ext = 'jpg';
-            $img = str_replace('data:image/jpeg;base64,', '', $img);
+        if (strpos($img, "data:image/jpeg;base64,") < 10){
+            $ext = "jpg";
+            $img = str_replace("data:image/jpeg;base64,", "", $img);
         }
-        else if (strpos($img, 'data:image/png;base64,') < 10){
-            $ext = 'png';
-            $img = str_replace('data:image/png;base64,', '', $img);
+        else if (strpos($img, "data:image/png;base64,") < 10){
+            $ext = "png";
+            $img = str_replace("data:image/png;base64,", "", $img);
         }
-        $img = str_replace(' ', '+', $img);
-        //echo "IMG idx " . $total . ": " . $img . "<br/><br/><br/>br/><br/>";
+        $img = str_replace(" ", "+", $img);
         $files[$total] = base64_decode($img);
-        
-        //$file = 'image.png';
-        //$success = file_put_contents($file, $data);
+
         $titles[$total] = mysqli_real_escape_string($con, $_POST["title_$total"]);
         $descriptions[$total] = mysqli_real_escape_string($con, $_POST["description_$total"]);
         //Save image to file
-        $file = 'image.' . $ext;
+        $file = "image." . $ext;
         $success = file_put_contents($file, $files[$total]);
         $total ++;
     }
-    
+
     //Get next photo id
     $q_id = mysqli_query($con, "SELECT max(id) AS maxid FROM photo;");
     $r_id = mysqli_fetch_array($q_id);
     $id = $r_id["maxid"] + 1;
-    
+
     //Store information
     for ($i = 0; $i < $total; $i++){
         //Get filename
@@ -63,27 +60,27 @@
         error_log("SUCCESS" . $success);
         //Convert to jpg and create miniature and preview_image
         //$im = new imagick("../img/galeria/$fname.png");
-        //$handle = fopen("../img/galeria/$fname.png", 'rb');
+        //$handle = fopen("../img/galeria/$fname.png", "rb");
         $im = new Imagick("../img/galeria/$fname.$ext");
-        //$im->readImageFile($handle);
-        $im->setImageBackgroundColor('white');
-        $im = $im->flattenImages();
-        $im->setImageFormat('jpg');
-        $im->writeImage("../img/galeria/$fname.jpg");
-        $im->resizeImage(800, 0, Imagick::FILTER_POINT, true);
-        $im->resizeImage(0, 800, Imagick::FILTER_POINT, true);
-        $im->writeImage("../img/galeria/view/$fname.jpg");
-        $im->resizeImage(600, 0, Imagick::FILTER_POINT, true);
-        $im->resizeImage(0, 600, Imagick::FILTER_POINT, true);
-        $im->writeImage("../img/galeria/preview/$fname.jpg");
-        $im->resizeImage(400, 0, Imagick::FILTER_POINT, true);
-        $im->resizeImage(0, 400, Imagick::FILTER_POINT, true);
-        $im->writeImage("../img/galeria/miniature/$fname.jpg");
-        $im->resizeImage(200, 0, Imagick::FILTER_POINT, true);
-        $im->resizeImage(0, 200, Imagick::FILTER_POINT, true);
-        $im->writeImage("../img/galeria/thumb/$fname.jpg");
-        $im->clear();
-        $im->destroy();
+        //$im -> readImageFile($handle);
+        $im -> setImageBackgroundColor("white");
+        $im = $im -> flattenImages();
+        $im -> setImageFormat("jpg");
+        $im -> writeImage("../img/galeria/$fname.jpg");
+        $im -> resizeImage(800, 0, Imagick::FILTER_POINT, true);
+        $im -> resizeImage(0, 800, Imagick::FILTER_POINT, true);
+        $im -> writeImage("../img/galeria/view/$fname.jpg");
+        $im -> resizeImage(600, 0, Imagick::FILTER_POINT, true);
+        $im -> resizeImage(0, 600, Imagick::FILTER_POINT, true);
+        $im -> writeImage("../img/galeria/preview/$fname.jpg");
+        $im -> resizeImage(400, 0, Imagick::FILTER_POINT, true);
+        $im -> resizeImage(0, 400, Imagick::FILTER_POINT, true);
+        $im -> writeImage("../img/galeria/miniature/$fname.jpg");
+        $im -> resizeImage(200, 0, Imagick::FILTER_POINT, true);
+        $im -> resizeImage(0, 200, Imagick::FILTER_POINT, true);
+        $im -> writeImage("../img/galeria/thumb/$fname.jpg");
+        $im -> clear();
+        $im -> destroy();
         //Delete initial png
         //unlink("../img/galeria/$fname.png");
         //Get width, height ans size
@@ -97,5 +94,4 @@
         version();
         $id ++;
     }
-    
 ?>

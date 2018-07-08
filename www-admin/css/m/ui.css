@@ -3,163 +3,11 @@
 * show elements for mobile.               *
 ******************************************/
 .mobile{
-    display:    initial;
+    display: initial;
 }
 
 .desktop{
-    display:    none !important;
-}
-
-
-/******************************************
-* Styles for the site header that is      *
-* always visible.                         *
-******************************************/
-
-/* Header top container */
-div#header_m{
-    width:        100%;
-    margin:        0;
-    padding:    0;
-    transition:    max-height 0.9s ease-in-out;
-}
-
-/* Main image of the header, contains the logo */
-div#header_m img#mobile_logo{
-    float:            left;
-    width:            4em;
-    margin-right:    -4em;
-    -webkit-filter:    drop-shadow(0 0 0.2em #336);
-    filter:            url(#drop-shadow);
-    filter:            drop-shadow(0 0 0.2em #336);
-    -ms-filter:        "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#444')";
-    filter:            "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#444')";
-    border:            0.05em solid #000011;
-    border-radius:    100%;
-}
-
-div#header_menu_m div{
-    padding-top:        0.6em;
-    font-weight:        bold;
-    text-align:            center;
-    background-color:    #aaaaaa;
-    border:                1px solid #000000;
-}
-
-div#header_menu_m div#header_m_slider{
-    display:            none;
-    background-color:    #0078ff;
-}
-
-div#header_menu_m div#header_m_slider img{
-    height: 1em;
-    width:    1em;
-    margin: auto;
-}
-
-div#header_menu_m div#header_m_title{
-    vertical-align:        middle;
-    color:                #ffffff;
-    max-height:            3.5em;
-    padding-top:        0.75em;
-    transition:            max-height 0.3s ease-in-out;
-    overflow:            hidden;
-    padding:            0;
-    background-color:    #0078ff
-}
-
-div#header_menu_m div#header_m_title span {
-    display:    block;
-    margin:        0.4em;
-}
-
-div#header_menu_m div#header_m_title span img{
-    vertical-align:    middle;
-}
-
-div#header_menu_m div#header_m_title img{
-    height: 1.9em;
-    width:    1.9em;
-    float:    center;
-}
-
-div#header_menu_m div.header_m_link{
-/*     display:            none; */
-    max-height:            0;
-    padding:            0;
-    border:                0;
-    overflow:            hidden;
-    transition:            max-height 0.3s ease-in-out;
-    background-color:    #0078ff;
-}
-
-div#header_menu_m div.header_m_link a{
-    color:            #ffffff;
-    text-shadow:    0 0 0.5em #444444;
-    display:        block;
-    width:            100%;
-    height:            2.8em;
-}
-
-/******************************************
-* Styles for the site footer that is      *
-* always visible.                         *
-******************************************/
-
-/* Table containing the footer elemnts */
-div#footer div#footer_table{
-    display:    block;
-}
-
-div#footer div#footer_table div.tr{
-    display:    block;
-}
-
-/* Each main section of the footer */
-div#footer div#footer_table div.td{
-    width:            100%;
-    display:        block;
-    text-align:        center;
-    margin-bottom:    1em;
-    margin:            0;
-    padding:        0;
-}
-
-/* Images for language selection */
-img.lang{
-    height:            1.5em;
-    margin:            0.5em 1em 0.5em 1em;
-    border-radius:    0.2em;
-    border:            0.1em solid #222222;
-    box-shadow:        0 0 0.3em #333333;
-}
-
-img.lang:hover{
-     box-shadow:        0 0 0.3em #333333; /*NONE*/
-}
-
-/* Mobile app link image in the footer */
-img.app{
-    height:            1.5em;
-    margin:            0.5em 1em 0.5em 1em;
-    border-radius:    0.2em;
-    border:            0.1em solid #222222;
-    box-shadow:        0 0 0.3em #333333;
-}
-
-img.app:hover{
-    box-shadow:    0 0 0.5em #666666; /*NONE*/
-}
-
-/* Each of the social links in the footer */
-img.footer_social_icon{
-    height:            3em;
-    margin:            0.25em;
-}
-
-img.footer_social_icon:hover{
-    -webkit-filter:    drop-shadow(0 0 0.2em #444444);/*NONE*/
-    filter:            drop-shadow(0 0 0.2em #444444);/*NONE*/
+    display: none !important;
 }
 
 
@@ -171,70 +19,13 @@ img.footer_social_icon:hover{
 
 /* Content */
 div#content{
-    margin:        auto;
-    width:        95%;
-    max-width:    initial;
-    min-width:    initial;
+    margin: 2em auto auto auto;
+    width: 95%;
+    max-width: initial;
+    min-width: initial;
 }
 
-/******************************************
-* Styles for the ad window.               *
-******************************************/
-div#ad{
-    width:        70%;
-    position:    fixed;
-    bottom:        -25em;
-    left:        15%;
-    right:        15%
-}
-
-div#ad h3{
-    margin-top:    0.3em;
-}
-
-div#ad div#ad_details{
-    font-size:        90%;
-    margin:            0.3em;
-}
-
-div#ad div#ad_details img{
-    height:            1.2em;
-    width:            1.2em;
-    margin:         0 0.5em 0 0.5em;
-}
-
-div#ad div.entry div#ad_image_container{
-    max-height:    9.5em;
-    margin:        0.5em 0.6em 0.5em 0.6em;
-    text-align:    center;
-}
-
-div#ad div.entry a{
-    font-size:        100%;
-}
-
-/******************************************
-* Styles for the annoying cookie popup.   *
-******************************************/
-div#cookie_popup{
-    font-size:                    80%;
-    color:                        #dddddd;
-    text-align:                    center;
-    position:                    fixed;
-    background-color:            #4c9ed8;
-    border:                        0.5em solid #265774;
-    padding:                    1em 4em 1em 4em;
-    left:                        0em;
-    right:                        0em;
-    bottom:                        0em;
-    -ms-transform:                rotate(0deg); /* IE 9 */
-    -ms-transform-origin:        0% 0%; /* IE 9 */
-    -webkit-transform:            rotate(00deg); /* Chrome, Safari, Opera */
-    -webkit-transform-origin:    0% 0%; /* Chrome, Safari, Opera */
-    -moz-transform:                rotate(00deg); 
-    -moz-transform-origin:        0% 0%; /* Chrome, Safari, Opera */
-    transform:                    rotate(00deg);
-    transform-origin:            0% 0%;
-    box-shadow:                    0 0 3em #265774;
-    transition:                    bottom .5s ease-in-out;
+div#toolbar img{
+    margin-bottom: -1em;
+    opacity: 0.3;
 }

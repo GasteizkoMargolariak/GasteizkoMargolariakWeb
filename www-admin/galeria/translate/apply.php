@@ -1,5 +1,4 @@
 <?php
-    $http_host = $_SERVER['HTTP_HOST'];
     include("../../functions.php");
     $con = startdb('rw');
     if (!checkSession($con)){
@@ -12,7 +11,7 @@
     $desc_en = mysqli_real_escape_string($con, $_POST['description_en']);
     $title_eu = mysqli_real_escape_string($con, $_POST['title_eu']);
     $desc_eu = mysqli_real_escape_string($con, $_POST['description_eu']);
-    
+
     //Get photo fields
     $q_i = mysqli_query($con, "SELECT * FROM photo, photo_album WHERE photo.id = photo_album.photo AND album = $id;");
     $i = 0;
@@ -26,12 +25,12 @@
         $i ++;
         $total_i ++;
     }
-    
+
     //Get current album data
     $q = mysqli_query($con, "SELECT * FROM album WHERE id = $id");
     if (mysqli_num_rows($q) > 0){
         $r = mysqli_fetch_array($q);
-        
+
         //Update album fields
         if (strlen($title_en) > 0 && $title_en != $r['title_en']){
             mysqli_query($con, "UPDATE album SET title_en = '$title_en' WHERE id = $id;");
@@ -47,7 +46,7 @@
         }
         version();
     }
-    
+
     //Update photo entries
     for ($i = 0; $i < $total_i; $i ++){
         $q_i = mysqli_query($con, "SELECT * FROM photo WHERE id = $p_id[$i];");

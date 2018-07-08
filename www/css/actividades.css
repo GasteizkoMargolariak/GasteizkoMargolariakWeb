@@ -37,7 +37,6 @@ div.list_year{
 ul.activity_list{
     margin-top:        0em;
     margin-bottom:    0em;
-    /*     display:        none; */
     max-height:        0em;
     overflow-y:        hidden;
     transition:    max-height 0.6s ease-in-out;
@@ -130,6 +129,12 @@ div#activity_itinerary table#activity_itinerary td h5{
 div#activity_itinerary table#activity_itinerary td span.address, p.description{
     margin:        0 0 0 1em;
     font-size:    80%;
+}
+
+div#activity_itinerary table#activity_itinerary td span.route_start{
+    opacity: 0.7;
+    font-size: 90%;
+    font-style: italic;
 }
 
 

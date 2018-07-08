@@ -70,12 +70,12 @@
     $lng['footer_help'] = 'Laguntza';
     $lng['footer_privacy'] = 'Pribatutasuna';
     $lng['footer_app_google'] = 'App Google Play-an';
-		$lng['footer_app_apple'] = 'App App Store-an';
+    $lng['footer_app_apple'] = 'App App Store-an';
     $lng['cookie_message'] = 'Cookiek erabili ditugu!';
     $lng['cookie_ok'] = 'Oso ondo';
     $lng['cookie_more'] = 'Esan dit gehiago!';
     $lng['cookie_'] = '';
-    
+
     // /lablanca/index.php
     $lng['lablanca_no_title'] = 'Andre Zuria Jaiak';
     $lng['lablanca_description'] = 'Andre Zuria Jaiei buruz informazioa';
@@ -84,13 +84,14 @@
     $lng['lablanca_no_content_2'] = 'Nosotros, como cuadrilla de Blusas y Nescas, ya estamos trabajando en ello. Tan pronto como vayamos sabiendo m&aacute;s, aqu&iacute; iremos publicando nuestro programa y otra informaci&oacute;n sobre las fiestas.<br/><br/>Para ir abriendo boca, dejanos contarte algunas de las claves del plan Margolari de fiestas: <ul id="no_fiestas"><li><span class="bold">Planes que se adaptan a t&iacute;</span>: Puedes apuntarte d&iacute;as sueltos, o elegir entre las varias ofertas por varios d&iacute;as para conseguir descuentos.</li><li><span class="bold">Dormir es de cobardes</span>: Casi todos los d&iacute;as organizamos actividades desde la ma&ntilde;ana, ya sean almuerzos, actividades para el p&uacute;blico general o competiciones en los Herri Kirolak. Despu&eacute;s solemos ir a comer juntos, antes de los paseillos, y despu&eacute;s, siempre cenamos juntos. Y por la noche, hasta que el cuerpo aguante!</li><li><span class="bold">Especialistas en paseillos</span>: A la hora de hacer paseillos, no hay quien nos gane. Con nuestra furgoneta siempre abierta a la cabeza, y la txaranga El Post&iacute;n animando desde atr&aacute;s, es imposible aburrirse. Y entre paseillos tampoco descansamos, siempre estamos organizando cosas: juegos, carreras, bingos, m&uacute;sica, ida a las barracas... </li><li><span class="bold">Nos gusta comer</span>: No queremos que un Margolari pase hambre. Las comidas en Gasteizko Margolariak son en restaurante, con un buen men&uacute;, que nos den fuerzas para aguantar el resto del d&iacute;a. Las cenas las hacemos bien en la calle o bien en restaurante, pero siempre con comida buena y caliente. Los mismo que los almuerzos.</li><li><span class="bold">Y beber</span>: Sea cual sea tu veneno, lo tenemos: Ron, vodka, kalimotxo, cerveza, whiskey, agua, refrescos... Durante los paseillos (y varias veces m&aacute;s a lo largo del d&iacute;a) en la furgoneta tendr&aacute;s barra libre de todo lo que quieras.</li><li><span class="bold">Nos apuntamos a un bombardeo</span>: Carrera de Barricas, Herri Kirolak... Nunca hemos faltado a nada. Ganar, lo que es ganar, a&uacute;n lo tenemos pendiente, pero lo pasamos bien. As&iacute; que ya sabes, si quieres representar a Gasteizko Margolariak, av&iacute;sanos!</li><li><span class="bold">Por la ciudad, para la ciudad</span>: No nos gusta mirarnos el ombligo. Aunque la mayor parte de actividades que organizamos son para los miembros de Gasteizko Margolariak, hay otras que son para todo el p&uacute;blico. Hasta ahora hemos organizado talleres de Cesta Punta para txikis, Margotxef (un concurso de cocina infantil), visitas a residencias de ancianos... </li><li><span class="bold">Margolaris</span>: Todo lo dem&aacute;s no sirve de nada si en una cuadrilla no hay buen ambiente. En Gasteizko Margolariak podemos presumir de gente cercana, participativa, capaz de hacer que desde el primer d&iacute;a ya te sientas como en casa. Adem&aacute;s, los organizadores son gente cercana, que escucha y est&aacute; siempre abierta a nuevas propuestas. Por esto, quien prueba, repite.</li></ul>';
     $lng['lablanca_title'] = 'Andre Zuria Jaiak #';
     $lng['lablanca_schedule'] = 'Gure jaiako programazioa';
+    $lng['lablanca_schedules'] = 'Programas de Fiestas';
     $lng['lablanca_prices'] = 'Prezioak';
     $lng['lablanca_prices_days'] = 'Banakako egunak';
     $lng['lablanca_prices_offers'] = 'Packs';
     $lng['lablanca_past_title'] = 'Aurreko urteen kartelak';
     $lng['lablanca_past_link'] = 'Andre Zuria Jaiak ';
     $lng['lablanca_'] = '';
-    
+
     // /actividades/index.php
     $lng['activities_title'] = 'Ekitaldeak - Gasteizko Margolariak';
     $lng['activities_descrption'] = 'Asociacion Cultural Recreativa Gasteizko Margolariak - Ekitaldeak';
@@ -106,9 +107,17 @@
     $lng['activities_maxpeople'] = 'Plazak';
     $lng['activities_inscription'] = 'Izen ematea beharrezkoa';
     $lng['activities_see_itinerary'] = 'Programazioa ikusi';
+    $lng['activities_itinerary'] = 'Itinerario';
+    $lng['activities_itinerary_start'] = 'Inicio:';
     $lng['activities_'] = '';
 
-    
+    // /lablanca/programa.php
+    $lng['lablanca_schedule_year_gm'] = 'Programa Margolari #';
+    $lng['lablanca_schedule_year_citi'] = 'Programa de Fiestas de Vitoria #';
+    $lng['lablanca_schedule_year_gm_description'] = 'Programa de Fiestas para los miembros de la cuadrilla Gasteizko Margolariak para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_year_city_description'] = 'Programa de Fiestas municipal para las Fiestas de La Blanca de #';
+    $lng['lablanca_schedule_start'] = 'Hasiera:';
+
     // /actividades/actividad.php
     $lng['activities_when'] = 'Noiz';
     $lng['activities_what'] = 'Zer';
@@ -217,13 +226,27 @@
     $lng['help_privacy_title'] = 'Pol&iacute;tica de privacidad';
     $lng['help_privacy'] = 'Navegar por Internet hoy en d&iacute;a se ha vuelto algo complicado, en lo que a privacidad se refiere: pr&aacute;cticamente cada p&aacute;gina que visitamos intenta obtener todos los datos posibles sobre nosotros para utilizarlos en marketing, data mining...<br/> <br/>En Gasteizko Margolariak queremos construir un sitio limpio y seguro, en el que nuestros visitantes puedan estar a gusto.<br/><br/> Por eso, queremos explicarte toda la informaci&oacute;n que recogemos sobre t&iacute; y lo que hacemos con ella.<br/><ul><li><span style="font-weight:bold;">Direcci&oacute;n IP</span>: Cuando nos visitas, almacenamos tu direcci&oacute;n IP, junto con la hora de conexi&oacute;n. Esto no nos permite identificarte como persona, pero nos es muy &uacute;til para saber cuantas personas distintas nos visitan.</li><li><span style="font-weight:bold;">Fotograf&iacute;as y comentarios</span>: Cuanquier visitante puede subir fotograf&iacute;as a esta web o comentar en la mayor&iacute;a de entradas. Para hacerlo, solo requerimos un nombre, y no tenemos ningun problema en que uses pseud&oacute;nimos o nombres falsos. Cuando comentes o subas im&aacute;genes tambi&eacute;n registramos tu direcci&oacute;n IP.</li><li><span style="font-weight:bold;">Datos de los socios</span>: Independientemente de los datos recogidos por este sitio web, en Gasteizko Margolariak mantenemos una base de datos sobre las personas que alguna vez han participado en alguna actividad con nosotros. Si es tu caso, y quieres que los eliminemos, no tiene m&aacute;s que escribirnos a <a target="_blank" href="mailto:gasteizko@margolariak.com">gasteizko@margolariak.com</a>. Sin rencores.';
     $lng['help_cookie_title'] = 'Pol&iacute;tica de cookies';
-    $lng['help_cookie'] = '¡Cookies! Est&aacute;n por todas partes. Sabemos que nadie suele leerse estos avisos sobre ellas, as&iacute; que ya que estas leyendo este, vamos a intentar hacerlo f&aacute;cil.<br/><br/>Una cookie es un peque&ntilde;o archivo de texto que puede quedar guardado en tu ordenador cuando visitas una web. Estos archivos son benignos, en el sentido de que no afectan al funcionamiento de tu ordenador, pero pueden ser utiles para los desarrolladores de p&aacute;ginas web para diversas cosas, como recordar tus preferencias entre visitas (como en nuestro caso) o identificarte y trazar tus movimientos por Internet (no es nuestro caso).<br/><br/>Aprovechando que aqu&iacute; utilizamos verdaderamente pocas, te contamos para qu&eacute;.<br/><ul><li><span style="font-weight:bold;">Idioma</span>: Utilizamos una cookie para recordar el idioma en el que quieres ver la p&aacute;gina. Si la estas viendo en castellano, el &uacute;nico texto que contendr&aacute; sera &quot;es&quot;. Bastante inofensivo, ¿verdad?</li><li><span style="font-weight:bold;">Aviso de cookies</span>: Ir&oacute;nicamente, tenemos que usar una cookie para evitar que el aviso sobre cookies que estamos obligados a mostrarte cuando nos visitas por primera vez te moleste solo esa primera vez. Esta es m&aacute;s simple a&uacute;n que la anterior: es una cookie vac&iacute;a, sin ning&uacute;n tipo de texto.</li><li><span style="font-weight:bold;">Cookies de Google</span>: Esto tiene m&aacute;s miga. Durante las fiestas de Vitoria, esta p&aacute;gina muestra mapas de Google. Es posible (y casi seguro) que estos mapas inserten cookies propias sobre las que no tenemos ning&uacute;n control. Sorry.</li></ul>';
+    $lng['help_cookie'] = '¡Cookies! Est&aacute;n por todas partes. Sabemos que nadie suele leerse estos avisos sobre ellas, as&iacute; que ya que estas leyendo este, vamos a intentar hacerlo f&aacute;cil.<br/><br/>Una cookie es un peque&ntilde;o archivo de texto que puede quedar guardado en tu ordenador cuando visitas una web. Estos archivos son benignos, en el sentido de que no afectan al funcionamiento de tu ordenador, pero pueden ser utiles para los desarrolladores de p&aacute;ginas web para diversas cosas, como recordar tus preferencias entre visitas (como en nuestro caso) o identificarte y trazar tus movimientos por Internet (no es nuestro caso).<br/><br/>Aprovechando que aqu&iacute; utilizamos verdaderamente pocas, te contamos para qu&eacute;.<br/><ul><li><span style="font-weight:bold;">Idioma</span>: Utilizamos una cookie para recordar el idioma en el que quieres ver la p&aacute;gina. Si la estas viendo en castellano, el &uacute;nico texto que contendr&aacute; sera &quot;es&quot;. Bastante inofensivo, ¿verdad?</li></ul>';
     $lng['help_ad_title'] = 'Pol&iacute;tica de anuncios';
     $lng['help_ad'] = 'En esta p&aacute encontrar&aacute;s anuncios. Son un poco diferentes de los que seguramente est&eacute;s acostumbrado a ver por Internet, y esperamos que no te resulten tan molestos como suelen serlo.<br/><ul><li>No ofrecemos un espacio de publicidad que cualquier empresa puede alquilar. Nuestros anuncios son de empresas y organizaciones que conocemos, con las que trabajamos, y de cuya calidad y fiabilidad podemos responder. Los anuncios los dise&ntilde;amos uno a uno entre la empresa y nosotros. De esta forma, podemos estar seguros de de mostrar una publicidad honesta y segura.<br/></li><li>Garantizamos que al hacer click en la publicidad de este sitio, ser&aacute;s redireccionado a la p&aacute;gina oficial de la empresa anunciada. Si la empresa no tuviera una web propia, accederias a una p&aacute;gina segura con informaci&oacute; de la misma. Nosotros mismos configuramos los enlaces y comprobamos que sean v&aacute;lidos y seguros.<br/></li><li>No queremos ser pesados, as&iacute; que no te ense&ntilde;aremos m&aacute;s de un anuncio cada vez que entres en la p&aacute;gina. Si en alg&uacute;n momento quieres saber m&aacute;s sobre nuestros patrocinadores, tienes una lista al final de la p&aacute;gina.<br/></li><li>No tenemos ingresos por publicidad. No recibimos dinero cada vez que ves o haces click en un anuncio. Si ves anunciada una empresa en esta p&aacute;gina, es por que ha colaborado con nosotros de alguna manera, como ayudando a organizar alguna actividad, cediendo material... Por eso, puedes estar seguro de que est&aacute;s viendo el anuncio de una empresa que ofrece productos que conocemos y por los que apostamos.<br/></li><li>No te rastreamos. Sabemos cuantas veces se ha visto un anuncio y cuantas veces se ha hecho click sobre &eacute;l, pero no sabemos ni cu&aacute;ndo, ni qui&eacute;n. No guardamos (ni, por supuesto, enviamos a nadie) ning&uacute;n tipo de informaci&oacute;n personal relacionada con la publicidad.<br/></li></ul><br/>';
-    
+
+    // /traducir/index.php
+    $lng['translate_title'] = 'Itzulpenak';
+    $lng['translate_description'] = 'Traducci&oacute;n de contenidos';
+    $lng['translate_to_en'] = 'Traducir al ingl&eacute;s';
+    $lng['translate_to_eu'] = 'Traducir al euskera';
+    $lng['translate_translating_en'] = 'Traducciones en ingl&eacute;s';
+    $lng['translate_translating_eu'] = 'Traducciones en euskera';
+    $lng['translate_original'] = 'Original (castellano)';
+    $lng['translate_translation_en'] = 'Traducci&oacute;n (ingl&eacute;s)';
+    $lng['translate_translation_eu'] = 'Traducci&oacute;n (euskera)';
+    $lng['translate_name'] = 'Tu nombre';
+    $lng['translate_skip'] = 'Saltar esta';
+    $lng['translate_save'] = 'Guardar';
+
     //Ads
     $lng['ad_title'] = 'Publizitatea';
-    
+
     // /error/
     $lng['error_title'] = 'Error';
     $lng['error_error'] = 'ERROR';

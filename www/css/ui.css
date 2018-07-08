@@ -349,39 +349,28 @@ img.footer_social_icon:hover{
     filter:            drop-shadow(0 0 0.6em #111);
 }
 
-/******************************************
-* Styles for the annoying cookie popup.   *
-******************************************/
-div#cookie_popup{
-    font-size:                    80%;
-    color:                        #dddddd;
-    text-align:                    center;
-    position:                    fixed;
-    background-color:            #4c9ed8;
-    border:                        0.5em solid #265774;
-    padding:                    1em 10em 1em 10em;
-    left:                        -9em;
-    bottom:                        9em;
-    -ms-transform:                rotate(30deg); /* IE 9 */
-    -ms-transform-origin:        20% 40%; /* IE 9 */
-    -webkit-transform:            rotate(30deg); /* Chrome, Safari, Opera */
-    -webkit-transform-origin:    20% 40%; /* Chrome, Safari, Opera */
-    -moz-transform:                rotate(30deg); 
-    -moz-transform-origin:        20% 40%; /* Chrome, Safari, Opera */
-    transform:                    rotate(30deg);
-    transform-origin:            20% 40%;
-    box-shadow:                    0 0 3em #265774;
-    transition:                    bottom .5s ease-in-out;
+div.button{
+    border: 0.2em solid #133442;
+    border-radius: 0.2em;
+    background-color: #124567;
+    text-align: center;
+}
+
+div.button a{
+    padding: 0.2em;
+    color: #dddddd;
+    font-weight: bold;
+    font-size: 100%;
 }
 
 span.button a{
-    font-weight:    bold;
-    font-size:        100%;
-    border:            0.2em solid #133442;
-    border-radius:    0.2em;
-    padding:        0.2em;
-    color:            #dddddd;
-	background-color:    #124567;
+    font-weight: bold;
+    font-size: 100%;
+    border: 0.2em solid #133442;
+    border-radius: 0.2em;
+    padding: 0.2em;
+    color: #dddddd;
+    background-color: #124567;
 }
 
 span#button_ok a{
