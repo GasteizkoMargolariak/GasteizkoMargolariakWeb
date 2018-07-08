@@ -160,7 +160,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <a href='<?=$server?>/actividades/<?$r_activity["permalink"]?>'><?=$lng["activities_see_itinerary"]?></a>
+                                                            <a href='<?=$server?>/actividades/<?=$r_activity["permalink"]?>'><?=$lng["activities_see_itinerary"]?></a>
                                                         </td>
                                                     </tr>
 <?php
