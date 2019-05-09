@@ -14,14 +14,12 @@ Thumbs.db
 #Utility folders
 3rdparty/
 pending/
+utils/
 utils-local/
-copy
-remotecopy
-remoteadmin
-www-admin/redirect_s.php
 .project
 .settings/
 bkp/
+deploy
 
 #SQL data
 sql/dbusers.sql
@@ -32,37 +30,5 @@ sql/*__PRE.sql
 
 #Passwords file
 site-public/application/config/auth.php_*
-site-private/.ht*
-
-#Photos and unnecessary images
-www/img/actividades/script
-www/img/actividades/*.jpg
-www/img/actividades/miniature/*.jpg
-www/img/actividades/preview/*.jpg
-www/img/actividades/thumb/*.jpg
-www/img/actividades/view/*.jpg
-www/img/blog/script
-www/img/blog/*.jpg
-www/img/blog/miniature/*.jpg
-www/img/blog/preview/*.jpg
-www/img/blog/thumb/*.jpg
-www/img/blog/view/*.jpg
-www/img/fiestas/script
-www/img/fiestas/*.jpg
-www/img/fiestas/miniature/*.jpg
-www/img/fiestas/preview/*.jpg
-www/img/fiestas/thumb/*.jpg
-www/img/fiestas/view/*.jpg
-www/img/galeria/script
-www/img/galeria/*.jpg
-www/img/galeria/miniature/*.jpg
-www/img/galeria/preview/*.jpg
-www/img/galeria/thumb/*.jpg
-www/img/galeria/view/*.jpg
-www/img/spo/script
-www/img/spo/*.jpg
-www/img/spo/miniature/*.jpg
-www/img/spo/preview/*.jpg
-www/img/spo/thumb/*.jpg
-www/img/spo/view/*.jpg
+site-public/public/.htaccess_*
 
