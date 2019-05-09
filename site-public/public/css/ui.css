@@ -1,0 +1,289 @@
+/* Glogal font. */
+@font-face{
+    font-family: font;
+    src: url('/font/FreeSans.ttf')
+}
+
+/* Mobile or desktop specifics. */
+.mobile{
+    display: none;
+}
+@media screen and max-width: 800px{
+    .desktop{
+        display: none;
+    }
+}
+
+/* Common elements across the page. */
+a, .fake_a{
+    color: #4c9ed9;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+a:hover, .fake_a:hover{
+    color: #347;
+    text-shadow: 0 0 0.4em #265885;
+    text-decoration: underline;
+}
+input[type="text"], input[type="number"], input[type="date"]{
+    border-radius: 0.3em;
+    height: 1.5em;
+    border: 0.2em solid #0078ff;
+    color: #002255;
+    background-color: #ccddff;
+    margin: 0.1em;
+}
+input[type="button"], input[type="submit"], select{
+    border-radius: 0.3em;
+    height: 2em;
+    border: 0.2em solid #0078ff;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #124567;
+    cursor: pointer;
+    margin: 0.1em;
+    letter-spacing: 0.1em;
+}
+textarea{
+    border-radius: 0.3em;
+    min-height: 2em;
+    max-height: 15em;
+    border: 0.2em solid #0078ff;
+    color: #002255;
+    background-color: #ccddff;
+    resize: vertical;
+    margin: 0.1em;
+}
+li{
+    list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVQImWNgIBqU//+PWwKGcUoQVECanVgAAJSsH/KywgEfAAAAAElFTkSuQmCC');
+}
+img.slid{
+    height: 0.9em;
+    width: 0.9em;
+    padding: 0.1em;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Quick styles for varios elements used widely. */
+.pointer{cursor: pointer;}
+.hidden{display: none;}
+.italic{font-style: italic;}
+.bold{font-weight: bold;}
+.stroke{text-decoration: line-through;}
+.underline{text-decoration: underline;}
+
+
+/* Body */
+body{
+    font-family: font;
+    margin: 0;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b5d3e5+0,e5f4ff+10,e5f4ff+90,b5d3e5+100 */
+    background: linear-gradient(to right, #b5d3e5 0%,#e5f4ff 10%,#e5f4ff 90%,#b5d3e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5d3e5', endColorstr='#b5d3e5',GradientType=1 ); /* IE6-9 */
+}
+
+/* Header */
+header{
+    margin: -0.5em auto 2.5em auto;
+    padding: 0.5em 0 0 0;
+    width: 100%;
+    background-color: #0078ff;
+    border-bottom: 0.1em solid #1a4d6a;
+    box-shadow: 0 0 3em #dde;
+    text-align: center;
+}
+header img{
+    display: inline-block;
+    width: 10%;
+    max-width: 5em;
+    margin: 1em;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 0.4em #dde);
+    border-radius: 100%;
+}
+
+header a{
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(((100% - 6em) / 6) - 2em);
+    margin: 0;
+    padding: 0.5em 0.1em;
+    font-size: 110%;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5em 0;
+    border-top: 0.1em solid #1a4d6a;
+    border-bottom: 0.1em solid #1a4d6a;
+    transition: all .3s ease-in-out;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+header a:hover{
+    border-top: 0.3em solid #1a4d6a;
+    border-bottom: 0.3em solid #1a4d6a;
+    padding: 0.3em 0.1em;
+    color: #0078ff;
+    background-color: #ffffff;
+    text-shadow: 0 0 0em #ffffff;
+}
+
+/* Footer. */
+footer{
+    width: 100%;
+    display: inline-block;
+    background-color: #0078ff;
+    border-top: 0.1em solid #1a4d6a;
+    margin: 1em 0 0 0;
+    padding: 0;
+    width: 100%;
+    box-shadow: 0 0 2em #dde;
+    text-align: center;
+    color: #ccddff
+}
+
+footer > div{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 1em;
+    text-align: center;
+}
+footer > div#footer_social{
+    width: 22%;
+}
+footer > div#footer_social img{
+    display: inline-block;
+    vertical-align:center;
+    height: 2.2em;
+    margin: 0.12em;
+    transition: all .3s ease-in-out;
+    filter: drop-shadow(0 0 0.2em #ddddee);
+}
+footer > div#footer_social img:hover{
+    filter: drop-shadow(0 0 0.6em #111);
+}
+footer > div#footer_sponsors{
+    width: 55%;
+}
+footer > div#footer_sponsors img{
+    display: inline-block;
+    vertical-align:center;
+    max-height: 3.3em;
+    min-height: 2em;
+    min-width: 3em;
+    max-width: 5em;
+    border: 0.1em solid #111122;
+    border-radius: 0.2em;
+    margin: 0.1em 0.4em 0.1em 0.4em;
+    vertical-align: middle;
+}
+footer > div#footer_util{
+    width: 22%;
+}
+footer > div#footer_util img.lang{
+    height: 1em;
+    margin: 0.5em;
+    border-radius: 0.2em;
+    border: 0.15em solid #003;
+    cursor: pointer;
+    box-shadow: 0 0 0.7em #dde;
+    transition: all .3s ease-in-out;
+}
+footer > div#footer_util img.lang:hover{
+    box-shadow: 0 0 1em #111;
+}
+footer > div#footer_util img.app{
+    height: 2em;
+    border-radius: 0.4em;
+    border: 0.15em solid #003;
+    cursor: pointer;
+    box-shadow: 0 0 0.5em #dde;
+    transition: all .3s ease-in-out;
+}
+footer > div#footer_util img.app:hover{
+    box-shadow: 0 0 0.8em #dde;
+}
+
+/* Basic page structures. */
+main{
+    margin: auto;
+    width: 90%;
+    max-width: 80em;
+    min-width: 60em;
+}
+section{
+    border-left: 0.1em solid #000011;
+    border-right: 0.1em solid #000011;
+    border-bottom: 0.1em solid #000011;
+    border-radius: 1em;
+    padding: 0 0 0.5em 0;
+    background-color: #98c8ff;
+    -webkit-filter: drop-shadow(0 0 0.4em #000011);
+    filter: drop-shadow(0 0 0.4em #000011);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
+}
+section h3{
+    font-size: 120%;
+    font-style: bold;
+    color: #ffffff;
+    background-color: #0078ff;
+    padding: 0.5em 2em 0.1em 1.5em;
+    border-top-left-radius: 0.7em;
+    border-top-right-radius: 0.7em;
+    border: 0.1em solid #000011;
+    margin: 0;
+}
+article{
+    background-color: #ffffff;
+    padding: 0.2em;
+    margin: 0.4em;
+    border: 0.1em solid #6D6990;
+    border-radius: 0.3em;
+    box-shadow: inset 0 0 0.2em #dde;
+    transition: all .3s ease-in-out;
+}
+article h4{
+    color: #275573;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 1em 1em 0.3em 0em;
+}
+article h4 a{
+    color: #275573;
+}
+
+/* Posted omments */
+div.comment{
+    margin: 0.5em 1em 0.5em 1em;
+}
+div.comment span.comment_user{
+    font-weight: bold;
+}
+div.comment span.comment_date{
+    font-style: italic;
+    font-size: 80%;
+}
+div.comment span.comment_date::before {
+    content: " - ";
+    font-size: 80%;
+}
+div.comment p.comment_text{
+    margin: 0.5em 1em 0.5em 0.5em;
+}
+
+/* Comment form */
+div#comment_new{
+    padding: 0.5em 1.5em 0.5em 1.5em;
+}
+div#comment_new textarea{
+    width: 95%;
+}
+div#comment_new input[type='text']{
+    width: 70%;
+}
+div#comment_new input[type='submit']{
+    width: 25%;
+}

@@ -1,0 +1,105 @@
+/* Gallery page. */
+section#album_list{
+    text-align: center;
+}
+
+section#album_list h3{
+    text-align: left;
+}
+
+section#album_list article{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin: 1em;
+    width: 20em;
+}
+
+section#album_list article img{
+    display: inline-block;
+    width: 4em;
+    margin: 1em;
+    border: 0.2em solid black;
+
+}
+
+/* Album page. */
+section#album{
+    text-align: center;
+}
+section#album h3{
+    text-align: left;
+}
+section#album img{
+    max-height: 7em;
+    max-width: 7em;
+    margin: 1em;
+}
+
+/* Photo viewer. */
+div#screen_cover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    display: none;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all .9s ease-in-out;
+    z-index: 1000;
+}
+section#photo_viewer{
+    position: fixed;
+    display: none;
+    top: 1em;
+    left: 4em;
+    right: 4em;
+    bottom: 1em;
+    opacity: 0;
+    transition: all .6s ease-in-out;
+    z-index: 1001;
+    min-height: 10em;
+}
+@media screen and max-width: 800px{
+    div#photo_viewer{
+        top: 2%;
+        left: 2%;
+        right: 2%;
+        bottom: 2%;
+    }
+}
+section#photo_viewer h3 div#viewer_close_container{
+    height: 1.5em;
+    float: right;
+    margin-top: -0.3em;
+    margin-right: -0.4em;
+}
+section#photo_viewer article{
+    text-align: center;
+}
+section#photo_viewer article div{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+section#photo_viewer article div.arrow{
+    width: 15%;
+    padding: 0.5em;
+}
+section#photo_viewer article div#photo_view{
+    width: 65%;
+    padding: 0.1em;
+}
+section#photo_viewer article div#photo_view img{
+    display: block;
+    background: #000000;
+    border: 0.1em solid #000000;
+    border-radius: 0.5em;
+}
+
+section#photo_viewer article div#photo_view p{
+    margin: 0.2em;
+    padding: 0;
+    text-align: left;
+}

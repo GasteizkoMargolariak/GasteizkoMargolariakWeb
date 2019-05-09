@@ -1,0 +1,78 @@
+div#photo_viewer{
+    top: 2%;
+    left: 2%;
+    right: 2%;
+    bottom: 2%;
+}
+
+/* /galeria/load_photo.php */
+
+div#photo_viewer div#viewer_table{
+    display: block;
+}
+
+div#photo_viewer div#viewer_table div.viewer_row{
+    display: block;
+}
+
+div#photo_viewer div#viewer_table div.viewer_row div.viewer_cell{
+    display: block;
+}
+
+div#photo_viewer div#viewer_table div.viewer_row div#cell_image{
+    text-align: center;
+    position: initial;
+    bottom: initial;
+    top: initial;
+    left: initial;
+    right: initial;
+    height: 50%;
+    
+}
+
+div#photo_viewer div#viewer_table div.viewer_row div#cell_details{
+    width: 100%;
+    height: 40%;
+    overflow-y: auto;
+}
+
+div#photo_viewer_image_container{
+    height: 100%;
+    padding-top: 0;
+}
+
+img#photo_viewer_image{
+    max-height: 95%;
+}
+
+div#photo_viewer div#viewer_controls{
+    height: 8%;
+    bottom: 5%;
+}
+
+div#photo_viewer div#viewer_controls img#viewer_close{
+    float: right;
+    margin-right: 10%;
+    margin-left: -10%;
+    max-height: 3em;
+    max-width: 3em;
+}
+
+div#photo_viewer_details{
+    position: initial;
+    top: initial;
+    bottom: initial;
+    right: initial;
+    left: initial;
+    overflow-y: auto;
+}
+
+div#file_box span#select_mobile{
+    font-weight: bold;
+    font-size: 130%;
+}
+
+div#cell_comments{
+    width: initial !important;
+    margin: 0 1em 0.5em 1em;
+}

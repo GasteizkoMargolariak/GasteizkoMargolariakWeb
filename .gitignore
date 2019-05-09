@@ -31,8 +31,8 @@ sql/*__PRIVATE.sql
 sql/*__PRE.sql
 
 #Passwords file
-www/.ht*
-www-admin/.ht*
+site-public/application/config/auth.php_*
+site-private/.ht*
 
 #Photos and unnecessary images
 www/img/actividades/script

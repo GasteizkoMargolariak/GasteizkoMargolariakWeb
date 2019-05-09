@@ -1,0 +1,8 @@
+for file in */*.png */*.jpg; do
+	for i in $(seq 1 9); do
+		if [ ! -d $(dirname "${file}")/x"$i"00 ]; then
+			mkdir $(dirname "${file}")/x"$i"00
+		fi
+		convert "$file" -resize "$i"00  $(dirname "${file}")/x"$i"00/$(basename "$file")
+	done
+done

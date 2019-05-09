@@ -1,0 +1,87 @@
+Options -MultiViews
+
+
+#
+# REWRITES
+#
+# Used to: Force https.
+#
+<IfModule mod_rewrite.c>
+	# Force https
+	RewriteCond %{HTTPS} !=on
+	RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+</ifModule>
+
+
+#
+# FALLBACKRESOURCE
+#
+# Used to: all pages to index.php
+#
+FallbackResource /index.php
+
+
+#
+# EXPIRES
+#
+# Used to: control the cache times of the different files on the server.
+#
+<IfModule mod_expires.c>
+        ExpiresActive on
+        ExpiresDefault "access plus 2 days"
+        ExpiresByType application/javascript "access plus 6 days"
+        ExpiresByType image/x-ico "access plus 12 days"
+        ExpiresByType image/jpg "access plus 12 days"
+        ExpiresByType image/jpeg "access plus 12 days"
+        ExpiresByType image/gif "access plus 12 days"
+        ExpiresByType image/png "access plus 12 days"
+        ExpiresByType video/mkv "access plus 12 days"
+        ExpiresByType text/css "access plus 6 days"
+        ExpiresByType text/plain "access plus 6 days"
+</IfModule>
+
+
+#
+# HEADERS
+#
+# Used to: control the cache times of the different files on the client.
+#
+<ifModule mod_headers.c>
+	<filesMatch "\.(ico|jpe?g|png|gif|swf|svg)$">
+		Header set Cache-Control "max-age=86400, public, must-revalidate"
+	</filesMatch>
+	<filesMatch "\.(css)$">
+		Header set Cache-Control "max-age=86400, public, must-revalidate"
+	</filesMatch>
+	<filesMatch "\.(js)$">
+		Header set Cache-Control "max-age=86400, private, must-revalidate"
+	</filesMatch>
+	<filesMatch "\.(x?html?|php)$">
+		Header set Cache-Control "max-age=86400, private, must-revalidate"
+	</filesMatch>
+</ifModule>
+
+AddType image/svg+xml svg svgz
+<ifModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/xml text/css text/plain
+	AddOutputFilterByType DEFLATE image/x-icon
+	AddOutputFilterByType DEFLATE image/svg+xml application/xhtml+xml application/xml
+	AddOutputFilterByType DEFLATE application/rdf+xml application/rss+xml application/atom+xml
+	AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript application/json
+	AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-otf
+	AddOutputFilterByType DEFLATE font/truetype font/opentype
+</ifModule>
+
+
+#
+# ERROR
+#
+# Used to: redirect to nice error pages.
+#
+ErrorDocument 400 /error.php
+ErrorDocument 401 /error.php
+ErrorDocument 403 /error.php
+ErrorDocument 404 /error.php
+ErrorDocument 500 /error.php
+
+
