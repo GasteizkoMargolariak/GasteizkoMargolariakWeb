@@ -10,8 +10,8 @@
         <link rel='stylesheet' type='text/css' href='<?=$static["css"]?>ui.css'/>
         <link rel='stylesheet' type='text/css' href='<?=$static["css"]?>gallery.css'/>
         <!-- Script files -->
-        <script type='text/javascript' src='<?=$static["js"]?>ui.js'></script>
-        <script type='text/javascript' src='<?=$static["js"]?>gallery.js'></script>
+        <script type='text/javascript' src='<?=$static["script"]?>ui.js'></script>
+        <script type='text/javascript' src='<?=$static["script"]?>gallery.js'></script>
         <!-- Meta tags -->
         <link rel='canonical' href='<?=$page->canonical?>'/>
         <link rel='author' href='<?=$page->author?>'/>
@@ -45,14 +45,16 @@
 ?>
                     <article>
                         <h4>
-                            <a href='<?=$base_url?>/galeria/<?=$album->permalink?>'><?=album->title?></a>
+                            <a href='<?=$base_url?>/galeria/<?=$album->permalink?>'>
+                                <?=$album->title?>
+                            </a>
                         </h4>
 <?php
                         for($i = 0; $i < 4; $i ++) {
-                            $r = mt_rand (0, strlen($album->photo) - 1);
+                            $r = mt_rand (0, sizeof($album->photo) - 1);
 ?>
-                            <a href='<?=$base_url?>/galeria/<?=$album->permalink?>'>
-                                <img alt=' <?=$album->photo[$r]->title?>' title=' <?=$album->photo[$r]->title?>' src='<?=$static["content"]?>gallery/<?=$album->photo[$r]->image?>' srcset='<?=srcset("gallery/" . $album->photo[$r]->image)?>'/>
+                            <a class='frame' href='<?=$base_url?>/galeria/<?=$album->permalink?>'>
+                                <img alt=' <?=$album->photo[$r]->title?>' title=' <?=$album->photo[$r]->title?>' src='<?=$static["content"]?>gallery/<?=$album->photo[$r]->file?>' srcset='<?=srcset("gallery/" . $album->photo[$r]->file)?>'/>
                             </a>
 <?php
                         }

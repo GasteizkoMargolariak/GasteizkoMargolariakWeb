@@ -36,10 +36,6 @@
         include $path["include"] . "header.php";
 ?>
         <main>
-<?php
-            // TODO: Worth it?
-            //include $path["inc"] . "blog-left.php";
-?>
             <section id='post_list'>
                 <h3>
                     <?=$page->title?>
@@ -61,13 +57,13 @@
                         } // if (strlen($post->image) > 0)
 ?>
                         <p>
-                            <?=cut_text($post->text, 100, $page->string["keep_reading"], $base_url . "/blog/" . $post->permalink)?>
+                            <?=cut_text($post->text, 350, $page->string["keep_reading"], $base_url . "/blog/" . $post->permalink)?>
                         </p>
                         <div class='post_details'>
                             <div class='post_details_date'>
                                 <?=format_date($post->dtime, $page->lang, false)?>
                             </div>
-                            <div class='post_details_tags'>
+                            <!--<div class='post_details_tags'>
 <?php
                                 $tags = "";
                                 foreach($post->tag as $tag) {
@@ -76,7 +72,7 @@
                                 substr($tags, 0, strlen($tags) - 2);
 ?>
                                 <?=$tags?>
-                            </div>
+                            </div>-->
                             <div class='post_details_comments'>
 <?php
                                 $comment = "";
@@ -98,10 +94,6 @@
                 } // foreach($array as $item)
 ?>
             </section>
-<?php
-            // TODO: Worth it?
-            //include $path["inc"] . "blog-right.php";
-?>
         </main>
 <?php
         include $path["include"] . "footer.php";

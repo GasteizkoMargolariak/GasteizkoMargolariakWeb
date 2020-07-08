@@ -40,7 +40,7 @@
                     <?=$page->string["us_association"]?>
                 </h3>
                 <article>
-                    <img src="<?=$static["layout"]?>/us/logo.png" alt=" "/>
+                    <img src="<?=$static["layout"]?>us/logo.png" alt=" "/>
                     <?=$page->string["us_association_content"]?>
                 </div>
             </section>
@@ -49,7 +49,7 @@
                     <?=$page->string["us_cuadrilla"]?>
                 </h3>
                 <article>
-                    <img src="<?=$static["layout"]?>/us/margolo.png" alt=" "/>
+                    <img src="<?=$static["layout"]?>us/margolo.png" alt=" "/>
                     <?=$page->string["us_cuadrilla_content"]?>
                 </div>
             </section>
@@ -58,7 +58,7 @@
                     <?=$page->string["us_activities"]?>
                 </h3>
                 <article>
-                    <img src="<?=$static["layout"]?>/us/activities.png" alt=" "/>
+                    <img src="<?=$static["layout"]?>us/activities.png" alt=" "/>
                     <?=$page->string["us_activities_content"]?>
                 </div>
             </section>

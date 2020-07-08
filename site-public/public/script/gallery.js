@@ -9,15 +9,13 @@ function populatePhotos(){
         photo.push(path);
     }
     maxId = photos.length;
-    console.log("photo 0: " + photo[0]);
 }
 
 
-function showPhotoByPath(path){
-    //TODO Change content to a spinning wheel or something before real content is loaded
+function showPhoto(path, id){
     // Load content
     var x = new XMLHttpRequest();
-    x.open("GET", "/galeria/foto.php?path=" + path, true);
+    x.open("GET", "/" + path + "/" + id, true);
     x.send();
     x.onreadystatechange = function(){
     if(x.readyState == 4){
@@ -36,7 +34,7 @@ function showPhotoByPath(path){
 
     //Searh for path in photo array and set cid
     for (var i = 0; i < photo.length; i ++){
-        if (photo[i] == path){
+        if (photo[i] == id){
             cid = i;
         }
     }

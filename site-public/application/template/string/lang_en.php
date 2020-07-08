@@ -1,5 +1,21 @@
 <?php
     $string = array();
+    
+    $string["$error_name"] = "Error";
+    $string["$error_error"] = "ERROR";
+    $string["$error_code"] = "CODE";
+    $string["$error_400_name"] = "Bad request";
+    $string["$error_400_description"] = "This server doesn't understand your request.";
+    $string["$error_401_name"] = "Unauthorized";
+    $string["$error_401_description"] = "You are trying to see something you are not supposed to.";
+    $string["$error_403_name"] = "Forbidden";
+    $string["$error_403_description"] = "You are trying to see something you are not supposed to.";
+    $string["$error_404_name"] = "Not found";
+    $string["$error_404_description"] = "Sorry. The page you are looking for doesn&#39;t exist in this universe. Try in an alternate one.";
+    $string["$error_500_name"] = "Server error";
+    $string["$error_500_description"] = "This one is on us: We&#39;ve messed something up. Sorry! We are probably trying to fix it right now.";
+    $string["$error_unexpected_name"] = "Unexpected error";
+    $string["$error_unexpected_description"] = "Something went wrong...";
 
     //Common words
     $string["yes"] = "Yes";

@@ -12,15 +12,23 @@ section#album_list article{
     vertical-align: top;
     text-align: center;
     margin: 1em;
-    width: 20em;
+    width: 25em;
 }
 
-section#album_list article img{
+section#album_list article a.frame{
     display: inline-block;
-    width: 4em;
-    margin: 1em;
-    border: 0.2em solid black;
+    width: 10em;
+    max-height: 10em;
+    margin: 0.2em;
+    border: 0.1em solid #000033;
+    background-color: #000033;
+    border-radius: 0.2em;
+    vertical-align: middle;
+}
 
+section#album_list article a.frame img{
+    max-width: 9.5em;
+    max-height: 9.5em;
 }
 
 /* Album page. */
@@ -30,10 +38,27 @@ section#album{
 section#album h3{
     text-align: left;
 }
-section#album img{
-    max-height: 7em;
-    max-width: 7em;
-    margin: 1em;
+section#album article{
+    display: inline-block;
+    vertical-align: top;
+    height: 12em;
+    width: 12em;
+}
+section#album article h4{
+    margin-bottom: 0.2em;
+}
+section#album article img{
+    max-height: 9em;
+    max-width: 11.5em;
+    border: 0.1em solid #000033;
+    border-radius: 0.2em;
+}
+section#album article div.user{
+    font-size: 80%;
+    text-align: right;
+    margin: 0 0.5em 0.5em 0.5em;
+    color: #444466;
+    font-style: italic;
 }
 
 /* Photo viewer. */
@@ -60,6 +85,7 @@ section#photo_viewer{
     transition: all .6s ease-in-out;
     z-index: 1001;
     min-height: 10em;
+    overflow-y: auto;
 }
 @media screen and max-width: 800px{
     div#photo_viewer{
@@ -89,10 +115,13 @@ section#photo_viewer article div.arrow{
 }
 section#photo_viewer article div#photo_view{
     width: 65%;
+    height: 90%;
     padding: 0.1em;
 }
 section#photo_viewer article div#photo_view img{
-    display: block;
+    display: inline-block;
+    height: 90%;
+    width: inherit;
     background: #000000;
     border: 0.1em solid #000000;
     border-radius: 0.5em;

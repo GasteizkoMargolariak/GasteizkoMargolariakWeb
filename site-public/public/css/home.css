@@ -1,0 +1,65 @@
+section#past{
+	display: inline-block;
+	vertical-align:top;
+	width: 45%;
+}
+section#past article>h5{
+	font-style: italic;
+	color: #444455;
+	margin-top: 0.2em;
+}
+section#past article>a>img{
+	display: inline-block;
+	vertical-align:top;
+	max-width: 8em;
+	border: 0.1em solid #000000;
+	border-radius: 0.2em;
+	margin: 0.5em;
+	float: left;
+}
+section#past p{
+	display: inline;
+	vertical-align:top;
+}
+section#past div.details{
+	margin: 1em 0.5em;
+	border-top: 0.2em solid #cccccc;
+	font-size: 90%;
+	text-align: right;
+	color: #444455;
+}
+section#blog{
+	display: inline-block;
+	vertical-align:top;
+	width: 45%;
+}
+section#blog article>a>img{
+	display: inline-block;
+	vertical-align:top;
+	max-width: 8em;
+	border: 0.1em solid #000000;
+	border-radius: 0.2em;
+	margin: 0.5em;
+	float: left;
+}
+section#blog p{
+	display: inline;
+	vertical-align:top;
+}
+section#blog div.details{
+	border-top: 0.2em solid #cccccc;
+	font-size: 90%;
+	color: #444455;
+	margin: 1em 0.5em;
+}
+section#blog div.details div.details_date{
+	display: inline-block;
+	width: 60%;
+	margin: 0;
+}
+section#blog div.details div.details_comments{
+	display: inline-block;
+	text-align: right;
+	width: 38%;
+	margin: 0;
+}

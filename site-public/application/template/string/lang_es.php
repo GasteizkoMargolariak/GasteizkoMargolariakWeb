@@ -96,7 +96,25 @@
     $string["help_ad_title"] = "Pol&iacute;tica de anuncios";
     $string["help_ad"] = "En esta p&aacute encontrar&aacute;s anuncios. Son un poco diferentes de los que seguramente est&eacute;s acostumbrado a ver por Internet, y esperamos que no te resulten tan molestos como suelen serlo.<br/><ul><li>No ofrecemos un espacio de publicidad que cualquier empresa puede alquilar. Nuestros anuncios son de empresas y organizaciones que conocemos, con las que trabajamos, y de cuya calidad y fiabilidad podemos responder. Los anuncios los dise&ntilde;amos uno a uno entre la empresa y nosotros. De esta forma, podemos estar seguros de de mostrar una publicidad honesta y segura.<br/></li><li>Garantizamos que al hacer click en la publicidad de este sitio, ser&aacute;s redireccionado a la p&aacute;gina oficial de la empresa anunciada. Si la empresa no tuviera una web propia, accederias a una p&aacute;gina segura con informaci&oacute; de la misma. Nosotros mismos configuramos los enlaces y comprobamos que sean v&aacute;lidos y seguros.<br/></li><li>No queremos ser pesados, as&iacute; que no te ense&ntilde;aremos m&aacute;s de un anuncio cada vez que entres en la p&aacute;gina. Si en alg&uacute;n momento quieres saber m&aacute;s sobre nuestros patrocinadores, tienes una lista al final de la p&aacute;gina.<br/></li><li>No tenemos ingresos por publicidad. No recibimos dinero cada vez que ves o haces click en un anuncio. Si ves anunciada una empresa en esta p&aacute;gina, es por que ha colaborado con nosotros de alguna manera, como ayudando a organizar alguna actividad, cediendo material... Por eso, puedes estar seguro de que est&aacute;s viendo el anuncio de una empresa que ofrece productos que conocemos y por los que apostamos.<br/></li><li>No te rastreamos. Sabemos cuantas veces se ha visto un anuncio y cuantas veces se ha hecho click sobre &eacute;l, pero no sabemos ni cu&aacute;ndo, ni qui&eacute;n. No guardamos (ni, por supuesto, enviamos a nadie) ning&uacute;n tipo de informaci&oacute;n personal relacionada con la publicidad.<br/></li></ul><br/>";
 
-    
+    $string["error_name"] = "Error";
+    $string["error_error"] = "ERROR";
+    $string["error_code"] = "CODE";
+    $string["error_400_name"] = "Bad request";
+    $string["error_400_description"] = "La solicitud se ha recibido con errores... y no se como responder.";
+    $string["error_401_name"] = "Sin autorizaci&oacute;n";
+    $string["error_401_description"] = "Est&aacute;s intentando ver algo que no debes. No somos muy de prohibir, as&iacute; que lo m&aacutes probable es que sea algo momentaneo.";
+    $string["error_403_name"] = "Prohibido";
+    $string["error_403_description"] = "Est&aacute;s intentando ver algo que no debes. No somos muy de prohibir, as&iacute; que lo m&aacutes probable es que sea algo momentaneo.";
+    $string["error_404_name"] = "No encontrado";
+    $string["error_404_description"] = "La p&aacute;gina que buscas no existe en este universo. Int&eacute;ntalo en uno diferente.";
+    $string["error_500_name"] = "Error del servidor";
+    $string["error_500_description"] = "La he liado parda. El fallo est&aacute; en mi lado, pero no te preocupes, ahor&aacute; mismo el inform&aacute;tico estar&aacute; sudando tinta gorda para arreglarlo.";
+    $string["error_unexpected_name"] = "Error inesperado";
+    $string["error_unexpected_description"] = "Algo ha ido mal...";
+    $string["error_refresh"] = "Vuelve a cargar la p&aacute;gina.";
+    $string["error_back"] = "Ve a la p&aacute;gina anterior.";
+    $string["error_home"] = "Ve a la p&aacute;gina de inicio.";
+    $string["error_cats"] = "Ver v&iacute;deos de gatitos en Youtube.";
 
     
     

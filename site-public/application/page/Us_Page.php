@@ -19,10 +19,8 @@
         public function __construct($db, $lang){
             global $path;
             global $base_url;
-            global $static;
-            global $data;
             parent:: __construct($db, $lang);
-            $this->view = $path["view"] . "us.php";
+            $this->template = $path["template"] . "us.php";
             $this->title = $this->string["section_us"] . " - " . $data["name"];
             $this->description = $this->string["section_us"] . " - " . $data["name"];
             $this->canonical = $base_url . "/" . $url->us . "/"";

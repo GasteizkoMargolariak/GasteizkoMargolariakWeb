@@ -10,8 +10,8 @@
         <link rel='stylesheet' type='text/css' href='<?=$static["css"]?>ui.css'/>
         <link rel='stylesheet' type='text/css' href='<?=$static["css"]?>gallery.css'/>
         <!-- Script files -->
-        <script type='text/javascript' src='<?=$static["js"]?>ui.js'></script>
-        <script type='text/javascript' src='<?=$static["js"]?>gallery.js'></script>
+        <script type='text/javascript' src='<?=$static["script"]?>ui.js'></script>
+        <script type='text/javascript' src='<?=$static["script"]?>gallery.js'></script>
         <!-- Meta tags -->
         <link rel='canonical' href='<?=$page->canonical?>'/>
         <link rel='author' href='<?=$page->author?>'/>
@@ -40,22 +40,33 @@
                 <h3>
                     <?=$page->album->title?>
                 </h3>
-                <article>
 <?php
-                    foreach($page->album->photo as $photo) {
+                foreach($page->album->photo as $photo) {
 ?>
-                        <img class='pointer' onClick="showPhotoByPath('<?=$photo->file?>');" src='<?=$static["content"]?>gallery/<?=$photo->image?>' srcset='<?=srcset("gallery/" . $photo->image)?>'/>
+                    <article>
 <?php
-                        if (is_set($photo->title)){
+                        if (isset($photo->title)){
 ?>
-                            <h5>
+                            <h4>
                                 <?=$photo->title?>
-                            </h5>
+                            </h4>
 <?php
                         }
-                    }
 ?>
-                </article>
+                        <img class='pointer' onClick="showPhoto('<?=$url["photo"]?>', '<?=$photo->id?>');" src='<?=$static["content"]?>gallery/<?=$photo->file?>' srcset='<?=srcset("gallery/" . $photo->file)?>'/>
+<?php
+                        if (isset($photo->username)){
+?>
+                            <div class='user'>
+                                <?=$photo->username?>
+                            </div>
+<?php
+                        }
+?>
+                    </article>
+<?php
+                }
+?>
             </section>
         </main>
         <div id='screen_cover' onClick='closeViewer();'>

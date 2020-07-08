@@ -5,16 +5,16 @@
         </span>
         <br/>
         <a title='Facebook' target='_blank' href='<?=$data["social"]["facebook"]?>'>
-            <img src='<?=$static["layout"]?>/social/facebook.gif' alt='Facebook'/>
+            <img src='<?=$static["layout"]?>social/facebook.gif' alt='Facebook'/>
         </a>
         <a title='Twitter' target='_blank' href='<?=$data["social"]["twitter"]?>'>
-            <img src='<?=$static["layout"]?>/social/twitter.gif' alt='Twitter'/>
+            <img src='<?=$static["layout"]?>social/twitter.gif' alt='Twitter'/>
         </a>
         <a title='Youtube' target='_blank' href='<?=$data["social"]["youtube"]?>'>
-            <img src='<?=$static["layout"]?>/social/youtube.gif' alt='Youtube'/>
+            <img src='<?=$static["layout"]?>social/youtube.gif' alt='Youtube'/>
         </a>
         <a title='Instagram' target='_blank' href='<?=$data["social"]["instagram"]?>'>
-            <img src='<?=$static["layout"]?>/social/instagram.gif' alt='Instagram'/>
+            <img src='<?=$static["layout"]?>social/instagram.gif' alt='Instagram'/>
         </a>
         <br/>
         <span id='footer_info' class='desktop'>
@@ -32,7 +32,7 @@
         foreach ($page->sponsor as $sponsor){
 ?>
             <a target='_blank' href='<?=$sponsor->link?>'>
-                <img src='<?=$static["content"]?>/sponsor/<?=$sponsor->image?>' srcset='<?=srcset("sponsor/" . $sponsor->image)?>'/>
+                <img src='<?=$static["content"]?>sponsor/<?=$sponsor->image?>' srcset='<?=srcset("sponsor/" . $sponsor->image)?>'/>
             </a>
 <?php
         }
@@ -48,16 +48,16 @@
         </a>
         <br/>
         <br class='mobile'/>
-        <img class='lang' alt='Espanol' src='/img/lang/es.gif' onClick='changeLanguage("es", "<?=$base_url?>");'/>
-        <img class='lang' alt='English' src='/img/lang/en.gif' onClick='changeLanguage("en", "<?=$base_url?>");'/>
-        <img class='lang' alt='Euskara' src='/img/lang/eu.gif' onClick='changeLanguage("eu", "<?=$base_url?>");'/>
+        <img class='lang' alt='Espanol' src='<?=$static["layout"]?>lang/es.gif' onClick='changeLanguage("es", "<?=$base_url?>");'/>
+        <img class='lang' alt='English' src='<?=$static["layout"]?>/en.gif' onClick='changeLanguage("en", "<?=$base_url?>");'/>
+        <img class='lang' alt='Euskara' src='<?=$static["layout"]?>lang/eu.gif' onClick='changeLanguage("eu", "<?=$base_url?>");'/>
         <br class='desktop'/>
         <a title='Google Play' href='<?=$data["app"]["android"]?>'>
-            <img class='app' alt='<?=$page->string["app_android"]?>' src='/img/app/android.gif' />
+            <img class='app' alt='<?=$page->string["app_android"]?>' src='<?=$static["layout"]?>app/android.gif' />
         </a>
         <br class='desktop'/>
         <a title='App Store' href='<?=$data["app"]["ios"]?>'>
-            <img class='app' alt='<?=$page->string["app_ios"]?>' src='/img/app/ios.gif' />
+            <img class='app' alt='<?=$page->string["app_ios"]?>' src='<?=$static["layout"]?>app/ios.gif' />
         </a>
     </div>
 </footer>

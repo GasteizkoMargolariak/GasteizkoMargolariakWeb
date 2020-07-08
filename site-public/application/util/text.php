@@ -211,7 +211,7 @@
             $cut = $text;
         }
         if (strlen($text) != strlen($cut) && strlen($link) > 0 && strlen($link_text) > 0){
-            $cut = $cut . "... <a href='$link'>$link_text</a>";
+            $cut = $cut . " <a href='$link'>$link_text</a>";
         }
         return $cut;
     }

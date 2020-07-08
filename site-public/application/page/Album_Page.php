@@ -27,7 +27,7 @@
             global $data;
             parent::__construct($db, $lang);
             $this->template = $path["template"] . "album.php";
-            $this->album, new Album($this->db, $this->lang, $id));
+            $this->album = new Album($this->db, $this->lang, $id);
             $this->title = $this->album->title . " - " . $data["name"];
             $this->description = $this->album->title . " - " . $data["name"];
             $this->canonical = $base_url . "/galeria/" . $this->album->permalink;

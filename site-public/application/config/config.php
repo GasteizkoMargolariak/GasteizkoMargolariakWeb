@@ -20,6 +20,7 @@
             "blog" => "blog",
             "us" => "nosotros",
             "gallery" => "galeria",
+            "photo" => "foto",
             "festivals" => "fiestas"
         ],
         "en" => [
@@ -28,6 +29,7 @@
             "blog" => "blog",
             "us" => "us",
             "gallery" => "gallery",
+            "photo" => "photo",
             "festivals" => "festivals"
         ],
         "eu" => [
@@ -36,6 +38,7 @@
             "blog" => "blog",
             "us" => "gu",
             "gallery" => "argaskinak",
+            "photo" => "argaskia",
             "festivals" => "jaiak"
         ]
     ];

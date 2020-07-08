@@ -10,7 +10,7 @@
         <link rel='stylesheet' type='text/css' href='<?=$static["css"]?>ui.css'/>
         <link rel='stylesheet' type='text/css' href='<?=$static["css"]?>help.css'/>
         <!-- Script files -->
-        <script type='text/javascript' src='<?=$static["js"]?>ui.js'></script>
+        <script type='text/javascript' src='<?=$static["script"]?>ui.js'></script>
         <!-- Meta tags -->
         <link rel='canonical' href='<?=$page->canonical?>'/>
         <link rel='author' href='<?=$page->author?>'/>

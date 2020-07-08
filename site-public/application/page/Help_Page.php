@@ -22,10 +22,10 @@
             global $static;
             global $data;
             parent:: __construct($db, $lang);
-            $this->view = $path["view"] . "help.php";
+            $this->template = $path["template"] . "help.php";
             $this->title = $this->string["section_help"] . " - " . $data["name"];
             $this->description = $this->string["section_help"] . " - " . $data["name"];
-            $this->canonical = $base_url . "/" . $url->help . "/"";
+            $this->canonical = $base_url . "/" . $url->help . "/";
         }
     }
 ?>

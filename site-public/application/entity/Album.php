@@ -50,7 +50,6 @@
             $s =
               "SELECT " .
               "  id, " .
-              "  file, " .
               "  permalink, " .
               "  title_" . $this->lang . " AS title, " .
               "  description_" . $this->lang . " AS description " .
@@ -71,13 +70,13 @@
                 }
             }
             $s_photo =
-              "SELECT id " .
+              "SELECT photo " .
               "FROM photo_album " .
               "WHERE " .
               "  album = " . $this->id . ";";
             $q_photo = mysqli_query($this->db, $s_photo);
             while($r_photo = mysqli_fetch_array($q_photo)){
-                array_push($this->photo, new Photo($this->db, $this->lang, $r_photo["id"]));
+                array_push($this->photo, new Photo($this->db, $this->lang, $r_photo["photo"]));
             }
         }
     }

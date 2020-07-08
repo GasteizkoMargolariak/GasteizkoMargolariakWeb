@@ -67,7 +67,7 @@
                                 <?=cut_text($activity->text, 100, $page->string["keep_reading"], $base_url . "/actividades/" . $activity->permalink)?>
                             </p>
                             <div class='details'>
-                                <div class='details_tags'>
+                                <div class='details_tags hidden'>
 <?php
                                     $tags = "";
                                     foreach($activity->tag as $tag) {
@@ -128,7 +128,7 @@
                             <?=cut_text($activity->text, 100, $page->string["keep_reading"], $base_url . "/actividades/" . $activity->permalink)?>
                         </p>
                         <div class='details'>
-                            <div class='details_tags'>
+                            <div class='details_tags hidden'>
 <?php
                                 $tags = "";
                                 foreach($activity->tag as $tag) {
@@ -186,7 +186,7 @@
                             <div class='details_date'>
                                 <?=format_date($post->dtime, $page->lang, false)?>
                             </div>
-                            <div class='details_tags'>
+                            <div class='details_tags hidden'>
 <?php
                                 $tags = "";
                                 foreach($post->tag as $tag) {

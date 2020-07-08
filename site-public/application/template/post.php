@@ -36,10 +36,6 @@
         include $path["include"] . "header.php";
 ?>
         <main>
-<?php
-            // TODO: Worth it?
-            //include $path["inc"] . "blog-left.php";
-?>
             <section id='post'>
                 <h3>
                     <?=$page->post->title?>
@@ -59,7 +55,7 @@
                         <div class='post_details_date'>
                             <?=format_date($page->post->dtime, $page->lang, false)?>
                         </div>
-                        <div class='post_details_tags'>
+                        <!--<div class='post_details_tags'>
 <?php
                             $tags = "";
                             foreach($page->post->tag as $tag) {
@@ -68,7 +64,7 @@
                             substr($tags, 0, strlen($tags) - 2);
 ?>
                             <?=$tags?>
-                        </div>
+                        </div>-->
                     </div>
                     <div id='comments'>
 <?php
@@ -109,17 +105,13 @@
                             <input type='hidden' name='id' value='<?=$page->post->id?>'/>
                             <br/>
                             <div id='identification_form'>
-                                <input id='new_comment_user' name='user' maxlength='50' type='text' placeholder='<?$page->string["comment_form_name"]?>' onChange='dissmiss_comment_error();' onKeyDown='dissmiss_comment_error();'/>
+                                <input id='new_comment_user' name='user' maxlength='50' type='text' placeholder='<?=$page->string["comment_form_name"]?>' onChange='dissmiss_comment_error();' onKeyDown='dissmiss_comment_error();'/>
                             <input type='submit' value='<?=$page->string["comment_form_send"]?>'/>
                             </div>
                         </form>
                     </div>
                 </article>
             </section>
-<?php
-            // TODO: Worth it?
-            //include $path["inc"] . "blog-right.php";
-?>
         </main>
 <?php
         include $path["include"] . "footer.php";

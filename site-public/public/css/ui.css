@@ -4,14 +4,25 @@
     src: url('/font/FreeSans.ttf')
 }
 
+/* Hiddden eleemnts. */
+.hidden{
+    display: none;
+}
+
 /* Mobile or desktop specifics. */
 .mobile{
     display: none;
 }
-@media screen and max-width: 800px{
+.desktop{
+    display: initial;
+}
+@media screen and (max-width: 600px){
     .desktop{
         display: none;
     }
+    .mobile{
+    	display: initial;
+	}
 }
 
 /* Common elements across the page. */
@@ -92,13 +103,14 @@ header{
     background-color: #0078ff;
     border-bottom: 0.1em solid #1a4d6a;
     box-shadow: 0 0 3em #dde;
-    text-align: center;
+    text-align: center; /* Compensate for space between iline-block elements. */
 }
 header img{
     display: inline-block;
     width: 10%;
-    max-width: 5em;
-    margin: 1em;
+    max-width: 4.5em;
+    max-height: 4.5em;
+    margin: 0.5em -1.5em -0.5em 0.5em;
     vertical-align: middle;
     filter: drop-shadow(0 0 0.4em #dde);
     border-radius: 100%;
@@ -110,23 +122,38 @@ header a{
     width: calc(((100% - 6em) / 6) - 2em);
     margin: 0;
     padding: 0.5em 0.1em;
-    font-size: 110%;
+    font-size: 120%;
+    font-weight: bold;
     color: #ffffff;
     text-align: center;
-    padding: 0.5em 0;
-    border-top: 0.1em solid #1a4d6a;
-    border-bottom: 0.1em solid #1a4d6a;
+    padding: 0.4em 0;
+    border-top: 0.2em solid #3d6780;
+    border-bottom: 0.2em solid #3d6780;
     transition: all .3s ease-in-out;
     overflow-x: hidden;
     white-space: nowrap;
+    text-transform: capitalize;
+    background-color: #8cceff;
+    text-shadow: -0.04em 0 #1a4d6a, 0 0.04em #1a4d6a, 0.04em 0 #1a4d6a, 0 -0.04em #1a4d6a;
+}
+header a:last-child{
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-right: 0.2em solid #1a4d6a;
+    padding-right: 0.4em
 }
 header a:hover{
-    border-top: 0.3em solid #1a4d6a;
-    border-bottom: 0.3em solid #1a4d6a;
-    padding: 0.3em 0.1em;
-    color: #0078ff;
+    border-top: 0.3em solid #8cceff;
+    border-bottom: 0.3em solid #8cceff;
+    padding: 0.3em 0;
+    color: #8cceff;
     background-color: #ffffff;
     text-shadow: 0 0 0em #ffffff;
+    text-decoration: none;
+}
+header a:last-child:hover{
+    border-right: 0.3em solid #8cceff;
+    padding-right: 0.3em;
 }
 
 /* Footer. */
@@ -165,7 +192,7 @@ footer > div#footer_social img:hover{
     filter: drop-shadow(0 0 0.6em #111);
 }
 footer > div#footer_sponsors{
-    width: 55%;
+    width: 40%;
 }
 footer > div#footer_sponsors img{
     display: inline-block;
@@ -220,26 +247,25 @@ section{
     border-radius: 1em;
     padding: 0 0 0.5em 0;
     background-color: #98c8ff;
-    -webkit-filter: drop-shadow(0 0 0.4em #000011);
     filter: drop-shadow(0 0 0.4em #000011);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
-    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=0, Color='#000011')";
+    margin: 1em;
 }
 section h3{
-    font-size: 120%;
+    font-size: 140%;
     font-style: bold;
     color: #ffffff;
     background-color: #0078ff;
     padding: 0.5em 2em 0.1em 1.5em;
     border-top-left-radius: 0.7em;
     border-top-right-radius: 0.7em;
-    border: 0.1em solid #000011;
+    border-top: 1px solid #000011;
+    border-bottom: 1px solid #000011;
     margin: 0;
 }
 article{
     background-color: #ffffff;
-    padding: 0.2em;
-    margin: 0.4em;
+    padding: 15px;
+    margin: 1.5em;
     border: 0.1em solid #6D6990;
     border-radius: 0.3em;
     box-shadow: inset 0 0 0.2em #dde;
@@ -248,8 +274,11 @@ article{
 article h4{
     color: #275573;
     font-weight: bold;
-    font-size: 1.3em;
-    margin: 1em 1em 0.3em 0em;
+    font-size: 120%;
+    padding: 0.2em 1em;
+    margin: -15px -15px 1em -15px;
+    border-bottom: 0.1em solid #27557333;
+    background: linear-gradient(to top, #27557333 10%, #ffffff 30%, #ffffff 70%, #27557333 90%);
 }
 article h4 a{
     color: #275573;

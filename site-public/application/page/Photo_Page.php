@@ -27,7 +27,7 @@
             global $data;
             parent::__construct($db, $lang);
             $this->template = $path["template"] . "photo.php";
-            $this->photo = new Photo($this->db, $this->lang, $r["id"]));
+            $this->photo = new Photo($this->db, $this->lang, $id);
         }
     }
 ?>

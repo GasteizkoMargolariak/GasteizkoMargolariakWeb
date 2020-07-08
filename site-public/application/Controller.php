@@ -109,16 +109,17 @@
                     require_once($path["page"] . "Festivals_Page.php");
                     $page = new Festivals_Page($db, $lang);
                 }
+                if (strtolower($route[0]) == $url["photo"] && sizeof($route) > 1){
+                    require_once($path["page"] . "Photo_Page.php");
+                    $page = new Photo_Page($db, $lang, $route[1]);
+                }
             }
 
             // Load the view, or set an error code.
             if (!isset($page)){
                 http_response_code(404);
-                // TODO: Set up error page
-                require_once($path["page"] . "Home_Page.php");
-                $page = new Home_Page($db, $lang);
-                //require_once($path["page"] . "Error_Page.php");
-                //$page = new Error_Page($db, $lang);
+                require_once($path["page"] . "Error_Page.php");
+                $page = new Error_Page($db, $lang, 404);
             }
             require_once($page->template);
         }

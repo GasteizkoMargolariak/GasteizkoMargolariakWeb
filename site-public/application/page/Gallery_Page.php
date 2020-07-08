@@ -26,7 +26,7 @@
             global $base_url;
             global $data;
             parent::__construct($db, $lang);
-            $this->template = $path["template"] . "album.php";
+            $this->template = $path["template"] . "gallery.php";
             $s =
               "SELECT id " .
               "FROM album " .
@@ -36,7 +36,7 @@
                 array_push($this->album, new Album($this->db, $this->lang, $r["id"]));
             }
             $this->title = $this->string["section_gallery"] . " - " . $data["name"];
-            $this->description = $this->string["section_galery"] . " - " . $data["name"];
+            $this->description = $this->string["section_gallery"] . " - " . $data["name"];
             $this->canonical = $base_url . "/galeria/";
         }
     }

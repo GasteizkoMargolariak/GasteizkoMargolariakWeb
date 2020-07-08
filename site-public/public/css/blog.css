@@ -1,28 +1,51 @@
 /* Blog main page. */
 section#post_list article img{
-    max-width: 7em;
-    max-height: 5em;
-    margin-right: 1em;
     display: inline-block;
-    vertical-align: top;
+    vertical-align:top;
+    max-width: 10em;
+    max-height: 8em;
+    border: 0.1em solid #000000;
+    border-radius: 0.2em;
+    margin: 0.8em;
+    float: left;
 }
 section#post_list article p{
-    display: inline-block;
+    display: block;
     vertical-align: top;
+    mergin-top: 0.5em;
+}
+section#post_list article div.post_details{
+    border-top: 0.2em solid #cccccc;
+    font-size: 90%;
+    color: #444455;
+    margin: 1em 0.5em;
 }
 section#post_list article div.post_details > div{
     display: inline-block;
+    margin: 0;
+    padding: 0.5em 1em;
     vertical-align: top;
     font-size: 90%;
-}
-section#post_list article div.post_details div.post_details_date{
-    width: 40%;
-}
-section#post_list article div.post_details div.post_details_tags{
+    font-style: italic;
     width: 40%;
 }
 section#post_list article div.post_details div.post_details_comments{
-    width: 20%;
+    text-align: right;
 }
 
 /* Single post page. */
+section#post article img#main_image{
+    display: block;
+    max-width: 60em;
+    max-height: 20em;
+    border: 0.3em solid #000000;
+    border-radius: 0.3em;
+    margin: 1em auto 1em auto;
+}
+section#post article div.post_details{
+    border-top: 0.2em solid #cccccc;
+    font-size: 90%;
+    color: #444455;
+    margin: 1em 0.5em;
+    text-align: right;
+}
