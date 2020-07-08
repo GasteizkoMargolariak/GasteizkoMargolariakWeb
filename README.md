@@ -1,4 +1,4 @@
-# Gasteizko Margolariak Web #
+# Gasteizko Margolariak Web (discontinued) #
 
 Source code of the [Gasteizko Margolariak](https://margolariak.com/) Web Portal.
 

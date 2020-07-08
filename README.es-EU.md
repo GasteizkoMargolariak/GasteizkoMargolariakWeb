@@ -3,7 +3,7 @@
 [Information in english](README.md)
 ---
 
-# Web Gasteizko Margolariak #
+# Web Gasteizko Margolariak (Descontinuado) #
 
 Código fuente de el sitio web de [Gasteizko Margolariak](https://margolariak.com/)
 
