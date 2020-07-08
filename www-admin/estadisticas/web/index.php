@@ -56,8 +56,8 @@
                             <h3 class='section_title'>Gr&aacute;fico</h3>
                             <div class='entry'>
 <?php
-                                $q_section = mysqli_query($con, "SELECT COUNT(visit) v, section FROM stat_view WHERE section != 'error' AND entry = '' GROUP BY section ORDER BY COUNT(visit)")
-                                $q_blog = mysqli_query($con, "SELECT COUNT(visit) v, section, entry FROM stat_view WHERE section = 'blog' AND entry IS NOT null GROUP section, entry ORDER BY count(visit) DESC LIMIT 4")
+                                $q_section = mysqli_query($con, "SELECT COUNT(visit) v, section FROM stat_view WHERE section != 'error' AND entry = '' GROUP BY section ORDER BY COUNT(visit)");
+                                $q_blog = mysqli_query($con, "SELECT COUNT(visit) v, section, entry FROM stat_view WHERE section = 'blog' AND entry IS NOT null GROUP section, entry ORDER BY count(visit) DESC LIMIT 4");
 ?>
                             </div> <!-- .entry -->
                         </div> <!-- .section -->
